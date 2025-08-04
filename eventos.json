@@ -1,0 +1,33 @@
+[
+  {
+    "hora": "21:10",
+    "equipoLocal": "San Martín Tucumán",
+    "logoLocal": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Escudo_del_Club_Atl%C3%A9tico_San_Mart%C3%ADn_de_Tucum%C3%A1n.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_San_Mart%C3%ADn_de_Tucum%C3%A1n.svg.png",
+    "equipoVisitante": "River Plate",
+    "logoVisitante": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/River_Plate_logo_2022.svg/1200px-River_Plate_logo_2022.svg.png",
+    "urls": [
+      "https://gh.alangulotv.blog/?channel=espn-premium-a",
+      "https://gh.alangulotv.blog/?channel=espn-premium-b"
+    ]
+  },
+  {
+    "hora": "19:00",
+    "equipoLocal": "Orlando City SC",
+    "logoLocal": "https://a.espncdn.com/i/teamlogos/soccer/500/11324.png",
+    "equipoVisitante": "Atlas",
+    "logoVisitante": "https://a.espncdn.com/i/teamlogos/soccer/500/211.png",
+    "urls": [
+      "https://gh.alangulotv.blog/?channel=mls1"
+    ]
+  },
+  {
+    "hora": "19:00",
+    "equipoLocal": "UFC Fight Night",
+    "logoLocal": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UFC_Logo.svg/2560px-UFC_Logo.svg.png",
+    "equipoVisitante": "Taira vs. Park",
+    "logoVisitante": "https://p.alangulotv.blog/F1-2",
+    "urls": [
+      "https://gh.alangulotv.blog/?channel=fox-a"
+    ]
+  }
+]
