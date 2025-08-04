@@ -1,33 +1,82 @@
 [
   {
+    "hora": "EN VIVO",
+    "equipoLocal": "Sport Boys",
+    "logoLocal": "https://p.alangulotv.blog/SPORTBOYS",
+    "equipoVisitante": "ADT",
+    "logoVisitante": "https://p.alangulotv.blog/ADT",
+    "urls": []
+  },
+  {
+    "hora": "EN VIVO",
+    "equipoLocal": "Real Santander",
+    "logoLocal": "https://p.alangulotv.blog/SANTANDER",
+    "equipoVisitante": "Bogotá",
+    "logoVisitante": "https://p.alangulotv.blog/BOGOTA",
+    "urls": []
+  },
+  {
+    "hora": "18:30",
+    "equipoLocal": "Deportivo Recoleta",
+    "logoLocal": "https://p.alangulotv.blog/RECOLETA",
+    "equipoVisitante": "Guaraní",
+    "logoVisitante": "https://p.alangulotv.blog/GUARANI",
+    "urls": []
+  },
+  {
+    "hora": "19:00",
+    "equipoLocal": "Universidad Chile",
+    "logoLocal": "https://p.alangulotv.blog/UCHILE",
+    "equipoVisitante": "Cobresal",
+    "logoVisitante": "https://p.alangulotv.blog/COBRESAL",
+    "urls": []
+  },
+  {
+    "hora": "19:30",
+    "equipoLocal": "Minnesota Twins",
+    "logoLocal": "https://p.alangulotv.blog/TWINS",
+    "equipoVisitante": "Detroit Tigers",
+    "logoVisitante": "https://p.alangulotv.blog/TIGERS",
+    "urls": []
+  },
+  {
+    "hora": "20:00",
+    "equipoLocal": "Santos",
+    "logoLocal": "https://p.alangulotv.blog/SANTOS",
+    "equipoVisitante": "Juventude",
+    "logoVisitante": "https://p.alangulotv.blog/JUVENTUDE",
+    "urls": []
+  },
+  {
+    "hora": "20:00",
+    "equipoLocal": "Torneo ATP",
+    "logoLocal": "https://upload.wikimedia.org/wikipedia/commons/3/36/ATP_Tour_logo.svg",
+    "equipoVisitante": "",
+    "logoVisitante": "",
+    "urls": []
+  },
+  {
+    "hora": "21:00",
+    "equipoLocal": "Cienciano",
+    "logoLocal": "https://p.alangulotv.blog/CIENCIANO",
+    "equipoVisitante": "Los Chankas",
+    "logoVisitante": "https://p.alangulotv.blog/CHANKAS",
+    "urls": []
+  },
+  {
     "hora": "21:10",
-    "equipoLocal": "San Martín Tucumán",
-    "logoLocal": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Escudo_del_Club_Atl%C3%A9tico_San_Mart%C3%ADn_de_Tucum%C3%A1n.svg/1200px-Escudo_del_Club_Atl%C3%A9tico_San_Mart%C3%ADn_de_Tucum%C3%A1n.svg.png",
-    "equipoVisitante": "River Plate",
-    "logoVisitante": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/River_Plate_logo_2022.svg/1200px-River_Plate_logo_2022.svg.png",
-    "urls": [
-      "https://gh.alangulotv.blog/?channel=espn-premium-a",
-      "https://gh.alangulotv.blog/?channel=espn-premium-b"
-    ]
+    "equipoLocal": "Defensores de Belgrano",
+    "logoLocal": "https://p.alangulotv.blog/DEFENSORES",
+    "equipoVisitante": "Deportivo Morón",
+    "logoVisitante": "https://p.alangulotv.blog/MORON",
+    "urls": []
   },
   {
-    "hora": "19:00",
-    "equipoLocal": "Orlando City SC",
-    "logoLocal": "https://a.espncdn.com/i/teamlogos/soccer/500/11324.png",
-    "equipoVisitante": "Atlas",
-    "logoVisitante": "https://a.espncdn.com/i/teamlogos/soccer/500/211.png",
-    "urls": [
-      "https://gh.alangulotv.blog/?channel=mls1"
-    ]
-  },
-  {
-    "hora": "19:00",
-    "equipoLocal": "UFC Fight Night",
-    "logoLocal": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UFC_Logo.svg/2560px-UFC_Logo.svg.png",
-    "equipoVisitante": "Taira vs. Park",
-    "logoVisitante": "https://p.alangulotv.blog/F1-2",
-    "urls": [
-      "https://gh.alangulotv.blog/?channel=fox-a"
-    ]
+    "hora": "23:00",
+    "equipoLocal": "St. Louis Cardinals",
+    "logoLocal": "https://p.alangulotv.blog/CARDINALS",
+    "equipoVisitante": "Los Angeles Dodgers",
+    "logoVisitante": "https://p.alangulotv.blog/DODGERS",
+    "urls": []
   }
 ]
