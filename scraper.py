@@ -1,15 +1,30 @@
 import requests
 import re
 import json
+from urllib.parse import urljoin
 
-# Apuntamos directamente al script que contiene los datos
+# ✅ APUNTAMOS DIRECTAMENTE AL SCRIPT QUE CONTIENE LOS DATOS PARA EVITAR EL BLOQUEO
 SCRIPT_URL = "https://gh.alangulotv.blog/script.js"
 
-# (El diccionario IMAGE_URLS y las funciones auxiliares quedan igual)
+# (El resto del código no necesita cambios, pero lo incluyo para que esté completo)
+
 IMAGE_URLS = {
     "ESPN": "https://p.alangulotv.blog/ESPN",
     "ESPN 2": "https://p.alangulotv.blog/ESPN2",
-    # ... (etc.)
+    "ESPN 3": "https://p.alangulotv.blog/ESPN3",
+    "ESPN 4": "https://p.alangulotv.blog/ESPN4",
+    "ESPN Premium": "https://p.alangulotv.blog/ESPNPREMIUM",
+    "TNT Sports": "https://p.alangulotv.blog/TNTSPORTS",
+    "TyC Sports": "https://p.alangulotv.blog/TYCSPORTS",
+    "Fox Sports": "https://p.alangulotv.blog/FOXSPORTS",
+    "Fox Sports 2": "https://p.alangulotv.blog/FOXSPORTS2",
+    "Fox Sports 3": "https://p.alangulotv.blog/FOXSPORTS3",
+    "TV Pública": "https://p.alangulotv.blog/TVP",
+    "Telefe": "https://p.alangulotv.blog/TELEFE",
+    "El Trece": "https://tvlibreonline.org/img/eltrece.webp",
+    "Fórmula 1": "https://p.alangulotv.blog/F1-2",
+    "DAZN F1": "https://p.alangulotv.blog/DAZNF1",
+    "DIRECTV Sports": "https://p.alangulotv.blog/DTV"
 }
 
 def fetch_content(url):
@@ -64,13 +79,15 @@ def structure_into_sections(channels_list):
     ]
 
 def main():
-    print("Iniciando scraping de canales...")
+    print(f"Paso 1: Descargando contenido del script desde: {SCRIPT_URL}")
     js_code = fetch_content(SCRIPT_URL)
     if not js_code: exit(1)
     
+    print("Paso 2: Extrayendo el objeto de canales del JavaScript...")
     json_text = extract_channels_json_text(js_code)
     if not json_text: exit(1)
         
+    print("Paso 3: Procesando y estructurando los canales...")
     channels_list = process_channels(json_text)
     if channels_list is None: exit(1)
 
