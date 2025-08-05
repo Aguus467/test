@@ -1,106 +1,172 @@
-import cloudscraper
+#!/usr/bin/env python3
 import re
 import json
+import argparse
+import logging
 from urllib.parse import urljoin
+from collections import deque
 
-SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
-IMAGE_URLS = {
-    "ESPN": "https://p.alangulotv.blog/ESPN",
-    "ESPN 2": "https://p.alangulotv.blog/ESPN2",
-    "ESPN 3": "https://p.alangulotv.blog/ESPN3",
-    "ESPN 4": "https://p.alangulotv.blog/ESPN4",
-    "ESPN Premium": "https://p.alangulotv.blog/ESPNPREMIUM",
-    "TNT Sports": "https://p.alangulotv.blog/TNTSPORTS",
-    "TyC Sports": "https://p.alangulotv.blog/TYCSPORTS",
-    "Fox Sports": "https://p.alangulotv.blog/FOXSPORTS",
-    "Fox Sports 2": "https://p.alangulotv.blog/FOXSPORTS2",
-    "Fox Sports 3": "https://p.alangulotv.blog/FOXSPORTS3",
-    "TV Pública": "https://p.alangulotv.blog/TVP",
-    "Telefe": "https://p.alangulotv.blog/TELEFE",
-    "El Trece": "https://tvlibreonline.org/img/eltrece.webp",
-    "Fórmula 1": "https://p.alangulotv.blog/F1-2",
-    "DAZN F1": "https://p.alangulotv.blog/DAZNF1",
-    "DIRECTV Sports": "https://p.alangulotv.blog/DTV"
-}
+import cloudscraper
+from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter, Retry
 
-def fetch_content(url):
+# --- Configuración de logging ---
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%H:%M:%S"
+)
+logger = logging.getLogger(__name__)
+
+# --- Funciones de descarga con retry ---
+def make_scraper(retries=3, backoff=0.3):
     scraper = cloudscraper.create_scraper()
+    retry = Retry(
+        total=retries,
+        backoff_factor=backoff,
+        status_forcelist=[429, 500, 502, 503, 504]
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    scraper.mount("https://", adapter)
+    scraper.mount("http://", adapter)
+    return scraper
+
+def fetch_text(url, scraper=None, timeout=15):
+    scraper = scraper or make_scraper()
     try:
-        response = scraper.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
-        response.raise_for_status()
-        return response.text
+        resp = scraper.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=timeout)
+        resp.raise_for_status()
+        return resp.text
     except Exception as e:
-        print(f"Error fetching URL {url}: {e}")
+        logger.error(f"Error al descargar {url!r}: {e}")
         return None
 
-def extract_channels_json_text(js_code):
-    match = re.search(r'const\s+channels\s*=\s*(\{[\s\S]*?\});', js_code)
-    if match:
-        return match.group(1)
-    print("Error: No se pudo encontrar 'const channels' en el script.")
-    return None
+# --- Extracción del bloque JSON JavaScript ---
+def extract_js_channels(html, base_url=None, pattern=None):
+    """
+    1) Busca <script src="..."> que coincida con pattern (si se da).
+    2) Si no hay src, comprueba scripts inline buscando 'var channels'.
+    3) Retorna el texto bruto de JS donde está 'var channels = { ... };'.
+    """
+    soup = BeautifulSoup(html, "html.parser")
 
-def format_channel_name(key):
-    base_name = re.sub(r'-[a-z0-9]+$', '', key)
-    return base_name.replace("-", " ").title()
+    # 1) Scripts externos
+    if pattern:
+        tag = soup.find("script", src=re.compile(pattern))
+        if tag and tag.get("src"):
+            js_url = urljoin(base_url, tag["src"])
+            logger.info(f"Encontrado script externo: {js_url}")
+            return fetch_text(js_url)
 
-def process_channels(json_text):
-    try:
-        # ✅ FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
-        # 1. Eliminar comentarios de una sola línea
-        cleaned_text = re.sub(r'//.*', '', json_text)
-        # 2. Eliminar comentarios de múltiples líneas (por si acaso)
-        cleaned_text = re.sub(r'/\*[\s\S]*?\*/', '', cleaned_text)
-        # 3. Eliminar caracteres de control inválidos (la causa del error)
-        cleaned_text = ''.join(c for c in cleaned_text if c.isprintable() or c in '\n\r\t')
-        # 4. Eliminar comas finales antes de '}' o ']'
-        cleaned_text = re.sub(r',\s*([}\]])', r'\1', cleaned_text)
-        
-        data = json.loads(cleaned_text)
-        processed = {}
-        for key, value in data.items():
-            if not isinstance(value, dict) or not any(k.startswith('repro') for k in value):
-                continue
-            name = format_channel_name(key)
-            if name not in processed:
-                processed[name] = {
-                    "nombre": name,
-                    "imagenUrl": IMAGE_URLS.get(name, f"https://p.alangulotv.blog/{name.replace(' ', '').upper()}"),
-                    "urls": []
-                }
-            urls = [v for k, v in value.items() if k.startswith('repro') and v]
-            processed[name]["urls"].extend(urls)
-        return list(processed.values())
-    except json.JSONDecodeError as e:
-        print(f"Error al decodificar JSON: {e}")
-        print(f"Texto JSON problemático (primeros 500 caracteres): {json_text[:500]}")
-        return None
+    # 2) Scripts inline
+    for tag in soup.find_all("script"):
+        code = tag.string or ""
+        if "var channels" in code:
+            logger.info("Encontrado script inline con 'var channels'")
+            return code
 
-def structure_into_sections(channels_list):
-    deportes = [c for c in channels_list if any(kw in c["nombre"] for kw in ["Espn", "Tnt", "Tyc", "Fox", "Directv"])]
-    nacionales = [c for c in channels_list if any(kw in c["nombre"] for kw in ["Publica", "Telefe", "Trece"])]
-    otros = [c for c in channels_list if c not in deportes and c not in nacionales]
-    return [
-        {"seccionTitulo": "Deportes", "canales": deportes},
-        {"seccionTitulo": "Canales Nacionales", "canales": nacionales},
-        {"seccionTitulo": "Otros", "canales": otros}
-    ]
+    raise RuntimeError("No se encontró el bloque 'var channels' en la página.")
 
+# --- Parsing de objeto JS con múltiples URLs ---
+def extract_json_literal(js_code):
+    """
+    Extrae desde la llave de inicio hasta la llave final
+    contabilizando niveles anidados para capturar JSON completo.
+    Luego elimina comentarios JS.
+    """
+    # Ubicar posición de "var channels"
+    idx = js_code.find("var channels")
+    if idx < 0:
+        raise ValueError("No hallé 'var channels'")
+
+    # Encontrar primera '{'
+    start = js_code.find("{", idx)
+    if start < 0:
+        raise ValueError("No hallé '{' tras 'var channels'")
+
+    # Usar pila para hallar cierre correspondiente
+    depth = 0
+    for pos in range(start, len(js_code)):
+        if js_code[pos] == "{":
+            depth += 1
+        elif js_code[pos] == "}":
+            depth -= 1
+            if depth == 0:
+                end = pos + 1
+                break
+    else:
+        raise ValueError("No hallé la llave de cierre del JSON")
+
+    literal = js_code[start:end]
+
+    # Eliminar comentarios de línea y bloque
+    literal = re.sub(r"//.*", "", literal)
+    literal = re.sub(r"/\*[\s\S]*?\*/", "", literal)
+    return literal
+
+# --- Descubrir todas las URLs válidas en cada canal ---
+def gather_urls(channel_cfg, base_url=None):
+    """
+    Recorre todas las claves de channel_cfg,
+    devuelve lista de URL absolutas (http/https).
+    """
+    urls = []
+    for key, val in channel_cfg.items():
+        if isinstance(val, str) and re.match(r"^https?://", val, re.IGNORECASE):
+            urls.append(val)
+        elif isinstance(val, str) and base_url:
+            # válida para rutas relativas
+            urls.append(urljoin(base_url, val))
+    return urls
+
+# --- Flujo principal ---
 def main():
-    print("Iniciando scraping de canales...")
-    js_code = fetch_content(SCRIPT_URL)
-    if not js_code: exit(1)
-    
-    json_text = extract_channels_json_text(js_code)
-    if not json_text: exit(1)
-        
-    channels_list = process_channels(json_text)
-    if channels_list is None: exit(1)
+    parser = argparse.ArgumentParser(
+        description="Scraper de canales con múltiples URLs"
+    )
+    parser.add_argument("page_url", help="URL de la página con el script")
+    parser.add_argument(
+        "-p", "--pattern", default=r"script\.js$",
+        help="Regex para el src del JS (por defecto 'script.js')"
+    )
+    parser.add_argument(
+        "-o", "--output",
+        help="Archivo de salida (si se omite, imprime en pantalla)"
+    )
+    args = parser.parse_args()
 
-    final_structure = structure_into_sections(channels_list)
-    with open("canales.json", "w", encoding="utf-8") as f:
-        json.dump(final_structure, f, indent=2, ensure_ascii=False)
-    print("Éxito: canales.json actualizado.")
+    scraper = make_scraper()
+    html = fetch_text(args.page_url, scraper)
+    if not html:
+        logger.critical("No pude descargar la página principal.")
+        return
+
+    try:
+        js_code = extract_js_channels(html, base_url=args.page_url, pattern=args.pattern)
+        raw_json = extract_json_literal(js_code)
+        data = json.loads(raw_json)
+    except Exception as e:
+        logger.critical(f"Error al parsear JSON de canales: {e}")
+        return
+
+    lines = []
+    for canal, cfg in data.items():
+        urls = gather_urls(cfg, base_url=args.page_url)
+        if not urls:
+            logger.warning(f"'{canal}' no tiene URLs válidas, se omite.")
+            continue
+
+        lines.append(canal)
+        lines.extend(urls)
+        lines.append("")  # separación
+
+    output = "\n".join(lines).strip() + "\n"
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as f:
+            f.write(output)
+        logger.info(f"Guardado resultado en {args.output}")
+    else:
+        print(output)
 
 if __name__ == "__main__":
     main()
