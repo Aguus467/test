@@ -1,26 +1,35 @@
-name: Actualizar Canales JSON
+name: Actualizar Contenidos de la App
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *' # Todos los días a las 6 AM UTC
+    - cron: '0 6 * * *'
 
 jobs:
-  update-channels:
+  update-json:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - name: Install dependencies
-        run: pip install requests
+
+      - name: Install dependencies from requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Run channel scraper
         run: python scraper.py
+
+      - name: Run agenda scraper
+        run: python agenda_scraper.py
+
       - name: Commit and push if changed
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore(channels): Actualización automática de canales"
-          file_pattern: 'canales.json'
+          commit_message: "chore: Actualización automática de contenidos"
+          file_pattern: 'canales.json eventos.json'
