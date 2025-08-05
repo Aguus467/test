@@ -47,7 +47,7 @@ def format_channel_name(key):
 
 def process_channels(json_text):
     try:
-        # FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
+        # ✅ FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
         # 1. Eliminar comentarios de una sola línea
         cleaned_text = re.sub(r'//.*', '', json_text)
         # 2. Eliminar comentarios de múltiples líneas (por si acaso)
