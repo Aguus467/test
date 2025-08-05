@@ -21,7 +21,7 @@ jobs:
     - name: Ejecutar script
       run: |
         pip install requests
-        python extraer_json.py
+        python scraper-tesr.py
 
     - name: Subir cambios al repo
       run: |
