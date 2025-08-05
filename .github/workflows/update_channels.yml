@@ -1,4 +1,4 @@
-name: Actualizar Contenidos de la App
+# .github/workflows/update_channels.yml
 
 on:
   workflow_dispatch:
@@ -9,6 +9,7 @@ jobs:
   update-json:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -23,7 +24,12 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run channel scraper
-        run: python scraper.py
+        run: |
+          python scraper.py https://gh.alangulotv.blog/assets/script.js -o canales.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add canales.txt
+          git diff --quiet || git commit -m "chore: Actualizar canales $(date +'%Y-%m-%d')"
 
       - name: Run agenda scraper
         run: python agenda_scraper.py
@@ -32,4 +38,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: Actualización automática de contenidos"
-          file_pattern: 'canales.json eventos.json'
+          file_pattern: |
+            canales.txt
+            eventos.json
