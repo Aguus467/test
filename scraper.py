@@ -1,109 +1,106 @@
-import requests
-import re
+import cloudscraper
 import json
+import re
 from urllib.parse import urljoin
+from bs4 import BeautifulSoup
+import time
 
-# APUNTAMOS DIRECTAMENTE AL SCRIPT QUE CONTIENE LOS DATOS PARA EVITAR EL BLOQUEO
-SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
+# URL de la página principal que contiene el iframe de la agenda
+AGENDA_PAGE_URL = "https://alangulotv.space/agenda"
 
-IMAGE_URLS = {
-    "ESPN": "https://p.alangulotv.blog/ESPN",
-    "ESPN 2": "https://p.alangulotv.blog/ESPN2",
-    "ESPN 3": "https://p.alangulotv.blog/ESPN3",
-    "ESPN 4": "https://p.alangulotv.blog/ESPN4",
-    "ESPN Premium": "https://p.alangulotv.blog/ESPNPREMIUM",
-    "TNT Sports": "https://p.alangulotv.blog/TNTSPORTS",
-    "TyC Sports": "https://p.alangulotv.blog/TYCSPORTS",
-    "Fox Sports": "https://p.alangulotv.blog/FOXSPORTS",
-    "Fox Sports 2": "https://p.alangulotv.blog/FOXSPORTS2",
-    "Fox Sports 3": "https://p.alangulotv.blog/FOXSPORTS3",
-    "TV Pública": "https://p.alangulotv.blog/TVP",
-    "Telefe": "https://p.alangulotv.blog/TELEFE",
-    "El Trece": "https://tvlibreonline.org/img/eltrece.webp",
-    "Fórmula 1": "https://p.alangulotv.blog/F1-2",
-    "DAZN F1": "https://p.alangulotv.blog/DAZNF1",
-    "DIRECTV Sports": "https://p.alangulotv.blog/DTV"
-}
+def make_scraper():
+    """Crea una instancia del scraper de Cloudflare."""
+    return cloudscraper.create_scraper(
+        browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False}
+    )
 
-def fetch_content(url):
+def fetch_content(scraper, url, referer=None):
+    """Descarga el contenido de una URL usando el scraper."""
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    if referer:
+        headers['Referer'] = referer
     try:
-        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
-        response.raise_for_status()
-        return response.text
-    except requests.RequestException as e:
-        print(f"Error fetching URL {url}: {e}")
+        resp = scraper.get(url, headers=headers, timeout=20)
+        resp.raise_for_status()
+        return resp.text
+    except Exception as e:
+        print(f"[fetch_content] Error en {url}: {e}")
         return None
 
-def extract_channels_json_text(js_code):
-    match = re.search(r'const\s+channels\s*=\s*(\{[\s\S]*?\});', js_code)
-    if match:
-        return match.group(1)
-    print("Error: No se pudo encontrar 'const channels' en el script.")
-    return None
-
-def format_channel_name(key):
-    base_name = re.sub(r'-[a-z0-9]+$', '', key)
-    return base_name.replace("-", " ").title()
-
-def process_channels(json_text):
-    try:
-        # ✅ FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
-        # 1. Eliminar comentarios de una sola línea
-        cleaned_text = re.sub(r'//.*', '', json_text)
-        # 2. Eliminar comentarios de múltiples líneas (por si acaso)
-        cleaned_text = re.sub(r'/\*[\s\S]*?\*/', '', cleaned_text)
-        # 3. Eliminar caracteres de control inválidos (la causa del error)
-        cleaned_text = ''.join(c for c in cleaned_text if c.isprintable() or c in '\n\r\t')
-        # 4. Eliminar comas finales antes de '}' o ']'
-        cleaned_text = re.sub(r',\s*([}\]])', r'\1', cleaned_text)
+def extract_agenda_iframe_url(html, base_url):
+    """Extrae la URL del iframe de la agenda del SCRIPT de la página."""
+    soup = BeautifulSoup(html, 'html.parser')
+    # Encuentra el tag <script> que contiene la lógica para crear el iframe
+    script_tag = soup.find('script', string=re.compile(r"const iframeHTML"))
+    if not script_tag:
+        print("[extract_iframe] No se encontró el tag <script> que define 'iframeHTML'.")
+        return None
+    
+    # Extrae la URL del iframe usando regex
+    match = re.search(r"const iframeHTML = '<iframe src=\"([^\"]*)\"", script_tag.string)
+    if not match:
+        print("[extract_iframe] No se pudo extraer la URL del iframe desde el script.")
+        return None
         
-        data = json.loads(cleaned_text)
-        processed = {}
-        for key, value in data.items():
-            if not isinstance(value, dict) or not any(k.startswith('repro') for k in value):
-                continue
-            name = format_channel_name(key)
-            if name not in processed:
-                processed[name] = {
-                    "nombre": name,
-                    "imagenUrl": IMAGE_URLS.get(name, f"https://p.alangulotv.blog/{name.replace(' ', '').upper()}"),
-                    "urls": []
-                }
-            urls = [v for k, v in value.items() if k.startswith('repro') and v]
-            processed[name]["urls"].extend(urls)
-        return list(processed.values())
-    except json.JSONDecodeError as e:
-        print(f"Error al decodificar JSON: {e}")
-        print(f"Texto JSON problemático (primeros 500 caracteres): {json_text[:500]}")
-        return None
+    iframe_path = match.group(1)
+    # Reemplaza la variable de JS con un timestamp para evitar la caché
+    iframe_path = re.sub(r"'\s*\+\s*cacheBuster\s*\+\s*'", f'?v={int(time.time())}', iframe_path)
+    return urljoin(base_url, iframe_path)
 
-def structure_into_sections(channels_list):
-    deportes = [c for c in channels_list if any(kw in c["nombre"] for kw in ["Espn", "Tnt", "Tyc", "Fox", "Directv"])]
-    nacionales = [c for c in channels_list if any(kw in c["nombre"] for kw in ["Publica", "Telefe", "Trece"])]
-    otros = [c for c in channels_list if c not in deportes and c not in nacionales]
-    return [
-        {"seccionTitulo": "Deportes", "canales": deportes},
-        {"seccionTitulo": "Canales Nacionales", "canales": nacionales},
-        {"seccionTitulo": "Otros", "canales": otros}
-    ]
+def parse_agenda_html(html, base_url):
+    """Parsea el HTML de la agenda y extrae los datos de cada evento."""
+    soup = BeautifulSoup(html, 'html.parser')
+    events = []
+    match_containers = soup.select('div.match-container')
+    if not match_containers:
+        print("[parse_agenda] No se encontraron contenedores de partidos (div.match-container).")
+        return events
+
+    for match_div in match_containers:
+        time_tag = match_div.select_one('span.time')
+        team_spans = match_div.select('span.team-name')
+        logo_imgs = match_div.select('img.team-logo')
+        links_div = match_div.find_next_sibling('div', class_='links-container')
+        link_tags = links_div.select('a[href]') if links_div else []
+
+        if not (time_tag and len(team_spans) >= 2 and len(logo_imgs) >= 2 and link_tags):
+            continue
+
+        events.append({
+            "hora": time_tag.get_text(strip=True),
+            "equipoLocal": team_spans[0].get_text(strip=True),
+            "logoLocal": urljoin(base_url, logo_imgs[0]['src']),
+            "equipoVisitante": team_spans[1].get_text(strip=True),
+            "logoVisitante": urljoin(base_url, logo_imgs[1]['src']),
+            "urls": [urljoin(base_url, a['href']) for a in link_tags]
+        })
+    return events
 
 def main():
-    print(f"Paso 1: Descargando contenido del script desde: {SCRIPT_URL}")
-    js_code = fetch_content(SCRIPT_URL)
-    if not js_code: exit(1)
-    
-    print("Paso 2: Extrayendo el objeto de canales del JavaScript...")
-    json_text = extract_channels_json_text(js_code)
-    if not json_text: exit(1)
-        
-    print("Paso 3: Procesando y estructurando los canales...")
-    channels_list = process_channels(json_text)
-    if channels_list is None: exit(1)
+    print("Iniciando scraping de la agenda...")
+    scraper = make_scraper()
 
-    final_structure = structure_into_sections(channels_list)
-    with open("canales.json", "w", encoding="utf-8") as f:
-        json.dump(final_structure, f, indent=2, ensure_ascii=False)
-    print("Éxito: canales.json actualizado.")
+    print(f"P1: Descargando página principal: {AGENDA_PAGE_URL}")
+    main_html = fetch_content(scraper, AGENDA_PAGE_URL)
+    if not main_html: exit(1)
+
+    print("P2: Extrayendo URL del iframe de la agenda...")
+    iframe_url = extract_agenda_iframe_url(main_html, AGENDA_PAGE_URL)
+    if not iframe_url: exit(1)
+
+    print(f"P3: Descargando contenido de la agenda desde: {iframe_url}")
+    agenda_html = fetch_content(scraper, iframe_url, referer=AGENDA_PAGE_URL)
+    if not agenda_html: exit(1)
+
+    print("P4: Parseando eventos...")
+    events = parse_agenda_html(agenda_html, iframe_url)
+
+    out_file = "eventos.json"
+    print(f"P5: Guardando {len(events)} evento(s) en {out_file}")
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(events, f, indent=2, ensure_ascii=False)
+
+    print("¡Listo! eventos.json actualizado.")
 
 if __name__ == "__main__":
     main()
