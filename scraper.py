@@ -3,7 +3,7 @@ import re
 import json
 from urllib.parse import urljoin
 
-# ✅ APUNTAMOS A LA URL CORRECTA DEL SCRIPT
+# APUNTAMOS A LA URL CORRECTA DEL SCRIPT
 SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
 
 IMAGE_URLS = {
@@ -47,10 +47,14 @@ def format_channel_name(key):
 
 def process_channels(json_text):
     try:
-        # ✅ FUNCIÓN DE LIMPIEZA MEJORADA
+        # ✅ FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
         # 1. Eliminar comentarios de una sola línea
         cleaned_text = re.sub(r'//.*', '', json_text)
-        # 2. Eliminar comas finales antes de '}' o ']' (muy común en JS)
+        # 2. Eliminar comentarios de múltiples líneas (por si acaso)
+        cleaned_text = re.sub(r'/\*[\s\S]*?\*/', '', cleaned_text)
+        # 3. Eliminar caracteres de control inválidos (como tabs o saltos de línea dentro de strings)
+        cleaned_text = ''.join(c for c in cleaned_text if c.isprintable() or c in '\n\r\t')
+        # 4. Eliminar comas finales antes de '}' o ']'
         cleaned_text = re.sub(r',\s*([}\]])', r'\1', cleaned_text)
         
         data = json.loads(cleaned_text)
@@ -70,7 +74,6 @@ def process_channels(json_text):
         return list(processed.values())
     except json.JSONDecodeError as e:
         print(f"Error al decodificar JSON: {e}")
-        # Imprimimos el texto problemático para depurar
         print(f"Texto JSON problemático (primeros 500 caracteres): {json_text[:500]}")
         return None
 
