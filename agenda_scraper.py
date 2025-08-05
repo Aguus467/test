@@ -55,7 +55,7 @@ def parse_agenda_html(html, base_url):
         link_tags  = links_div.select('a[href]') if links_div else []
 
         if not (time_tag and len(team_spans) >= 2 and len(logo_imgs) >= 2 and link_tags):
-            print(f"[parse_agenda] Saltando bloque incompleto: {match_div[:50]}…")
+            print(f"[parse_agenda] Saltando bloque incompleto: {str(match_div)[:50]}…")
             continue
 
         events.append({
