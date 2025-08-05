@@ -1,11 +1,11 @@
 [
   {
     "hora": "EN VIVO",
-    "equipoLocal": "Sport Boys",
-    "logoLocal": "https://p.alangulotv.blog/SPORTBOYS",
-    "equipoVisitante": "ADT",
-    "logoVisitante": "https://p.alangulotv.blog/ADT",
-    "urls": []
+    "equipoLocal": "Alianza Universidad",
+    "logoLocal": "https://gh.alangulotv.blog/alianzauniversidad",
+    "equipoVisitante": "https://gh.alangulotv.blog/universitario",
+    "logoVisitante": "Universitario",
+    "urls": [https://gh.alangulotv.blog/liga1]
   },
   {
     "hora": "EN VIVO",
