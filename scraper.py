@@ -3,7 +3,7 @@ import re
 import json
 from urllib.parse import urljoin
 
-# Apuntamos directamente al script que contiene los datos
+# APUNTAMOS DIRECTAMENTE AL SCRIPT QUE CONTIENE LOS DATOS PARA EVITAR EL BLOQUEO
 SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
 
 IMAGE_URLS = {
@@ -47,8 +47,16 @@ def format_channel_name(key):
 
 def process_channels(json_text):
     try:
+        # ✅ FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
+        # 1. Eliminar comentarios de una sola línea
         cleaned_text = re.sub(r'//.*', '', json_text)
+        # 2. Eliminar comentarios de múltiples líneas (por si acaso)
+        cleaned_text = re.sub(r'/\*[\s\S]*?\*/', '', cleaned_text)
+        # 3. Eliminar caracteres de control inválidos (la causa del error)
+        cleaned_text = ''.join(c for c in cleaned_text if c.isprintable() or c in '\n\r\t')
+        # 4. Eliminar comas finales antes de '}' o ']'
         cleaned_text = re.sub(r',\s*([}\]])', r'\1', cleaned_text)
+        
         data = json.loads(cleaned_text)
         processed = {}
         for key, value in data.items():
@@ -66,6 +74,7 @@ def process_channels(json_text):
         return list(processed.values())
     except json.JSONDecodeError as e:
         print(f"Error al decodificar JSON: {e}")
+        print(f"Texto JSON problemático (primeros 500 caracteres): {json_text[:500]}")
         return None
 
 def structure_into_sections(channels_list):
@@ -79,13 +88,15 @@ def structure_into_sections(channels_list):
     ]
 
 def main():
-    print("Iniciando scraping de canales...")
+    print(f"Paso 1: Descargando contenido del script desde: {SCRIPT_URL}")
     js_code = fetch_content(SCRIPT_URL)
     if not js_code: exit(1)
     
+    print("Paso 2: Extrayendo el objeto de canales del JavaScript...")
     json_text = extract_channels_json_text(js_code)
     if not json_text: exit(1)
         
+    print("Paso 3: Procesando y estructurando los canales...")
     channels_list = process_channels(json_text)
     if channels_list is None: exit(1)
 
