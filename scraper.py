@@ -3,9 +3,8 @@ import re
 import json
 from urllib.parse import urljoin
 
-# URL de la página principal que carga el script.js
-# Cambiar si la página principal cambia
-MAIN_PAGE_URL = "https://gh.alangulotv.blog/"
+# ✅ AHORA APUNTAMOS DIRECTAMENTE AL SCRIPT QUE CONTIENE LOS DATOS
+SCRIPT_URL = "https://gh.alangulotv.blog/script.js"
 
 # URLs de imágenes que ya tenemos (para no perderlas)
 IMAGE_URLS = {
@@ -37,15 +36,6 @@ def fetch_content(url):
     except requests.RequestException as e:
         print(f"Error fetching URL {url}: {e}")
         return None
-
-def extract_script_url(html, base_url):
-    """Encuentra la URL del script.js principal en el HTML."""
-    match = re.search(r'<script\s+src="([^"]*script\.js[^"]*)"', html)
-    if match:
-        script_path = match.group(1)
-        return urljoin(base_url, script_path)
-    print("Error: No se pudo encontrar la URL del script.js en el HTML.")
-    return None
 
 def extract_channels_json_text(js_code):
     """Extrae el objeto JavaScript 'channels' del código JS."""
@@ -100,27 +90,17 @@ def structure_into_sections(channels_list):
 
 def main():
     """Función principal del script."""
-    print("Paso 1: Descargando HTML principal...")
-    html = fetch_content(MAIN_PAGE_URL)
-    if not html:
-        exit(1)
-
-    print("Paso 2: Extrayendo URL del script.js...")
-    script_url = extract_script_url(html, MAIN_PAGE_URL)
-    if not script_url:
-        exit(1)
-    
-    print(f"Paso 3: Descargando contenido del script desde: {script_url}")
-    js_code = fetch_content(script_url)
+    print(f"Paso 1: Descargando contenido del script desde: {SCRIPT_URL}")
+    js_code = fetch_content(SCRIPT_URL)
     if not js_code:
         exit(1)
 
-    print("Paso 4: Extrayendo el objeto de canales del JavaScript...")
+    print("Paso 2: Extrayendo el objeto de canales del JavaScript...")
     json_text = extract_channels_json_text(js_code)
     if not json_text:
         exit(1)
         
-    print("Paso 5: Procesando y estructurando los canales...")
+    print("Paso 3: Procesando y estructurando los canales...")
     channels_list = process_channels(json_text)
     if channels_list is None:
         exit(1)
