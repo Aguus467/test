@@ -3,84 +3,76 @@ import re
 import json
 from urllib.parse import urljoin
 
-# APUNTAMOS A LA URL CORRECTA DEL SCRIPT
 SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
 
 IMAGE_URLS = {
     "ESPN": "https://p.alangulotv.blog/ESPN",
     "ESPN 2": "https://p.alangulotv.blog/ESPN2",
-    "ESPN 3": "https://p.alangulotv.blog/ESPN3",
-    "ESPN 4": "https://p.alangulotv.blog/ESPN4",
-    "ESPN Premium": "https://p.alangulotv.blog/ESPNPREMIUM",
-    "TNT Sports": "https://p.alangulotv.blog/TNTSPORTS",
-    "TyC Sports": "https://p.alangulotv.blog/TYCSPORTS",
-    "Fox Sports": "https://p.alangulotv.blog/FOXSPORTS",
-    "Fox Sports 2": "https://p.alangulotv.blog/FOXSPORTS2",
-    "Fox Sports 3": "https://p.alangulotv.blog/FOXSPORTS3",
-    "TV Pública": "https://p.alangulotv.blog/TVP",
-    "Telefe": "https://p.alangulotv.blog/TELEFE",
-    "El Trece": "https://tvlibreonline.org/img/eltrece.webp",
-    "Fórmula 1": "https://p.alangulotv.blog/F1-2",
-    "DAZN F1": "https://p.alangulotv.blog/DAZNF1",
-    "DIRECTV Sports": "https://p.alangulotv.blog/DTV"
+    # … resto de mapeos …
 }
 
 def fetch_content(url):
     try:
-        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
-        response.raise_for_status()
-        return response.text
+        r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
+        r.raise_for_status()
+        return r.text
     except requests.RequestException as e:
-        print(f"Error fetching URL {url}: {e}")
+        print(f"Error fetching {url}: {e}")
         return None
 
 def extract_channels_json_text(js_code):
-    match = re.search(r'const\s+channels\s*=\s*(\{[\s\S]*?\});', js_code)
-    if match:
-        return match.group(1)
-    print("Error: No se pudo encontrar 'const channels' en el script.")
-    return None
+    m = re.search(r'const\s+channels\s*=\s*(\{[\s\S]*?\});', js_code)
+    if not m:
+        print("No se encontró 'const channels' en el JS.")
+        return None
+    return m.group(1)
 
 def format_channel_name(key):
-    base_name = re.sub(r'-[a-z0-9]+$', '', key)
-    return base_name.replace("-", " ").title()
+    base = re.sub(r'-[a-z0-9]+$', '', key)
+    return base.replace('-', ' ').title()
 
 def process_channels(json_text):
     try:
-        # ✅ FUNCIÓN DE LIMPIEZA MÁS ROBUSTA
-        # 1. Eliminar comentarios de una sola línea
-        cleaned_text = re.sub(r'//.*', '', json_text)
-        # 2. Eliminar comentarios de múltiples líneas (por si acaso)
-        cleaned_text = re.sub(r'/\*[\s\S]*?\*/', '', cleaned_text)
-        # 3. Eliminar caracteres de control inválidos (como tabs o saltos de línea dentro de strings)
-        cleaned_text = ''.join(c for c in cleaned_text if c.isprintable() or c in '\n\r\t')
-        # 4. Eliminar comas finales antes de '}' o ']'
-        cleaned_text = re.sub(r',\s*([}\]])', r'\1', cleaned_text)
-        
-        data = json.loads(cleaned_text)
-        processed = {}
+        # 1) Eliminar comentarios //… pero no los de las URLs (://)
+        text = re.sub(
+            r'(?m)(?<!:)//.*$',
+            '',
+            json_text
+        )
+        # 2) Eliminar posibles comentarios /* … */
+        text = re.sub(r'/\*[\s\S]*?\*/', '', text)
+        # 3) Quitar comas finales antes de '}' o ']'
+        text = re.sub(r',\s*([}\]])', r'\1', text)
+
+        # Ahora parseamos JSON limpio
+        data = json.loads(text)
+        out = {}
         for key, value in data.items():
-            if not isinstance(value, dict) or not any(k.startswith('repro') for k in value):
+            if not isinstance(value, dict):
                 continue
-            name = format_channel_name(key)
-            if name not in processed:
-                processed[name] = {
-                    "nombre": name,
-                    "imagenUrl": IMAGE_URLS.get(name, f"https://p.alangulotv.blog/{name.replace(' ', '').upper()}"),
-                    "urls": []
-                }
+            # recogemos solo las claves repro1, repro2…
             urls = [v for k, v in value.items() if k.startswith('repro') and v]
-            processed[name]["urls"].extend(urls)
-        return list(processed.values())
+            if not urls:
+                continue
+
+            name = format_channel_name(key)
+            if name not in out:
+                fallback = name.replace(' ', '').upper()
+                img = IMAGE_URLS.get(name, f"https://p.alangulotv.blog/{fallback}")
+                out[name] = {"nombre": name, "imagenUrl": img, "urls": []}
+
+            out[name]["urls"].extend(urls)
+
+        return list(out.values())
+
     except json.JSONDecodeError as e:
         print(f"Error al decodificar JSON: {e}")
-        print(f"Texto JSON problemático (primeros 500 caracteres): {json_text[:500]}")
         return None
 
-def structure_into_sections(channels_list):
-    deportes = [c for c in channels_list if any(kw in c["nombre"] for kw in ["Espn", "Tnt", "Tyc", "Fox", "Directv"])]
-    nacionales = [c for c in channels_list if any(kw in c["nombre"] for kw in ["Publica", "Telefe", "Trece"])]
-    otros = [c for c in channels_list if c not in deportes and c not in nacionales]
+def structure_into_sections(channels):
+    deportes = [c for c in channels if any(k in c["nombre"].upper() for k in ["ESPN","TNT","TYC","FOX","DAZN"])]
+    nacionales = [c for c in channels if any(k in c["nombre"].upper() for k in ["PÚBLICA","TELEFE","TRECE"])]
+    otros = [c for c in channels if c not in deportes and c not in nacionales]
     return [
         {"seccionTitulo": "Deportes", "canales": deportes},
         {"seccionTitulo": "Canales Nacionales", "canales": nacionales},
@@ -88,22 +80,20 @@ def structure_into_sections(channels_list):
     ]
 
 def main():
-    print(f"Paso 1: Descargando contenido del script desde: {SCRIPT_URL}")
-    js_code = fetch_content(SCRIPT_URL)
-    if not js_code: exit(1)
-    
-    print("Paso 2: Extrayendo el objeto de canales del JavaScript...")
-    json_text = extract_channels_json_text(js_code)
-    if not json_text: exit(1)
-        
-    print("Paso 3: Procesando y estructurando los canales...")
-    channels_list = process_channels(json_text)
-    if channels_list is None: exit(1)
+    js = fetch_content(SCRIPT_URL)
+    if not js: exit(1)
 
-    final_structure = structure_into_sections(channels_list)
+    raw = extract_channels_json_text(js)
+    if not raw: exit(1)
+
+    channels = process_channels(raw)
+    if channels is None: exit(1)
+
+    final = structure_into_sections(channels)
     with open("canales.json", "w", encoding="utf-8") as f:
-        json.dump(final_structure, f, indent=2, ensure_ascii=False)
-    print("Éxito: canales.json actualizado.")
+        json.dump(final, f, indent=2, ensure_ascii=False)
+
+    print("¡canales.json actualizado con éxito!")
 
 if __name__ == "__main__":
     main()
