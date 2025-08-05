@@ -21,7 +21,7 @@ jobs:
     - name: Ejecutar script
       run: |
         pip install requests
-        python scraper-test.py
+        python extraer_json.py
 
     - name: Verificar si se generó el archivo
       run: |
