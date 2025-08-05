@@ -4,7 +4,7 @@ import json
 from urllib.parse import urljoin
 
 # ✅ APUNTAMOS DIRECTAMENTE AL SCRIPT QUE CONTIENE LOS DATOS PARA EVITAR EL BLOQUEO
-SCRIPT_URL = "https://gh.alangulotv.blog/script.js"
+SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
 
 # (El resto del código no necesita cambios, pero lo incluyo para que esté completo)
 
