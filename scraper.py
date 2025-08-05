@@ -3,10 +3,8 @@ import re
 import json
 from urllib.parse import urljoin
 
-# ✅ APUNTAMOS DIRECTAMENTE AL SCRIPT QUE CONTIENE LOS DATOS PARA EVITAR EL BLOQUEO
+# ✅ APUNTAMOS A LA URL CORRECTA DEL SCRIPT
 SCRIPT_URL = "https://gh.alangulotv.blog/assets/script.js"
-
-# (El resto del código no necesita cambios, pero lo incluyo para que esté completo)
 
 IMAGE_URLS = {
     "ESPN": "https://p.alangulotv.blog/ESPN",
@@ -49,7 +47,13 @@ def format_channel_name(key):
 
 def process_channels(json_text):
     try:
-        data = json.loads(json_text)
+        # ✅ FUNCIÓN DE LIMPIEZA MEJORADA
+        # 1. Eliminar comentarios de una sola línea
+        cleaned_text = re.sub(r'//.*', '', json_text)
+        # 2. Eliminar comas finales antes de '}' o ']' (muy común en JS)
+        cleaned_text = re.sub(r',\s*([}\]])', r'\1', cleaned_text)
+        
+        data = json.loads(cleaned_text)
         processed = {}
         for key, value in data.items():
             if not isinstance(value, dict) or not any(k.startswith('repro') for k in value):
@@ -66,6 +70,8 @@ def process_channels(json_text):
         return list(processed.values())
     except json.JSONDecodeError as e:
         print(f"Error al decodificar JSON: {e}")
+        # Imprimimos el texto problemático para depurar
+        print(f"Texto JSON problemático (primeros 500 caracteres): {json_text[:500]}")
         return None
 
 def structure_into_sections(channels_list):
