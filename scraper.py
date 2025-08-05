@@ -1,8 +1,7 @@
 import requests
 import re
 import json
-from urllib.parse
-import urljoin
+from urllib.parse import urljoin
 
 # URL de la página principal que carga el script.js
 # Cambiar si la página principal cambia
@@ -41,11 +40,9 @@ def fetch_content(url):
 
 def extract_script_url(html, base_url):
     """Encuentra la URL del script.js principal en el HTML."""
-    # Busca una etiqueta <script> con 'script.js' en su src
     match = re.search(r'<script\s+src="([^"]*script\.js[^"]*)"', html)
     if match:
         script_path = match.group(1)
-        # Combina la URL base con la ruta del script para obtener la URL completa
         return urljoin(base_url, script_path)
     print("Error: No se pudo encontrar la URL del script.js en el HTML.")
     return None
@@ -60,7 +57,6 @@ def extract_channels_json_text(js_code):
 
 def format_channel_name(key):
     """Convierte una clave como 'espn-premium-a' a un nombre legible como 'ESPN Premium'."""
-    # Elimina los sufijos como '-a', '-b', etc. y capitaliza
     base_name = re.sub(r'-[a-z0-9]$', '', key)
     return base_name.replace("-", " ").title()
 
@@ -82,7 +78,6 @@ def process_channels(json_text):
                     "urls": []
                 }
             
-            # Agrega todas las URLs de las opciones (repro1, repro2, etc.)
             urls = [v for k, v in value.items() if k.startswith('repro') and v]
             processed_channels[channel_name]["urls"].extend(urls)
 
