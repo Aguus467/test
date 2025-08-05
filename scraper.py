@@ -1,7 +1,8 @@
 import requests
 import re
 import json
-from urllib.parse import urljoin
+from urllib.parse
+import urljoin
 
 # URL de la página principal que carga el script.js
 # Cambiar si la página principal cambia
