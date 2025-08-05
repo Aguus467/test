@@ -1,9 +1,11 @@
 import cloudscraper
 import json
+import re
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
+import time
 
-AGENDA_PAGE_URL = "https://alangulotv.blog/agenda-2"
+AGENDA_PAGE_URL = "https://alangulotv.space/agenda"
 
 def make_scraper():
     """Crea una instancia del scraper de Cloudflare."""
@@ -25,19 +27,30 @@ def fetch_content(scraper, url, referer=None):
         return None
 
 def extract_agenda_iframe_url(html, base_url):
-    """Extrae la URL del iframe de la agenda del HTML principal."""
+    """Extrae la URL del iframe de la agenda del SCRIPT de la página."""
     soup = BeautifulSoup(html, 'html.parser')
-    iframe = soup.find('iframe', src=lambda s: s and 'agenda' in s)
-    if not iframe:
-        print("[extract_iframe] No se encontró iframe con 'agenda' en src.")
+    # Encuentra el tag <script> que contiene la lógica para crear el iframe
+    script_tag = soup.find('script', string=re.compile(r"const iframeHTML"))
+    if not script_tag:
+        print("[extract_iframe] No se encontró el tag <script> que define 'iframeHTML'.")
         return None
-    return urljoin(base_url, iframe['src'])
+    
+    script_content = script_tag.string
+    # Extrae la URL del iframe usando regex
+    match = re.search(r"const iframeHTML = '<iframe src=\"([^\"]*)\"", script_content)
+    if not match:
+        print("[extract_iframe] No se pudo extraer la URL del iframe desde el script.")
+        return None
+        
+    iframe_path = match.group(1)
+    # Reemplaza la variable de JS con un timestamp para evitar la caché
+    iframe_path = re.sub(r"'\s*\+\s*cacheBuster\s*\+\s*'", f'?v={int(time.time())}', iframe_path)
+    return urljoin(base_url, iframe_path)
 
 def parse_agenda_html(html, base_url):
     """Parsea el HTML de la agenda y extrae los datos de cada evento."""
     soup = BeautifulSoup(html, 'html.parser')
     events = []
-
     match_containers = soup.select('div.match-container')
     if not match_containers:
         print("[parse_agenda] No se encontraron contenedores de partidos (div.match-container).")
@@ -47,12 +60,9 @@ def parse_agenda_html(html, base_url):
         time_tag = match_div.select_one('span.time')
         team_spans = match_div.select('span.team-name')
         logo_imgs = match_div.select('img.team-logo')
-        
-        # El contenedor de links es el siguiente "hermano" del contenedor del partido
         links_div = match_div.find_next_sibling('div', class_='links-container')
         link_tags = links_div.select('a[href]') if links_div else []
 
-        # Verificamos que tengamos todos los datos necesarios antes de agregar el evento
         if not (time_tag and len(team_spans) >= 2 and len(logo_imgs) >= 2 and link_tags):
             continue
 
