@@ -3,7 +3,7 @@ import json
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
-AGENDA_PAGE_URL = "https://alangulotv.space/agenda-2"
+AGENDA_PAGE_URL = "https://alangulotv.blog/agenda-2/"
 
 def make_scraper():
     return cloudscraper.create_scraper(
