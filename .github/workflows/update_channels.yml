@@ -1,41 +1,96 @@
-name: Actualizar Contenidos de la App
+import cloudscraper
+import json
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * *'
+AGENDA_PAGE_URL = "https://alangulotv.space/agenda"
 
-jobs:
-  update-json:
-    runs-on: ubuntu-latest
-    steps:
-      # Este paso clona tu repositorio para que el robot pueda acceder a los archivos
-      - name: Checkout repository
-        uses: actions/checkout@v4
+def make_scraper():
+    """Crea una instancia del scraper de Cloudflare."""
+    return cloudscraper.create_scraper(
+        browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False}
+    )
 
-      # Configura el entorno de Python
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
+def fetch_content(scraper, url, referer=None):
+    """Descarga el contenido de una URL usando el scraper."""
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    if referer:
+        headers['Referer'] = referer
+    try:
+        resp = scraper.get(url, headers=headers, timeout=20)
+        resp.raise_for_status()
+        return resp.text
+    except Exception as e:
+        print(f"[fetch_content] Error en {url}: {e}")
+        return None
 
-      # Instala las herramientas listadas en requirements.txt
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+def extract_agenda_iframe_url(html, base_url):
+    """Extrae la URL del iframe de la agenda del HTML principal."""
+    soup = BeautifulSoup(html, 'html.parser')
+    iframe = soup.find('iframe', src=lambda s: s and 'agenda' in s)
+    if not iframe:
+        print("[extract_iframe] No se encontró iframe con 'agenda' en src.")
+        return None
+    return urljoin(base_url, iframe['src'])
 
-      # Ejecuta el script de los canales
-      - name: Run channel scraper
-        run: python scraper.py
+def parse_agenda_html(html, base_url):
+    """Parsea el HTML de la agenda y extrae los datos de cada evento."""
+    soup = BeautifulSoup(html, 'html.parser')
+    events = []
 
-      # Ejecuta el script de la agenda
-      - name: Run agenda scraper
-        run: python agenda_scraper.py
+    match_containers = soup.select('div.match-container')
+    if not match_containers:
+        print("[parse_agenda] No se encontraron contenedores de partidos (div.match-container).")
+        return events
 
-      # Guarda los cambios si los archivos JSON fueron modificados
-      - name: Commit and push if changed
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: Actualización automática de contenidos"
-          file_pattern: 'canales.json eventos.json'
+    for match_div in match_containers:
+        time_tag = match_div.select_one('span.time')
+        team_spans = match_div.select('span.team-name')
+        logo_imgs = match_div.select('img.team-logo')
+        
+        # El contenedor de links es el siguiente "hermano" del contenedor del partido
+        links_div = match_div.find_next_sibling('div', class_='links-container')
+        link_tags = links_div.select('a[href]') if links_div else []
+
+        # Verificamos que tengamos todos los datos necesarios antes de agregar el evento
+        if not (time_tag and len(team_spans) >= 2 and len(logo_imgs) >= 2 and link_tags):
+            continue
+
+        events.append({
+            "hora": time_tag.get_text(strip=True),
+            "equipoLocal": team_spans[0].get_text(strip=True),
+            "logoLocal": urljoin(base_url, logo_imgs[0]['src']),
+            "equipoVisitante": team_spans[1].get_text(strip=True),
+            "logoVisitante": urljoin(base_url, logo_imgs[1]['src']),
+            "urls": [urljoin(base_url, a['href']) for a in link_tags]
+        })
+    return events
+
+def main():
+    print("Iniciando scraping de la agenda...")
+    scraper = make_scraper()
+
+    print(f"P1: Descargando página principal: {AGENDA_PAGE_URL}")
+    main_html = fetch_content(scraper, AGENDA_PAGE_URL)
+    if not main_html: exit(1)
+
+    print("P2: Extrayendo URL del iframe de la agenda...")
+    iframe_url = extract_agenda_iframe_url(main_html, AGENDA_PAGE_URL)
+    if not iframe_url: exit(1)
+
+    print(f"P3: Descargando contenido de la agenda desde: {iframe_url}")
+    agenda_html = fetch_content(scraper, iframe_url, referer=AGENDA_PAGE_URL)
+    if not agenda_html: exit(1)
+
+    print("P4: Parseando eventos...")
+    events = parse_agenda_html(agenda_html, iframe_url)
+
+    out_file = "eventos.json"
+    print(f"P5: Guardando {len(events)} evento(s) en {out_file}")
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(events, f, indent=2, ensure_ascii=False)
+
+    print("¡Listo! eventos.json actualizado.")
+
+if __name__ == "__main__":
+    main()
