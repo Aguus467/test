@@ -4,7 +4,7 @@ import json
 from urllib.parse import urljoin
 
 # URL de la página que contiene la agenda
-AGENDA_PAGE_URL = "https://alangulotv.space/agenda"
+AGENDA_PAGE_URL = "https://alangulotv.blog/agenda-2/"
 
 def fetch_content(url):
     try:
