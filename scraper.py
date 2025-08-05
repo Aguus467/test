@@ -1,9 +1,11 @@
 import requests
 import re
 import json
+from urllib.parse import urljoin
 
-# URL de la página web que contiene el script con los canales
-SOURCE_URL = "https://www.deportestvhd.com/2023/07/espn-en-vivo-online-por-internet.html" # Reemplazar si la fuente cambia
+# URL de la página principal que carga el script.js
+# Cambiar si la página principal cambia
+MAIN_PAGE_URL = "https://gh.alangulotv.blog/"
 
 # URLs de imágenes que ya tenemos (para no perderlas)
 IMAGE_URLS = {
@@ -26,44 +28,52 @@ IMAGE_URLS = {
     # Añadir más si es necesario
 }
 
-def fetch_html_content(url):
-    """Descarga el contenido HTML de una URL."""
+def fetch_content(url):
+    """Descarga el contenido de texto de una URL."""
     try:
-        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+        response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=15)
         response.raise_for_status()
         return response.text
     except requests.RequestException as e:
         print(f"Error fetching URL {url}: {e}")
         return None
 
-def extract_channels_json_text(html):
-    """Extrae el objeto JavaScript 'channels' del HTML usando regex."""
-    # Regex para encontrar 'const channels = {...};'
-    match = re.search(r'const\s+channels\s*=\s*(\{.*?\});', html, re.DOTALL)
+def extract_script_url(html, base_url):
+    """Encuentra la URL del script.js principal en el HTML."""
+    # Busca una etiqueta <script> con 'script.js' en su src
+    match = re.search(r'<script\s+src="([^"]*script\.js[^"]*)"', html)
+    if match:
+        script_path = match.group(1)
+        # Combina la URL base con la ruta del script para obtener la URL completa
+        return urljoin(base_url, script_path)
+    print("Error: No se pudo encontrar la URL del script.js en el HTML.")
+    return None
+
+def extract_channels_json_text(js_code):
+    """Extrae el objeto JavaScript 'channels' del código JS."""
+    match = re.search(r'const\s+channels\s*=\s*(\{[\s\S]*?\});', js_code)
     if match:
         return match.group(1)
+    print("Error: No se pudo encontrar el objeto 'const channels' en el código JS.")
     return None
 
 def format_channel_name(key):
     """Convierte una clave como 'espn-premium-a' a un nombre legible como 'ESPN Premium'."""
-    name = key.split('-')[0]
-    if "tvp" in name: return "TV Pública"
-    if "tyc" in name: return "TyC Sports"
-    if "dtv" in name: return "DIRECTV Sports"
-    return name.replace("fox", "Fox ").replace("espn", "ESPN ").replace("tnt", "TNT ").upper()
+    # Elimina los sufijos como '-a', '-b', etc. y capitaliza
+    base_name = re.sub(r'-[a-z0-9]$', '', key)
+    return base_name.replace("-", " ").title()
 
 def process_channels(json_text):
     """Procesa el JSON extraído y lo convierte a la estructura de la app."""
     try:
-        # Limpiamos el texto para que sea un JSON válido
-        json_text = re.sub(r',\s*}', '}', json_text)
-        json_text = re.sub(r',\s*]', ']', json_text)
-        
         data = json.loads(json_text)
-        
         processed_channels = {}
         for key, value in data.items():
+            if not isinstance(value, dict) or not any(k.startswith('repro') for k in value):
+                continue
+
             channel_name = format_channel_name(key)
+            
             if channel_name not in processed_channels:
                 processed_channels[channel_name] = {
                     "nombre": channel_name,
@@ -71,55 +81,60 @@ def process_channels(json_text):
                     "urls": []
                 }
             
-            # Agregamos todas las URLs de las opciones (repro1, repro2, etc.)
-            for i in range(1, 5):
-                repro_key = f"repro{i}"
-                if repro_key in value and value[repro_key]:
-                    processed_channels[channel_name]["urls"].append(value[repro_key])
+            # Agrega todas las URLs de las opciones (repro1, repro2, etc.)
+            urls = [v for k, v in value.items() if k.startswith('repro') and v]
+            processed_channels[channel_name]["urls"].extend(urls)
 
         return list(processed_channels.values())
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
-        return []
+        return None
 
 def structure_into_sections(channels_list):
     """Organiza la lista de canales en secciones."""
-    deportes = [c for c in channels_list if any(keyword in c["nombre"] for keyword in ["ESPN", "Sports", "Fox", "DIRECTV"])]
-    nacionales = [c for c in channels_list if any(keyword in c["nombre"] for keyword in ["Pública", "Telefe", "Trece"])]
-    
-    # El resto van a "Otros"
-    otros_canales = [c for c in channels_list if c not in deportes and c not in nacionales]
+    deportes = [c for c in channels_list if any(keyword in c["nombre"] for keyword in ["Espn", "Tnt", "Tyc", "Fox", "Directv"])]
+    nacionales = [c for c in channels_list if any(keyword in c["nombre"] for keyword in ["Publica", "Telefe", "Trece"])]
+    otros = [c for c in channels_list if c not in deportes and c not in nacionales]
 
-    sections = [
+    return [
         {"seccionTitulo": "Deportes", "canales": deportes},
         {"seccionTitulo": "Canales Nacionales", "canales": nacionales},
-        {"seccionTitulo": "Otros", "canales": otros_canales}
+        {"seccionTitulo": "Otros", "canales": otros}
     ]
-    return sections
 
 def main():
     """Función principal del script."""
-    html = fetch_html_content(SOURCE_URL)
+    print("Paso 1: Descargando HTML principal...")
+    html = fetch_content(MAIN_PAGE_URL)
     if not html:
-        return
+        exit(1)
 
-    json_text = extract_channels_json_text(html)
+    print("Paso 2: Extrayendo URL del script.js...")
+    script_url = extract_script_url(html, MAIN_PAGE_URL)
+    if not script_url:
+        exit(1)
+    
+    print(f"Paso 3: Descargando contenido del script desde: {script_url}")
+    js_code = fetch_content(script_url)
+    if not js_code:
+        exit(1)
+
+    print("Paso 4: Extrayendo el objeto de canales del JavaScript...")
+    json_text = extract_channels_json_text(js_code)
     if not json_text:
-        print("No se pudo encontrar el objeto 'channels' en el HTML.")
-        return
+        exit(1)
         
+    print("Paso 5: Procesando y estructurando los canales...")
     channels_list = process_channels(json_text)
-    if not channels_list:
-        print("No se pudieron procesar los canales.")
-        return
+    if channels_list is None:
+        exit(1)
 
     final_structure = structure_into_sections(channels_list)
 
-    # Guardar el resultado en el archivo canales.json
     with open("canales.json", "w", encoding="utf-8") as f:
         json.dump(final_structure, f, indent=2, ensure_ascii=False)
 
-    print("Archivo canales.json actualizado con éxito.")
+    print("¡Éxito! El archivo canales.json ha sido actualizado.")
 
 if __name__ == "__main__":
     main()
