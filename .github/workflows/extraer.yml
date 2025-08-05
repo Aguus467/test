@@ -1,4 +1,24 @@
-- name: Ejecutar script
+name: Extraer JSON
+
+on:
+  workflow_dispatch:     # ✅ Activa el botón "Run workflow"
+  schedule:
+    - cron: '0 3 * * *'   # (opcional) Ejecuta cada día a las 3AM UTC
+
+jobs:
+  extraer-json:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Instalar Python y dependencias
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Ejecutar script
       run: |
         pip install requests
         python extraer_json.py
@@ -13,5 +33,5 @@
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add agenda.json || echo "❌ agenda.json no encontrado"
-        git commit -m "JSON actualizado automáticamente"
-        git push
+        git commit -m "JSON actualizado automáticamente" || echo "Nada para commitear"
+        git push || echo "Nada para pushear"
