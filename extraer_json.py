@@ -1,27 +1,24 @@
 import requests
-import json
 import re
+import json
 
-# Descargar contenido desde la URL
-url = "https://gh.alangulotv.blog/assets/script.js"
-print(f"🔗 Descargando desde: {url}")
-contenido = requests.get(url).text
+url = "https://gh.alangulotv.blog/assets/script.js"  # Cambiar si es otra URL
+response = requests.get(url)
+contenido = response.text
 
-# Mostrar primeros caracteres del contenido descargado (debug)
-print("📦 Primeros 300 caracteres descargados:")
-print(contenido[:300])
-
-# Buscar array agendaEventos
-match = re.search(r'agendaEventos\s*=\s*(\[.*?\]);', contenido, re.DOTALL)
+# Buscar channels = { ... };
+match = re.search(r'channels\s*=\s*(\{.*?\})\s*;', contenido, re.DOTALL)
 
 if match:
-    json_str = match.group(1)
+    canales_raw = match.group(1)
+
     try:
-        data = json.loads(json_str)
+        # Usamos 'eval' con seguridad limitada (aunque lo ideal sería parsear más fuerte)
+        canales_json = json.loads(canales_raw)
         with open("agenda.json", "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2, ensure_ascii=False)
-        print("✅ agenda.json generado correctamente")
-    except json.JSONDecodeError as e:
-        print("❌ Error al parsear JSON:", e)
+            json.dump(canales_json, f, ensure_ascii=False, indent=2)
+        print("✅ Archivo agenda.json generado con éxito.")
+    except Exception as e:
+        print("❌ Error al convertir a JSON:", e)
 else:
-    print("❌ No se encontró el array agendaEventos en el script.")
+    print("❌ No se encontró el objeto channels en el JS.")
