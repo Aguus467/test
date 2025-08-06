@@ -1,7 +1,7 @@
 name: Extraer JSON
 
 on:
-  workflow_dispatch:     # ✅ Activa el botón "Run workflow"
+  workflow_dispatch:     # ✅ Botón para ejecutar manualmente
   schedule:
     - cron: '0 3 * * *'   # (opcional) Ejecuta cada día a las 3AM UTC
 
@@ -27,6 +27,9 @@ jobs:
       run: |
         ls -la
         cat agenda.json || echo "❌ agenda.json no se generó correctamente"
+
+    - name: Mostrar contenido de agenda.json
+      run: cat agenda.json
 
     - name: Subir cambios al repo
       run: |
