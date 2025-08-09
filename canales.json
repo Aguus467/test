@@ -1,8 +1,8 @@
 [
   {
     "tipo": "banner",
-    "titulo": "Informe 8/8/25",
-    "descripcion": "Se han reubicado los canales de la seccion \"Deportes Argentina\"",
+    "titulo": "Informe",
+    "descripcion": "Hay problemas con los canales, disculpe la molestia",
     "imagenUrl": "",
     "canal": {
       "nombre": "",
@@ -28,11 +28,21 @@
         "https://tvlibreonline.org/flow/canal.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
       ]
     },
+     {
+      "nombre": "TNT SPORTS (opcion 2 experimental)",
+      "imagenUrl": "https://p.alangulotv.blog/TNTSPORTS",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=tntsports",
+        "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
+        "https://streamtpglobal.com/global1.php?stream=espnpremium",
+        "https://tvlibreonline.org/flow/canal.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
+      ]
+    },
     {
       "nombre": "TNT Sports",
       "imagenUrl": "https://p.alangulotv.blog/TNTSPORTS",
       "urls": [
-        "https://la14hd.com/vivo/canales.php?stream=tntsports",
+        "https://streamtpglobal.com/global1.php?stream=tntsports",
         "https://bestleague.one/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1",
         "https://streamtpglobal.com/global1.php?stream=tntsports",
         "https://bestleague.one/tok.html?get=VE5UX1Nwb3J0c19IRA"
@@ -52,7 +62,7 @@
       "nombre": "ESPN",
       "imagenUrl": "https://p.alangulotv.blog/ESPN",
       "urls": [
-        "https://la14hd.com/vivo/canales.php?stream=espn",
+        "https://bestleague.one/cvatt.html?get=RVNQTjJIRA&lang=1",
         "https://nebunexa.co/temp.html?get=RVNQTjJIRA",
         "https://streamtpglobal.com/global1.php?stream=espn",
         "https://bestleague.one/tok.html?get=RVNQTjJIRA"
@@ -154,6 +164,15 @@
     "seccionTitulo": "Ligas y Canales LATAM",
     "canales": [
       {
+        "nombre": "Formula 1",
+        "imagenUrl": "https://p.alangulotv.blog/F1-2",
+        "urls": [
+          "https://miztv.top/total/stream-60.php",
+          "https://streamtpglobal.com/global1.php?stream=dsports",
+          "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
+        ]
+      },
+     {
         "nombre": "DIRECTV Sports",
         "imagenUrl": "https://p.alangulotv.blog/DIRECTV",
         "urls": [
@@ -161,7 +180,7 @@
           "https://streamtpglobal.com/global1.php?stream=dsports",
           "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
         ]
-      },
+      }, 
       {
         "nombre": "DIRECTV Sports 2",
         "imagenUrl": "https://p.alangulotv.blog/DIRECTV2",
@@ -200,6 +219,16 @@
         "imagenUrl": "https://p.alangulotv.blog/TELEFE",
         "urls": [
           "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
+          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+          "https://streamtpglobal.com/global1.php?stream=telefe",
+          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+        ]
+      },
+      {
+        "nombre": "America TV",
+        "imagenUrl": "https://tvlibreonline.org/img/america.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=QW1lcmljYVRW&lang=1",
           "https://tvlibreonline.org/en-vivo/telefe/hl.html",
           "https://streamtpglobal.com/global1.php?stream=telefe",
           "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
@@ -299,7 +328,7 @@
         "nombre": "VTV",
         "imagenUrl": "https://p.alangulotv.blog/VTV",
         "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=vtv"
+          "https://nebunexa.co/temp.html?get=VlRWX0hE&lang=1"
         ]
       },
       {
@@ -310,10 +339,10 @@
         ]
       },
       {
-        "nombre": "GH Cámara 2",
-        "imagenUrl": "https://p.alangulotv.blog/GH",
+        "nombre": "NACIONAL- PEÑAROL (DISNEY)",
+        "imagenUrl": "https://alangulotv.blog/diseny-plus",
         "urls": [
-          "https://streamtpglobal.com/global1.php?stream=grahermanocam2"
+          "https://streamtpglobal.com/global1.php?stream=disney15"
         ]
       },
       {
@@ -324,10 +353,10 @@
         ]
       },
       {
-        "nombre": "GH Multicam",
-        "imagenUrl": "https://p.alangulotv.blog/GH",
+        "nombre": "Test",
+        "imagenUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjucWHeNyVDAVka9QE3RSAzQZBMHdWTVp2LJtZi_nOeqfw7i3vQVKssmzqAeoqRYERx9y5zKxZXPG59_lLn1_iJ41Fa41ZTxNV82yEsPcd22LNvjaSyiwywI3APXqzcQddhjRbxIoGxPOfQ/s300/bardock.jpg",
         "urls": [
-          "https://streamtpglobal.com/global1.php?stream=granhermanomulticam"
+          "https://videos2.sendvid.com/14/68/x15l6k9v.mp4?validfrom=1754753940&validto=1754768340&rate=160k&ip=186.137.189.117&hash=7ovQEAEJZ2XixzYQUkOxd5cN3Ls%3D"
         ]
       }
     ]
