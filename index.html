@@ -2,15 +2,66 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>body, html { margin: 0; padding: 0; height: 100%; }</style>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #000;
+        font-family: sans-serif;
+      }
+      #loading {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        z-index: 10;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        z-index: 1;
+      }
+    </style>
+    <script>
+      const sources = [
+        "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
+        "https://streamtpglobal.com/global1.php?stream=espnpremium",
+        "https://tvlibreonline.org/flow/canal.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
+      ];
+
+      function tryLoad(index = 0) {
+        if (index >= sources.length) {
+          document.getElementById("loading").innerHTML = "No se pudo cargar el canal";
+          return;
+        }
+
+        const iframe = document.createElement("iframe");
+        iframe.src = sources[index];
+        iframe.allow = "autoplay; fullscreen";
+        iframe.onload = () => {
+          document.getElementById("loading").style.display = "none";
+        };
+        iframe.onerror = () => {
+          console.warn("Fallo:", sources[index]);
+          tryLoad(index + 1);
+        };
+
+        document.body.appendChild(iframe);
+      }
+
+      window.onload = () => tryLoad();
+    </script>
   </head>
   <body>
-    <iframe
-      src="https://tvlibreonline.org/flow/canal.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
-      allow="autoplay; fullscreen"
-      style="border: none; width: 100%; height: 100%;"
-    ></iframe>
+    <div id="loading">Cargando ESPN Pemium...</div>
   </body>
 </html>
