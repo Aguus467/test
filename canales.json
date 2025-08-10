@@ -2,11 +2,11 @@
   {
     "tipo": "banner",
     "titulo": "Informe",
-    "descripcion": "Hay problemas con los canales, disculpe la molestia",
+    "descripcion": "Pueden haber problemas con los canales, disculpe la molestia",
     "imagenUrl": "https://th.bing.com/th/id/R.5c2ad32cd2cd9d85cbbc48b6bf6876c8?rik=BDWoSptm%2b2LgWA&riu=http%3a%2f%2f3.bp.blogspot.com%2f-BKiiw9CJ36A%2fTrm52GodlQI%2fAAAAAAAAKBM%2fyHQNU2lYoWo%2fs1600%2fDISCULPE%2bLAS%2bMOLESTIAS%2bESTAMOS%2bTRABAJANDO%2bPARA%2bPROFUNDIZAR%2bEL%2bMODELO.jpg&ehk=1d%2f%2bkFraorzeODOySZYs45mueJKI5se22uLmPmyHyyc%3d&risl=&pid=ImgRaw&r=0",
     "canal": {
       "nombre": "",
-      "imagenUrl": "",
+      "imagenUrl": "https://th.bing.com/th/id/R.5c2ad32cd2cd9d85cbbc48b6bf6876c8?rik=BDWoSptm%2b2LgWA&riu=http%3a%2f%2f3.bp.blogspot.com%2f-BKiiw9CJ36A%2fTrm52GodlQI%2fAAAAAAAAKBM%2fyHQNU2lYoWo%2fs1600%2fDISCULPE%2bLAS%2bMOLESTIAS%2bESTAMOS%2bTRABAJANDO%2bPARA%2bPROFUNDIZAR%2bEL%2bMODELO.jpg&ehk=1d%2f%2bkFraorzeODOySZYs45mueJKI5se22uLmPmyHyyc%3d&risl=&pid=ImgRaw&r=0",
       "urls": [
         "https://one.one.one.one.com",
         "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
@@ -29,23 +29,13 @@
       ]
     },
      {
-      "nombre": "TNT SPORTS (opcion 2 experimental)",
+      "nombre": "TNT SPORTS",
       "imagenUrl": "https://p.alangulotv.blog/TNTSPORTS",
       "urls": [
         "https://la14hd.com/vivo/canales.php?stream=tntsports",
         "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
-        "https://streamtpglobal.com/global1.php?stream=espnpremium",
+        "https://streamtpglobal.com/global1.php?stream=tntsports",
         "https://tvlibreonline.org/flow/canal.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
-      ]
-    },
-    {
-      "nombre": "TNT Sports",
-      "imagenUrl": "https://p.alangulotv.blog/TNTSPORTS",
-      "urls": [
-        "https://streamtpglobal.com/global1.php?stream=tntsports",
-        "https://bestleague.one/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1",
-        "https://streamtpglobal.com/global1.php?stream=tntsports",
-        "https://bestleague.one/tok.html?get=VE5UX1Nwb3J0c19IRA"
       ]
     },
     {
@@ -157,21 +147,7 @@
         "https://streamtpglobal.com/global1.php?stream=fox3ar",
         "https://bestleague.one/tok.html?get=Rm94U3BvcnRzM0hE"
       ]
-    }
-  ]
-},
-  {
-    "seccionTitulo": "Ligas y Canales LATAM",
-    "canales": [
-      {
-        "nombre": "Formula 1",
-        "imagenUrl": "https://p.alangulotv.blog/F1-2",
-        "urls": [
-          "https://miztv.top/total/stream-60.php",
-          "https://streamtpglobal.com/global1.php?stream=dsports",
-          "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
-        ]
-      },
+    },
      {
         "nombre": "DIRECTV Sports",
         "imagenUrl": "https://p.alangulotv.blog/DIRECTV",
@@ -202,50 +178,49 @@
     ]
   },
   {
-    "seccionTitulo": "Canales Nacionales",
+    "seccionTitulo": "Ligas y Canales LATAM",
     "canales": [
       {
-        "nombre": "TV Pública",
-        "imagenUrl": "https://p.alangulotv.blog/TVP",
+        "nombre": "WIN Sports",
+        "imagenUrl": "https://p.alangulotv.blog/WINSPORT",
         "urls": [
-          "https://nebunexa.co/temp.html?get=Q2FuYWw3&lang=1",
-          "https://streamtpglobal.com/global1.php?stream=tv_publica",
-          "https://embed.ksdjugfsddeports.fun/embed2/tvpublica.html",
-          "https://bestleague.one/tok.html?get=Q2FuYWw3"
+          "https://streamtpglobal.com/global1.php?stream=winsports",
+          "https://streamtpglobal.com/global1.php?stream=dsports",
+          "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
+        ]
+      },
+     {
+        "nombre": "WIN Sports+",
+        "imagenUrl": "https://p.alangulotv.blog/WINSPORTPLUS",
+        "urls": [
+          "https://la14hd.com/vivo/canales.php?stream=winsports2",
+          "https://streamtpglobal.com/global1.php?stream=dsports",
+          "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
+        ]
+      }, 
+      {
+        "nombre": "GOLPERU",
+        "imagenUrl": "https://tvlibreonline.org//img/golperu.png",
+        "urls": [
+          "https://streamtpglobal.com/global1.php?stream=golperu",
+          "https://streamtpglobal.com/global1.php?stream=dsports2",
+          "https://embed.ksdjugfsddeports.fun/embed2/directvsports2.html"
         ]
       },
       {
-        "nombre": "Telefe",
-        "imagenUrl": "https://p.alangulotv.blog/TELEFE",
+        "nombre": "VTV",
+        "imagenUrl": "https://p.alangulotv.blog/VTV",
         "urls": [
-          "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
-          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
-          "https://streamtpglobal.com/global1.php?stream=telefe",
-          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+          "https://nebunexa.co/temp.html?get=VlRWX0hE&lang=1"
         ]
       },
       {
-        "nombre": "America TV",
-        "imagenUrl": "https://tvlibreonline.org/img/america.webp",
+        "nombre": "VTV PLUS",
+        "imagenUrl": "https://p.alangulotv.blog/VTVPLUS",
         "urls": [
-          "https://bestleague.one/cvatt.html?get=QW1lcmljYVRW&lang=1",
-          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
-          "https://streamtpglobal.com/global1.php?stream=telefe",
-          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+          "https://la14hd.com/vivo/canales.php?stream=vtvplus"
         ]
       },
-      {
-        "nombre": "El Trece",
-        "imagenUrl": "https://tvlibreonline.org/img/eltrece.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=QXJ0ZWFySEQ&lang=1"
-        ]
-      }
-    ]
-  },
-  {
-    "seccionTitulo": "Ligas Brasileñas (Premiere)",
-    "canales": [
       {
         "nombre": "Premiere",
         "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
@@ -289,6 +264,134 @@
     ]
   },
   {
+    "seccionTitulo": "Canales Nacionales ARG",
+    "canales": [
+      {
+        "nombre": "TV Pública",
+        "imagenUrl": "https://p.alangulotv.blog/TVP",
+        "urls": [
+          "https://nebunexa.co/temp.html?get=Q2FuYWw3&lang=1",
+          "https://streamtpglobal.com/global1.php?stream=tv_publica",
+          "https://embed.ksdjugfsddeports.fun/embed2/tvpublica.html",
+          "https://bestleague.one/tok.html?get=Q2FuYWw3"
+        ]
+      },
+      {
+        "nombre": "Telefe",
+        "imagenUrl": "https://p.alangulotv.blog/TELEFE",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
+          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+          "https://streamtpglobal.com/global1.php?stream=telefe",
+          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+        ]
+      },
+      {
+        "nombre": "America TV",
+        "imagenUrl": "https://tvlibreonline.org/img/america.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=QW1lcmljYVRW&lang=1",
+          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+          "https://streamtpglobal.com/global1.php?stream=telefe",
+          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+        ]
+      },
+      {
+        "nombre": "Quiero Musica",
+        "imagenUrl": "https://tvlibreonline.org//img/quiero.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=UXVpZXJvX0hE&lang=1",
+          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+          "https://streamtpglobal.com/global1.php?stream=telefe",
+          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+        ]
+      },
+      {
+        "nombre": "El Nueve",
+        "imagenUrl": "https://tvlibreonline.org/img/nueve.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=Q2FuYWw5&lang=1"
+        ]
+      },
+      {
+        "nombre": "El Trece",
+        "imagenUrl": "https://tvlibreonline.org/img/eltrece.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=QXJ0ZWFySEQ&lang=1"
+        ]
+      },  
+      {
+        "nombre": "Volver",
+        "imagenUrl": "https://tvlibreonline.org/img/volver.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=Vm9sdmVy&lang=1"
+        ]
+      },  
+      {
+        "nombre": "Encuentro",
+        "imagenUrl": "https://tvlibreonline.org/img/encuentro.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=RW5jdWVudHJv&lang=1"
+        ]
+      },  
+      {
+        "nombre": "METRO",
+        "imagenUrl": "https://tvlibreonline.org/img/metro.png",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=TWV0cm8&lang=1"
+        ]
+      },  
+      {
+        "nombre": "Ciudad Magazine",
+        "imagenUrl": "https://tvlibreonline.org/img/ciudad.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=TWFnYXppbmU=&lang=1"
+        ]
+      },        
+     {
+        "nombre": "Cronica",
+        "imagenUrl": "https://tvlibreonline.org/img/cronica.png",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=Q3JvbmljYVRW&lang=1"
+        ]
+      },
+     {
+        "nombre": "TN",
+        "imagenUrl": "https://tvlibreonline.org/img/tn.png",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=VG9kb05vdGljaWFz&lang=1"
+        ]
+      },
+     {
+        "nombre": "A24",
+        "imagenUrl": "https://tvlibreonline.org/img/a24.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=QW1lcmljYTI0&lang=1"
+        ]
+      },
+     {
+        "nombre": "LN+",
+        "imagenUrl": "https://tvlibreonline.org/img/ln.webp",
+        "urls": [
+          "https://bestleague.one/cvatt.html?get=TGFfTmFjaW9u&lang=1"
+        ]
+      }  
+    ]
+  },
+  {
+    "seccionTitulo": "Ascenso Argentino",
+    "canales": [
+      {
+        "nombre": "Proximamente.",
+        "imagenUrl": "https://cdn-icons-png.flaticon.com/512/5229/5229336.png",
+        "urls": [
+          " ",
+          " "
+        ]
+      }
+    ]
+  },
+  {
     "seccionTitulo": "Ligas USA",
     "canales": [
       {
@@ -322,7 +425,7 @@
     ]
   },
   {
-    "seccionTitulo": "Uruguay y GH (en construccion)",
+    "seccionTitulo": "Miscelaneos (en construccion)",
     "canales": [
       {
         "nombre": "VTV",
@@ -354,9 +457,9 @@
       },
       {
         "nombre": "Test",
-        "imagenUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjucWHeNyVDAVka9QE3RSAzQZBMHdWTVp2LJtZi_nOeqfw7i3vQVKssmzqAeoqRYERx9y5zKxZXPG59_lLn1_iJ41Fa41ZTxNV82yEsPcd22LNvjaSyiwywI3APXqzcQddhjRbxIoGxPOfQ/s300/bardock.jpg",
+        "imagenUrl": "",
         "urls": [
-          "https://videos2.sendvid.com/14/68/x15l6k9v.mp4?validfrom=1754753940&validto=1754768340&rate=160k&ip=186.137.189.117&hash=7ovQEAEJZ2XixzYQUkOxd5cN3Ls%3D"
+          ""
         ]
       }
     ]
