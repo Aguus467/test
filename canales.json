@@ -1,158 +1,16 @@
 {
-  "categories": [
+  "canales": [
     {
-      "seccionTitulo": "CANALES NACIONALES",
-      "canales": [
-        {
-          "id": "telefe_fhd",
-          "nombre": "Telefe FHD",
-          "imagen": "https://i.ibb.co/L8y6b27/telefe.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/Telefe.m3u8"]
-        },
-        {
-          "id": "eltrece_fhd",
-          "nombre": "ElTrece FHD",
-          "imagen": "https://i.ibb.co/VvzK2Bv/eltrece.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/ElTrece.m3u8"]
-        },
-        {
-          "id": "america_tv_fhd",
-          "nombre": "America TV FHD",
-          "imagen": "https://i.ibb.co/wJ2T9J7/americatv.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/America.m3u8"]
-        },
-        {
-          "id": "canal_nueve_fhd",
-          "nombre": "Canal Nueve FHD",
-          "imagen": "https://i.ibb.co/gDF0bJz/elnueve.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/Canal9.m3u8"]
-        },
-        {
-          "id": "tv_publica_fhd",
-          "nombre": "TV Publica FHD",
-          "imagen": "https://i.ibb.co/F8zPz4w/tvpublica.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/TVPublica.m3u8"]
-        },
-        {
-          "id": "net_tv",
-          "nombre": "Net TV",
-          "imagen": "https://i.ibb.co/n6K0gWz/nettv.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/NetTV.m3u8"]
-        },
-        {
-          "id": "bravo_tv",
-          "nombre": "Bravo TV",
-          "imagen": "https://i.ibb.co/gZ16Q4X/bravotv.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/BravoTV.m3u8"]
-        }
-      ]
+      "id": 1,
+      "nombre": "Canal Uno",
+      "url": "http://stream.canaluno.com",
+      "categoria": "Deportes"
     },
     {
-      "seccionTitulo": "DEPORTES",
-      "canales": [
-        {
-          "id": "tyc_sports",
-          "nombre": "TyC Sports",
-          "imagen": "https://i.ibb.co/2nHJNyw/tycsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/TyCSports.m3u8"]
-        },
-        {
-          "id": "tyc_sports_2",
-          "nombre": "TyC Sports 2",
-          "imagen": "https://i.ibb.co/2nHJNyw/tycsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/TyCSports2.m3u8"]
-        },
-        {
-          "id": "tyc_sports_3",
-          "nombre": "TyC Sports 3",
-          "imagen": "https://i.ibb.co/2nHJNyw/tycsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/TyCSports3.m3u8"]
-        },
-        {
-          "id": "fox_sports",
-          "nombre": "Fox Sports",
-          "imagen": "https://i.ibb.co/pwnCC0G/foxsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/FoxSports.m3u8"]
-        },
-        {
-          "id": "fox_sports_2",
-          "nombre": "Fox Sports 2",
-          "imagen": "https://i.ibb.co/n1b7p7j/foxsports2.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/FoxSports2.m3u8"]
-        },
-        {
-          "id": "fox_sports_3",
-          "nombre": "Fox Sports 3",
-          "imagen": "https://i.ibb.co/yqR1Tz3/foxsports3.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/FoxSports3.m3u8"]
-        },
-        {
-          "id": "espn_premium",
-          "nombre": "ESPN Premium",
-          "imagen": "https://i.ibb.co/g6hWbxf/espnpremium.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/ESPNPremium.m3u8"]
-        },
-        {
-          "id": "tnt_sports",
-          "nombre": "TNT Sports",
-          "imagen": "https://i.ibb.co/yQjgy1P/tntsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/TNTSports.m3u8"]
-        },
-        {
-          "id": "espn",
-          "nombre": "ESPN",
-          "imagen": "https://i.ibb.co/DtdmfxS/espn.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/ESPN.m3u8"]
-        },
-        {
-          "id": "espn_2",
-          "nombre": "ESPN 2",
-          "imagen": "https://i.ibb.co/3m2YyqH/espn2.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/ESPN2.m3u8"]
-        },
-        {
-          "id": "espn_3",
-          "nombre": "ESPN 3",
-          "imagen": "https://i.ibb.co/108XW2Y/espn3.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/ESPN3.m3u8"]
-        },
-        {
-          "id": "espn_extra",
-          "nombre": "ESPN Extra",
-          "imagen": "https://i.ibb.co/L95tXkX/espnextra.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/ESPNExtra.m3u8"]
-        },
-        {
-          "id": "directv_sports",
-          "nombre": "DIRECTV Sports",
-          "imagen": "https://i.ibb.co/ZJp5fC2/directvsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/DSports.m3u8"]
-        },
-        {
-          "id": "directv_sports_2",
-          "nombre": "DIRECTV Sports 2",
-          "imagen": "https://i.ibb.co/mvgwM2H/directvsports2.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/DSports2.m3u8"]
-        },
-        {
-          "id": "directv_sports_plus",
-          "nombre": "DIRECTV Sports +",
-          "imagen": "https://i.ibb.co/GcVgG15/directvsportsplus.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/DSports+.m3u8"]
-        },
-        {
-          "id": "win_sports",
-          "nombre": "Win Sports",
-          "imagen": "https://i.ibb.co/680C2kK/winsports.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/WinSports.m3u8"]
-        },
-        {
-          "id": "deportv",
-          "nombre": "DeporTV",
-          "imagen": "https://i.ibb.co/hW2Zf5z/deportv.png",
-          "url": ["https://raw.githubusercontent.com/Aguus467/canales/main/DeporTV.m3u8"]
-        }
-      ]
+      "id": 2,
+      "nombre": "Canal Dos",
+      "url": "http://stream.canaldos.com",
+      "categoria": "Noticias"
     }
   ]
 }
