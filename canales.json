@@ -1,16 +1,60 @@
 {
-  "canales": [
+  "banners": [
     {
-      "id": 1,
-      "nombre": "Canal Uno",
-      "url": "http://stream.canaluno.com",
-      "categoria": "Deportes"
+      "titulo": "¡Bienvenido a la nueva app!",
+      "subtitulo": "Disfruta de la mejor programación en vivo.",
+      "imagen": "https://example.com/banner1.jpg"
     },
     {
-      "id": 2,
-      "nombre": "Canal Dos",
-      "url": "http://stream.canaldos.com",
-      "categoria": "Noticias"
+      "titulo": "¡Ofertas especiales!",
+      "subtitulo": "Suscríbete y ahorra un 20% en tu primera compra.",
+      "imagen": "https://example.com/banner2.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "seccionTitulo": "Deportes",
+      "canales": [
+        {
+          "id": "1",
+          "nombre": "ESPN",
+          "imagen": "https://example.com/espn.jpg",
+          "url": ["https://stream.espn.com/live"]
+        },
+        {
+          "id": "2",
+          "nombre": "Fox Sports",
+          "imagen": "https://example.com/foxsports.jpg",
+          "url": ["https://stream.foxsports.com/live"]
+        }
+      ]
+    },
+    {
+      "seccionTitulo": "Noticias",
+      "canales": [
+        {
+          "id": "3",
+          "nombre": "CNN",
+          "imagen": "https://example.com/cnn.jpg",
+          "url": ["https://stream.cnn.com/live"]
+        },
+        {
+          "id": "4",
+          "nombre": "BBC",
+          "imagen": "https://example.com/bbc.jpg",
+          "url": ["https://stream.bbc.com/live"]
+        }
+      ]
+    }
+  ],
+  "tips": [
+    {
+      "title": "¿Sabías que?",
+      "message": "Puedes personalizar tu lista de canales favoritos desde la configuración."
+    },
+    {
+      "title": "Consejo rápido",
+      "message": "Activa las notificaciones para recibir alertas de tus programas favoritos."
     }
   ]
 }
