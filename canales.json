@@ -96,6 +96,7 @@
         ]
       },
       {
+        "id": 8,
         "nombre": "ESPN 5",
         "imagenUrl": "https://p.alangulotv.blog/ESPN5",
         "urls": [
@@ -106,6 +107,7 @@
         ]
       },
       {
+        "id": 9,
         "nombre": "ESPN 6",
         "imagenUrl": "https://p.alangulotv.blog/ESPN6",
         "urls": [
@@ -116,6 +118,7 @@
         ]
       },
       {
+        "id": 10,
         "nombre": "ESPN 7",
         "imagenUrl": "https://p.alangulotv.blog/ESPN7",
         "urls": [
@@ -190,218 +193,236 @@
       }
     ]
   },
-  {
-    "seccionTitulo": "Ligas y Canales LATAM",
-    "canales": [
-      {
-        "nombre": "WIN Sports",
-        "imagenUrl": "https://p.alangulotv.blog/WINSPORT",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=winsports",
-          "https://streamtpglobal.com/global1.php?stream=dsports",
-          "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
-        ]
-      },
-      {
-        "nombre": "WIN Sports+",
-        "imagenUrl": "https://p.alangulotv.blog/WINSPORTPLUS",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=winsports2",
-          "https://streamtpglobal.com/global1.php?stream=dsports",
-          "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
-        ]
-      },
-      {
-        "nombre": "GOLPERU",
-        "imagenUrl": "https://tvlibreonline.org//img/golperu.png",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=golperu",
-          "https://streamtpglobal.com/global1.php?stream=dsports2",
-          "https://embed.ksdjugfsddeports.fun/embed2/directvsports2.html"
-        ]
-      },
-      {
-        "id": 17,
-        "nombre": "VTV",
-        "imagenUrl": "https://p.alangulotv.blog/VTV",
-        "urls": [
-          "https://nebunexa.co/temp.html?get=VlRWX0hE&lang=1"
-        ]
-      },
-      {
-        "id": 18,
-        "nombre": "VTV PLUS",
-        "imagenUrl": "https://p.alangulotv.blog/VTVPLUS",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=vtvplus"
-        ]
-      },
-      {
-        "nombre": "Premiere",
-        "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=premiere1",
-          "https://streamtpglobal.com/global1.php?stream=premiere1"
-        ]
-      },
-      {
-        "id": 19,
-        "nombre": "Premiere 2",
-        "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=premiere2",
-          "https://streamtpglobal.com/global1.php?stream=premiere2"
-        ]
-      },
-      {
-        "nombre": "Premiere 3",
-        "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=premiere3",
-          "https://streamtpglobal.com/global1.php?stream=premiere3"
-        ]
-      },
-      {
-        "nombre": "Premiere 4",
-        "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=premiere4",
-          "https://streamtpglobal.com/global1.php?stream=premiere4"
-        ]
-      },
-      {
-        "nombre": "Premiere 5",
-        "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=premiere5",
-          "https://streamtpglobal.com/global1.php?stream=premiere5"
-        ]
-      }
-    ]
-  },
-  {
-    "seccionTitulo": "Canales Nacionales ARG",
-    "canales": [
-      {
-        "id": 20,
-        "nombre": "TV Pública",
-        "imagenUrl": "https://p.alangulotv.blog/TVP",
-        "urls": [
-          "https://nebunexa.co/temp.html?get=Q2FuYWw3&lang=1",
-          "https://streamtpglobal.com/global1.php?stream=tv_publica",
-          "https://embed.ksdjugfsddeports.fun/embed2/tvpublica.html",
-          "https://bestleague.one/tok.html?get=Q2FuYWw3"
-        ]
-      },
-      {
-        "id": 21,
-        "nombre": "Telefe",
-        "imagenUrl": "https://p.alangulotv.blog/TELEFE",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
-          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
-          "https://streamtpglobal.com/global1.php?stream=telefe",
-          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
-        ]
-      },
-      {
-        "id": 22,
-        "nombre": "America TV",
-        "imagenUrl": "https://tvlibreonline.org/img/america.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=QW1lcmljYVRW&lang=1",
-          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
-          "https://streamtpglobal.com/global1.php?stream=telefe",
-          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
-        ]
-      },
-      {
-        "id": 23,
-        "nombre": "Quiero Musica",
-        "imagenUrl": "https://tvlibreonline.org//img/quiero.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=UXVpZXJvX0hE&lang=1",
-          "https://tvlibreonline.org/en-vivo/telefe/hl.html",
-          "https://streamtpglobal.com/global1.php?stream=telefe",
-          "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
-        ]
-      },
-      {
-        "nombre": "El Nueve",
-        "imagenUrl": "https://tvlibreonline.org/img/nueve.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=Q2FuYWw5&lang=1"
-        ]
-      },
-      {
-        "nombre": "El Trece",
-        "imagenUrl": "https://tvlibreonline.org/img/eltrece.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=QXJ0ZWFySEQ&lang=1"
-        ]
-      },
-      {
-        "nombre": "Volver",
-        "imagenUrl": "https://tvlibreonline.org/img/volver.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=Vm9sdmVy&lang=1"
-        ]
-      },
-      {
-        "nombre": "Encuentro",
-        "imagenUrl": "https://tvlibreonline.org/img/encuentro.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=RW5jdWVudHJv&lang=1"
-        ]
-      },
-      {
-        "nombre": "METRO",
-        "imagenUrl": "https://tvlibreonline.org/img/metro.png",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=TWV0cm8&lang=1"
-        ]
-      },
-      {
-        "nombre": "Ciudad Magazine",
-        "imagenUrl": "https://tvlibreonline.org/img/ciudad.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=TWFnYXppbmU=&lang=1"
-        ]
-      },
-      {
-        "nombre": "Cronica",
-        "imagenUrl": "https://tvlibreonline.org/img/cronica.png",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=Q3JvbmljYVRW&lang=1"
-        ]
-      },
-      {
-        "nombre": "TN",
-        "imagenUrl": "https://tvlibreonline.org/img/tn.png",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=VG9kb05vdGljaWFz&lang=1"
-        ]
-      },
-      {
-        "nombre": "A24",
-        "imagenUrl": "https://tvlibreonline.org/img/a24.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=QW1lcmljYTI0&lang=1"
-        ]
-      },
-      {
-        "nombre": "LN+",
-        "imagenUrl": "https://tvlibreonline.org/img/ln.webp",
-        "urls": [
-          "https://bestleague.one/cvatt.html?get=TGFfTmFjaW9u&lang=1"
-        ]
-      }
-    ]
-  },
+ {
+  "seccionTitulo": "Ligas y Canales LATAM",
+  "canales": [
+    {
+      "id": 17,
+      "nombre": "WIN Sports",
+      "imagenUrl": "https://p.alangulotv.blog/WINSPORT",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=winsports",
+        "https://streamtpglobal.com/global1.php?stream=dsports",
+        "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
+      ]
+    },
+    {
+      "id": 18,
+      "nombre": "WIN Sports+",
+      "imagenUrl": "https://p.alangulotv.blog/WINSPORTPLUS",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=winsports2",
+        "https://streamtpglobal.com/global1.php?stream=dsports",
+        "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
+      ]
+    },
+    {
+      "id": 19,
+      "nombre": "GOLPERU",
+      "imagenUrl": "https://tvlibreonline.org//img/golperu.png",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=golperu",
+        "https://streamtpglobal.com/global1.php?stream=dsports2",
+        "https://embed.ksdjugfsddeports.fun/embed2/directvsports2.html"
+      ]
+    },
+    {
+      "id": 20,
+      "nombre": "VTV",
+      "imagenUrl": "https://p.alangulotv.blog/VTV",
+      "urls": [
+        "https://nebunexa.co/temp.html?get=VlRWX0hE&lang=1"
+      ]
+    },
+    {
+      "id": 21,
+      "nombre": "VTV PLUS",
+      "imagenUrl": "https://p.alangulotv.blog/VTVPLUS",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=vtvplus"
+      ]
+    },
+    {
+      "id": 22,
+      "nombre": "Premiere",
+      "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=premiere1",
+        "https://streamtpglobal.com/global1.php?stream=premiere1"
+      ]
+    },
+    {
+      "id": 23,
+      "nombre": "Premiere 2",
+      "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=premiere2",
+        "https://streamtpglobal.com/global1.php?stream=premiere2"
+      ]
+    },
+    {
+      "id": 24,
+      "nombre": "Premiere 3",
+      "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=premiere3",
+        "https://streamtpglobal.com/global1.php?stream=premiere3"
+      ]
+    },
+    {
+      "id": 25,
+      "nombre": "Premiere 4",
+      "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=premiere4",
+        "https://streamtpglobal.com/global1.php?stream=premiere4"
+      ]
+    },
+    {
+      "id": 26,
+      "nombre": "Premiere 5",
+      "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=premiere5",
+        "https://streamtpglobal.com/global1.php?stream=premiere5"
+      ]
+    }
+  ]
+},
+{
+  "seccionTitulo": "Canales Nacionales ARG",
+  "canales": [
+    {
+      "id": 27,
+      "nombre": "TV Pública",
+      "imagenUrl": "https://p.alangulotv.blog/TVP",
+      "urls": [
+        "https://nebunexa.co/temp.html?get=Q2FuYWw3&lang=1",
+        "https://streamtpglobal.com/global1.php?stream=tv_publica",
+        "https://embed.ksdjugfsddeports.fun/embed2/tvpublica.html",
+        "https://bestleague.one/tok.html?get=Q2FuYWw3"
+      ]
+    },
+    {
+      "id": 28,
+      "nombre": "Telefe",
+      "imagenUrl": "https://p.alangulotv.blog/TELEFE",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
+        "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+        "https://streamtpglobal.com/global1.php?stream=telefe",
+        "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+      ]
+    },
+    {
+      "id": 29,
+      "nombre": "America TV",
+      "imagenUrl": "https://tvlibreonline.org/img/america.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=QW1lcmljYVRW&lang=1",
+        "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+        "https://streamtpglobal.com/global1.php?stream=telefe",
+        "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+      ]
+    },
+    {
+      "id": 30,
+      "nombre": "Quiero Musica",
+      "imagenUrl": "https://tvlibreonline.org//img/quiero.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=UXVpZXJvX0hE&lang=1",
+        "https://tvlibreonline.org/en-vivo/telefe/hl.html",
+        "https://streamtpglobal.com/global1.php?stream=telefe",
+        "https://bestleague.one/tok.html?get=VGVsZWZlSEQ="
+      ]
+    },
+    {
+      "id": 31,
+      "nombre": "El Nueve",
+      "imagenUrl": "https://tvlibreonline.org/img/nueve.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=Q2FuYWw5&lang=1"
+      ]
+    },
+    {
+      "id": 32,
+      "nombre": "El Trece",
+      "imagenUrl": "https://tvlibreonline.org/img/eltrece.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=QXJ0ZWFySEQ&lang=1"
+      ]
+    },
+    {
+      "id": 33,
+      "nombre": "Volver",
+      "imagenUrl": "https://tvlibreonline.org/img/volver.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=Vm9sdmVy&lang=1"
+      ]
+    },
+    {
+      "id": 34,
+      "nombre": "Encuentro",
+      "imagenUrl": "https://tvlibreonline.org/img/encuentro.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=RW5jdWVudHJv&lang=1"
+      ]
+    },
+    {
+      "id": 35,
+      "nombre": "METRO",
+      "imagenUrl": "https://tvlibreonline.org/img/metro.png",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=TWV0cm8&lang=1"
+      ]
+    },
+    {
+      "id": 36,
+      "nombre": "Ciudad Magazine",
+      "imagenUrl": "https://tvlibreonline.org/img/ciudad.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=TWFnYXppbmU=&lang=1"
+      ]
+    },
+    {
+      "id": 37,
+      "nombre": "Cronica",
+      "imagenUrl": "https://tvlibreonline.org/img/cronica.png",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=Q3JvbmljYVRW&lang=1"
+      ]
+    },
+    {
+      "id": 38,
+      "nombre": "TN",
+      "imagenUrl": "https://tvlibreonline.org/img/tn.png",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=VG9kb05vdGljaWFz&lang=1"
+      ]
+    },
+    {
+      "id": 39,
+      "nombre": "A24",
+      "imagenUrl": "https://tvlibreonline.org/img/a24.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=QW1lcmljYTI0&lang=1"
+      ]
+    },
+    {
+      "id": 40,
+      "nombre": "LN+",
+      "imagenUrl": "https://tvlibreonline.org/img/ln.webp",
+      "urls": [
+        "https://bestleague.one/cvatt.html?get=TGFfTmFjaW9u&lang=1"
+      ]
+    }
+  ]
+},
   {
     "seccionTitulo": "Ascenso Argentino",
     "canales": [
       {
+        "id": 41,
         "nombre": "Proximamente.",
         "imagenUrl": "https://cdn-icons-png.flaticon.com/512/5229/5229336.png",
         "urls": [
@@ -411,39 +432,41 @@
       }
     ]
   },
-  {
-    "seccionTitulo": "Ligas USA",
-    "canales": [
-      {
-        "nombre": "MLB",
-        "imagenUrl": "https://p.alangulotv.blog/E1",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=mlb1",
-          "https://streamtpglobal.com/global1.php?stream=mlb1",
-          "https://la14hd.com/vivo/canales.php?stream=mlb2",
-          "https://streamtpglobal.com/global1.php?stream=mlb2",
-          "https://la14hd.com/vivo/canales.php?stream=mlb3",
-          "https://streamtpglobal.com/global1.php?stream=mlb3",
-          "https://la14hd.com/vivo/canales.php?stream=mlb4",
-          "https://streamtpglobal.com/global1.php?stream=mlb4",
-          "https://la14hd.com/vivo/canales.php?stream=mlb5",
-          "https://streamtpglobal.com/global1.php?stream=mlb5"
-        ]
-      },
-      {
-        "nombre": "NBA",
-        "imagenUrl": "https://p.alangulotv.blog/NBA2",
-        "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=nba01",
-          "https://streamtpglobal.com/global1.php?stream=nba1",
-          "https://la14hd.com/vivo/canales.php?stream=nba02",
-          "https://la14hd.com/vivo/canales.php?stream=nba03",
-          "https://la14hd.com/vivo/canales.php?stream=nba04",
-          "https://la14hd.com/vivo/canales.php?stream=nba05"
-        ]
-      }
-    ]
-  },
+ {
+  "seccionTitulo": "Ligas USA",
+  "canales": [
+    {
+      "id": 42,
+      "nombre": "MLB",
+      "imagenUrl": "https://p.alangulotv.blog/E1",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=mlb1",
+        "https://streamtpglobal.com/global1.php?stream=mlb1",
+        "https://la14hd.com/vivo/canales.php?stream=mlb2",
+        "https://streamtpglobal.com/global1.php?stream=mlb2",
+        "https://la14hd.com/vivo/canales.php?stream=mlb3",
+        "https://streamtpglobal.com/global1.php?stream=mlb3",
+        "https://la14hd.com/vivo/canales.php?stream=mlb4",
+        "https://streamtpglobal.com/global1.php?stream=mlb4",
+        "https://la14hd.com/vivo/canales.php?stream=mlb5",
+        "https://streamtpglobal.com/global1.php?stream=mlb5"
+      ]
+    },
+    {
+      "id": 43,
+      "nombre": "NBA",
+      "imagenUrl": "https://p.alangulotv.blog/NBA2",
+      "urls": [
+        "https://la14hd.com/vivo/canales.php?stream=nba01",
+        "https://streamtpglobal.com/global1.php?stream=nba1",
+        "https://la14hd.com/vivo/canales.php?stream=nba02",
+        "https://la14hd.com/vivo/canales.php?stream=nba03",
+        "https://la14hd.com/vivo/canales.php?stream=nba04",
+        "https://la14hd.com/vivo/canales.php?stream=nba05"
+      ]
+    }
+  ]
+},
   {
     "seccionTitulo": "Miscelaneos (en construccion)",
     "canales": [
