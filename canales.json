@@ -196,14 +196,14 @@
 {
   "seccionTitulo": "Disney+",
   "canales": [
-    {
+{
       "id": 1,
       "nombre": "Disney 1",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney1",
         "https://la14hd.com/vivo/canales.php?stream=disney1",
-        "https://streamtpglobal.com/global1.php?stream=disney1"
+        "https://streamtpglobal.com/global1.php?stream=disney1",
+        "https://streamdp1.xyz/global1.php?channel=disney1"
       ]
     },
     {
@@ -211,9 +211,9 @@
       "nombre": "Disney 2",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney2",
         "https://la14hd.com/vivo/canales.php?stream=disney2",
-        "https://streamtpglobal.com/global1.php?stream=disney2"
+        "https://streamtpglobal.com/global1.php?stream=disney2",
+        "https://streamdp1.xyz/global1.php?channel=disney2"
       ]
     },
     {
@@ -221,9 +221,9 @@
       "nombre": "Disney 3",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney3",
         "https://la14hd.com/vivo/canales.php?stream=disney3",
-        "https://streamtpglobal.com/global1.php?stream=disney3"
+        "https://streamtpglobal.com/global1.php?stream=disney3",
+        "https://streamdp1.xyz/global1.php?channel=disney3"
       ]
     },
     {
@@ -231,9 +231,9 @@
       "nombre": "Disney 4",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney4",
         "https://la14hd.com/vivo/canales.php?stream=disney4",
-        "https://streamtpglobal.com/global1.php?stream=disney4"
+        "https://streamtpglobal.com/global1.php?stream=disney4",
+        "https://streamdp1.xyz/global1.php?channel=disney4"
       ]
     },
     {
@@ -241,9 +241,9 @@
       "nombre": "Disney 5",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney5",
         "https://la14hd.com/vivo/canales.php?stream=disney5",
-        "https://streamtpglobal.com/global1.php?stream=disney5"
+        "https://streamtpglobal.com/global1.php?stream=disney5",
+        "https://streamdp1.xyz/global1.php?channel=disney5"
       ]
     },
     {
@@ -251,9 +251,9 @@
       "nombre": "Disney 6",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney6",
         "https://la14hd.com/vivo/canales.php?stream=disney6",
-        "https://streamtpglobal.com/global1.php?stream=disney6"
+        "https://streamtpglobal.com/global1.php?stream=disney6",
+        "https://streamdp1.xyz/global1.php?channel=disney6"
       ]
     },
     {
@@ -261,9 +261,9 @@
       "nombre": "Disney 7",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney7",
+        "https://la14hd.com/vivo/canales.php?stream=disney7",
         "https://streamtpglobal.com/global1.php?stream=disney7",
-        "https://la14hd.com/vivo/canales.php?stream=disney7"
+        "https://streamdp1.xyz/global1.php?channel=disney7"
       ]
     },
     {
@@ -271,9 +271,9 @@
       "nombre": "Disney 8",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney8",
+        "https://la14hd.com/vivo/canales.php?stream=disney8",
         "https://streamtpglobal.com/global1.php?stream=disney8",
-        "https://la14hd.com/vivo/canales.php?stream=disney8"
+        "https://streamdp1.xyz/global1.php?channel=disney8"
       ]
     },
     {
@@ -281,9 +281,9 @@
       "nombre": "Disney 9",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney9",
+        "https://la14hd.com/vivo/canales.php?stream=disney9",
         "https://streamtpglobal.com/global1.php?stream=disney9",
-        "https://la14hd.com/vivo/canales.php?stream=disney9"
+        "https://streamdp1.xyz/global1.php?channel=disney9"
       ]
     },
     {
@@ -291,9 +291,9 @@
       "nombre": "Disney 10",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney10",
+        "https://la14hd.com/vivo/canales.php?stream=disney10",
         "https://streamtpglobal.com/global1.php?stream=disney10",
-        "https://la14hd.com/vivo/canales.php?stream=disney10"
+        "https://streamdp1.xyz/global1.php?channel=disney10"
       ]
     },
     {
@@ -301,9 +301,9 @@
       "nombre": "Disney 11",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney11",
         "https://la14hd.com/vivo/canales.php?stream=disney11",
-        "https://streamtpglobal.com/global1.php?stream=disney11"
+        "https://streamtpglobal.com/global1.php?stream=disney11",
+        "https://streamdp1.xyz/global1.php?channel=disney11"
       ]
     },
     {
@@ -311,9 +311,9 @@
       "nombre": "Disney 12",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney12",
         "https://la14hd.com/vivo/canales.php?stream=disney12",
-        "https://streamtpglobal.com/global1.php?stream=disney12"
+        "https://streamtpglobal.com/global1.php?stream=disney12",
+        "https://streamdp1.xyz/global1.php?channel=disney12"
       ]
     },
     {
@@ -321,9 +321,9 @@
       "nombre": "Disney 13",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney13",
         "https://la14hd.com/vivo/canales.php?stream=disney13",
-        "https://streamtpglobal.com/global1.php?stream=disney13"
+        "https://streamtpglobal.com/global1.php?stream=disney13",
+        "https://streamdp1.xyz/global1.php?channel=disney13"
       ]
     },
     {
@@ -331,9 +331,9 @@
       "nombre": "Disney 14",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney14",
         "https://la14hd.com/vivo/canales.php?stream=disney14",
-        "https://streamtpglobal.com/global1.php?stream=disney14"
+        "https://streamtpglobal.com/global1.php?stream=disney14",
+        "https://streamdp1.xyz/global1.php?channel=disney14"
       ]
     },
     {
@@ -341,9 +341,9 @@
       "nombre": "Disney 15",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney15",
         "https://la14hd.com/vivo/canales.php?stream=disney15",
-        "https://streamtpglobal.com/global1.php?stream=disney15"
+        "https://streamtpglobal.com/global1.php?stream=disney15",
+        "https://streamdp1.xyz/global1.php?channel=disney15"
       ]
     },
     {
@@ -351,9 +351,9 @@
       "nombre": "Disney 16",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney16",
         "https://la14hd.com/vivo/canales.php?stream=disney16",
-        "https://streamtpglobal.com/global1.php?stream=disney16"
+        "https://streamtpglobal.com/global1.php?stream=disney16",
+        "https://streamdp1.xyz/global1.php?channel=disney16"
       ]
     },
     {
@@ -361,9 +361,9 @@
       "nombre": "Disney 17",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney17",
         "https://la14hd.com/vivo/canales.php?stream=disney17",
-        "https://streamtpglobal.com/global1.php?stream=disney17"
+        "https://streamtpglobal.com/global1.php?stream=disney17",
+        "https://streamdp1.xyz/global1.php?channel=disney17"
       ]
     },
     {
@@ -371,9 +371,9 @@
       "nombre": "Disney 18",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney18",
         "https://la14hd.com/vivo/canales.php?stream=disney18",
-        "https://streamtpglobal.com/global1.php?stream=disney18"
+        "https://streamtpglobal.com/global1.php?stream=disney18",
+        "https://streamdp1.xyz/global1.php?channel=disney18"
       ]
     },
     {
@@ -381,9 +381,9 @@
       "nombre": "Disney 19",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney19",
         "https://la14hd.com/vivo/canales.php?stream=disney19",
-        "https://streamtpglobal.com/global1.php?stream=disney19"
+        "https://streamtpglobal.com/global1.php?stream=disney19",
+        "https://streamdp1.xyz/global1.php?channel=disney19"
       ]
     },
     {
@@ -391,9 +391,9 @@
       "nombre": "Disney 20",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney20",
         "https://la14hd.com/vivo/canales.php?stream=disney20",
-        "https://streamtpglobal.com/global1.php?stream=disney20"
+        "https://streamtpglobal.com/global1.php?stream=disney20",
+        "https://streamdp1.xyz/global1.php?channel=disney20"
       ]
     },
     {
@@ -401,9 +401,9 @@
       "nombre": "Disney 21",
       "imagenUrl": "https://p.alangulotv.blog/disneyplus",
       "urls": [
-        "https://streamdp1.xyz/global1.php?channel=disney21",
         "https://la14hd.com/vivo/canales.php?stream=disney21",
-        "https://streamtpglobal.com/global1.php?stream=disney21"
+        "https://streamtpglobal.com/global1.php?stream=disney21",
+        "https://streamdp1.xyz/global1.php?channel=disney21"
       ]
     }
   ]
@@ -412,7 +412,7 @@
   "seccionTitulo": "Ligas y Canales LATAM",
   "canales": [
     {
-      "id": 17,
+      "id": 1,
       "nombre": "WIN Sports",
       "imagenUrl": "https://p.alangulotv.blog/WINSPORT",
       "urls": [
@@ -422,7 +422,7 @@
       ]
     },
     {
-      "id": 18,
+      "id": 2,
       "nombre": "WIN Sports+",
       "imagenUrl": "https://p.alangulotv.blog/WINSPORTPLUS",
       "urls": [
@@ -432,7 +432,7 @@
       ]
     },
     {
-      "id": 19,
+      "id": 3,
       "nombre": "GOLPERU",
       "imagenUrl": "https://tvlibreonline.org//img/golperu.png",
       "urls": [
@@ -442,7 +442,7 @@
       ]
     },
     {
-      "id": 20,
+      "id": 4,
       "nombre": "VTV",
       "imagenUrl": "https://p.alangulotv.blog/VTV",
       "urls": [
@@ -450,7 +450,7 @@
       ]
     },
     {
-      "id": 21,
+      "id": 5,
       "nombre": "VTV PLUS",
       "imagenUrl": "https://p.alangulotv.blog/VTVPLUS",
       "urls": [
@@ -458,7 +458,7 @@
       ]
     },
     {
-      "id": 22,
+      "id": 6,
       "nombre": "Premiere",
       "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
       "urls": [
@@ -467,7 +467,7 @@
       ]
     },
     {
-      "id": 23,
+      "id": 7,
       "nombre": "Premiere 2",
       "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
       "urls": [
@@ -476,7 +476,7 @@
       ]
     },
     {
-      "id": 24,
+      "id": 8,
       "nombre": "Premiere 3",
       "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
       "urls": [
@@ -485,7 +485,7 @@
       ]
     },
     {
-      "id": 25,
+      "id": 9,
       "nombre": "Premiere 4",
       "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
       "urls": [
@@ -494,12 +494,97 @@
       ]
     },
     {
-      "id": 26,
+      "id": 10,
       "nombre": "Premiere 5",
       "imagenUrl": "https://p.alangulotv.blog/PREMIERE",
       "urls": [
         "https://la14hd.com/vivo/canales.php?stream=premiere5",
         "https://streamtpglobal.com/global1.php?stream=premiere5"
+      ]
+    },
+    {
+      "id": 11,
+      "nombre": "DAZN Español 1",
+      "imagenUrl": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=dazntv1"
+      ]
+    },
+    {
+      "id": 12,
+      "nombre": "DAZN Español 2",
+      "imagenUrl": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://nebunexa.co/mpdk/?get=aHR0cHM6Ly9vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZHViLW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy94bms0bTlibnh0L291dC92MS80Y2VkN2I3MzI5YTU0NjUyYjliYjA1MjFlZDM4YmQ0ZC9jZW5jLm1wZA==&key=MGVhYjVhM2YzZTNiNGJhNWQ0MmQ0MGNhMzBkMTc1NzE=&key2=ZjNmMDYxZGVkOWI3MGU4MTYwNTkwZDU4MDJlY2RhNmQ="
+      ]
+    },
+    {
+      "id": 13,
+      "nombre": "DAZN Español 3",
+      "imagenUrl": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "http://dpstream1.my/pp.html?id=DAZN_3_ES"
+      ]
+    },
+    {
+      "id": 14,
+      "nombre": "DAZN Español 4",
+      "imagenUrl": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "http://dpstream1.my/pp.html?id=DAZN_4_ES"
+      ]
+    },
+    {
+      "id": 15,
+      "nombre": "DAZN La Liga",
+      "imagenUrl": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://dtvlivegratis.com/cn.php?id=DAZN_LA_LIGA"
+      ]
+    }
+  ]
+},
+  {
+  "seccionTitulo": "Bundesliga",
+  "canales": [
+    {
+      "id": 1,
+      "nombre": "Bundesliga 1",
+      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga1"
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Bundesliga 2",
+      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga2"
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Bundesliga 3",
+      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga3"
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Bundesliga 4",
+      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga4"
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Bundesliga 5",
+      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga5"
       ]
     }
   ]
@@ -667,8 +752,120 @@
         "https://streamtpglobal.com/global1.php?stream=mlb5"
       ]
     },
+{
+      "id": 71,
+      "nombre": "MLS 1",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls1es"
+      ]
+    },
     {
-      "id": 43,
+      "id": 72,
+      "nombre": "MLS 2",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls2es"
+      ]
+    },
+    {
+      "id": 73,
+      "nombre": "MLS 3",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls3es"
+      ]
+    },
+    {
+      "id": 74,
+      "nombre": "MLS 4",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls4es"
+      ]
+    },
+    {
+      "id": 75,
+      "nombre": "MLS 5",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls5es"
+      ]
+    },
+    {
+      "id": 76,
+      "nombre": "MLS 6",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls6es"
+      ]
+    },
+    {
+      "id": 77,
+      "nombre": "MLS 7",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls7es"
+      ]
+    },
+    {
+      "id": 78,
+      "nombre": "MLS 8",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls8es"
+      ]
+    },
+    {
+      "id": 79,
+      "nombre": "MLS 9",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls9es"
+      ]
+    },
+    {
+      "id": 80,
+      "nombre": "MLS 10",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls10es"
+      ]
+    },
+    {
+      "id": 81,
+      "nombre": "MLS 11",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls11es"
+      ]
+    },
+    {
+      "id": 82,
+      "nombre": "MLS 12",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls12es"
+      ]
+    },
+    {
+      "id": 83,
+      "nombre": "MLS 13",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls13es"
+      ]
+    },
+    {
+      "id": 84,
+      "nombre": "MLS 14",
+      "imagenUrl": "https://p.alangulotv.blog/mls",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=mls14es"
+      ]
+    },
+    {
+      "id": 85,
       "nombre": "NBA",
       "imagenUrl": "https://p.alangulotv.blog/NBA2",
       "urls": [
