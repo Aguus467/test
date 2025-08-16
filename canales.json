@@ -34,7 +34,7 @@
         "nombre": "TNT SPORTS",
         "imagenUrl": "https://p.alangulotv.blog/TNTSPORTS",
         "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=tntsports",
+          "https://tvlibreonline.org/html/fl/?get=VE5UX1Nwb3J0c19IRA",
           "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
           "https://streamtpglobal.com/global1.php?stream=tntsports",
           "https://tvlibreonline.org/flow/canal.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
@@ -45,7 +45,7 @@
         "nombre": "TyC Sports",
         "imagenUrl": "https://p.alangulotv.blog/TYCSPORTS",
         "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=tycsports",
+          "https://tvlibreonline.org/html/dash.html?get=aHR0cHM6Ly9jaDEwLTA0LTExLXR5Yy52b2RnYy5uZXQvb3V0L3YxLzA5ZTM1NTI5NTUzZDQ3MmI4ZjE0ZTQzN2FmNjQyZTJmL2luZGV4Lm0zdTg=",
           "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ",
           "https://streamtpglobal.com/global1.php?stream=tycsports",
           "https://bestleague.one/tok.html?get=VHlDU3BvcnQ"
@@ -166,7 +166,7 @@
         "nombre": "DIRECTV Sports",
         "imagenUrl": "https://p.alangulotv.blog/DIRECTV",
         "urls": [
-          "https://streamtpglobal.com/global1.php?stream=dsports",
+          "https://la14hd.com/vivo/canales.php?stream=dsports",
           "https://streamtpglobal.com/global1.php?stream=dsports",
           "https://embed.ksdjugfsddeports.fun/embed2/directvsports.html"
         ]
@@ -176,7 +176,7 @@
         "nombre": "DIRECTV Sports 2",
         "imagenUrl": "https://p.alangulotv.blog/DIRECTV2",
         "urls": [
-          "https://streamtpglobal.com/global1.php?stream=dsports22",
+          "https://la14hd.com/vivo/canal.php?stream=dsports2",
           "https://streamtpglobal.com/global1.php?stream=dsports2",
           "https://embed.ksdjugfsddeports.fun/embed2/directvsports2.html"
         ]
@@ -544,51 +544,6 @@
     }
   ]
 },
-  {
-  "seccionTitulo": "Bundesliga",
-  "canales": [
-    {
-      "id": 53,
-      "nombre": "Bundesliga 1",
-      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
-      "urls": [
-        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga1"
-      ]
-    },
-    {
-      "id": 54,
-      "nombre": "Bundesliga 2",
-      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
-      "urls": [
-        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga2"
-      ]
-    },
-    {
-      "id": 55,
-      "nombre": "Bundesliga 3",
-      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
-      "urls": [
-        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga3"
-      ]
-    },
-    {
-      "id": 56,
-      "nombre": "Bundesliga 4",
-      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
-      "urls": [
-        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga4"
-      ]
-    },
-    {
-      "id": 57,
-      "nombre": "Bundesliga 5",
-      "imagenUrl": "https://static.vecteezy.com/system/resources/previews/010/994/314/original/bundesliga-logo-symbol-with-name-design-germany-football-european-countries-football-teams-illustration-with-black-background-free-vector.jpg",
-      "urls": [
-        "https://streamtpglobal.com/global1.php?stream=sky_bundesliga5"
-      ]
-    }
-  ]
-},
 {
   "seccionTitulo": "Canales Nacionales ARG",
   "canales": [
@@ -757,7 +712,7 @@
       "nombre": "MLS 1",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
-        "https://streamtpglobal.com/global1.php?stream=mls1es"
+        "https://la14hd.com/vivo/canales.php?stream=mls1es"
       ]
     },
     {
