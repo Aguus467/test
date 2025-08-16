@@ -18,6 +18,7 @@
     "seccionTitulo": "Deportes Argentina",
     "canales": [
       {
+        "id": 1,
         "nombre": "ESPN Premium",
         "imagenUrl": "https://p.alangulotv.blog/ESPNPREMIUM",
         "urls": [
