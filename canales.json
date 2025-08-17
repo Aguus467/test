@@ -45,7 +45,7 @@
         "nombre": "TyC Sports",
         "imagenUrl": "https://p.alangulotv.blog/TYCSPORTS",
         "urls": [
-          "https://tvlibreonline.org/html/dash.html?get=aHR0cHM6Ly9jaDEwLTA0LTExLXR5Yy52b2RnYy5uZXQvb3V0L3YxLzA5ZTM1NTI5NTUzZDQ3MmI4ZjE0ZTQzN2FmNjQyZTJmL2luZGV4Lm0zdTg=",
+          "https://streamtp11.com/global1.php?stream=tycsports",
           "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ",
           "https://streamtpglobal.com/global1.php?stream=tycsports",
           "https://bestleague.one/tok.html?get=VHlDU3BvcnQ"
@@ -133,7 +133,7 @@
         "nombre": "Fox Sports",
         "imagenUrl": "https://p.alangulotv.blog/FOXSPORTS",
         "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=foxsports",
+          "https://streamtp11.com/global1.php?stream=fox1ar",
           "https://nebunexa.co/temp.html?get=Rm94U3BvcnRz&lang=1",
           "https://streamtpglobal.com/global1.php?stream=fox1ar",
           "https://bestleague.one/tok.html?get=Rm94U3BvcnRz"
@@ -548,7 +548,7 @@
   "seccionTitulo": "Canales Nacionales ARG",
   "canales": [
     {
-      "id": 58,
+      "id": 53,
       "nombre": "TV Pública",
       "imagenUrl": "https://p.alangulotv.blog/TVP",
       "urls": [
@@ -559,7 +559,7 @@
       ]
     },
     {
-      "id": 59,
+      "id": 54,
       "nombre": "Telefe",
       "imagenUrl": "https://p.alangulotv.blog/TELEFE",
       "urls": [
@@ -570,7 +570,7 @@
       ]
     },
     {
-      "id": 60,
+      "id": 55,
       "nombre": "America TV",
       "imagenUrl": "https://tvlibreonline.org/img/america.webp",
       "urls": [
@@ -581,7 +581,7 @@
       ]
     },
     {
-      "id": 61,
+      "id": 56,
       "nombre": "Quiero Musica",
       "imagenUrl": "https://tvlibreonline.org//img/quiero.webp",
       "urls": [
@@ -592,7 +592,7 @@
       ]
     },
     {
-      "id": 62,
+      "id": 57,
       "nombre": "El Nueve",
       "imagenUrl": "https://tvlibreonline.org/img/nueve.webp",
       "urls": [
@@ -600,7 +600,7 @@
       ]
     },
     {
-      "id": 63,
+      "id": 58,
       "nombre": "El Trece",
       "imagenUrl": "https://tvlibreonline.org/img/eltrece.webp",
       "urls": [
@@ -608,7 +608,7 @@
       ]
     },
     {
-      "id": 64,
+      "id": 59,
       "nombre": "Volver",
       "imagenUrl": "https://tvlibreonline.org/img/volver.webp",
       "urls": [
@@ -616,7 +616,7 @@
       ]
     },
     {
-      "id": 65,
+      "id": 60,
       "nombre": "Encuentro",
       "imagenUrl": "https://tvlibreonline.org/img/encuentro.webp",
       "urls": [
@@ -624,7 +624,7 @@
       ]
     },
     {
-      "id": 66,
+      "id": 61,
       "nombre": "METRO",
       "imagenUrl": "https://tvlibreonline.org/img/metro.png",
       "urls": [
@@ -632,7 +632,7 @@
       ]
     },
     {
-      "id": 67,
+      "id": 62,
       "nombre": "Ciudad Magazine",
       "imagenUrl": "https://tvlibreonline.org/img/ciudad.webp",
       "urls": [
@@ -640,7 +640,7 @@
       ]
     },
     {
-      "id": 68,
+      "id": 63,
       "nombre": "Cronica",
       "imagenUrl": "https://tvlibreonline.org/img/cronica.png",
       "urls": [
@@ -648,7 +648,7 @@
       ]
     },
     {
-      "id": 69,
+      "id": 64,
       "nombre": "TN",
       "imagenUrl": "https://tvlibreonline.org/img/tn.png",
       "urls": [
@@ -656,7 +656,7 @@
       ]
     },
     {
-      "id": 70,
+      "id": 65,
       "nombre": "A24",
       "imagenUrl": "https://tvlibreonline.org/img/a24.webp",
       "urls": [
@@ -664,7 +664,7 @@
       ]
     },
     {
-      "id": 71,
+      "id": 66,
       "nombre": "LN+",
       "imagenUrl": "https://tvlibreonline.org/img/ln.webp",
       "urls": [
@@ -677,7 +677,7 @@
     "seccionTitulo": "Ascenso Argentino",
     "canales": [
       {
-        "id": 72,
+        "id": 67,
         "nombre": "Proximamente.",
         "imagenUrl": "https://cdn-icons-png.flaticon.com/512/5229/5229336.png",
         "urls": [
@@ -691,7 +691,7 @@
   "seccionTitulo": "Ligas USA",
   "canales": [
     {
-      "id": 73,
+      "id": 68,
       "nombre": "MLB",
       "imagenUrl": "https://p.alangulotv.blog/E1",
       "urls": [
@@ -708,7 +708,7 @@
       ]
     },
 {
-      "id": 74,
+      "id": 69,
       "nombre": "MLS 1",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -716,7 +716,7 @@
       ]
     },
     {
-      "id": 75,
+      "id": 70,
       "nombre": "MLS 2",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -724,7 +724,7 @@
       ]
     },
     {
-      "id": 76,
+      "id": 71,
       "nombre": "MLS 3",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -732,7 +732,7 @@
       ]
     },
     {
-      "id": 77,
+      "id": 72,
       "nombre": "MLS 4",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -740,7 +740,7 @@
       ]
     },
     {
-      "id": 78,
+      "id": 73,
       "nombre": "MLS 5",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -748,7 +748,7 @@
       ]
     },
     {
-      "id": 79,
+      "id": 74,
       "nombre": "MLS 6",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -756,7 +756,7 @@
       ]
     },
     {
-      "id": 80,
+      "id": 75,
       "nombre": "MLS 7",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -764,7 +764,7 @@
       ]
     },
     {
-      "id": 81,
+      "id": 76,
       "nombre": "MLS 8",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -772,7 +772,7 @@
       ]
     },
     {
-      "id": 82,
+      "id": 77,
       "nombre": "MLS 9",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -780,7 +780,7 @@
       ]
     },
     {
-      "id": 83,
+      "id": 78,
       "nombre": "MLS 10",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -788,7 +788,7 @@
       ]
     },
     {
-      "id": 84,
+      "id": 79,
       "nombre": "MLS 11",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -796,7 +796,7 @@
       ]
     },
     {
-      "id": 85,
+      "id": 80,
       "nombre": "MLS 12",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -804,7 +804,7 @@
       ]
     },
     {
-      "id": 86,
+      "id": 81,
       "nombre": "MLS 13",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -812,7 +812,7 @@
       ]
     },
     {
-      "id": 87,
+      "id": 82,
       "nombre": "MLS 14",
       "imagenUrl": "https://p.alangulotv.blog/mls",
       "urls": [
@@ -820,7 +820,7 @@
       ]
     },
     {
-      "id": 88,
+      "id": 83,
       "nombre": "NBA",
       "imagenUrl": "https://p.alangulotv.blog/NBA2",
       "urls": [
