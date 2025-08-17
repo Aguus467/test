@@ -1,60 +1,114 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Reproductor FoxSports3</title>
-  <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <style>
-    body { margin: 0; background: black; display: flex; justify-content: center; align-items: center; height: 100vh; }
-    video { width: 80%; height: auto; }
-  </style>
+    <meta charset="UTF-8">
+    <title> Prueba</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+       
+        let mt = "csc-axs-edge01.sensa.com.ar";
+
+        const streams = {
+            clarosports: {
+                url: "https://" + mt + "/live/eds/ClaroSports/live_dash_cld/ClaroSports.mpd",
+                key: "======wMklzY3IDZlJDZkRTMilDO4EWO3M2YwYzY4MmYkBzM0MTOldjNjVDMxcTNlBDZiRmNmFjN3MGOkBzMyQmMlFTYhFzMkNzY2Q2YilDNiVTZmJWZyUGM5ITM2MjZ0IGOykzYygjN4QjZ1gTZ3IGNwQTZxMzMlN2M3ITN4ETMkdjMxcTYkJmYmJ2YhJjY0gTYhlDNwgDZhBTZihDOkNDOxEDZ6ITNzYzY4UGOmljY1kDZ4YWYwIWY0YDZjV2N5MTYhVjNa1b2c3d4e5f67890"
+            },
+            telefe: {
+                url: "https://" + mt + "/live/eds/Telefe/live_dash_cld/Telefe.mpd",
+                key: "======QYxQmMxYDZmRGOjFDZ2QWNjhTO4kTM1IWY1QWZjZjZkhDN5ImNxIGNmNWYzIWOhlTYyUDMxIWO0UzY4MzYzIjYyUTY0QmZ0UGZwgzMxYGZiJjY5MmZzkTNxUGOxETNlhTY3QTZ5QGZ1gjZ2UmMkZmM5EWZ4MWY2QzNhZGMwczM3YmN1QWY3gzNxEWZ5UWYilDMzgDZmVTO1EDZxEDZkVmY6I2YxYTNyU2YwcjN4M2MyYjMwYDNjdTZyIWM2kjYzgjYa1b2c3d4e5f67890"
+            },
+            tycsports: {
+                url: "https://" + mt + "/live/eds/TYCSports/live_dash_cld/TYCSports.mpd",
+                key: "======wYyYjNiZWN4YDNwYDZmJjY4EjNlBDNjhTN3kjNlVmYmJzM1UzNxQTN5ATN1QGZlZmM1EDZjF2YjNjZmZDZkBTNiFGMjRmZjZDOhJjNwkTN1QmYiZWNlZmN4gjMiNmNyMDM0gzYyMTMxQjNlNzYyYDNxkTZiFWZkRmNiNGOiBzNhdjYmhzM5UDOzYjNhVzYjZDMkZzM2EzYwUmY0QjNyETY6MDNhRWNhZmNjRWO3UTOjhDZ4QWOjhTZxIGMhJGZhZmNa1b2c3d4e5f67890"
+            },
+            // Agregar más streams según tu listado...
+        };
+
+        function decryptAES(ciphertext, ivHex, key) {
+            try {
+                const keyHash = CryptoJS.SHA256(CryptoJS.enc.Utf8.parse(key));
+                const iv = CryptoJS.enc.Hex.parse(ivHex);
+
+                const decrypted = CryptoJS.AES.decrypt(
+                    { ciphertext: CryptoJS.enc.Hex.parse(ciphertext) },
+                    keyHash,
+                    {
+                        iv: iv,
+                        mode: CryptoJS.mode.CBC,
+                        padding: CryptoJS.pad.Pkcs7
+                    }
+                );
+
+                return decrypted.toString(CryptoJS.enc.Utf8);
+            } catch (error) {
+                console.error("[ERROR] en decryptAES:", error);
+                return null;
+            }
+        }
+
+        function deobfuscateKey(obfuscatedKey) {
+            try {
+                const trimmedKey = obfuscatedKey.slice(4, -16);
+                const reversedKey = trimmedKey.split("").reverse().join("");
+                const decodedBytes = CryptoJS.enc.Base64.parse(reversedKey);
+                const decodedText = decodedBytes.toString(CryptoJS.enc.Utf8);
+                const [ivHex, ciphertext] = decodedText.split(':');
+                if (!ivHex || !ciphertext) throw new Error("Formato inválido después de desofuscación");
+                const masterKey = "EnRjmF8X6VZlfS4PifbJD8oWK4PaHnlZ";
+                return decryptAES(ciphertext, ivHex, masterKey);
+            } catch (error) {
+                console.error("[ERROR] en deobfuscateKey:", error);
+                return null;
+            }
+        }
+
+        function getStreamById(streamId) {
+            try {
+                const stream = streams[streamId];
+                if (!stream) throw new Error(`Stream ${streamId} no encontrado`);
+
+                let finalKey = stream.key;
+                if (finalKey.startsWith('====')) {
+                    finalKey = deobfuscateKey(finalKey);
+                    if (!finalKey) throw new Error("Fallo en desencriptación");
+                }
+                if (finalKey && finalKey.includes(':')) {
+                    const [kid, key] = finalKey.split(':');
+                    return {
+                        url: stream.url,
+                        key: { [kid.trim()]: key.trim() }
+                    };
+                }
+
+                throw new Error("Formato de clave inválido");
+            } catch (error) {
+                console.error(`[ERROR] en getStreamById: ${error.message}`);
+                return null;
+            }
+        }
+
+        window.getStreamById = getStreamById;
+    </script>
 </head>
 <body>
-  <video id="videoPlayer" controls></video>
+    <h1>Prueba</h1>
 
-  <script>
-    // URL del stream
-    const mpdUrl = "https://csc-axs-edge01.sensa.com.ar/live/eds/FoxSports3/live_dash_cld/FoxSports3.mpd";
+    <select id="channelSelect">
+        <option value="clarosports">ClaroSports</option>
+        <option value="telefe">Telefe</option>
+        <option value="tycsports">TYC Sports</option>
+        <!-- Agregar más canales aquí -->
+    </select>
+    <button onclick="showStream()">Obtener Stream</button>
 
-    // Llave ofuscada del script original
-    const obfuscatedKey = "======QO0EmZ4QDOiNDN2MjM0EmZ5MDMhVTNwYTMiVjY2QDMhFTZhJTNkJ2YwUzM5ADMwATOwIWMiZTZ1EzY4UGZ2UzMjVTY4Y2YlZ2M4EWYklTZxAjN3UWMiVWOlhjM0UWOjRWMwETNjdzNmRjMyM2YwczMhhTYkJmM3MGZzMWO4kTN2EzN4EmY5ATMiZTOmZWN3gzY0EDOiNWM1cTYiNGOmFjM6MzYhF2NwEjN5Q2Y5QTYlNGN1cDNiNzN3MDNhRGN5MzNa1b2c3d4e5f67890";
+    <pre id="output" style="background:#f0f0f0;padding:10px;border:1px solid #ccc;"></pre>
 
-    // Función para desencriptar la llave (igual al script original)
-    function decryptAES(ciphertext, ivHex, key) {
-      const keyHash = CryptoJS.SHA256(CryptoJS.enc.Utf8.parse(key));
-      const iv = CryptoJS.enc.Hex.parse(ivHex);
-      const decrypted = CryptoJS.AES.decrypt(
-        { ciphertext: CryptoJS.enc.Hex.parse(ciphertext) },
-        keyHash,
-        { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }
-      );
-      return decrypted.toString(CryptoJS.enc.Utf8);
-    }
-
-    function deobfuscateKey(obfKey) {
-      const trimmed = obfKey.slice(4, -16);
-      const reversed = trimmed.split("").reverse().join("");
-      const decoded = CryptoJS.enc.Base64.parse(reversed).toString(CryptoJS.enc.Utf8);
-      const [ivHex, ciphertext] = decoded.split(':');
-      const masterKey = "EnRjmF8X6VZlfS4PifbJD8oWK4PaHnlZ";
-      return decryptAES(ciphertext, ivHex, masterKey);
-    }
-
-    const decryptedKey = deobfuscateKey(obfuscatedKey);
-    const [kid, key] = decryptedKey.split(':');
-
-    // Configurar dash.js
-    const video = document.getElementById("videoPlayer");
-    const player = dashjs.MediaPlayer().create();
-    player.initialize(video, mpdUrl, true);
-
-    // Agregar clave de DRM (ClearKey)
-    player.setProtectionData({
-      "org.w3.clearkey": {
-        "clearkeys": { [kid]: key }
-      }
-    });
-  </script>
+    <script>
+        function showStream() {
+            const channelId = document.getElementById('channelSelect').value;
+            const result = getStreamById(channelId);
+            document.getElementById('output').textContent = JSON.stringify(result, null, 2);
+        }
+    </script>
 </body>
 </html>
