@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deportes Live</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deportes Live TV</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Deportes Live</h1>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="live.html">Partidos en Vivo</a>
-            <a href="contact.html">Contacto</a>
-        </nav>
-    </header>
+<header>
+    <h1>Deportes Live TV</h1>
+</header>
 
-    <main>
-        <h2>Bienvenido a Deportes Live</h2>
-        <p>Mira los mejores partidos en vivo desde aquí.</p>
+<main>
+    <section id="channels">
+        <h2>Canales en Vivo</h2>
+        <div class="channel-list">
+            <!-- Cada tarjeta de canal -->
+            <div class="channel-card" data-video="https://www.example.com/video/boca-river.mp4">
+                <h3>Boca vs River</h3>
+            </div>
+            <div class="channel-card" data-video="https://www.example.com/video/lakers-celtics.mp4">
+                <h3>Lakers vs Celtics</h3>
+            </div>
+            <div class="channel-card" data-video="https://www.example.com/video/tennis-match.m3u8">
+                <h3>Torneo de Tenis</h3>
+            </div>
+        </div>
+    </section>
+</main>
 
-        <section>
-            <h3>Partidos Destacados</h3>
-            <ul>
-                <li><a href="live.html#partido1">Fútbol: Boca vs River</a></li>
-                <li><a href="live.html#partido2">Básquet: Lakers vs Celtics</a></li>
-            </ul>
-        </section>
-    </main>
+<!-- Reproductor flotante -->
+<div id="player-container" class="hidden">
+    <video id="player" controls autoplay></video>
+    <button id="close-player">Cerrar</button>
+</div>
 
-    <footer>
-        <p>&copy; 2025 Deportes Live</p>
-    </footer>
+<script src="script.js"></script>
 </body>
 </html>
