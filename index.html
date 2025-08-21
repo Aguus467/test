@@ -1,27 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>F</title>
-  <script>
-    window.onload = function() {
-      // Ruta del archivo PDF (debe estar en la misma carpeta que este HTML)
-      const url = "archivo.pdf";
-
-      // Crear link invisible
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = ""; // Nombre sugerido al descargar
-      document.body.appendChild(a);
-      a.click();
-
-      // Eliminar el link
-      a.remove();
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deportes Live</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1></h1>
-  <p></p>
+    <header>
+        <h1>Deportes Live</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="live.html">Partidos en Vivo</a>
+            <a href="contact.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Bienvenido a Deportes Live</h2>
+        <p>Mira los mejores partidos en vivo desde aquí.</p>
+
+        <section>
+            <h3>Partidos Destacados</h3>
+            <ul>
+                <li><a href="live.html#partido1">Fútbol: Boca vs River</a></li>
+                <li><a href="live.html#partido2">Básquet: Lakers vs Celtics</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Deportes Live</p>
+    </footer>
 </body>
 </html>
