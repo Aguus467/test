@@ -21,7 +21,7 @@
       {
         "id": 1,
         "nombre": "ESPN Premium",
-        "imagenUrl": "https://p.alangulotv.blog/ESPNPREMIUM",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/jfkf",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=espnpremium",
           "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
@@ -32,7 +32,7 @@
       {
         "id": 2,
         "nombre": "TNT SPORTS",
-        "imagenUrl": "https://p.alangulotv.blog/TNTSPORTS",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/lghi",
         "urls": [
           "https://streamtp11.com/global1.php?stream=tntsports",
           "https://bestleague.one/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
@@ -43,7 +43,7 @@
       {
         "id": 3,
         "nombre": "TyC Sports",
-        "imagenUrl": "https://p.alangulotv.blog/TYCSPORTS",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/fefm",
         "urls": [
           "https://streamtp11.com/global1.php?stream=tycsports",
           "https://tvlibreonline.org/html/fl/?get=VHlDU3BvcnQ",
@@ -54,7 +54,7 @@
       {
         "id": 4,
         "nombre": "ESPN 1",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/flfm",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=espn",
           "https://nebunexa.co/temp.html?get=RVNQTjJIRA",
@@ -65,7 +65,7 @@
       {
         "id": 5,
         "nombre": "ESPN 2",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN2",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/gime",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=espn2",
           "https://nebunexa.co/temp.html?get=RVNQTjJfQXJn&lang=1",
@@ -76,7 +76,7 @@
       {
         "id": 6,
         "nombre": "ESPN 3",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN3",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/fkee",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=espn3",
           "https://nebunexa.co/temp.html?get=RVNQTjM&lang=1",
@@ -87,7 +87,7 @@
       {
         "id": 7,
         "nombre": "ESPN 4",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN4",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/kegk",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=espn4",
           "https://nebunexa.co/temp.html?get=RVNQTkhE&lang=1",
@@ -131,7 +131,7 @@
       {
         "id": 11,
         "nombre": "Fox Sports",
-        "imagenUrl": "https://p.alangulotv.blog/FOXSPORTS",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/lghi",
         "urls": [
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRz&lang=1",
           "https://nebunexa.co/temp.html?get=Rm94U3BvcnRz&lang=1",
@@ -164,7 +164,7 @@
       {
         "id": 14,
         "nombre": "DIRECTV Sports",
-        "imagenUrl": "https://p.alangulotv.blog/DIRECTV",
+        "imagenUrl": "https://images.infutbol.site/tvnetworks/klji",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=dsports",
           "https://streamtpglobal.com/global1.php?stream=dsports",
@@ -875,3 +875,4 @@
     ]
   }
 ]
+
