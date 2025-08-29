@@ -838,24 +838,26 @@
     "seccionTitulo": "Miscelaneos (en construccion)",
     "canales": [
       {
-        "nombre": "VTV",
-        "imagenUrl": "https://p.alangulotv.blog/VTV",
+        "id": 83,
+        "nombre": "Cartoon Network",
+        "imagenUrl": "https://www.citypng.com/public/uploads/preview/cn-cartoon-network-black-logo-png-image-7358116966105378kmbt8c75i.png",
         "urls": [
-          "https://nebunexa.co/temp.html?get=VlRWX0hE&lang=1"
+          "https://bestleague.one/cvatt.html?get=Q2FydG9vbk5ldHdvcms=&lang=1"
         ]
       },
       {
-        "nombre": "VTV PLUS",
-        "imagenUrl": "https://p.alangulotv.blog/VTVPLUS",
+        "id": 84,
+        "nombre": "Nickelodeon",
+        "imagenUrl": "https://th.bing.com/th/id/R.12d0eb2695ffdc45d3d5e730d1f4cc64?rik=GZk0JFqz1Cd51Q&riu=http%3a%2f%2flofrev.net%2fwp-content%2fphotos%2f2016%2f06%2fnickelodeon-logo.jpg&ehk=PFM1aLpqYy0Tf1Nx5Yv0radWVl5C%2fVUCjAaxo3kr5LU%3d&risl=&pid=ImgRaw&r=0",
         "urls": [
-          "https://la14hd.com/vivo/canales.php?stream=vtvplus"
+          "https://bestleague.one/cvatt.html?get=Tmlja2Vsb2Rlb24=&lang=1"
         ]
       },
       {
-        "nombre": "NACIONAL- PEÑAROL (DISNEY)",
-        "imagenUrl": "https://alangulotv.blog/diseny-plus",
+        "nombre": "Disney Channel",
+        "imagenUrl": "https://toppng.com/uploads/preview/disney-channel-logosu-90s-disney-channel-logo-115631907539uzyxhua3f.png",
         "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney15"
+          "https://bestleague.one/cvatt.html?get=Tmlja2Vsb2Rlb24=&lang=1"
         ]
       },
       {
@@ -875,5 +877,6 @@
     ]
   }
 ]
+
 
 
