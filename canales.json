@@ -901,7 +901,7 @@
     ]
   },
   {
-    "seccionTitulo": "Plataformas populares (proximamente)",
+    "seccionTitulo": "Plataformas populares",
     "canales": [
       {
         "id": 89,
@@ -994,5 +994,6 @@
     ]
   }
 ]
+
 
 
