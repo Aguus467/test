@@ -969,9 +969,18 @@
         "urls": [
           "https://rusticotv-hd.com/"
         ]
+      },
+      {
+        "id": 98,
+        "nombre": "Linkedin",
+        "imagenUrl": "https://th.bing.com/th/id/R.0560d59ebc6e67ea2a04fa2632b755ba?rik=YLCfTTE4RgdUsg&pid=ImgRaw&r=0",
+        "urls": [
+          "https://linkedin.com/"
+        ]
       }
     ]
   }
 ]
+
 
 
