@@ -105,7 +105,7 @@
       {
         "id": 8,
         "nombre": "ESPN 5",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN",
+        "imagenUrl": "https://tvlivre.online/img/espn5.webp",
         "urls": [
           "https://bestleague.one/cvatt.html?get=RVNQTjQ=&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espn5",
@@ -117,7 +117,7 @@
       {
         "id": 9,
         "nombre": "ESPN 6",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN",
+        "imagenUrl": "https://tvlivre.online/img/espn6.webp",
         "urls": [
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRzM19VWQ==&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espn6",
@@ -129,7 +129,7 @@
       {
         "id": 10,
         "nombre": "ESPN 7",
-        "imagenUrl": "https://p.alangulotv.blog/ESPN",
+        "imagenUrl": "https://tvlivre.online/img/espn7.png",
         "urls": [
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espn7",
@@ -177,7 +177,7 @@
       {
         "id": 14,
         "nombre": "DIRECTV Sports",
-        "imagenUrl": "https://images.infutbol.site/tvnetworks/klji",
+        "imagenUrl": "https://tvlivre.online/img/dsports.webp",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=dsports",
           "https://streamtpglobal.com/global1.php?stream=dsports",
@@ -187,7 +187,7 @@
       {
         "id": 15,
         "nombre": "DIRECTV Sports 2",
-        "imagenUrl": "https://p.alangulotv.blog/DIRECTV2",
+        "imagenUrl": "https://tvlivre.online/img/dsports2.webp",
         "urls": [
           "https://la14hd.com/vivo/canal.php?stream=dsports2",
           "https://streamtpglobal.com/global1.php?stream=dsports2",
@@ -197,7 +197,7 @@
       {
         "id": 16,
         "nombre": "DIRECTV Sports Plus",
-        "imagenUrl": "https://p.alangulotv.blog/DIRECTVPLUS",
+        "imagenUrl": "https://tvlivre.online/img/dsportsplus.webp",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=dsportsplus",
           "https://embed.ksdjugfsddeports.fun/embed2/directvsportsplus.html",
@@ -563,7 +563,7 @@
     {
       "id": 53,
       "nombre": "TV Pública",
-      "imagenUrl": "https://p.alangulotv.blog/TVP",
+      "imagenUrl": "https://tvlivre.online/img/tvpublica.webp",
       "urls": [
         "https://nebunexa.co/temp.html?get=Q2FuYWw3&lang=1",
         "https://streamtpglobal.com/global1.php?stream=tv_publica",
@@ -574,7 +574,7 @@
     {
       "id": 54,
       "nombre": "Telefe",
-      "imagenUrl": "https://p.alangulotv.blog/TELEFE",
+      "imagenUrl": "https://tvlivre.online/img/telefe.png",
       "urls": [
         "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
         "https://tvlibreonline.org/en-vivo/telefe/hl.html",
@@ -994,4 +994,5 @@
     ]
   }
 ]
+
 
