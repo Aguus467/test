@@ -565,6 +565,7 @@
       "nombre": "TV Pública",
       "imagenUrl": "https://tvlivre.online/img/tvpublica.webp",
       "urls": [
+        "https://streamtpglobal.com/global1.php?stream=tv_publica",
         "https://nebunexa.co/temp.html?get=Q2FuYWw3&lang=1",
         "https://streamtpglobal.com/global1.php?stream=tv_publica",
         "https://embed.ksdjugfsddeports.fun/embed2/tvpublica.html",
@@ -576,6 +577,7 @@
       "nombre": "Telefe",
       "imagenUrl": "https://tvlivre.online/img/telefe.png",
       "urls": [
+        "https://tvlivre.online/html/dash.html?get=aHR0cHM6Ly90ZWxlZmV2aWFjb20xLmFrYW1haXplZC5uZXQvaGxzL2xpdmUvMjAzNzk4Ny92aWFjb21JTlQvVE9LL21hc3Rlci13aWxkMS5tM3U4",
         "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
         "https://tvlibreonline.org/en-vivo/telefe/hl.html",
         "https://streamtpglobal.com/global1.php?stream=telefe",
@@ -994,6 +996,7 @@
     ]
   }
 ]
+
 
 
 
