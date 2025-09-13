@@ -159,7 +159,7 @@
       {
         "id": 12,
         "nombre": "Fox Sports 2",
-        "imagenUrl": "https://p.alangulotv.blog/FOXSPORTS2",
+        "imagenUrl": "https://sixdayslater.com/img/foxsports2.png",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=fox2ar",
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRzMkhE&lang=1",
@@ -171,7 +171,7 @@
       {
         "id": 13,
         "nombre": "Fox Sports 3",
-        "imagenUrl": "https://p.alangulotv.blog/FOXSPORTS3",
+        "imagenUrl": "https://sixdayslater.com/img/foxsports3.png",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=fox3ar",
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRzM0hE&lang=1",
@@ -183,7 +183,7 @@
       {
         "id": 14,
         "nombre": "DIRECTV Sports",
-        "imagenUrl": "https://tvlivre.online/img/dsports.webp",
+        "imagenUrl": "https://sixdayslater.com/img/dsports.webp",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=dsports",
           "https://la14hd.com/vivo/canales.php?stream=dsports",
@@ -193,7 +193,7 @@
       {
         "id": 15,
         "nombre": "DIRECTV Sports 2",
-        "imagenUrl": "https://tvlivre.online/img/dsports2.webp",
+        "imagenUrl": "https://sixdayslater.com/img/dsports2.webp",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=dsports2",
           "https://la14hd.com/vivo/canal.php?stream=dsports2",
@@ -203,7 +203,7 @@
       {
         "id": 16,
         "nombre": "DIRECTV Sports Plus",
-        "imagenUrl": "https://tvlivre.online/img/dsportsplus.webp",
+        "imagenUrl": "https://sixdayslater.com/img/dsportsplus.webp",
         "urls": [
           "https://streamtpglobal.com/global1.php?stream=dsportsplus",
           "https://embed.ksdjugfsddeports.fun/embed2/directvsportsplus.html",
@@ -212,221 +212,221 @@
       }
     ]
   },
-  {
-    "seccionTitulo": "Disney+",
-    "canales": [
-      {
-        "id": 17,
-        "nombre": "Disney 1",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney1",
-          "https://la14hd.com/vivo/canales.php?stream=disney1",
-          "https://streamdp1.xyz/global1.php?channel=disney1"
-        ]
-      },
-      {
-        "id": 18,
-        "nombre": "Disney 2",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney2",
-          "https://la14hd.com/vivo/canales.php?stream=disney2",
-          "https://streamdp1.xyz/global1.php?channel=disney2"
-        ]
-      },
-      {
-        "id": 19,
-        "nombre": "Disney 3",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney3",
-          "https://la14hd.com/vivo/canales.php?stream=disney3",
-          "https://streamdp1.xyz/global1.php?channel=disney3"
-        ]
-      },
-      {
-        "id": 20,
-        "nombre": "Disney 4",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney4",
-          "https://la14hd.com/vivo/canales.php?stream=disney4",
-          "https://streamdp1.xyz/global1.php?channel=disney4"
-        ]
-      },
-      {
-        "id": 21,
-        "nombre": "Disney 5",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney5",
-          "https://la14hd.com/vivo/canales.php?stream=disney5",
-          "https://streamdp1.xyz/global1.php?channel=disney5"
-        ]
-      },
-      {
-        "id": 22,
-        "nombre": "Disney 6",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney6",
-          "https://la14hd.com/vivo/canales.php?stream=disney6",
-          "https://streamdp1.xyz/global1.php?channel=disney6"
-        ]
-      },
-      {
-        "id": 23,
-        "nombre": "Disney 7",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney7",
-          "https://la14hd.com/vivo/canales.php?stream=disney7",
-          "https://streamdp1.xyz/global1.php?channel=disney7"
-        ]
-      },
-      {
-        "id": 24,
-        "nombre": "Disney 8",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney8",
-          "https://la14hd.com/vivo/canales.php?stream=disney8",
-          "https://streamdp1.xyz/global1.php?channel=disney8"
-        ]
-      },
-      {
-        "id": 25,
-        "nombre": "Disney 9",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney9",
-          "https://la14hd.com/vivo/canales.php?stream=disney9",
-          "https://streamdp1.xyz/global1.php?channel=disney9"
-        ]
-      },
-      {
-        "id": 26,
-        "nombre": "Disney 10",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney10",
-          "https://la14hd.com/vivo/canales.php?stream=disney10",
-          "https://streamdp1.xyz/global1.php?channel=disney10"
-        ]
-      },
-      {
-        "id": 27,
-        "nombre": "Disney 11",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney11",
-          "https://la14hd.com/vivo/canales.php?stream=disney11",
-          "https://streamdp1.xyz/global1.php?channel=disney11"
-        ]
-      },
-      {
-        "id": 28,
-        "nombre": "Disney 12",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney12",
-          "https://la14hd.com/vivo/canales.php?stream=disney12",
-          "https://streamdp1.xyz/global1.php?channel=disney12"
-        ]
-      },
-      {
-        "id": 29,
-        "nombre": "Disney 13",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney13",
-          "https://la14hd.com/vivo/canales.php?stream=disney13",
-          "https://streamdp1.xyz/global1.php?channel=disney13"
-        ]
-      },
-      {
-        "id": 30,
-        "nombre": "Disney 14",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney14",
-          "https://la14hd.com/vivo/canales.php?stream=disney14",
-          "https://streamdp1.xyz/global1.php?channel=disney14"
-        ]
-      },
-      {
-        "id": 31,
-        "nombre": "Disney 15",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney15",
-          "https://la14hd.com/vivo/canales.php?stream=disney15",
-          "https://streamdp1.xyz/global1.php?channel=disney15"
-        ]
-      },
-      {
-        "id": 32,
-        "nombre": "Disney 16",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney16",
-          "https://la14hd.com/vivo/canales.php?stream=disney16",
-          "https://streamdp1.xyz/global1.php?channel=disney16"
-        ]
-      },
-      {
-        "id": 33,
-        "nombre": "Disney 17",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney17",
-          "https://la14hd.com/vivo/canales.php?stream=disney17",
-          "https://streamdp1.xyz/global1.php?channel=disney17"
-        ]
-      },
-      {
-        "id": 34,
-        "nombre": "Disney 18",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney18",
-          "https://la14hd.com/vivo/canales.php?stream=disney18",
-          "https://streamdp1.xyz/global1.php?channel=disney18"
-        ]
-      },
-      {
-        "id": 35,
-        "nombre": "Disney 19",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney19",
-          "https://la14hd.com/vivo/canales.php?stream=disney19",
-          "https://streamdp1.xyz/global1.php?channel=disney19"
-        ]
-      },
-      {
-        "id": 36,
-        "nombre": "Disney 20",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney20",
-          "https://la14hd.com/vivo/canales.php?stream=disney20",
-          "https://streamdp1.xyz/global1.php?channel=disney20"
-        ]
-      },
-      {
-        "id": 37,
-        "nombre": "Disney 21",
-        "imagenUrl": "https://p.alangulotv.blog/disneyplus",
-        "urls": [
-          "https://streamtpglobal.com/global1.php?stream=disney21",
-          "https://la14hd.com/vivo/canales.php?stream=disney21",
-          "https://streamdp1.xyz/global1.php?channel=disney21"
-        ]
-      }
-    ]
-  },
+ {
+  "seccionTitulo": "Disney+",
+  "canales": [
+    {
+      "id": 17,
+      "nombre": "Disney 1",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney1",
+        "https://la14hd.com/vivo/canales.php?stream=disney1",
+        "https://streamdp1.xyz/global1.php?channel=disney1"
+      ]
+    },
+    {
+      "id": 18,
+      "nombre": "Disney 2",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney2",
+        "https://la14hd.com/vivo/canales.php?stream=disney2",
+        "https://streamdp1.xyz/global1.php?channel=disney2"
+      ]
+    },
+    {
+      "id": 19,
+      "nombre": "Disney 3",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney3",
+        "https://la14hd.com/vivo/canales.php?stream=disney3",
+        "https://streamdp1.xyz/global1.php?channel=disney3"
+      ]
+    },
+    {
+      "id": 20,
+      "nombre": "Disney 4",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney4",
+        "https://la14hd.com/vivo/canales.php?stream=disney4",
+        "https://streamdp1.xyz/global1.php?channel=disney4"
+      ]
+    },
+    {
+      "id": 21,
+      "nombre": "Disney 5",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney5",
+        "https://la14hd.com/vivo/canales.php?stream=disney5",
+        "https://streamdp1.xyz/global1.php?channel=disney5"
+      ]
+    },
+    {
+      "id": 22,
+      "nombre": "Disney 6",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney6",
+        "https://la14hd.com/vivo/canales.php?stream=disney6",
+        "https://streamdp1.xyz/global1.php?channel=disney6"
+      ]
+    },
+    {
+      "id": 23,
+      "nombre": "Disney 7",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney7",
+        "https://la14hd.com/vivo/canales.php?stream=disney7",
+        "https://streamdp1.xyz/global1.php?channel=disney7"
+      ]
+    },
+    {
+      "id": 24,
+      "nombre": "Disney 8",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney8",
+        "https://la14hd.com/vivo/canales.php?stream=disney8",
+        "https://streamdp1.xyz/global1.php?channel=disney8"
+      ]
+    },
+    {
+      "id": 25,
+      "nombre": "Disney 9",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney9",
+        "https://la14hd.com/vivo/canales.php?stream=disney9",
+        "https://streamdp1.xyz/global1.php?channel=disney9"
+      ]
+    },
+    {
+      "id": 26,
+      "nombre": "Disney 10",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney10",
+        "https://la14hd.com/vivo/canales.php?stream=disney10",
+        "https://streamdp1.xyz/global1.php?channel=disney10"
+      ]
+    },
+    {
+      "id": 27,
+      "nombre": "Disney 11",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney11",
+        "https://la14hd.com/vivo/canales.php?stream=disney11",
+        "https://streamdp1.xyz/global1.php?channel=disney11"
+      ]
+    },
+    {
+      "id": 28,
+      "nombre": "Disney 12",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney12",
+        "https://la14hd.com/vivo/canales.php?stream=disney12",
+        "https://streamdp1.xyz/global1.php?channel=disney12"
+      ]
+    },
+    {
+      "id": 29,
+      "nombre": "Disney 13",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney13",
+        "https://la14hd.com/vivo/canales.php?stream=disney13",
+        "https://streamdp1.xyz/global1.php?channel=disney13"
+      ]
+    },
+    {
+      "id": 30,
+      "nombre": "Disney 14",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney14",
+        "https://la14hd.com/vivo/canales.php?stream=disney14",
+        "https://streamdp1.xyz/global1.php?channel=disney14"
+      ]
+    },
+    {
+      "id": 31,
+      "nombre": "Disney 15",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney15",
+        "https://la14hd.com/vivo/canales.php?stream=disney15",
+        "https://streamdp1.xyz/global1.php?channel=disney15"
+      ]
+    },
+    {
+      "id": 32,
+      "nombre": "Disney 16",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney16",
+        "https://la14hd.com/vivo/canales.php?stream=disney16",
+        "https://streamdp1.xyz/global1.php?channel=disney16"
+      ]
+    },
+    {
+      "id": 33,
+      "nombre": "Disney 17",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney17",
+        "https://la14hd.com/vivo/canales.php?stream=disney17",
+        "https://streamdp1.xyz/global1.php?channel=disney17"
+      ]
+    },
+    {
+      "id": 34,
+      "nombre": "Disney 18",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney18",
+        "https://la14hd.com/vivo/canales.php?stream=disney18",
+        "https://streamdp1.xyz/global1.php?channel=disney18"
+      ]
+    },
+    {
+      "id": 35,
+      "nombre": "Disney 19",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney19",
+        "https://la14hd.com/vivo/canales.php?stream=disney19",
+        "https://streamdp1.xyz/global1.php?channel=disney19"
+      ]
+    },
+    {
+      "id": 36,
+      "nombre": "Disney 20",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney20",
+        "https://la14hd.com/vivo/canales.php?stream=disney20",
+        "https://streamdp1.xyz/global1.php?channel=disney20"
+      ]
+    },
+    {
+      "id": 37,
+      "nombre": "Disney 21",
+      "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.tno4ozfm3LlImKVwuX5e5AHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "urls": [
+        "https://streamtpglobal.com/global1.php?stream=disney21",
+        "https://la14hd.com/vivo/canales.php?stream=disney21",
+        "https://streamdp1.xyz/global1.php?channel=disney21"
+      ]
+    }
+  ]
+},
   {
     "seccionTitulo": "Ligas y Canales",
     "canales": [
@@ -1003,6 +1003,7 @@
     ]
   }
 ]
+
 
 
 
