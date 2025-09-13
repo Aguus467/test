@@ -49,6 +49,7 @@
         "nombre": "TyC Sports",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/fefm",
         "urls": [
+          "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvVFlDU3BvcnRzL2xpdmVfZGFzaF9jbGQvVFlDU3BvcnRzLm1wZA==&key=NTNkMGNmNmMxZDQ5YzE2ZjUxODBmODZlMTg3MGIwMGY=&key2=N2ViNjc0M2I1ZjQ0YjUyYmEyN2M4ODIyOWM4YzdhZTI=",
           "https://streamtp22.com/global1.php?stream=tycsports",
           "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvVFlDU3BvcnRzL2xpdmVfZGFzaF9jbGQvVFlDU3BvcnRzLm1wZA==&key=NTNkMGNmNmMxZDQ5YzE2ZjUxODBmODZlMTg3MGIwMGY=&key2=N2ViNjc0M2I1ZjQ0YjUyYmEyN2M4ODIyOWM4YzdhZTI=",
           "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvVFlDU3BvcnRzL2xpdmVfZGFzaF9jbGQvVFlDU3BvcnRzLm1wZA==&key=NTNkMGNmNmMxZDQ5YzE2ZjUxODBmODZlMTg3MGIwMGY=&key2=N2ViNjc0M2I1ZjQ0YjUyYmEyN2M4ODIyOWM4YzdhZTI=",
@@ -63,6 +64,7 @@
         "nombre": "ESPN 1",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/flfm",
         "urls": [
+          "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvRVNQTi9saXZlX2Rhc2hfY2xkL0VTUE4ubXBk&key=NmQyNDNlYmQ3YTU3YmVhNGI0YjA1MmFlMTNmNGMwNTE=&key2=NWMxOTI1ODc5ZGU4NzNkNDNiN2MyNTkyNTkwMjUzOWI=",
           "https://streamtp22.com/global1.php?stream=espn",
           "https://bestleague.one/cvatt.html?get=RVNQTjJIRA&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espn",
@@ -76,6 +78,7 @@
         "nombre": "ESPN 2",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/gime",
         "urls": [
+          "https://la14hd.com/vivo/canales.php?stream=espn2",
           "https://streamtp22.com/global1.php?stream=espn2",
           "https://bestleague.one/cvatt.html?get=RVNQTjJfQXJn&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espn2",
@@ -149,6 +152,7 @@
         "nombre": "Fox Sports",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/fkeh",
         "urls": [
+          "https://la14hd.com/vivo/canales.php?stream=foxsports",
           "https://streamtp11.com/global1.php?stream=fox1ar",
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRz&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=foxsports2",
@@ -1014,6 +1018,7 @@
     ]
   }
 ]
+
 
 
 
