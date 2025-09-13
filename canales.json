@@ -904,10 +904,18 @@
       },
       {
         "id": 88,
-        "nombre": "Racing vs Godoy Cruz 2014",
-        "imagenUrl": "https://www.bing.com/th/id/OIP.DNi1dLFqfN0XGNwSYlR27wHaEK?w=240&h=211&c=8&rs=1&qlt=70&o=7&cb=thws4&pid=3.1&rm=3",
+        "nombre": "Rapidos y Furiosos 8",
+        "imagenUrl": "https://image.tmdb.org/t/p/w300/vXntMTWnh3QRmbY8z53eUlQKmQB.jpg",
         "urls": [
-          "https://www.youtube.com/embed/vBjn6CaeLTA"
+          "https://habetar.com/e/ixe1fjpxd1hn"
+        ]
+      },
+      {
+        "id": 108,
+        "nombre": "Dragon Ball Super: Super Hero",
+        "imagenUrl": "https://image.tmdb.org/t/p/w300/dZH9gp0XQnjzYRYMGSwateGIXlB.jpg",
+        "urls": [
+          "https://xenolyzb.com/e/jf0ftqylljt3"
         ]
       }
     ]
@@ -1006,6 +1014,7 @@
     ]
   }
 ]
+
 
 
 
