@@ -719,7 +719,7 @@
         "nombre": "Boxeo - Canelo Alvarez",
         "imagenUrl": "https://th.bing.com/th/id/OIF.GZ04cEzQteDWaNbizq1JpA?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
         "urls": [
-          " https://voodc.com/embed/85818b98a4889a8a847a85959f8a988a8680.html",
+          "https://voodc.com/embed/85818b98a4889a8a847a85959f8a988a8680.html",
           ""
         ]
       }
@@ -1027,6 +1027,7 @@
     ]
   }
 ]
+
 
 
 
