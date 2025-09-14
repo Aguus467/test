@@ -711,7 +711,16 @@
         "imagenUrl": "https://files.kick.com/images/user/78285062/profile_image/conversion/ce943617-25af-4c32-a4b4-65d7f316fd84-fullsize.webp",
         "urls": [
           "https://kick.com/lucaiann",
-          " "
+          ""
+        ]
+      },
+      {
+        "id": 187,
+        "nombre": "Boxeo - Canelo Alvarez",
+        "imagenUrl": "https://th.bing.com/th/id/OIF.GZ04cEzQteDWaNbizq1JpA?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "urls": [
+          " https://voodc.com/embed/85818b98a4889a8a847a85959f8a988a8680.html",
+          ""
         ]
       }
     ]
@@ -1018,6 +1027,7 @@
     ]
   }
 ]
+
 
 
 
