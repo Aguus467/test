@@ -707,10 +707,10 @@
     "canales": [
       {
         "id": 67,
-        "nombre": "Proximamente.",
-        "imagenUrl": "https://cdn-icons-png.flaticon.com/512/5229/5229336.png",
+        "nombre": "Lucas Lan ft La Ultima Siesta",
+        "imagenUrl": "https://files.kick.com/images/user/78285062/profile_image/conversion/ce943617-25af-4c32-a4b4-65d7f316fd84-fullsize.webp",
         "urls": [
-          " ",
+          "https://kick.com/lucaiann",
           " "
         ]
       }
@@ -1018,6 +1018,7 @@
     ]
   }
 ]
+
 
 
 
