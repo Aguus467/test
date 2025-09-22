@@ -724,7 +724,7 @@
         "nombre": "Balon De Oro",
         "imagenUrl": "https://tse1.mm.bing.net/th/id/OIP.yFY94rT1yAC22LMIDPR77AHaEn?rs=1&pid=ImgDetMain&o=7&rm=3",
         "urls": [
-          "https://www.youtube.com/embed/FhX3O8Z1RMI",
+          "https://www.youtube.com/watch?app=mobile&v=FhX3O8Z1RMI",
           ""
         ]
       }
@@ -1032,6 +1032,7 @@
     ]
   }
 ]
+
 
 
 
