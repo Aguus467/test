@@ -2,7 +2,7 @@
   "allowed_domains": [
     "https://angulismotv.pages.dev/.*",
     "https://x.com/.*",
-    "https://twitch.com/.*",
+    "https://twitch.tv/.*",
     "https://www.youtube.com/.*",
     "https://nowevents.xyz/.*",
     "https://tvlibreonline.org/.*",
