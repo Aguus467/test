@@ -13,6 +13,7 @@
     "https://www.netflix.com/.*",
     "https://www.linkedin.com/.*",
     "https://rusticotv-hd.com/.*",
+    "https://t.co/j26fz2ud7h.*",
      "https://rusticotv.de/.*"
   ],
   "external_domains": [
