@@ -732,6 +732,20 @@
       }
     ]
   },
+  {
+    "seccionTitulo": "Donaciones",
+    "canales": [
+      {
+        "id": 199,
+        "nombre": "Cafecito",
+        "imagenUrl": "https://tse3.mm.bing.net/th/id/OIP.lsOcKOD4TbVuz7B6-7SmNgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+        "urls": [
+          "https://cafecito.app/falsillo",
+          ""
+        ]
+      }
+    ]
+  },
  {
   "seccionTitulo": "Ligas USA",
   "canales": [
@@ -925,9 +939,17 @@
       {
         "id": 88,
         "nombre": "Univision",
-        "imagenUrl": "",
+        "imagenUrl": "https://www.pngall.com/wp-content/uploads/15/Univision-Logo-PNG-Picture-300x225.png",
         "urls": [
 "https://daddylivestream.com/embed/stream-132.php"
+        ]
+      },
+      {
+        "id": 198,
+        "nombre": "Univision - 2",
+        "imagenUrl": "https://www.pngall.com/wp-content/uploads/15/Univision-Logo-PNG-Picture-300x225.png",
+        "urls": [
+"https://tvlibre.cc/en-vivo/univision/"
         ]
       },
       {
@@ -1034,6 +1056,7 @@
     ]
   }
 ]
+
 
 
 
