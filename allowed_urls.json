@@ -16,11 +16,14 @@
     "https://daddylivestream.com/embed/stream-132.php*",
     "https://www.linkedin.com/.*",
     "https://rusticotv-hd.com/.*",
-    "https://t.co/j26fz2ud7h.*",
+    "https://t.co/j26fz2ud7h/.*",
+    "https://tvlibre.cc/en-vivo/univision/.*",
+    "https://cafecito.app/falsillo.*",
      "https://rusticotv.de/.*"
   ],
   "external_domains": [
     "https://www.twitch.tv/.*",
+    "https://cafecito.app/falsillo.*",
     "https://player.twitch.tv/.*"
   ]
 }
