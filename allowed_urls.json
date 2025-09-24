@@ -3,6 +3,8 @@
     "https://angulismotv.pages.dev/.*",
     "https://x.com/.*",
     "https://www.google.com/.*",
+    "https://www.promiedos.com.ar/.*", 
+    "https://www.promiedos.com.ar/game*",
     "https://twitch.tv/.*",
     "https://m.twitch.tv/.*",
     "https://www.youtube.com/.*",
@@ -23,7 +25,7 @@
   ],
   "external_domains": [
     "https://www.twitch.tv/.*",
-    "https://cafecito.app/falsillo.*",
+    "https://cafecito.app/falsillo*",
     "https://player.twitch.tv/.*"
   ]
 }
