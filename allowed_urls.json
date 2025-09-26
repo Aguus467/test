@@ -11,6 +11,7 @@
     "https://nowevents.xyz/.*",
     "https://tvlibreonline.org/.*",
     "https://www.hbomax.com/.*",
+    "https://nowevents.xyz/eventos/eventos.html*",
     "https://www.disneyplus.com/.*",
     "https://www.netflix.com/.*",
     "https://tvlibre.cc/eventos/.*",
