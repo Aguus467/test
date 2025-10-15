@@ -40,7 +40,7 @@
         "nombre": "ESPN Premium (opc 2)",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/jfkf",
         "urls": [
-          "https://mg.bestleague.world/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
+          "https://dot.bestleague.world/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espnpremium",
           "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvRVNQTlByZW1pdW0vbGl2ZV9kYXNoX2NsZC9FU1BOUHJlbWl1bS5tcGQ=&key=Zjg5NDNkMTE0ZTI1MTUxYzhhZTRmNjEyMzUxZDVhNWY=&key2=N2YzNGM5YTcwYzgzNjAyMGNiYzMyNzNjNDI3ZmYyNzc=",
           "https://mg.bestleague.world/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
@@ -73,7 +73,7 @@
         "nombre": "TNT SPORTS (opc 2)",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/lghi",
         "urls": [
-          "https://mg.bestleague.world/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1",
+          "https://dot.bestleague.world/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=tntsports",
 "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvVE5UU3BvcnRzL2xpdmVfZGFzaF9jbGQvVE5UU3BvcnRzLm1wZA==&key=YzI2MzcxMDc5ZTg5MjA2ZDYzZTE0NTQ4OTNlODgxYjY=&key2=YWRhYzNjM2IzNzc0ZTQxMWQ2ZTQ5NzI0ZjdlYTBlZTM=",
           "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jZG4udHJpbWkuY29tLmFyL2xpdmUvc20tbGl2ZS9FU1BOX1BSRU1fQktQNC9zYV9saXZlX2Rhc2hfbGwvRVNQTl9QUkVNX0JLUDQubXBk&key=M2I2ZmE2NTI0ZDI1NGM5NmI1YTEwMWM4MTE4ZDNhZTY=&key2=ZDVlMmE5ZDNlMmM1YWE4NTg3ZWFkYTI4MWFjZWY2YmM=",
@@ -211,7 +211,7 @@
       {
         "id": 12,
         "nombre": "Fox Sports 2",
-        "imagenUrl": "https://sixdayslater.com/img/foxsports2.png",
+        "imagenUrl": "https://bestleague.world/img/foxsports2.png",
         "urls": [
           "https://streamtp22.com/global1.php?stream=fox2ar",
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRzMkhE&lang=1",
@@ -223,7 +223,7 @@
       {
         "id": 13,
         "nombre": "Fox Sports 3",
-        "imagenUrl": "https://sixdayslater.com/img/foxsports3.png",
+        "imagenUrl": "https://bestleague.world/img/foxsports3.png",
         "urls": [
           "https://streamtp22.com/global1.php?stream=fox3ar",
           "https://bestleague.one/cvatt.html?get=Rm94U3BvcnRzM0hE&lang=1",
@@ -235,7 +235,7 @@
       {
         "id": 14,
         "nombre": "DIRECTV Sports",
-        "imagenUrl": "https://sixdayslater.com/img/dsports.webp",
+        "imagenUrl": "https://bestleague.world/img/dsports.webp",
         "urls": [
           "https://streamtp22.com/global1.php?stream=dsports",
           "https://la14hd.com/vivo/canales.php?stream=dsports",
@@ -245,7 +245,7 @@
       {
         "id": 15,
         "nombre": "DIRECTV Sports 2",
-        "imagenUrl": "https://sixdayslater.com/img/dsports2.webp",
+        "imagenUrl": "https://bestleague.world/img/dsports2.webp",
         "urls": [
           "https://streamtp22.com/global1.php?stream=dsports2",
           "https://la14hd.com/vivo/canal.php?stream=dsports2",
@@ -255,7 +255,7 @@
       {
         "id": 16,
         "nombre": "DIRECTV Sports Plus",
-        "imagenUrl": "https://sixdayslater.com/img/dsportsplus.webp",
+        "imagenUrl": "https://bestleague.world/img/dsportsplus.webp",
         "urls": [
           "https://streamtp22.com/global1.php?stream=dsportsplus",
           "https://embed.ksdjugfsddeports.fun/embed2/directvsportsplus.html",
@@ -495,7 +495,7 @@
       {
         "id": 38,
         "nombre": "WIN Sports",
-        "imagenUrl": "https://sixdayslater.com/img/win.png",
+        "imagenUrl": "https://bestleague.world/img/win.png",
         "urls": [
           "https://streamtp22.com/global1.php?stream=winsports",
           "https://streamtpglobal.com/global1.php?stream=dsports",
@@ -505,7 +505,7 @@
       {
         "id": 39,
         "nombre": "WIN Sports+",
-        "imagenUrl": "https://sixdayslater.com/img/winsports.webp",
+        "imagenUrl": "https://bestleague.world/img/winsports.webp",
         "urls": [
           "https://streamtp22.com/global1.php?stream=dsports",
           "https://la14hd.com/vivo/canales.php?stream=winsports2",
@@ -525,7 +525,7 @@
       {
         "id": 41,
         "nombre": "VTV",
-        "imagenUrl": "https://sixdayslater.com/img/vtv.webp",
+        "imagenUrl": "https://bestleague.world/img/vtv.webp",
         "urls": [
           "https://nebunexa.co/temp.html?get=VlRWX0hE&lang=1"
         ]
@@ -533,7 +533,7 @@
       {
         "id": 42,
         "nombre": "VTV PLUS",
-        "imagenUrl": "https://sixdayslater.com/img/vtvplus.webp",
+        "imagenUrl": "https://bestleague.world/img/vtvplus.webp",
         "urls": [
           "https://la14hd.com/vivo/canales.php?stream=vtvplus"
         ]
@@ -631,9 +631,9 @@
       {
         "id": 53,
         "nombre": "TV Pública",
-        "imagenUrl": "https://sixdayslater.com/img/tvpublica.webp",
+        "imagenUrl": "https://bestleague.world/img/tvpublica.webp",
         "urls": [
-          "https://mg.bestleague.world/cvatt.html?get=Q2FuYWw3&lang=1",
+          "https://dot.bestleague.world/cvatt.html?get=Q2FuYWw3&lang=1",
           "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
           "https://streamtp22.com/global1.php?stream=tv_publica",
           "https://bestleague.one/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
@@ -645,7 +645,7 @@
       {
         "id": 54,
         "nombre": "Telefe",
-        "imagenUrl": "https://sixdayslater.com/img/telefe.png",
+        "imagenUrl": "https://bestleague.world/img/telefe.png",
         "urls": [
           "https://dot.bestleague.world/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
           "https://mg.bestleague.world/cvatt.html?get=VGVsZWZlSEQ=&lang=1",
@@ -660,9 +660,9 @@
     {
       "id": 55,
       "nombre": "America TV",
-      "imagenUrl": "https://sixdayslater.com/img/america.webp",
+      "imagenUrl": "https://bestleague.world/img/america.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=QW1lcmljYVRW&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=QW1lcmljYVRW&lang=1",
         "https://bestleague.one/cvatt.html?get=QW1lcmljYVRW&lang=1",
         "https://tvlibreonline.org/en-vivo/telefe/hl.html",
         "https://streamtpglobal.com/global1.php?stream=telefe",
@@ -672,9 +672,9 @@
     {
       "id": 56,
       "nombre": "Quiero Musica",
-      "imagenUrl": "https://sixdayslater.com/img/quiero.webp",
+      "imagenUrl": "https://bestleague.world/img/quiero.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=UXVpZXJvX0hE&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=UXVpZXJvX0hE&lang=1",
         "https://bestleague.one/cvatt.html?get=UXVpZXJvX0hE&lang=1",
         "https://tvlibreonline.org/en-vivo/telefe/hl.html",
         "https://streamtp22.com/global1.php?stream=telefe",
@@ -684,18 +684,18 @@
     {
       "id": 57,
       "nombre": "El Nueve",
-      "imagenUrl": "https://sixdayslater.com/img/nueve.webp",
+      "imagenUrl": "https://bestleague.world/img/nueve.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=Q2FuYWw5&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=Q2FuYWw5&lang=1",
         "https://bestleague.one/cvatt.html?get=Q2FuYWw5&lang=1"
       ]
     },
     {
       "id": 58,
       "nombre": "El Trece",
-      "imagenUrl": "https://sixdayslater.com/img/eltrece.webp",
+      "imagenUrl": "https://bestleague.world/img/eltrece.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=QXJ0ZWFySEQ&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=QXJ0ZWFySEQ&lang=1",
         "https://bestleague.one/cvatt.html?get=QXJ0ZWFySEQ&lang=1",
         "https://tvlivre.online/html/dash.html?get=aHR0cHM6Ly9saXZlLTAxLTAyLWVsdHJlY2Uudm9kZ2MubmV0L2VsdHJlY2V0di9pbmRleC5tM3U4",
         "https://bestleague.one/cvatt.html?get=QXJ0ZWFySEQ&lang=1"
@@ -704,72 +704,72 @@
     {
       "id": 59,
       "nombre": "Volver",
-      "imagenUrl": "https://sixdayslater.com/img/volver.webp",
+      "imagenUrl": "https://bestleague.world/img/volver.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=Vm9sdmVy&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=Vm9sdmVy&lang=1",
         "https://bestleague.one/cvatt.html?get=Vm9sdmVy&lang=1"
       ]
     },
     {
       "id": 60,
       "nombre": "Encuentro",
-      "imagenUrl": "https://sixdayslater.com/img/encuentro.webp",
+      "imagenUrl": "https://bestleague.world/img/encuentro.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=RW5jdWVudHJv&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=RW5jdWVudHJv&lang=1",
         "https://bestleague.one/cvatt.html?get=RW5jdWVudHJv&lang=1"
       ]
     },
     {
       "id": 61,
       "nombre": "METRO",
-      "imagenUrl": "https://sixdayslater.com/img/metro.png",
+      "imagenUrl": "https://bestleague.world/img/metro.png",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=TWV0cm8&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=TWV0cm8&lang=1",
         "https://bestleague.one/cvatt.html?get=TWV0cm8&lang=1"
       ]
     },
     {
       "id": 62,
       "nombre": "Ciudad Magazine",
-      "imagenUrl": "https://sixdayslater.com/img/ciudad.webp",
+      "imagenUrl": "https://bestleague.world/img/ciudad.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=TWFnYXppbmU=&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=TWFnYXppbmU=&lang=1",
         "https://bestleague.one/cvatt.html?get=TWFnYXppbmU=&lang=1"
       ]
     },
     {
       "id": 63,
       "nombre": "Cronica",
-      "imagenUrl": "https://sixdayslater.com/img/cronica.png",
+      "imagenUrl": "https://bestleague.world/img/cronica.png",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=Q3JvbmljYVRW&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=Q3JvbmljYVRW&lang=1",
         "https://bestleague.one/cvatt.html?get=Q3JvbmljYVRW&lang=1"
       ]
     },
     {
       "id": 64,
       "nombre": "TN",
-      "imagenUrl": "https://sixdayslater.com/img/tn.png",
+      "imagenUrl": "https://bestleague.world/img/tn.png",
       "urls": [
-        "cvatt.html?get=VG9kb05vdGljaWFz&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=VG9kb05vdGljaWFz&lang=1",
         "https://bestleague.one/cvatt.html?get=VG9kb05vdGljaWFz&lang=1"
       ]
     },
     {
       "id": 65,
       "nombre": "A24",
-      "imagenUrl": "https://sixdayslater.com/img/a24.webp",
+      "imagenUrl": "https://bestleague.world/img/a24.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=QW1lcmljYTI0&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=QW1lcmljYTI0&lang=1",
         "https://bestleague.one/cvatt.html?get=QW1lcmljYTI0&lang=1"
       ]
     },
     {
       "id": 66,
       "nombre": "LN+",
-      "imagenUrl": "https://sixdayslater.com/img/ln.webp",
+      "imagenUrl": "https://bestleague.world/img/ln.webp",
       "urls": [
-        "https://mg.bestleague.world/cvatt.html?get=TGFfTmFjaW9u&lang=1",
+        "https://dot.bestleague.world/cvatt.html?get=TGFfTmFjaW9u&lang=1",
         "https://bestleague.one/cvatt.html?get=TGFfTmFjaW9u&lang=1"
       ]
     }
@@ -1108,6 +1108,7 @@
     ]
   }
 ]
+
 
 
 
