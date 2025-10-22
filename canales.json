@@ -15,6 +15,99 @@
       }
     ]
   },
+   {
+    "seccionTitulo": "Agenda",
+    "canales": [
+      {
+        "id": 900,
+        "nombre": "Athletic Club vs Qarabag",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=RVNQTjJfQXJn&lang=1"
+        ]
+      },
+      {
+        "id": 901,
+        "nombre": "Racing Club vs Flamengo",
+        "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhhmiGVxqkrej84U8kCjtGTSqyvmWx3gUdA&s",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=RVNQTl9VWQ==&lang=1"
+        ]
+      },
+      {
+        "id": 902,
+        "nombre": "Galatasaray vs Boda Glimt",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=RVNQTl9VWQ==&lang=1"
+        ]
+      },
+      {
+        "id": 903,
+        "nombre": "Bayern Munich vs Club Brugge",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://nowevents.xyz"
+        ]
+      },
+      {
+        "id": 904,
+        "nombre": "Sporting CP vs Olympique Marsseille",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=RVNQTkhE&lang=1"
+        ]
+      },
+      {
+        "id": 905,
+        "nombre": "Chelsea vs Ajax",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=RVNQTjQ=&lang=1"
+        ]
+      },
+      {
+        "id": 906,
+        "nombre": "Frankfurt vs Liverpool",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=RVNQTjNfVXktUHk=&lang=1"
+        ]
+      },
+      {
+        "id": 907,
+        "nombre": "Real Madrid vs Juventus",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://streamtpmedia.com/global1.php?stream=espn2"
+        ]
+      },
+      {
+        "id": 908,
+        "nombre": "Monaco vs Tottenham",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1"
+        ]
+      },
+      {
+        "id": 909,
+        "nombre": "Huracan vs Central Cordoba",
+        "imagenUrl": "https://www.ligaprofesional.ar/wp-content/uploads/2022/04/logo-LPF.png",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1"
+        ]
+      },
+      {
+        "id": 910,
+        "nombre": "Atalanta vs Slavia Praha",
+        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
+        "urls": [
+          "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRzM19VWQ==&lang=1"
+        ]
+      }
+    ]
+  },
   {
     "seccionTitulo": "Deportes Argentina",
     "canales": [
@@ -1052,7 +1145,7 @@
       {
         "id": 93,
         "nombre": "Television Libre",
-        "imagenUrl": "https://tvlibreonline.org/img/logo.png",
+        "imagenUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAY1BMVEVHcEyB0uuB0uuB0uuB0uuB0uuB0uuB0uuB0uuB0uuB0uuC1O1zvtV5x94BRFMhansgaHkgX28AMj4xiJ4OYnZ+0etVk6WU2e7////n+PxTvNu34O0MtuYAm8am2Og0rtGP1+2QuyvqAAAAC3RSTlMAOYbI7/9k3yTSRqmugj4AAADhSURBVHgBdNEFEoMwEEDRjWyCu/v9T9ll02aQ6cP5OOAJqTSiVlLAk7HoWQNXQYg3YQBehC/RvcXetQbIEg9ZwDHk89IsL4oiL7OsSvncEIhBF8v61DRN5iIaivYam0u0AAIvsblGFCAvsblHCeoXqzJzql9UoNFpO1KW57xFR8M3kbKkc2nWEmTAqR8ees6gOY4Tm2e3HDlqUC4uy0q2bWUuKpDfuJ+2bWcuShD/7ykA7L9oAcBwHI+LkaMBElKkrYtzE0P/s2njou39z4YI8dZ4M/oMXwLDlzQJJ2q82QEAv7gfkNBsyZYAAAAASUVORK5CYII=",
         "urls": [
           "https://tvlibre.cc/"
         ]
@@ -1092,9 +1185,9 @@
       {
         "id": 98,
         "nombre": "RusticoTV",
-        "imagenUrl": "https://rusticotv-hd.com/img/rusticotv.png",
+        "imagenUrl": "https://rusticotv.de/img/logonuevo.png",
         "urls": [
-          "https://rusticotv-hd.com/"
+          "https://rusticotv.de/"
         ]
       },
       {
@@ -1108,6 +1201,7 @@
     ]
   }
 ]
+
 
 
 
