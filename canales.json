@@ -3,8 +3,7 @@
     "seccionTitulo": "Informe",
     "canales": [
       {
-        "id": 0,
-        "nombre": "Pueden haber problemas con los canales, disculpe la molestia",
+        "nombre": "",
         "imagenUrl": "https://th.bing.com/th/id/R.5c2ad32cd2cd9d85cbbc48b6bf6876c8?rik=BDWoSptm%2b2LgWA&riu=http%3a%2f%2f3.bp.blogspot.com%2f-BKiiw9CJ36A%2fTrm52GodlQI%2fAAAAAAAAKBM%2fyHQNU2lYoWo%2fs1600%2fDISCULPE%2bLAS%2bMOLESTIAS%2bESTAMOS%2bTRABAJANDO%2bPARA%2bPROFUNDIZAR%2bEL%2bMODELO.jpg&ehk=1d%2f%2bkFraorzeODOySZYs45mueJKI5se22uLmPmyHyyc%3d&risl=&pid=ImgRaw&r=0",
         "urls": [
           "https://streamtp22.com/global1.php?stream=espnpremium",
@@ -19,25 +18,9 @@
     "seccionTitulo": "Agenda",
     "canales": [
       {
-        "id": 900,
-        "nombre": "Athletic Club vs Qarabag",
-        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
-        "urls": [
-          "https://dots.bestleague.world/cvatt.html?get=RVNQTjJfQXJn&lang=1"
-        ]
-      },
-      {
         "id": 901,
-        "nombre": "Racing Club vs Flamengo",
+        "nombre": "21:30 - Racing Club vs Flamengo",
         "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhhmiGVxqkrej84U8kCjtGTSqyvmWx3gUdA&s",
-        "urls": [
-          "https://dots.bestleague.world/cvatt.html?get=RVNQTl9VWQ==&lang=1"
-        ]
-      },
-      {
-        "id": 902,
-        "nombre": "Galatasaray vs Boda Glimt",
-        "imagenUrl": "https://wallpapers.com/images/featured/uefa-champions-league-rergq5gltabhbbnw.jpg",
         "urls": [
           "https://dots.bestleague.world/cvatt.html?get=RVNQTl9VWQ==&lang=1"
         ]
@@ -92,7 +75,7 @@
       },
       {
         "id": 909,
-        "nombre": "Huracan vs Central Cordoba",
+        "nombre": "19:30 - Huracan vs Central Cordoba",
         "imagenUrl": "https://www.ligaprofesional.ar/wp-content/uploads/2022/04/logo-LPF.png",
         "urls": [
           "https://dots.bestleague.world/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1"
@@ -130,7 +113,7 @@
       },
       {
         "id": 809,
-        "nombre": "ESPN Premium (opc 2)",
+        "nombre": "ESPN Premium (2)",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/jfkf",
         "urls": [
           "https://dot.bestleague.world/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1",
@@ -163,7 +146,7 @@
       },
        {
         "id": 705,
-        "nombre": "TNT SPORTS (opc 2)",
+        "nombre": "TNT SPORTS (2)",
         "imagenUrl": "https://images.infutbol.site/tvnetworks/lghi",
         "urls": [
           "https://dot.bestleague.world/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1",
@@ -1201,6 +1184,7 @@
     ]
   }
 ]
+
 
 
 
