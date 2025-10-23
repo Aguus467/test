@@ -1,0 +1,69 @@
+/* Estilos para la tabla de agenda deportiva */
+.agenda {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: white;
+  background-color: var(--bg);
+  border: 1px solid var(--border-color);
+}
+
+.day-banner {
+  background-color: var(--header-bg);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.agenda.compact .match-card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.agenda.compact .match-card:last-child {
+  border-bottom: none;
+}
+
+.time-col {
+  background-color: var(--time-bg);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-right: 1px solid var(--border-color);
+}
+
+.match-main {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--bg);
+}
+
+.teams {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+/* Se eliminaron los estilos de los logos */
+
+/* Hover effect */
+.agenda.compact .match-card:hover {
+  background-color: var(--hover-color);
+}
+
+.agenda.compact .match-card:hover .match-main {
+  background-color: var(--hover-color);
+}
+
+.meta {
+  display: block;
+  font-size: 0.85em;
+  color: #ccc;
+  margin-top: 4px;
+}
