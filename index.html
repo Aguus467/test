@@ -9,28 +9,211 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+  <style>
+    :root {
+      --bg-dark: #0f0f1e;
+      --bg-card: rgba(31,41,55,0.7);
+      --text-primary: #f3f4f6;
+      --text-secondary: #d1d5db;
+      --accent: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --border-color: rgba(255,255,255,0.1);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --radius: 12px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a14 0%, var(--bg-dark) 50%, #1a1a2e 100%);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .site-header {
+      background: rgba(15,15,30,0.98);
+      backdrop-filter: blur(20px) saturate(180%);
+      padding: 1rem 0;
+      box-shadow: var(--shadow-md);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .brand img.logo {
+      height: 60px;
+      transition: var(--transition);
+      filter: drop-shadow(0 2px 8px rgba(59,130,246,0.2));
+    }
+
+    .brand img.logo:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 4px 12px rgba(59,130,246,0.4));
+    }
+
+    main h4 {
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    main h4 a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    iframe#agendaFrame {
+      width: 100%;
+      min-height: 600px;
+      border-radius: var(--radius);
+      border: none;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 40px;
+    }
+
+    .channels-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .channel-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      cursor: pointer;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .channel-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      border: 1px solid var(--accent);
+    }
+
+    .channel-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 2px solid rgba(59,130,246,0.3);
+      transition: var(--transition);
+    }
+
+    .channel-card img:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+    }
+
+    .channel-card span {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    footer.site-footer {
+      background: linear-gradient(135deg, rgba(15,15,30,0.98) 0%, rgba(10,10,20,0.98) 100%);
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+
+    footer.site-footer small {
+      display: block;
+      color: var(--text-secondary);
+      margin: 0.375rem 0;
+      font-size: 0.875rem;
+    }
+
+    footer.site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    footer.site-footer a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    footer.site-footer a:hover::after {
+      width: 100%;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      iframe#agendaFrame { min-height: 500px; }
+      .channels-grid { gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      iframe#agendaFrame { min-height: 400px; }
+      .section-title { font-size: 1.25rem; }
+    }
+  </style>
 </head>
 <body>
+
   <header class="site-header">
     <div class="container">
       <div class="brand">
-        <a href="/"><img src="assets/logo2.png" alt="AngulismoTV" class="logo" height="60"></a>
+        <a href="/"><img src="assets/logo2.png" alt="AngulismoTV" class="logo"></a>
       </div>
     </div>
   </header>
+
   <main class="container">
     <h4>Se recomienda el uso de la extensión <a href="https://ublockorigin.com/" target="_blank">uBlock Origin</a> para usar el sitio sin problemas.</h4>
-    <iframe src="agenda.html" id="agendaFrame" title="Agenda Deportiva" style="width:100%; min-height:600px; border:none;"></iframe>
+
+    <iframe src="agenda.html" id="agendaFrame" title="Agenda Deportiva"></iframe>
 
     <section id="channelsSection" class="channels-section">
       <h3 class="section-title">Canales</h3>
-      <div id="channelsGrid" class="channels-grid"></div>
+      <div id="channelsGrid" class="channels-grid">
+        <!-- Canales se generan por JS -->
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>© 2025 | <a href="dmca.html">DMCA</a></small> <br>
+      <small>© 2025 | <a href="dmca.html">DMCA</a></small>
       <small><a href="https://x.com/AngulismoTV">Twitter</a> | <a href="https://discord.gg/jEayDA7T">Discord</a></small>
     </div>
   </footer>
@@ -38,4 +221,3 @@
   <script defer src="scripts/main.js"></script>
 </body>
 </html>
-
