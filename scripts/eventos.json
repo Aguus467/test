@@ -1,0 +1,165 @@
+[
+    {
+        "id": 1,
+        "evento": "Ecuador vs Argentina",
+        "fecha": "2025-09-09 20:00",
+        "canales": [
+            {
+                "name": "DSports",
+                "logo": "https://angulismotv.pages.dev/assets/dsports.png"
+            },
+            {
+                "name": "TyC Sports",
+                "logo": "https://angulismotv.pages.dev/assets/tyc.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONMEBOL",
+        "descripcion": "Fecha 8"
+    },
+    {
+        "id": 2,
+        "evento": "Venezuela vs Colombia",
+        "fecha": "2025-09-09 20:30",
+        "canales": [
+            {
+                "name": "Caracol TV",
+                "logo": "https://angulismotv.pages.dev/assets/caracol.png"
+            },
+            {
+                "name": "RCN",
+                "logo": "https://angulismotv.pages.dev/assets/rcn.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONMEBOL",
+        "descripcion": "Fecha 8"
+    },
+    {
+        "id": 3,
+        "evento": "Bolivia vs Brasil",
+        "fecha": "2025-09-09 20:30",
+        "canales": [
+            {
+                "name": "Globo",
+                "logo": "https://angulismotv.pages.dev/assets/globo.png"
+            },
+            {
+                "name": "SporTV",
+                "logo": "https://angulismotv.pages.dev/assets/sportv.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONMEBOL",
+        "descripcion": "Fecha 8"
+    },
+    {
+        "id": 4,
+        "evento": "Perú vs Paraguay",
+        "fecha": "2025-09-09 20:30",
+        "canales": [
+            {
+                "name": "Movistar Deportes",
+                "logo": "https://angulismotv.pages.dev/assets/movistar.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONMEBOL",
+        "descripcion": "Fecha 8"
+    },
+    {
+        "id": 5,
+        "evento": "Chile vs Uruguay",
+        "fecha": "2025-09-09 20:30",
+        "canales": [
+            {
+                "name": "Chilevisión",
+                "logo": "https://angulismotv.pages.dev/assets/chilevision.png"
+            },
+            {
+                "name": "AUF TV",
+                "logo": "https://angulismotv.pages.dev/assets/auftv.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONMEBOL",
+        "descripcion": "Fecha 8"
+    },
+    {
+        "id": 6,
+        "evento": "EE. UU. vs Japón",
+        "fecha": "2025-09-09 20:30",
+        "canales": [
+            {
+                "name": "ESPN",
+                "logo": "https://angulismotv.pages.dev/assets/espn.png"
+            }
+        ],
+        "competencia": "Amistoso Internacional",
+        "descripcion": "Partido amistoso"
+    },
+    {
+        "id": 7,
+        "evento": "México vs Corea del Sur",
+        "fecha": "2025-09-09 22:00",
+        "canales": [
+            {
+                "name": "TUDN",
+                "logo": "https://angulismotv.pages.dev/assets/tudn.png"
+            },
+            {
+                "name": "TV Azteca",
+                "logo": "https://angulismotv.pages.dev/assets/azteca.png"
+            }
+        ],
+        "competencia": "Amistoso Internacional",
+        "descripcion": "Partido amistoso"
+    },
+    {
+        "id": 8,
+        "evento": "Atlético Bucaramanga vs Once Caldas",
+        "fecha": "2025-09-09 22:30",
+        "canales": [
+            {
+                "name": "Win Sports+",
+                "logo": "https://angulismotv.pages.dev/assets/winsports.png"
+            }
+        ],
+        "competencia": "Liga BetPlay",
+        "descripcion": "Fecha 12"
+    },
+    {
+        "id": 9,
+        "evento": "Santa Fe vs Alianza",
+        "fecha": "2025-09-09 22:30",
+        "canales": [
+            {
+                "name": "Win Sports",
+                "logo": "https://angulismotv.pages.dev/assets/winsports.png"
+            }
+        ],
+        "competencia": "Copa Colombia",
+        "descripcion": "Semifinal - Ida"
+    },
+    {
+        "id": 10,
+        "evento": "Costa Rica vs Haití",
+        "fecha": "2025-09-09 23:00",
+        "canales": [
+            {
+                "name": "Teletica",
+                "logo": "https://angulismotv.pages.dev/assets/teletica.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONCACAF",
+        "descripcion": "Fase de grupos"
+    },
+    {
+        "id": 11,
+        "evento": "Honduras vs Nicaragua",
+        "fecha": "2025-09-09 23:00",
+        "canales": [
+            {
+                "name": "Televicentro",
+                "logo": "https://angulismotv.pages.dev/assets/televicentro.png"
+            }
+        ],
+        "competencia": "Eliminatorias CONCACAF",
+        "descripcion": "Fase de grupos"
+    }
+]
