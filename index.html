@@ -1,40 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deportes Live TV</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AngulismoTV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 </head>
 <body>
-<header>
-    <h1>Deportes Live TV</h1>
-</header>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <a href="/"><img src="assets/logo2.png" alt="AngulismoTV" class="logo" height="60"></a>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <h4>Se recomienda el uso de la extensión <a href="https://ublockorigin.com/" target="_blank">uBlock Origin</a> para usar el sitio sin problemas.</h4>
+    <iframe src="agenda.html" id="agendaFrame" title="Agenda Deportiva" style="width:100%; min-height:600px; border:none;"></iframe>
 
-<main>
-    <section id="channels">
-        <h2>Canales en Vivo</h2>
-        <div class="channel-list">
-            <!-- Cada tarjeta de canal -->
-            <div class="channel-card" data-video="https://www.example.com/video/boca-river.mp4">
-                <h3>Boca vs River</h3>
-            </div>
-            <div class="channel-card" data-video="https://www.example.com/video/lakers-celtics.mp4">
-                <h3>Lakers vs Celtics</h3>
-            </div>
-            <div class="channel-card" data-video="https://www.example.com/video/tennis-match.m3u8">
-                <h3>Torneo de Tenis</h3>
-            </div>
-        </div>
+    <section id="channelsSection" class="channels-section">
+      <h3 class="section-title">Canales</h3>
+      <div id="channelsGrid" class="channels-grid"></div>
     </section>
-</main>
+  </main>
 
-<!-- Reproductor flotante -->
-<div id="player-container" class="hidden">
-    <video id="player" controls autoplay></video>
-    <button id="close-player">Cerrar</button>
-</div>
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2025 | <a href="dmca.html">DMCA</a></small> <br>
+      <small><a href="https://x.com/AngulismoTV">Twitter</a> | <a href="https://discord.gg/jEayDA7T">Discord</a></small>
+    </div>
+  </footer>
 
-<script src="script.js"></script>
+  <script defer src="scripts/main.js"></script>
 </body>
 </html>
+
