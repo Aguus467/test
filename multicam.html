@@ -15,6 +15,7 @@
       --text-secondary: #d1d5db;
       --accent: #3b82f6;
       --accent-purple: #8b5cf6;
+      --accent-hover: #2563eb;
       --border-color: rgba(255,255,255,0.1);
       --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
       --radius: 12px;
@@ -36,7 +37,6 @@
       overflow-x: hidden;
     }
 
-    /* HEADER - Mismo estilo del index */
     header {
       background: rgba(15, 15, 30, 0.95);
       backdrop-filter: blur(12px);
@@ -93,7 +93,6 @@
       padding: 1.5rem 0;
     }
 
-    /* Controles Multicámara - Estilo mejorado */
     .multicam-controls {
       background: var(--bg-card);
       border-radius: var(--radius);
@@ -105,16 +104,23 @@
 
     .controls-header {
       display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .controls-row {
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .layout-selector {
       position: relative;
+      flex: 1;
       min-width: 180px;
+      max-width: 250px;
     }
 
     .layout-dropdown-btn {
@@ -191,11 +197,15 @@
       transition: var(--transition);
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
+      flex: 1;
+      min-width: 180px;
+      max-width: 250px;
     }
 
     .fullscreen-btn:hover {
-      background: #2563eb;
+      background: var(--accent-hover);
       transform: translateY(-2px);
     }
 
@@ -222,15 +232,14 @@
     }
 
     .stream-selector {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      width: 100%;
     }
 
     .stream-dropdown {
       position: relative;
-      min-width: 200px;
     }
 
     .dropdown-btn {
@@ -246,6 +255,7 @@
       justify-content: space-between;
       align-items: center;
       transition: var(--transition);
+      font-size: 0.9rem;
     }
 
     .dropdown-btn:hover {
@@ -313,7 +323,6 @@
       color: var(--text-secondary);
     }
 
-    /* Grid de streams - Estilo mejorado */
     .streams-grid {
       display: grid;
       gap: 1rem;
@@ -321,7 +330,6 @@
       min-height: 400px;
     }
 
-    /* Layouts */
     .layout-1 { grid-template-columns: 1fr; }
     .layout-2 { grid-template-columns: 1fr 1fr; }
     .layout-3 { 
@@ -366,6 +374,7 @@
 
     .stream-title-bar {
       flex: 1;
+      font-size: 0.9rem;
     }
 
     .stream-actions {
@@ -405,6 +414,11 @@
       color: var(--text-secondary);
       flex-direction: column;
       gap: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .stream-placeholder span:first-child {
+      font-size: 3rem;
     }
 
     .stream-iframe {
@@ -420,7 +434,6 @@
       height: 300px;
     }
 
-    /* Estado de pantalla completa REAL */
     body.fullscreen-mode {
       overflow: hidden;
     }
@@ -451,18 +464,12 @@
       display: flex;
     }
 
-    /* Ajustes de layout en pantalla completa */
-    body.fullscreen-mode .layout-1 .stream-iframe { height: 100vh; }
-    body.fullscreen-mode .layout-2 .stream-iframe { height: 50vh; }
-    body.fullscreen-mode .layout-3 .stream-iframe { 
-      height: 50vh; 
-    }
-    body.fullscreen-mode .layout-3 .stream-item:nth-child(1) .stream-iframe {
-      height: 50vh;
-    }
-    body.fullscreen-mode .layout-4 .stream-iframe { height: 50vh; }
+    body.fullscreen-mode .layout-1 .stream-iframe { height: calc(100vh - 100px); }
+    body.fullscreen-mode .layout-2 .stream-iframe { height: calc(50vh - 60px); }
+    body.fullscreen-mode .layout-3 .stream-iframe { height: calc(50vh - 60px); }
+    body.fullscreen-mode .layout-3 .stream-item:nth-child(1) .stream-iframe { height: calc(50vh - 60px); }
+    body.fullscreen-mode .layout-4 .stream-iframe { height: calc(50vh - 60px); }
 
-    /* FOOTER - Mismo estilo del index */
     footer.site-footer {
       background: linear-gradient(135deg, rgba(15,15,30,0.98) 0%, rgba(10,10,20,0.98) 100%);
       text-align: center;
@@ -489,7 +496,6 @@
       text-decoration: underline;
     }
 
-    /* Responsive - Mismo estilo del index */
     @media (max-width: 768px) {
       .container {
         max-width: 720px;
@@ -501,39 +507,37 @@
       .layout-4 {
         grid-template-columns: 1fr;
       }
+
+      .layout-3 .stream-item:nth-child(1) { 
+        grid-column: 1; 
+      }
       
-      .controls-header {
+      .controls-row {
         flex-direction: column;
         align-items: stretch;
       }
       
-      .layout-selector {
-        width: 100%;
+      .layout-selector,
+      .fullscreen-btn {
+        max-width: 100%;
       }
       
       .stream-selector {
-        width: 100%;
-        justify-content: center;
+        grid-template-columns: 1fr;
       }
       
       .stream-iframe {
         height: 250px;
       }
-      
-      .fullscreen-btn {
-        width: 100%;
-        justify-content: center;
-      }
 
-      /* Pantalla completa en móviles */
       body.fullscreen-mode .streams-grid {
         padding: 0.5rem;
       }
       
-      body.fullscreen-mode .layout-1 .stream-iframe { height: 100vh; }
-      body.fullscreen-mode .layout-2 .stream-iframe { height: 50vh; }
-      body.fullscreen-mode .layout-3 .stream-iframe { height: 33.3vh; }
-      body.fullscreen-mode .layout-4 .stream-iframe { height: 50vh; }
+      body.fullscreen-mode .layout-1 .stream-iframe { height: calc(100vh - 80px); }
+      body.fullscreen-mode .layout-2 .stream-iframe,
+      body.fullscreen-mode .layout-3 .stream-iframe,
+      body.fullscreen-mode .layout-4 .stream-iframe { height: calc(50vh - 50px); }
     }
 
     @media (max-width: 480px) {
@@ -558,10 +562,6 @@
       
       .multicam-controls {
         padding: 1rem;
-      }
-      
-      .stream-dropdown {
-        min-width: 100%;
       }
 
       .exit-fullscreen-btn {
@@ -590,45 +590,45 @@
 </head>
 
 <body>
-  <!-- HEADER - Mismo estilo del index -->
-   <header>
-    <a href="index.html">
-      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
-    </a>
-    <nav>
-      <a href="index.html#channelsSection">Canales</a>
-      <a href="index.html">Agenda</a>
-      <a href="multicam.html">Pantalla Dividida</a>
-      <a href="nowevents.xyz">SERIES Y PELICULAS</a>
-    </nav>
-  </header>
+<header>
+  <a href="index.html">
+    <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+  </a>
+  <nav>
+    <a href="index.html#channelsSection">Canales</a>
+    <a href="index.html">Agenda</a>
+    <a href="multicam.html">Pantalla Dividida</a>
+    <a href="https://nowevents.xyz" target="_blank">Entretenimiento</a>
+    <a href="https://nowstats.netlify.app" target="_blank">Estadisticas (beta)</a>
+  </nav>
+</header>
 
   <main class="container">
     <div class="multicam-controls">
       <div class="controls-header">
-        <div class="layout-selector">
-          <button class="layout-dropdown-btn" id="layoutDropdownBtn">
-            1 Pantalla
-          </button>
-          <div class="layout-dropdown-content" id="layoutDropdown">
-            <div class="layout-option" data-layout="1">1 Pantalla</div>
-            <div class="layout-option" data-layout="2">2 Pantallas</div>
-            <div class="layout-option" data-layout="3">3 Pantallas</div>
-            <div class="layout-option" data-layout="4">4 Pantallas</div>
+        <div class="controls-row">
+          <div class="layout-selector">
+            <button class="layout-dropdown-btn" id="layoutDropdownBtn">
+              1 Pantalla
+            </button>
+            <div class="layout-dropdown-content" id="layoutDropdown">
+              <div class="layout-option" data-layout="1">1 Pantalla</div>
+              <div class="layout-option" data-layout="2">2 Pantallas</div>
+              <div class="layout-option" data-layout="3">3 Pantallas</div>
+              <div class="layout-option" data-layout="4">4 Pantallas</div>
+            </div>
           </div>
+          
+          <button class="fullscreen-btn" id="globalFullscreen">
+            <span>⛶</span>
+            Pantalla Completa
+          </button>
         </div>
-        
-        <button class="fullscreen-btn" id="globalFullscreen">
-          <span>⛶</span>
-          Pantalla Completa
-        </button>
         
         <div class="stream-selector">
           <div class="stream-dropdown">
             <button class="dropdown-btn" data-slot="1">Seleccionar evento para la pantalla 1</button>
-            <div class="dropdown-content" id="dropdown-1">
-              <!-- Las opciones se cargan dinámicamente desde la agenda -->
-            </div>
+            <div class="dropdown-content" id="dropdown-1"></div>
           </div>
           
           <div class="stream-dropdown" style="display: none;" id="dropdown-container-2">
@@ -650,14 +650,12 @@
     </div>
 
     <div class="streams-grid layout-1" id="streamsGrid">
-      <!-- Stream 1 -->
       <div class="stream-item active" id="stream-1">
         <div class="stream-header">
           <div class="stream-title-bar">
             <strong>Pantalla 1</strong>
           </div>
-          <div class="stream-actions">
-          </div>
+          <div class="stream-actions"></div>
         </div>
         <div class="stream-placeholder">
           <span>📺</span>
@@ -667,13 +665,11 @@
     </div>
   </main>
 
-  <!-- Botón para salir de pantalla completa -->
-  <button class="exit-fullscreen-btn" id="exitFullscreenBtn" style="display: none;">
+  <button class="exit-fullscreen-btn" id="exitFullscreenBtn">
     <span>✕</span>
     Salir de Pantalla Completa
   </button>
 
-  <!-- FOOTER - Mismo estilo del index -->
   <footer class="site-footer">
     <div class="container">
       <small>© 2025 | <a href="dmca.html">DMCA</a></small>
@@ -682,17 +678,15 @@
   </footer>
 
   <script>
-    // URLs de la agenda real
     const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
     const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
     const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
 
     let agendaStreams = [];
     let currentLayout = 1;
-    let activeStreams = { 1: null };
+    let activeStreams = {};
     let isFullscreen = false;
 
-    // Función para cargar datos de la agenda
     async function fetchJSON(url, options = {}) {
       try {
         const response = await fetch(url, {
@@ -708,7 +702,6 @@
       }
     }
 
-    // Función para extraer URL directa del reproductor
     function getDirectPlayerUrl(streamData) {
       if (!streamData || !streamData.tv_networks || streamData.tv_networks.length === 0) {
         return null;
@@ -716,7 +709,6 @@
 
       const network = streamData.tv_networks[0];
       
-      // Si tiene link codificado en base64
       if (network.link) {
         try {
           const decodedLink = atob(network.link);
@@ -730,22 +722,23 @@
       return null;
     }
 
-    // Adaptar eventos de diferentes fuentes
     async function adaptManualEvents(events) {
+      if (!Array.isArray(events)) return [];
+      
       return events.map(ev => {
         let teams = [];
-        if (ev.evento.includes(' vs ')) {
+        if (ev.evento && ev.evento.includes(' vs ')) {
           teams = ev.evento.split(' vs ').map(name => ({ name: name.trim() }));
-        } else {
+        } else if (ev.evento) {
           teams = [{ name: ev.evento.trim() }];
         }
         
         let canales = Array.isArray(ev.canales) ? ev.canales : (ev.canal ? [ev.canal] : []);
         return {
-          id: ev.id || `manual-${Date.now()}`,
-          start_time: ev.fecha,
+          id: ev.id || `manual-${Date.now()}-${Math.random()}`,
+          start_time: ev.fecha || '',
           teams: teams,
-          evento: ev.evento,
+          evento: ev.evento || 'Sin título',
           description: ev.descripcion || '',
           competition_name: ev.competencia || '',
           tv_networks: canales.map(c => {
@@ -762,7 +755,7 @@
     async function adaptStreamTPEvents(events) {
       if (!Array.isArray(events)) return [];
       
-      return events.map(ev => {
+      return events.map((ev, idx) => {
         let teams = [];
         if (ev.title && ev.title.includes(' vs ')) {
           teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
@@ -779,10 +772,10 @@
         }
         
         return {
-          id: `streamtp-${Date.now()}`,
+          id: `streamtp-${Date.now()}-${idx}`,
           start_time: ev.time || '',
           teams: teams,
-          evento: ev.title || '',
+          evento: ev.title || 'Sin título',
           description: ev.status || '',
           competition_name: ev.category || '',
           tv_networks: canales,
@@ -794,7 +787,7 @@
     async function adaptLA14HDEvents(events) {
       if (!Array.isArray(events)) return [];
       
-      return events.map(ev => {
+      return events.map((ev, idx) => {
         let teams = [];
         if (ev.title && ev.title.includes(' vs ')) {
           teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
@@ -811,10 +804,10 @@
         }
         
         return {
-          id: `la14hd-${Date.now()}`,
+          id: `la14hd-${Date.now()}-${idx}`,
           start_time: ev.time || '',
           teams: teams,
-          evento: ev.title || '',
+          evento: ev.title || 'Sin título',
           description: ev.status || '',
           competition_name: ev.category || '',
           tv_networks: canales,
@@ -823,7 +816,6 @@
       });
     }
 
-    // Cargar todos los eventos de la agenda
     async function loadAgendaData() {
       try {
         const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw] = await Promise.all([
@@ -832,7 +824,6 @@
           fetchJSON(LA14HD_EVENTOS)
         ]);
 
-        // Adaptar eventos
         const manualEvents = await adaptManualEvents(Array.isArray(manualEventsRaw) ? manualEventsRaw : []);
         
         let streamTPArray = [];
@@ -852,31 +843,27 @@
         const streamTPEvents = await adaptStreamTPEvents(streamTPArray);
         const la14HDEvents = await adaptLA14HDEvents(la14HDArray);
 
-        // Combinar todos los eventos
         agendaStreams = [...manualEvents, ...streamTPEvents, ...la14HDEvents];
         
-        console.log('Eventos cargados para multicámara:', agendaStreams.length);
+        console.log('Eventos cargados:', agendaStreams.length);
         loadStreamOptions();
         
       } catch (error) {
-        console.error('Error cargando datos de agenda:', error);
+        console.error('Error cargando datos:', error);
       }
     }
 
-    // Inicializar la interfaz
     document.addEventListener('DOMContentLoaded', function() {
       loadAgendaData();
       setupEventListeners();
     });
 
     function loadStreamOptions() {
-      // Limpiar dropdowns existentes
       for (let i = 1; i <= 4; i++) {
         const dropdown = document.getElementById(`dropdown-${i}`);
         if (dropdown) dropdown.innerHTML = '';
       }
 
-      // Cargar eventos en todos los dropdowns
       agendaStreams.forEach(stream => {
         for (let i = 1; i <= 4; i++) {
           const dropdown = document.getElementById(`dropdown-${i}`);
@@ -906,16 +893,15 @@
     }
 
     function setupEventListeners() {
-      // Layout dropdown
       const layoutDropdownBtn = document.getElementById('layoutDropdownBtn');
       const layoutDropdown = document.getElementById('layoutDropdown');
       
-      layoutDropdownBtn.addEventListener('click', function() {
+      layoutDropdownBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
         layoutDropdown.classList.toggle('show');
         this.classList.toggle('active');
       });
 
-      // Layout options
       document.querySelectorAll('.layout-option').forEach(option => {
         option.addEventListener('click', function() {
           const layout = parseInt(this.dataset.layout);
@@ -926,19 +912,17 @@
         });
       });
 
-      // Stream dropdowns
       document.querySelectorAll('.dropdown-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
           const slot = this.dataset.slot;
           toggleStreamDropdown(slot);
         });
       });
 
-      // Pantalla completa global
       document.getElementById('globalFullscreen').addEventListener('click', toggleGlobalFullscreen);
       document.getElementById('exitFullscreenBtn').addEventListener('click', toggleGlobalFullscreen);
 
-      // Cerrar dropdowns al hacer clic fuera
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.layout-selector')) {
           layoutDropdown.classList.remove('show');
@@ -949,14 +933,12 @@
         }
       });
 
-      // Salir de pantalla completa con ESC
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && isFullscreen) {
           toggleGlobalFullscreen();
         }
       });
 
-      // Detectar cambios en pantalla completa nativa
       document.addEventListener('fullscreenchange', handleFullscreenChange);
       document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
       document.addEventListener('mozfullscreenchange', handleFullscreenChange);
@@ -970,7 +952,6 @@
                                document.msFullscreenElement;
       
       if (!fullscreenElement && isFullscreen) {
-        // El usuario salió de pantalla completa usando métodos nativos del navegador
         toggleGlobalFullscreen();
       }
     }
@@ -988,29 +969,21 @@
       const dropdown = document.getElementById(`dropdown-${slot}`);
       const btn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
       
-      // Cerrar otros dropdowns
+      const wasOpen = dropdown.classList.contains('show');
       closeAllStreamDropdowns();
       
-      // Toggle dropdown actual
-      dropdown.classList.toggle('show');
-      btn.classList.toggle('active');
+      if (!wasOpen) {
+        dropdown.classList.add('show');
+        btn.classList.add('active');
+      }
     }
 
     function changeLayout(layout) {
       currentLayout = layout;
       
-      // Actualizar grid
       const grid = document.getElementById('streamsGrid');
       grid.className = `streams-grid layout-${layout}`;
       
-      // Limpiar streams que excedan el nuevo layout
-      for (let i = layout + 1; i <= 4; i++) {
-        if (activeStreams[i]) {
-          removeStream(i, true); // true = no cambiar layout automáticamente
-        }
-      }
-      
-      // Mostrar/ocultar streams y dropdowns
       for (let i = 1; i <= 4; i++) {
         const streamElement = document.getElementById(`stream-${i}`);
         const dropdownContainer = document.getElementById(`dropdown-container-${i}`);
@@ -1023,14 +996,12 @@
             dropdownContainer.style.display = 'block';
           }
         } else {
-          // Eliminar elementos de stream que ya no están en el layout
-          if (streamElement) {
+          if (streamElement && i > layout) {
             streamElement.remove();
           }
           if (dropdownContainer) {
             dropdownContainer.style.display = 'none';
           }
-          // Limpiar datos de streams eliminados
           if (activeStreams[i]) {
             delete activeStreams[i];
             const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${i}"]`);
@@ -1044,30 +1015,46 @@
 
     function createStreamElement(slot) {
       const grid = document.getElementById('streamsGrid');
+      const existingElement = document.getElementById(`stream-${slot}`);
+      
+      if (existingElement) {
+        return;
+      }
+      
       const streamElement = document.createElement('div');
-      streamElement.className = `stream-item${activeStreams[slot] ? ' active' : ''}`;
+      streamElement.className = 'stream-item';
       streamElement.id = `stream-${slot}`;
       
       const streamData = activeStreams[slot];
       const playerUrl = streamData ? getDirectPlayerUrl(streamData) : null;
       
-      streamElement.innerHTML = `
-        <div class="stream-header">
-          <div class="stream-title-bar">
-            <strong>Pantalla ${slot}</strong>
-            ${streamData ? `<span> - ${streamData.evento}</span>` : ''}
+      if (streamData && playerUrl) {
+        streamElement.classList.add('active');
+        streamElement.innerHTML = `
+          <div class="stream-header">
+            <div class="stream-title-bar">
+              <strong>Pantalla ${slot}</strong>
+              <span> - ${streamData.evento}</span>
+            </div>
+            <div class="stream-actions"></div>
           </div>
-          <div class="stream-actions">
+          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen"></iframe>
+        `;
+      } else {
+        streamElement.innerHTML = `
+          <div class="stream-header">
+            <div class="stream-title-bar">
+              <strong>Pantalla ${slot}</strong>
+            </div>
+            <div class="stream-actions"></div>
           </div>
-        </div>
-        ${playerUrl ? 
-          `<iframe class="stream-iframe" src="${playerUrl}" allowfullscreen></iframe>` :
-          `<div class="stream-placeholder">
+          <div class="stream-placeholder">
             <span>📺</span>
             <span>Selecciona un evento para comenzar</span>
-          </div>`
-        }
-      `;
+          </div>
+        `;
+      }
+      
       grid.appendChild(streamElement);
     }
 
@@ -1075,112 +1062,58 @@
       activeStreams[slot] = stream;
       const playerUrl = getDirectPlayerUrl(stream);
       
-      // Actualizar botón dropdown
       const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
       if (dropdownBtn) {
-        dropdownBtn.textContent = stream.evento.length > 30 ? stream.evento.substring(0, 30) + '...' : stream.evento;
+        const displayText = stream.evento.length > 30 ? stream.evento.substring(0, 30) + '...' : stream.evento;
+        dropdownBtn.textContent = displayText;
       }
       
-      // Actualizar o crear stream element
       const existingElement = document.getElementById(`stream-${slot}`);
       if (existingElement) {
-        existingElement.innerHTML = `
-          <div class="stream-header">
-            <div class="stream-title-bar">
-              <strong>Pantalla ${slot}</strong>
-              <span> - ${stream.evento}</span>
+        if (playerUrl) {
+          existingElement.classList.add('active');
+          existingElement.innerHTML = `
+            <div class="stream-header">
+              <div class="stream-title-bar">
+                <strong>Pantalla ${slot}</strong>
+                <span> - ${stream.evento}</span>
+              </div>
+              <div class="stream-actions"></div>
             </div>
-            <div class="stream-actions">
+            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen"></iframe>
+          `;
+        } else {
+          existingElement.classList.remove('active');
+          existingElement.innerHTML = `
+            <div class="stream-header">
+              <div class="stream-title-bar">
+                <strong>Pantalla ${slot}</strong>
+                <span> - ${stream.evento}</span>
+              </div>
+              <div class="stream-actions"></div>
             </div>
-          </div>
-          ${playerUrl ? 
-            `<iframe class="stream-iframe" src="${playerUrl}" allowfullscreen></iframe>` :
-            `<div class="stream-placeholder">
+            <div class="stream-placeholder">
               <span>❌</span>
               <span>No se pudo cargar el reproductor</span>
-            </div>`
-          }
-        `;
-        existingElement.classList.add('active');
+            </div>
+          `;
+        }
       } else {
         createStreamElement(slot);
       }
       
-      // Cerrar dropdown
-      toggleStreamDropdown(slot);
-    }
-
-    function removeStream(slot, keepLayout = false) {
-      console.log('Removing stream:', slot, 'keepLayout:', keepLayout);
-      
-      // Solo eliminar el stream específico, no todos
-      const streamElement = document.getElementById(`stream-${slot}`);
-      if (streamElement) {
-        // Solo resetear a estado vacío, no eliminar completamente
-        streamElement.innerHTML = `
-          <div class="stream-header">
-            <div class="stream-title-bar">
-              <strong>Pantalla ${slot}</strong>
-            </div>
-            <div class="stream-actions">
-            </div>
-          </div>
-          <div class="stream-placeholder">
-            <span>📺</span>
-            <span>Selecciona un evento para comenzar</span>
-          </div>
-        `;
-        streamElement.classList.remove('active');
-      }
-      
-      // Limpiar datos
-      delete activeStreams[slot];
-      
-      // Reset dropdown button
-      const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
-      if (dropdownBtn) {
-        dropdownBtn.textContent = `Seleccionar evento para la pantalla ${slot}`;
-      }
-      
-      // Solo cambiar layout si no es una llamada interna de changeLayout
-      // y si no hay streams activos en el layout actual
-      if (!keepLayout) {
-        const activeCount = Object.keys(activeStreams).filter(s => 
-          activeStreams[s] !== null && s <= currentLayout
-        ).length;
-        
-        console.log('Active streams count:', activeCount, 'Current layout:', currentLayout);
-        
-        if (activeCount === 0 && currentLayout > 1) {
-          // Si no hay streams activos, cambiar a layout 1
-          changeLayout(1);
-          document.getElementById('layoutDropdownBtn').textContent = '1 Pantalla';
-        }
-      }
-    }
-
-    function maximizeStream(slot) {
-      const streamElement = document.getElementById(`stream-${slot}`);
-      if (streamElement) {
-        const iframe = streamElement.querySelector('iframe');
-        if (iframe && iframe.requestFullscreen) {
-          iframe.requestFullscreen();
-        }
-      }
+      closeAllStreamDropdowns();
     }
 
     function toggleGlobalFullscreen() {
       if (!isFullscreen) {
-        // Entrar en pantalla completa
         document.body.classList.add('fullscreen-mode');
-        document.getElementById('globalFullscreen').innerHTML = '<span>⛶</span> Pantalla Completa';
         document.getElementById('exitFullscreenBtn').style.display = 'flex';
         isFullscreen = true;
         
-        // Intentar pantalla completa nativa del navegador
         const element = document.documentElement;
         if (element.requestFullscreen) {
-          element.requestFullscreen();
+          element.requestFullscreen().catch(err => console.log('Fullscreen error:', err));
         } else if (element.webkitRequestFullscreen) {
           element.webkitRequestFullscreen();
         } else if (element.mozRequestFullScreen) {
@@ -1189,15 +1122,12 @@
           element.msRequestFullscreen();
         }
       } else {
-        // Salir de pantalla completa
         document.body.classList.remove('fullscreen-mode');
-        document.getElementById('globalFullscreen').innerHTML = '<span>⛶</span> Pantalla Completa';
         document.getElementById('exitFullscreenBtn').style.display = 'none';
         isFullscreen = false;
         
-        // Salir de pantalla completa nativa
         if (document.exitFullscreen) {
-          document.exitFullscreen();
+          document.exitFullscreen().catch(err => console.log('Exit fullscreen error:', err));
         } else if (document.webkitExitFullscreen) {
           document.webkitExitFullscreen();
         } else if (document.mozCancelFullScreen) {
@@ -1207,10 +1137,6 @@
         }
       }
     }
-
-    // Hacer funciones globales para los onclick
-    window.maximizeStream = maximizeStream;
-    window.removeStream = removeStream;
   </script>
 </body>
 </html>
