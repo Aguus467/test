@@ -1,0 +1,1216 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Multicámara - AngulismoTV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f0f1e;
+      --bg-card: rgba(31,41,55,0.7);
+      --text-primary: #f3f4f6;
+      --text-secondary: #d1d5db;
+      --accent: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --border-color: rgba(255,255,255,0.1);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --radius: 12px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a14 0%, var(--bg-dark) 50%, #1a1a2e 100%);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* HEADER - Mismo estilo del index */
+    header {
+      background: rgba(15, 15, 30, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 12px 5%;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+    }
+
+    .logo {
+      height: 45px;
+      transition: var(--transition);
+      filter: drop-shadow(0 2px 8px rgba(59,130,246,0.3));
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 4px 12px rgba(59,130,246,0.5));
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      color: var(--text-primary);
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    main {
+      padding: 1.5rem 0;
+    }
+
+    /* Controles Multicámara - Estilo mejorado */
+    .multicam-controls {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .controls-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .layout-selector {
+      position: relative;
+      min-width: 180px;
+    }
+
+    .layout-dropdown-btn {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .layout-dropdown-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .layout-dropdown-btn::after {
+      content: '▼';
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .layout-dropdown-btn.active::after {
+      transform: rotate(180deg);
+    }
+
+    .layout-dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      z-index: 100;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .layout-dropdown-content.show {
+      display: block;
+    }
+
+    .layout-option {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .layout-option:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .layout-option:last-child {
+      border-bottom: none;
+    }
+
+    .fullscreen-btn {
+      background: var(--accent);
+      border: none;
+      color: var(--text-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .fullscreen-btn:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    .exit-fullscreen-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid var(--accent);
+      color: var(--text-primary);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .exit-fullscreen-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .stream-selector {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stream-dropdown {
+      position: relative;
+      min-width: 200px;
+    }
+
+    .dropdown-btn {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .dropdown-btn:hover {
+      border-color: var(--accent);
+    }
+
+    .dropdown-btn::after {
+      content: '▼';
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .dropdown-btn.active::after {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 100;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+
+    .stream-option {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .stream-option:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .stream-option:last-child {
+      border-bottom: none;
+    }
+
+    .stream-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .stream-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .stream-meta {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* Grid de streams - Estilo mejorado */
+    .streams-grid {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      min-height: 400px;
+    }
+
+    /* Layouts */
+    .layout-1 { grid-template-columns: 1fr; }
+    .layout-2 { grid-template-columns: 1fr 1fr; }
+    .layout-3 { 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr 1fr;
+    }
+    .layout-3 .stream-item:nth-child(1) { 
+      grid-column: 1 / -1; 
+    }
+    .layout-4 { 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .stream-item {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 2px solid transparent;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .stream-item.active {
+      border-color: var(--accent);
+    }
+
+    .stream-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .stream-header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .stream-title-bar {
+      flex: 1;
+    }
+
+    .stream-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .action-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text-primary);
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: var(--transition);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .close-btn:hover {
+      background: #ef4444;
+    }
+
+    .stream-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      color: var(--text-secondary);
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stream-iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      background: #000;
+    }
+
+    .layout-2 .stream-iframe,
+    .layout-3 .stream-iframe,
+    .layout-4 .stream-iframe {
+      height: 300px;
+    }
+
+    /* Estado de pantalla completa REAL */
+    body.fullscreen-mode {
+      overflow: hidden;
+    }
+
+    body.fullscreen-mode .streams-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      background: #000;
+      margin: 0;
+      padding: 1rem;
+      display: grid;
+    }
+
+    body.fullscreen-mode .multicam-controls {
+      display: none;
+    }
+
+    body.fullscreen-mode header,
+    body.fullscreen-mode footer {
+      display: none;
+    }
+
+    body.fullscreen-mode .exit-fullscreen-btn {
+      display: flex;
+    }
+
+    /* Ajustes de layout en pantalla completa */
+    body.fullscreen-mode .layout-1 .stream-iframe { height: 100vh; }
+    body.fullscreen-mode .layout-2 .stream-iframe { height: 50vh; }
+    body.fullscreen-mode .layout-3 .stream-iframe { 
+      height: 50vh; 
+    }
+    body.fullscreen-mode .layout-3 .stream-item:nth-child(1) .stream-iframe {
+      height: 50vh;
+    }
+    body.fullscreen-mode .layout-4 .stream-iframe { height: 50vh; }
+
+    /* FOOTER - Mismo estilo del index */
+    footer.site-footer {
+      background: linear-gradient(135deg, rgba(15,15,30,0.98) 0%, rgba(10,10,20,0.98) 100%);
+      text-align: center;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border-color);
+      margin-top: 2rem;
+    }
+
+    footer.site-footer small {
+      display: block;
+      color: var(--text-secondary);
+      margin: 0.25rem 0;
+      font-size: 0.8rem;
+    }
+
+    footer.site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    footer.site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive - Mismo estilo del index */
+    @media (max-width: 768px) {
+      .container {
+        max-width: 720px;
+        padding: 0 1.5rem;
+      }
+      
+      .layout-2,
+      .layout-3,
+      .layout-4 {
+        grid-template-columns: 1fr;
+      }
+      
+      .controls-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .layout-selector {
+        width: 100%;
+      }
+      
+      .stream-selector {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .stream-iframe {
+        height: 250px;
+      }
+      
+      .fullscreen-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Pantalla completa en móviles */
+      body.fullscreen-mode .streams-grid {
+        padding: 0.5rem;
+      }
+      
+      body.fullscreen-mode .layout-1 .stream-iframe { height: 100vh; }
+      body.fullscreen-mode .layout-2 .stream-iframe { height: 50vh; }
+      body.fullscreen-mode .layout-3 .stream-iframe { height: 33.3vh; }
+      body.fullscreen-mode .layout-4 .stream-iframe { height: 50vh; }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 4%;
+      }
+      
+      nav {
+        gap: 15px;
+      }
+      
+      nav a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+      }
+      
+      .logo {
+        height: 40px;
+      }
+      
+      .multicam-controls {
+        padding: 1rem;
+      }
+      
+      .stream-dropdown {
+        min-width: 100%;
+      }
+
+      .exit-fullscreen-btn {
+        top: 10px;
+        right: 10px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+      
+      nav {
+        gap: 12px;
+      }
+      
+      nav a {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER - Mismo estilo del index -->
+   <header>
+    <a href="index.html">
+      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+    </a>
+    <nav>
+      <a href="index.html#channelsSection">Canales</a>
+      <a href="index.html">Agenda</a>
+      <a href="multicam.html">Pantalla Dividida</a>
+      <a href="nowevents.xyz">SERIES Y PELICULAS</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="multicam-controls">
+      <div class="controls-header">
+        <div class="layout-selector">
+          <button class="layout-dropdown-btn" id="layoutDropdownBtn">
+            1 Pantalla
+          </button>
+          <div class="layout-dropdown-content" id="layoutDropdown">
+            <div class="layout-option" data-layout="1">1 Pantalla</div>
+            <div class="layout-option" data-layout="2">2 Pantallas</div>
+            <div class="layout-option" data-layout="3">3 Pantallas</div>
+            <div class="layout-option" data-layout="4">4 Pantallas</div>
+          </div>
+        </div>
+        
+        <button class="fullscreen-btn" id="globalFullscreen">
+          <span>⛶</span>
+          Pantalla Completa
+        </button>
+        
+        <div class="stream-selector">
+          <div class="stream-dropdown">
+            <button class="dropdown-btn" data-slot="1">Seleccionar evento para la pantalla 1</button>
+            <div class="dropdown-content" id="dropdown-1">
+              <!-- Las opciones se cargan dinámicamente desde la agenda -->
+            </div>
+          </div>
+          
+          <div class="stream-dropdown" style="display: none;" id="dropdown-container-2">
+            <button class="dropdown-btn" data-slot="2">Seleccionar evento para la pantalla 2</button>
+            <div class="dropdown-content" id="dropdown-2"></div>
+          </div>
+          
+          <div class="stream-dropdown" style="display: none;" id="dropdown-container-3">
+            <button class="dropdown-btn" data-slot="3">Seleccionar evento para la pantalla 3</button>
+            <div class="dropdown-content" id="dropdown-3"></div>
+          </div>
+          
+          <div class="stream-dropdown" style="display: none;" id="dropdown-container-4">
+            <button class="dropdown-btn" data-slot="4">Seleccionar evento para la pantalla 4</button>
+            <div class="dropdown-content" id="dropdown-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="streams-grid layout-1" id="streamsGrid">
+      <!-- Stream 1 -->
+      <div class="stream-item active" id="stream-1">
+        <div class="stream-header">
+          <div class="stream-title-bar">
+            <strong>Pantalla 1</strong>
+          </div>
+          <div class="stream-actions">
+          </div>
+        </div>
+        <div class="stream-placeholder">
+          <span>📺</span>
+          <span>Selecciona un evento para comenzar</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Botón para salir de pantalla completa -->
+  <button class="exit-fullscreen-btn" id="exitFullscreenBtn" style="display: none;">
+    <span>✕</span>
+    Salir de Pantalla Completa
+  </button>
+
+  <!-- FOOTER - Mismo estilo del index -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2025 | <a href="dmca.html">DMCA</a></small>
+      <small><a href="https://x.com/AngulismoTV">Twitter</a> | <a href="https://discord.gg/jEayDA7T">Discord</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // URLs de la agenda real
+    const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
+    const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
+    const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
+
+    let agendaStreams = [];
+    let currentLayout = 1;
+    let activeStreams = { 1: null };
+    let isFullscreen = false;
+
+    // Función para cargar datos de la agenda
+    async function fetchJSON(url, options = {}) {
+      try {
+        const response = await fetch(url, {
+          cache: 'no-store',
+          mode: 'cors',
+          ...options
+        });
+        if (!response.ok) throw new Error('Error al cargar ' + url);
+        return await response.json();
+      } catch (error) {
+        console.error(`Error fetching ${url}:`, error);
+        return null;
+      }
+    }
+
+    // Función para extraer URL directa del reproductor
+    function getDirectPlayerUrl(streamData) {
+      if (!streamData || !streamData.tv_networks || streamData.tv_networks.length === 0) {
+        return null;
+      }
+
+      const network = streamData.tv_networks[0];
+      
+      // Si tiene link codificado en base64
+      if (network.link) {
+        try {
+          const decodedLink = atob(network.link);
+          return decodedLink;
+        } catch (e) {
+          console.error('Error decoding base64 link:', e);
+          return null;
+        }
+      }
+      
+      return null;
+    }
+
+    // Adaptar eventos de diferentes fuentes
+    async function adaptManualEvents(events) {
+      return events.map(ev => {
+        let teams = [];
+        if (ev.evento.includes(' vs ')) {
+          teams = ev.evento.split(' vs ').map(name => ({ name: name.trim() }));
+        } else {
+          teams = [{ name: ev.evento.trim() }];
+        }
+        
+        let canales = Array.isArray(ev.canales) ? ev.canales : (ev.canal ? [ev.canal] : []);
+        return {
+          id: ev.id || `manual-${Date.now()}`,
+          start_time: ev.fecha,
+          teams: teams,
+          evento: ev.evento,
+          description: ev.descripcion || '',
+          competition_name: ev.competencia || '',
+          tv_networks: canales.map(c => {
+            if (typeof c === 'object' && c.name) {
+              return c;
+            }
+            return { name: c };
+          }),
+          status: { name: ev.estado || '' }
+        };
+      });
+    }
+
+    async function adaptStreamTPEvents(events) {
+      if (!Array.isArray(events)) return [];
+      
+      return events.map(ev => {
+        let teams = [];
+        if (ev.title && ev.title.includes(' vs ')) {
+          teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
+        } else if (ev.title) {
+          teams = [{ name: ev.title.trim() }];
+        }
+        
+        const canales = [];
+        if (ev.link) {
+          canales.push({
+            name: ev.category || 'Canal',
+            link: btoa(ev.link)
+          });
+        }
+        
+        return {
+          id: `streamtp-${Date.now()}`,
+          start_time: ev.time || '',
+          teams: teams,
+          evento: ev.title || '',
+          description: ev.status || '',
+          competition_name: ev.category || '',
+          tv_networks: canales,
+          status: { name: ev.status || '' }
+        };
+      });
+    }
+
+    async function adaptLA14HDEvents(events) {
+      if (!Array.isArray(events)) return [];
+      
+      return events.map(ev => {
+        let teams = [];
+        if (ev.title && ev.title.includes(' vs ')) {
+          teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
+        } else if (ev.title) {
+          teams = [{ name: ev.title.trim() }];
+        }
+        
+        const canales = [];
+        if (ev.link) {
+          canales.push({
+            name: ev.category || 'Canal',
+            link: btoa(ev.link)
+          });
+        }
+        
+        return {
+          id: `la14hd-${Date.now()}`,
+          start_time: ev.time || '',
+          teams: teams,
+          evento: ev.title || '',
+          description: ev.status || '',
+          competition_name: ev.category || '',
+          tv_networks: canales,
+          status: { name: ev.status || '' }
+        };
+      });
+    }
+
+    // Cargar todos los eventos de la agenda
+    async function loadAgendaData() {
+      try {
+        const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw] = await Promise.all([
+          fetchJSON(EVENTOS_JSON),
+          fetchJSON(STREAMTP_EVENTOS),
+          fetchJSON(LA14HD_EVENTOS)
+        ]);
+
+        // Adaptar eventos
+        const manualEvents = await adaptManualEvents(Array.isArray(manualEventsRaw) ? manualEventsRaw : []);
+        
+        let streamTPArray = [];
+        if (streamTPEventsRaw && Array.isArray(streamTPEventsRaw)) {
+          streamTPArray = streamTPEventsRaw;
+        } else if (streamTPEventsRaw && streamTPEventsRaw.Events) {
+          streamTPArray = streamTPEventsRaw.Events;
+        }
+        
+        let la14HDArray = [];
+        if (la14HDEventsRaw && Array.isArray(la14HDEventsRaw)) {
+          la14HDArray = la14HDEventsRaw;
+        } else if (la14HDEventsRaw && la14HDEventsRaw.Events) {
+          la14HDArray = la14HDEventsRaw.Events;
+        }
+
+        const streamTPEvents = await adaptStreamTPEvents(streamTPArray);
+        const la14HDEvents = await adaptLA14HDEvents(la14HDArray);
+
+        // Combinar todos los eventos
+        agendaStreams = [...manualEvents, ...streamTPEvents, ...la14HDEvents];
+        
+        console.log('Eventos cargados para multicámara:', agendaStreams.length);
+        loadStreamOptions();
+        
+      } catch (error) {
+        console.error('Error cargando datos de agenda:', error);
+      }
+    }
+
+    // Inicializar la interfaz
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAgendaData();
+      setupEventListeners();
+    });
+
+    function loadStreamOptions() {
+      // Limpiar dropdowns existentes
+      for (let i = 1; i <= 4; i++) {
+        const dropdown = document.getElementById(`dropdown-${i}`);
+        if (dropdown) dropdown.innerHTML = '';
+      }
+
+      // Cargar eventos en todos los dropdowns
+      agendaStreams.forEach(stream => {
+        for (let i = 1; i <= 4; i++) {
+          const dropdown = document.getElementById(`dropdown-${i}`);
+          if (dropdown) {
+            const option = document.createElement('div');
+            option.className = 'stream-option';
+            option.innerHTML = `
+              <div class="stream-info">
+                <div class="stream-title">${stream.evento}</div>
+                <div class="stream-meta">${stream.competition_name} • ${formatTime(stream.start_time)}</div>
+              </div>
+            `;
+            option.addEventListener('click', () => selectStream(i, stream));
+            dropdown.appendChild(option);
+          }
+        }
+      });
+    }
+
+    function formatTime(str) {
+      if (!str) return '--:--';
+      if (str.includes(' ')) {
+        const parts = str.split(' ');
+        return parts[1] || '--:--';
+      }
+      return str.includes(':') ? str : '--:--';
+    }
+
+    function setupEventListeners() {
+      // Layout dropdown
+      const layoutDropdownBtn = document.getElementById('layoutDropdownBtn');
+      const layoutDropdown = document.getElementById('layoutDropdown');
+      
+      layoutDropdownBtn.addEventListener('click', function() {
+        layoutDropdown.classList.toggle('show');
+        this.classList.toggle('active');
+      });
+
+      // Layout options
+      document.querySelectorAll('.layout-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const layout = parseInt(this.dataset.layout);
+          changeLayout(layout);
+          layoutDropdownBtn.textContent = this.textContent;
+          layoutDropdown.classList.remove('show');
+          layoutDropdownBtn.classList.remove('active');
+        });
+      });
+
+      // Stream dropdowns
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const slot = this.dataset.slot;
+          toggleStreamDropdown(slot);
+        });
+      });
+
+      // Pantalla completa global
+      document.getElementById('globalFullscreen').addEventListener('click', toggleGlobalFullscreen);
+      document.getElementById('exitFullscreenBtn').addEventListener('click', toggleGlobalFullscreen);
+
+      // Cerrar dropdowns al hacer clic fuera
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.layout-selector')) {
+          layoutDropdown.classList.remove('show');
+          layoutDropdownBtn.classList.remove('active');
+        }
+        if (!e.target.closest('.stream-dropdown')) {
+          closeAllStreamDropdowns();
+        }
+      });
+
+      // Salir de pantalla completa con ESC
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isFullscreen) {
+          toggleGlobalFullscreen();
+        }
+      });
+
+      // Detectar cambios en pantalla completa nativa
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+    }
+
+    function handleFullscreenChange() {
+      const fullscreenElement = document.fullscreenElement || 
+                               document.webkitFullscreenElement || 
+                               document.mozFullScreenElement || 
+                               document.msFullscreenElement;
+      
+      if (!fullscreenElement && isFullscreen) {
+        // El usuario salió de pantalla completa usando métodos nativos del navegador
+        toggleGlobalFullscreen();
+      }
+    }
+
+    function closeAllStreamDropdowns() {
+      document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+    }
+
+    function toggleStreamDropdown(slot) {
+      const dropdown = document.getElementById(`dropdown-${slot}`);
+      const btn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
+      
+      // Cerrar otros dropdowns
+      closeAllStreamDropdowns();
+      
+      // Toggle dropdown actual
+      dropdown.classList.toggle('show');
+      btn.classList.toggle('active');
+    }
+
+    function changeLayout(layout) {
+      currentLayout = layout;
+      
+      // Actualizar grid
+      const grid = document.getElementById('streamsGrid');
+      grid.className = `streams-grid layout-${layout}`;
+      
+      // Limpiar streams que excedan el nuevo layout
+      for (let i = layout + 1; i <= 4; i++) {
+        if (activeStreams[i]) {
+          removeStream(i, true); // true = no cambiar layout automáticamente
+        }
+      }
+      
+      // Mostrar/ocultar streams y dropdowns
+      for (let i = 1; i <= 4; i++) {
+        const streamElement = document.getElementById(`stream-${i}`);
+        const dropdownContainer = document.getElementById(`dropdown-container-${i}`);
+        
+        if (i <= layout) {
+          if (!streamElement) {
+            createStreamElement(i);
+          }
+          if (dropdownContainer) {
+            dropdownContainer.style.display = 'block';
+          }
+        } else {
+          // Eliminar elementos de stream que ya no están en el layout
+          if (streamElement) {
+            streamElement.remove();
+          }
+          if (dropdownContainer) {
+            dropdownContainer.style.display = 'none';
+          }
+          // Limpiar datos de streams eliminados
+          if (activeStreams[i]) {
+            delete activeStreams[i];
+            const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${i}"]`);
+            if (dropdownBtn) {
+              dropdownBtn.textContent = `Seleccionar evento para la pantalla ${i}`;
+            }
+          }
+        }
+      }
+    }
+
+    function createStreamElement(slot) {
+      const grid = document.getElementById('streamsGrid');
+      const streamElement = document.createElement('div');
+      streamElement.className = `stream-item${activeStreams[slot] ? ' active' : ''}`;
+      streamElement.id = `stream-${slot}`;
+      
+      const streamData = activeStreams[slot];
+      const playerUrl = streamData ? getDirectPlayerUrl(streamData) : null;
+      
+      streamElement.innerHTML = `
+        <div class="stream-header">
+          <div class="stream-title-bar">
+            <strong>Pantalla ${slot}</strong>
+            ${streamData ? `<span> - ${streamData.evento}</span>` : ''}
+          </div>
+          <div class="stream-actions">
+          </div>
+        </div>
+        ${playerUrl ? 
+          `<iframe class="stream-iframe" src="${playerUrl}" allowfullscreen></iframe>` :
+          `<div class="stream-placeholder">
+            <span>📺</span>
+            <span>Selecciona un evento para comenzar</span>
+          </div>`
+        }
+      `;
+      grid.appendChild(streamElement);
+    }
+
+    function selectStream(slot, stream) {
+      activeStreams[slot] = stream;
+      const playerUrl = getDirectPlayerUrl(stream);
+      
+      // Actualizar botón dropdown
+      const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
+      if (dropdownBtn) {
+        dropdownBtn.textContent = stream.evento.length > 30 ? stream.evento.substring(0, 30) + '...' : stream.evento;
+      }
+      
+      // Actualizar o crear stream element
+      const existingElement = document.getElementById(`stream-${slot}`);
+      if (existingElement) {
+        existingElement.innerHTML = `
+          <div class="stream-header">
+            <div class="stream-title-bar">
+              <strong>Pantalla ${slot}</strong>
+              <span> - ${stream.evento}</span>
+            </div>
+            <div class="stream-actions">
+            </div>
+          </div>
+          ${playerUrl ? 
+            `<iframe class="stream-iframe" src="${playerUrl}" allowfullscreen></iframe>` :
+            `<div class="stream-placeholder">
+              <span>❌</span>
+              <span>No se pudo cargar el reproductor</span>
+            </div>`
+          }
+        `;
+        existingElement.classList.add('active');
+      } else {
+        createStreamElement(slot);
+      }
+      
+      // Cerrar dropdown
+      toggleStreamDropdown(slot);
+    }
+
+    function removeStream(slot, keepLayout = false) {
+      console.log('Removing stream:', slot, 'keepLayout:', keepLayout);
+      
+      // Solo eliminar el stream específico, no todos
+      const streamElement = document.getElementById(`stream-${slot}`);
+      if (streamElement) {
+        // Solo resetear a estado vacío, no eliminar completamente
+        streamElement.innerHTML = `
+          <div class="stream-header">
+            <div class="stream-title-bar">
+              <strong>Pantalla ${slot}</strong>
+            </div>
+            <div class="stream-actions">
+            </div>
+          </div>
+          <div class="stream-placeholder">
+            <span>📺</span>
+            <span>Selecciona un evento para comenzar</span>
+          </div>
+        `;
+        streamElement.classList.remove('active');
+      }
+      
+      // Limpiar datos
+      delete activeStreams[slot];
+      
+      // Reset dropdown button
+      const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
+      if (dropdownBtn) {
+        dropdownBtn.textContent = `Seleccionar evento para la pantalla ${slot}`;
+      }
+      
+      // Solo cambiar layout si no es una llamada interna de changeLayout
+      // y si no hay streams activos en el layout actual
+      if (!keepLayout) {
+        const activeCount = Object.keys(activeStreams).filter(s => 
+          activeStreams[s] !== null && s <= currentLayout
+        ).length;
+        
+        console.log('Active streams count:', activeCount, 'Current layout:', currentLayout);
+        
+        if (activeCount === 0 && currentLayout > 1) {
+          // Si no hay streams activos, cambiar a layout 1
+          changeLayout(1);
+          document.getElementById('layoutDropdownBtn').textContent = '1 Pantalla';
+        }
+      }
+    }
+
+    function maximizeStream(slot) {
+      const streamElement = document.getElementById(`stream-${slot}`);
+      if (streamElement) {
+        const iframe = streamElement.querySelector('iframe');
+        if (iframe && iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        }
+      }
+    }
+
+    function toggleGlobalFullscreen() {
+      if (!isFullscreen) {
+        // Entrar en pantalla completa
+        document.body.classList.add('fullscreen-mode');
+        document.getElementById('globalFullscreen').innerHTML = '<span>⛶</span> Pantalla Completa';
+        document.getElementById('exitFullscreenBtn').style.display = 'flex';
+        isFullscreen = true;
+        
+        // Intentar pantalla completa nativa del navegador
+        const element = document.documentElement;
+        if (element.requestFullscreen) {
+          element.requestFullscreen();
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+      } else {
+        // Salir de pantalla completa
+        document.body.classList.remove('fullscreen-mode');
+        document.getElementById('globalFullscreen').innerHTML = '<span>⛶</span> Pantalla Completa';
+        document.getElementById('exitFullscreenBtn').style.display = 'none';
+        isFullscreen = false;
+        
+        // Salir de pantalla completa nativa
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+    // Hacer funciones globales para los onclick
+    window.maximizeStream = maximizeStream;
+    window.removeStream = removeStream;
+  </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>AngulismoTV</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,81 +23,127 @@
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background: linear-gradient(135deg, #0a0a14 0%, var(--bg-dark) 50%, #1a1a2e 100%);
       color: var(--text-primary);
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
       margin: 0;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .site-header {
-      background: rgba(15,15,30,0.98);
-      backdrop-filter: blur(20px) saturate(180%);
-      padding: 1rem 0;
-      box-shadow: var(--shadow-md);
+    /* HEADER MEJORADO - Estilo del segundo código */
+    header {
+      background: rgba(15, 15, 30, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 12px 5%;
       border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+    }
+
+    .logo {
+      height: 45px;
+      transition: var(--transition);
+      filter: drop-shadow(0 2px 8px rgba(59,130,246,0.3));
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 4px 12px rgba(59,130,246,0.5));
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      color: var(--text-primary);
+      background: rgba(59, 130, 246, 0.1);
     }
 
     .container {
-      max-width: 1400px;
+      width: 100%;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
 
-    .brand img.logo {
-      height: 60px;
-      transition: var(--transition);
-      filter: drop-shadow(0 2px 8px rgba(59,130,246,0.2));
-    }
-
-    .brand img.logo:hover {
-      transform: translateY(-2px);
-      filter: drop-shadow(0 4px 12px rgba(59,130,246,0.4));
+    main {
+      padding: 1.5rem 0;
     }
 
     main h4 {
       font-weight: 500;
       color: var(--text-secondary);
-      margin: 20px 0;
+      margin: 1rem 0;
       text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      padding: 0 0.5rem;
     }
 
     main h4 a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
+      transition: var(--transition);
+    }
+
+    main h4 a:hover {
+      text-decoration: underline;
     }
 
     iframe#agendaFrame {
       width: 100%;
-      min-height: 600px;
+      height: 500px;
       border-radius: var(--radius);
       border: none;
       box-shadow: var(--shadow-md);
-      margin-bottom: 40px;
+      margin-bottom: 1.5rem;
     }
 
     .channels-section {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 1rem;
     }
 
     .section-title {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 700;
       text-align: center;
       background: linear-gradient(90deg, var(--accent), var(--accent-purple));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 16px;
+      margin-bottom: 0.5rem;
     }
 
     .channels-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
     }
 
     .channel-card {
@@ -108,27 +154,33 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       cursor: pointer;
       text-align: center;
-      padding: 12px;
+      padding: 0.75rem;
+      border: 1px solid transparent;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .channel-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
       border: 1px solid var(--accent);
     }
 
     .channel-card img {
-      width: 80px;
-      height: 80px;
+      width: 60px;
+      height: 60px;
       object-fit: cover;
       border-radius: 50%;
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
       border: 2px solid rgba(59,130,246,0.3);
       transition: var(--transition);
     }
 
-    .channel-card img:hover {
-      transform: scale(1.1);
+    .channel-card:hover img {
+      transform: scale(1.05);
       border-color: var(--accent);
     }
 
@@ -136,21 +188,23 @@
       display: block;
       font-weight: 600;
       color: var(--text-primary);
+      font-size: 0.85rem;
+      line-height: 1.2;
     }
 
     footer.site-footer {
       background: linear-gradient(135deg, rgba(15,15,30,0.98) 0%, rgba(10,10,20,0.98) 100%);
       text-align: center;
-      padding: 2rem 0;
+      padding: 1.5rem 0;
       border-top: 1px solid var(--border-color);
-      margin-top: 40px;
+      margin-top: 2rem;
     }
 
     footer.site-footer small {
       display: block;
       color: var(--text-secondary);
-      margin: 0.375rem 0;
-      font-size: 0.875rem;
+      margin: 0.25rem 0;
+      font-size: 0.8rem;
     }
 
     footer.site-footer a {
@@ -158,44 +212,145 @@
       text-decoration: none;
       font-weight: 500;
       transition: var(--transition);
-      position: relative;
     }
 
-    footer.site-footer a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
+    footer.site-footer a:hover {
+      text-decoration: underline;
     }
 
-    footer.site-footer a:hover::after {
-      width: 100%;
+    /* Responsive para tablets */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+        padding: 0 1.5rem;
+      }
+      
+      .channels-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      
+      .logo {
+        height: 50px;
+      }
+      
+      nav {
+        gap: 25px;
+      }
+      
+      nav a {
+        font-size: 1rem;
+      }
+      
+      iframe#agendaFrame {
+        height: 600px;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      iframe#agendaFrame { min-height: 500px; }
-      .channels-grid { gap: 12px; }
+    /* Responsive para desktop */
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1200px;
+      }
+      
+      header {
+        padding: 12px 5%;
+      }
+      
+      .channels-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1.25rem;
+      }
+      
+      .channel-card {
+        padding: 1rem;
+        min-height: 140px;
+      }
+      
+      .channel-card img {
+        width: 70px;
+        height: 70px;
+      }
     }
 
+    /* Para pantallas muy pequeñas */
     @media (max-width: 480px) {
-      iframe#agendaFrame { min-height: 400px; }
-      .section-title { font-size: 1.25rem; }
+      header {
+        padding: 10px 4%;
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      nav {
+        gap: 15px;
+      }
+      
+      nav a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+      }
+      
+      .logo {
+        height: 40px;
+      }
+      
+      .channels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      
+      .channel-card {
+        padding: 0.5rem;
+        min-height: 110px;
+      }
+      
+      .channel-card img {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .channel-card span {
+        font-size: 0.8rem;
+      }
+      
+      iframe#agendaFrame {
+        height: 450px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+      
+      nav {
+        gap: 12px;
+      }
+      
+      nav a {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
     }
   </style>
 </head>
-<body>
 
-  <header class="site-header">
-    <div class="container">
-      <div class="brand">
-        <a href="/"><img src="assets/logo2.png" alt="AngulismoTV" class="logo"></a>
-      </div>
-    </div>
+<body>
+  <!-- HEADER MEJORADO -->
+  <header>
+    <a href="index.html">
+      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+    </a>
+    <nav>
+      <a href="index.html#channelsSection">Canales</a>
+      <a href="index.html">Agenda</a>
+      <a href="multicam.html">Pantalla Dividida</a>
+      <a href="nowevents.xyz">SERIES Y PELICULAS</a>
+    </nav>
   </header>
 
   <main class="container">
@@ -219,5 +374,29 @@
   </footer>
 
   <script defer src="scripts/main.js"></script>
+  
+  <script>
+    // Smooth scroll para los enlaces del header
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a[href*="#"]');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
