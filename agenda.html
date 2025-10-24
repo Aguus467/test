@@ -2,18 +2,353 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agenda Deportiva</title>
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/tabla-agenda.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Agenda Deportiva - AngulismoTV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0b0d1b;
+      --bg-card: rgba(20,20,40,0.7);
+      --text-primary: #ffffff;
+      --text-secondary: #72d6ff;
+      --accent: #72d6ff;
+      --accent-purple: #ff7fff;
+      --border-color: rgba(255,255,255,0.1);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+      --radius: 12px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0b0d1b, #1a1f3b, #000014);
+      color: var(--text-primary);
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+
+    /* FONDO GALAXIA CON ESTRELLAS ANIMADAS */
+    #starfield {
+      position: fixed;
+      top:0; 
+      left:0;
+      width:100%; 
+      height:100%;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+      will-change: transform;
+    }
+    
+    .star {
+      position:absolute;
+      background:white;
+      border-radius:50%;
+      opacity:0.8;
+      animation: twinkle 3s infinite linear;
+      will-change: opacity;
+    }
+    
+    @keyframes twinkle { 
+      0%, 100% { opacity:0.3; } 
+      50% { opacity:1; } 
+    }
+
+    .container-agenda {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro {
+      margin-bottom: 1.5rem;
+    }
+
+    .day-banner {
+      background: linear-gradient(135deg, rgba(114,214,255,0.2), rgba(255,127,255,0.2));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+    }
+
+    .agenda {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .agenda.compact {
+      gap: 0.35rem;
+    }
+
+    /* Contenedor de partidos */
+    .matches {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Tarjeta de partido */
+    .match-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .match-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      border-color: var(--accent);
+    }
+
+    /* Columna de tiempo */
+    .time-col {
+      flex-shrink: 0;
+    }
+
+    .time-badge {
+      background: rgba(114,214,255,0.15);
+      border: 1px solid rgba(114,214,255,0.3);
+      color: var(--accent);
+      padding: 0.5rem 0.875rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    /* Información principal del partido */
+    .match-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .teams {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .meta span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .competition {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .competition img {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    /* Dropdown de canales */
+    .dropdown {
+      position: relative;
+    }
+
+    .channel-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      background: rgba(20,20,40,0.95);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-top: 0.5rem;
+      min-width: 200px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .channel-menu.show {
+      display: block;
+    }
+
+    .channel-item {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .channel-item:last-child {
+      border-bottom: none;
+    }
+
+    .channel-item:hover {
+      background: rgba(114,214,255,0.15);
+    }
+
+    .channel-item .left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .play-icon::before {
+      content: '▶';
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
+    /* Mensaje de sin eventos */
+    .no-events {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+
+    /* Loading state */
+    .loading {
+      background: linear-gradient(90deg, rgba(20,20,40,0.6) 25%, rgba(40,40,70,0.6) 50%, rgba(20,20,40,0.6) 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container-agenda {
+        padding: 1rem 0.75rem;
+      }
+
+      .day-banner {
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .event-card {
+        padding: 0.875rem 1rem;
+      }
+
+      .event-teams {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container-agenda {
+        padding: 0.75rem 0.5rem;
+      }
+
+      .day-banner {
+        font-size: 1rem;
+        padding: 0.625rem 0.75rem;
+      }
+
+      .event-card {
+        padding: 0.75rem 0.875rem;
+      }
+
+      .event-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event-teams {
+        font-size: 0.95rem;
+      }
+
+      .event-channels {
+        margin-top: 0.5rem;
+      }
+
+      .channel-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="starfield"></div>
+
   <main class="container-agenda">
     <section class="intro">
       <div id="dayBanner" class="day-banner"></div>
     </section>
     <section id="agenda" class="agenda compact"></section>
   </main>
+
   <script defer src="scripts/main.js"></script>
+  
+  <script>
+    // Generar estrellas dinámicamente - Optimizado para scroll suave
+    const starfield = document.getElementById('starfield');
+    const numStars = 60;
+    for(let i=0;i<numStars;i++){
+      const star = document.createElement('div');
+      star.className='star';
+      const size = Math.random()*2+1;
+      star.style.width = star.style.height = size+'px';
+      star.style.top = Math.random()*100+'%';
+      star.style.left = Math.random()*100+'%';
+      star.style.animationDelay = Math.random()*3+'s';
+      starfield.appendChild(star);
+    }
+  </script>
 </body>
 </html>
