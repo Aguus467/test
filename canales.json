@@ -15,19 +15,7 @@
     ]
   },
    {
-    "seccionTitulo": "Agenda",
-    "canales": [
-      {
-        "id": 901,
-        "nombre": "21:30 - Racing Club vs Flamengo",
-        "imagenUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqhhmiGVxqkrej84U8kCjtGTSqyvmWx3gUdA&s",
-        "urls": [
-          "https://welivesport.shop/embed/espn1arg.php",
-          "https://streamvv11.lat/global1.php?channel=espn",
-          "https://dots.bestleague.world/cvatt.html?get=RVNQTl9VWQ==&lang=1"
-        ]
-      }
-    ]
+    "seccionTitulo": "Agenda"
   },
   {
     "seccionTitulo": "Deportes Argentina",
@@ -126,7 +114,7 @@
           "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvRVNQTi9saXZlX2Rhc2hfY2xkL0VTUE4ubXBk&key=NmQyNDNlYmQ3YTU3YmVhNGI0YjA1MmFlMTNmNGMwNTE=&key2=NWMxOTI1ODc5ZGU4NzNkNDNiN2MyNTkyNTkwMjUzOWI=",
           "https://bestleague.one/mpdk/?get=aHR0cHM6Ly9jc2MtYXhzLWVkZ2UwMS5zZW5zYS5jb20uYXIvbGl2ZS9lZHMvRVNQTi9saXZlX2Rhc2hfY2xkL0VTUE4ubXBk&key=NmQyNDNlYmQ3YTU3YmVhNGI0YjA1MmFlMTNmNGMwNTE=&key2=NWMxOTI1ODc5ZGU4NzNkNDNiN2MyNTkyNTkwMjUzOWI=",
           "https://streamtp22.com/global1.php?stream=espn",
-          "https://bestleague.one/cvatt.html?get=RVNQTjJIRA&lang=1",
+          "https://dot.bestleague.world/cvatt.html?get=RVNQTjJIRA&lang=1",
           "https://la14hd.com/vivo/canales.php?stream=espn",
           "https://nebunexa.co/temp.html?get=RVNQTjJIRA",
           "https://streamtp22.com/global1.php?stream=espn",
@@ -1122,6 +1110,7 @@
     ]
   }
 ]
+
 
 
 
