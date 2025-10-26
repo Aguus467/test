@@ -3,259 +3,494 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Transmisión en Vivo - AngulismoTV Galaxia Animada</title>
-<meta name="description" content="Disfruta de transmisiones en vivo de tus canales favoritos en AngulismoTV">
+<title>Transmisión en Vivo - AngulismoTV</title>
+<meta name="description" content="Disfruta de transmisiones en vivo de tus canales favoritos con experiencia personalizable">
 
-<!-- Meta tags optimizados para Android -->
+<!-- Meta tags optimizados -->
 <meta name="theme-color" content="#0b0d1b">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <link rel="icon" href="assets/logo2.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { 
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box; 
-    font-family:'Inter', Arial, sans-serif; 
+  /* ==================== Variables CSS ==================== */
+  :root {
+    --bg-dark: #0b0d1b;
+    --bg-gradient-start: #0b0d1b;
+    --bg-gradient-mid: #1a1f3b;
+    --bg-gradient-end: #000014;
+    --bg-card: rgba(20, 20, 40, 0.7);
+    --bg-card-header: rgba(40, 40, 70, 0.85);
+    --text-primary: #ffffff;
+    --text-secondary: #72d6ff;
+    --accent: #72d6ff;
+    --accent-purple: #ff7fff;
+    --accent-glow: rgba(114, 214, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-accent: rgba(114, 214, 255, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 20px var(--accent-glow);
+    --radius: 12px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ==================== Reset & Base ==================== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    color: #fff;
+    color: var(--text-primary);
     overflow-x: hidden;
     position: relative;
-    background: radial-gradient(circle at top, #0b0d1b, #1a1f3b, #000014);
+    background: radial-gradient(circle at top, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
     -webkit-overflow-scrolling: touch;
   }
 
-  /* FONDO GALAXIA CON ESTRELLAS ANIMADAS - Optimizado para móvil */
+  /* Animated gradient overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(114, 214, 255, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255, 127, 255, 0.08) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+
+  /* ==================== Starfield Background ==================== */
   #starfield {
     position: fixed;
-    top:0; 
-    left:0;
-    width:100%; 
-    height:100%;
-    z-index:0;
-    pointer-events:none;
-    overflow:hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    will-change: transform;
   }
-  
+
   .star {
-    position:absolute;
-    background:white;
-    border-radius:50%;
-    opacity:0.8;
-    animation-name:twinkle, moveStar;
-    animation-duration: 3s, 60s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    transform: translateZ(0); /* Aceleración GPU */
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite linear;
+    will-change: opacity;
   }
-  
+
   @keyframes twinkle {
-    0%,100% { opacity:0.3; }
-    50% { opacity:1; }
-  }
-  
-  @keyframes moveStar {
-    0% { transform: translate(0,0); }
-    100% { transform: translate(200px,200px); }
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
   }
 
-  a { 
-    text-decoration:none; 
-    color:#72d6ff; 
-    transition:0.3s; 
-  }
-  
-  a:hover { 
-    color:#ff7fff; 
+  .shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, transparent);
+    border-radius: 50%;
+    animation: shoot 3s linear infinite;
+    opacity: 0;
   }
 
-  /* HEADER OPTIMIZADO PARA TOUCH */
+  @keyframes shoot {
+    0% {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-300px) translateY(300px);
+      opacity: 0;
+    }
+  }
+
+  /* ==================== Links ==================== */
+  a {
+    text-decoration: none;
+    color: var(--accent);
+    transition: var(--transition);
+  }
+
+  a:hover,
+  a:focus {
+    color: var(--accent-purple);
+  }
+
+  /* ==================== Header ==================== */
   header {
-    background: rgba(10,10,30,0.9);
-    backdrop-filter: blur(6px);
-    padding:12px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 0 20px rgba(114,214,255,0.5);
-    border-bottom:1px solid rgba(255,255,255,0.1);
-  }
-  
-  .logo { 
-    height:50px; 
-    transition:0.3s; 
-  }
-  
-  .logo:hover { 
-    transform:scale(1.05); 
-    filter:drop-shadow(0 0 12px #72d6ff); 
+    background: rgba(10, 10, 30, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 12px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(114, 214, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid var(--border-color);
   }
 
-  nav { 
-    display:flex; 
-    gap:15px; 
-    z-index:2; 
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
+    animation: headerGlow 3s ease-in-out infinite;
   }
-  
-  nav a { 
-    padding:10px 14px; 
-    font-weight:600; 
-    border-radius:6px; 
-    background: rgba(50,50,80,0.5); 
-    transition:0.3s; 
+
+  @keyframes headerGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .logo {
+    height: 50px;
+    transition: var(--transition);
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px rgba(114, 214, 255, 0.3));
+  }
+
+  .logo:hover {
+    transform: scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 0 16px var(--accent));
+  }
+
+  nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  nav a {
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background: rgba(50, 50, 80, 0.5);
+    transition: var(--transition);
     min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  nav a:hover { 
-    background: rgba(114,214,255,0.2); 
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(114, 214, 255, 0.2);
   }
 
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  nav a:hover::before {
+    left: 100%;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    background: rgba(114, 214, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+    border-color: var(--accent);
+  }
+
+  /* ==================== Options Bar ==================== */
   .options-bar {
-    padding:12px 5%;
-    background: rgba(30,30,60,0.7);
-    border-bottom:1px solid rgba(114,214,255,0.3);
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-    gap:12px;
-    backdrop-filter: blur(6px);
-    z-index:2;
+    padding: 16px 5%;
+    background: rgba(30, 30, 60, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-accent);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
     flex-wrap: wrap;
-  }
-  
-  select, .btn {
-    padding:10px 14px;
-    border-radius:6px;
-    border:1px solid rgba(114,214,255,0.5);
-    background: rgba(20,20,40,0.8);
-    color:#fff;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-    min-height: 44px;
-    font-size: 16px; /* Previene zoom en iOS */
-  }
-  
-  .btn:hover { 
-    background: rgba(114,214,255,0.3); 
-    color:#000; 
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
+  .options-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
+  }
+
+  .options-bar label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  select,
+  .btn {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-accent);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    min-height: 44px;
+    font-size: 16px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  select:hover,
+  select:focus,
+  .btn:hover,
+  .btn:focus {
+    background: rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 15px rgba(114, 214, 255, 0.2);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(114, 214, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .btn:active::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Botón de personalización */
+  .customize-btn {
+    margin-left: auto;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    border: none;
+    color: white;
+  }
+
+  .customize-btn:hover {
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-2px);
+  }
+
+  /* ==================== Container & Layout ==================== */
   .container {
-    width:100%;
-    max-width:1200px;
-    margin:0 auto;
-    padding:1.5rem 1rem;
-    display:grid;
-    grid-template-columns:3fr 1fr;
-    gap:20px;
-    flex:1;
-    position:relative;
-    z-index:2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    flex: 1;
+    position: relative;
+    z-index: 2;
   }
 
   .card {
-    background: rgba(20,20,40,0.6);
-    border-radius:12px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    box-shadow: 0 0 15px rgba(114,214,255,0.3);
-    transform: translateZ(0); /* Aceleración GPU */
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transform: translateZ(0);
+    transition: var(--transition);
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(114, 214, 255, 0.05), rgba(255, 127, 255, 0.05));
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(114, 214, 255, 0.15);
+    border-color: var(--border-accent);
   }
 
   .card-header {
-    background: rgba(40,40,70,0.8);
-    padding:12px 16px;
-    border-bottom:1px solid rgba(114,214,255,0.3);
-    display:flex;
-    align-items:center;
-    gap:12px;
-    min-height: 60px;
+    background: var(--bg-card-header);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 64px;
+    position: relative;
+    z-index: 1;
   }
-  
+
   .channel-head {
     display: flex;
     align-items: center;
     gap: 12px;
-    width: 100%;
+    flex: 1;
   }
-  
+
   .channel-head img {
-    width:44px; 
-    height:44px; 
-    border-radius:50%;
-    border:2px solid #72d6ff;
-    transition:0.3s;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    transition: var(--transition);
     flex-shrink: 0;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
-  
-  .channel-head img:hover { 
-    transform:scale(1.05); 
-    border-color:#ff7fff; 
+
+  .channel-head img:hover {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 15px var(--accent-glow);
   }
-  
-  .channel-head .name { 
-    font-weight:700; 
-    font-size:1rem; 
-    color:#72d6ff;
+
+  .channel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .channel-head .name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
     line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .channel-status {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  }
+
+  @keyframes pulse {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.5;
+      transform: scale(0.95);
+    }
+  }
+
+  /* ==================== Player ==================== */
+  .player-card {
+    grid-column: 1;
   }
 
   iframe {
-    width:100%;
-    flex-grow:1;
-    border-radius:0 0 12px 12px;
-    border:1px solid rgba(114,214,255,0.3);
-    min-height: 400px;
+    width: 100%;
+    flex-grow: 1;
+    border: none;
+    min-height: 500px;
+    background: rgba(0, 0, 0, 0.6);
+    position: relative;
   }
 
-  footer.site-footer {
-    background: rgba(10,10,30,0.9);
-    text-align:center;
-    padding:1rem 0;
-    border-top:1px solid rgba(114,214,255,0.3);
-    position:relative;
-    z-index:2;
-    margin-top: 2rem;
-  }
-  
-  footer.site-footer small { 
-    display:block; 
-    color:#72d6ff; 
-    margin:0.25rem 0; 
-  }
-  
-  footer.site-footer a { 
-    color:#72d6ff; 
-    transition:0.3s; 
-  }
-  
-  footer.site-footer a:hover { 
-    color:#ff7fff; 
-  }
-
-  /* Estados de carga */
-  .loading {
-    background: linear-gradient(90deg, rgba(20,20,40,0.6) 25%, rgba(40,40,70,0.6) 50%, rgba(20,20,40,0.6) 75%);
+  /* Loading state */
+  iframe.loading {
+    background: linear-gradient(
+      90deg,
+      rgba(20, 20, 40, 0.6) 25%,
+      rgba(40, 40, 70, 0.6) 50%,
+      rgba(20, 20, 40, 0.6) 75%
+    );
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
   }
@@ -265,196 +500,1055 @@
     100% { background-position: -200% 0; }
   }
 
-  /* RESPONSIVE OPTIMIZADO PARA ANDROID */
-  @media (max-width:1024px) { 
-    .container { 
-      grid-template-columns:1fr; 
-    } 
+  /* ==================== Chat ==================== */
+  .chat-card {
+    grid-column: 2;
   }
-  
-  @media (max-width:768px) {
+
+  .chat-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    transition: var(--transition);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+  }
+
+  .chat-toggle:hover {
+    background: rgba(114, 214, 255, 0.15);
+    color: var(--accent-purple);
+    transform: scale(1.1);
+  }
+
+  /* ==================== Customization Panel ==================== */
+  .customize-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(10, 10, 30, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.6), -2px 0 20px rgba(114, 214, 255, 0.2);
+    z-index: 2000;
+    padding: 2rem;
+    overflow-y: auto;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid var(--border-accent);
+  }
+
+  .customize-panel.active {
+    right: 0;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-accent);
+  }
+
+  .panel-header h2 {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: titleGradient 3s ease infinite;
+  }
+
+  @keyframes titleGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .close-panel {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+
+  .close-panel:hover {
+    background: rgba(114, 214, 255, 0.2);
+    color: var(--accent-purple);
+    transform: rotate(90deg);
+  }
+
+  .control-group {
+    margin-bottom: 2rem;
+  }
+
+  .control-group h3 {
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .control-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .control-item label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .control-item input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(114, 214, 255, 0.2);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .control-item input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 0 12px var(--accent-glow);
+    transition: var(--transition);
+  }
+
+  .control-item input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .control-item input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 12px var(--accent-glow);
+    transition: var(--transition);
+  }
+
+  .control-item input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .color-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .color-option {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .color-option::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s;
+  }
+
+  .color-option:hover::before {
+    width: 100%;
+    height: 100%;
+  }
+
+  .color-option:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .color-option.active {
+    border-color: white;
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: scale(1.05);
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(114, 214, 255, 0.2);
+    border-radius: 26px;
+    transition: var(--transition);
+    border: 1px solid rgba(114, 214, 255, 0.3);
+  }
+
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  input:checked + .toggle-slider {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+  }
+
+  .toggle-slider:hover {
+    box-shadow: 0 0 10px rgba(114, 214, 255, 0.3);
+  }
+
+  .value-display {
+    display: inline-block;
+    margin-left: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 40px;
+  }
+
+  /* ==================== Footer ==================== */
+  footer.site-footer {
+    background: rgba(10, 10, 30, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-accent);
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+  }
+
+  footer.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
+    opacity: 0.5;
+  }
+
+  footer.site-footer small {
+    display: block;
+    color: var(--text-secondary);
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+  }
+
+  footer.site-footer a {
+    color: var(--accent);
+    transition: var(--transition);
+    position: relative;
+  }
+
+  footer.site-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+    transition: width 0.3s ease;
+  }
+
+  footer.site-footer a:hover::after {
+    width: 100%;
+  }
+
+  footer.site-footer a:hover {
+    color: var(--accent-purple);
+    text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
+  }
+
+  /* ==================== Responsive Design ==================== */
+  @media (max-width: 1024px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+
+    .player-card,
+    .chat-card {
+      grid-column: 1;
+    }
+
+    .chat-card {
+      min-height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
     .container {
       padding: 1rem 0.75rem;
       gap: 15px;
     }
-    
+
     .card-header {
-      padding: 10px 12px;
+      padding: 12px 14px;
+      min-height: 56px;
     }
-    
+
+    .channel-head img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .channel-head .name {
+      font-size: 1rem;
+    }
+
     iframe {
-      min-height: 300px;
+      min-height: 350px;
+    }
+
+    .customize-panel {
+      max-width: 100%;
+      padding: 1.5rem;
     }
   }
-  
-  @media (max-width:480px) {
-    header { 
-      flex-direction:column; 
-      gap:12px; 
+
+  @media (max-width: 480px) {
+    header {
+      flex-direction: column;
+      gap: 12px;
       padding: 10px 4%;
     }
-    
-    nav { 
-      gap:10px; 
-      flex-wrap:wrap; 
+
+    nav {
+      gap: 8px;
       justify-content: center;
-    }
-    
-    nav a { 
-      font-size:0.85rem; 
-      padding:8px 10px; 
-      min-height: 40px;
-    }
-    
-    .options-bar { 
-      flex-direction:column; 
-      align-items:flex-start; 
-      gap:10px; 
-      padding: 10px 4%;
-    }
-    
-    select, .btn {
       width: 100%;
-      max-width: 100%;
     }
-    
+
+    nav a {
+      font-size: 0.8rem;
+      padding: 8px 10px;
+      min-height: 40px;
+      flex: 1;
+      min-width: calc(50% - 4px);
+    }
+
+    .options-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+      padding: 12px 4%;
+    }
+
+    select,
+    .btn {
+      width: 100%;
+    }
+
+    .customize-btn {
+      margin-left: 0;
+    }
+
     .logo {
       height: 45px;
     }
-    
+
     .container {
       padding: 1rem 0.5rem;
       gap: 12px;
     }
-    
+
     .card-header {
       min-height: 50px;
-      padding: 8px 12px;
+      padding: 10px 12px;
     }
-    
+
     .channel-head img {
       width: 36px;
       height: 36px;
     }
-    
+
+    .channel-head .name {
+      font-size: 0.9rem;
+    }
+
     iframe {
-      min-height: 250px;
+      min-height: 280px;
+    }
+
+    .customize-panel {
+      padding: 1rem;
+    }
+
+    .panel-header h2 {
+      font-size: 1.25rem;
+    }
+
+    .color-picker-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
-  
-  @media (max-width:360px) {
-    nav a {
-      font-size: 0.8rem;
-      padding: 6px 8px;
+
+  /* ==================== Accessibility ==================== */
+  a:focus,
+  button:focus,
+  select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
-    
-    .container {
-      padding: 1rem 0.5rem;
-    }
-    
-    iframe {
-      min-height: 220px;
-    }
+  }
+
+  /* Scrollbar styling */
+  .customize-panel::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .customize-panel::-webkit-scrollbar-track {
+    background: rgba(20, 20, 40, 0.5);
+    border-radius: 4px;
+  }
+
+  .customize-panel::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+  }
+
+  .customize-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-purple);
   }
 </style>
 </head>
 <body>
-  <div id="starfield"></div>
+<div id="starfield"></div>
 
-  <header>
-    <a href="index.html"><img src="assets/logo2.png" alt="AngulismoTV" class="logo"></a>
-    <nav>
-      <a href="index.html#channelsSection">Canales</a>
-      <a href="index.html">Agenda</a>
-      <a href="multicam.html">Pantalla Dividida</a>
-      <a href="https://nowevents.xyz" target="_blank">Entretenimiento</a>
-      <a href="https://nowstats.netlify.app" target="_blank">Estadisticas (beta)</a>
-    </nav>
-  </header>
+<header>
+  <a href="index.html" aria-label="AngulismoTV - Inicio">
+    <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+  </a>
+  <nav role="navigation" aria-label="Navegación principal">
+    <a href="index.html#channelsSection">Canales</a>
+    <a href="index.html">Agenda</a>
+    <a href="multicam.html">Pantalla Dividida</a>
+    <a href="https://nowevents.xyz" target="_blank" rel="noopener">Entretenimiento</a>
+    <a href="https://nowstats.netlify.app" target="_blank" rel="noopener">Estadísticas</a>
+  </nav>
+</header>
 
-  <section class="options-bar">
-    <label for="optionSelect">Transmisión:</label>
-    <select id="optionSelect"></select>
-    <button class="btn" id="reloadBtn">Recargar</button>
-  </section>
+<section class="options-bar">
+  <label for="optionSelect">Transmisión:</label>
+  <select id="optionSelect" aria-label="Seleccionar transmisión">
+    <option value="">Cargando opciones...</option>
+  </select>
+  <button class="btn" id="reloadBtn" aria-label="Recargar transmisión">
+    🔄 Recargar
+  </button>
+  <button class="btn customize-btn" id="customizeBtn" aria-label="Personalizar interfaz">
+    ⚙️ Personalizar
+  </button>
+</section>
 
-  <main class="container">
-    <section class="card player-card">
-      <div class="card-header">
-        <div class="channel-head" id="channel-info">
-          <img id="channel-logo" src="assets/logo2.png" alt="Canal">
+<main class="container">
+  <section class="card player-card">
+    <div class="card-header">
+      <div class="channel-head" id="channel-info">
+        <img id="channel-logo" src="assets/logo2.png" alt="Logo del canal">
+        <div class="channel-info">
           <span class="name" id="channel-name">Canal en Vivo</span>
+          <span class="channel-status">
+            <span class="status-dot"></span>
+            En vivo
+          </span>
         </div>
       </div>
-      <iframe id="playerFrame" allowfullscreen referrerpolicy="no-referrer" title="Reproductor"></iframe>
-    </section>
+    </div>
+    <iframe 
+      id="playerFrame" 
+      allowfullscreen 
+      referrerpolicy="no-referrer" 
+      title="Reproductor de transmisión en vivo"
+      loading="lazy">
+    </iframe>
+  </section>
 
-    <aside class="card chat-card">
-      <div class="card-header">
-        <span class="name">Chat en Vivo</span>
-      </div>
-      <iframe id="twitchChat" src="" title="Twitch Chat" referrerpolicy="no-referrer"></iframe>
-    </aside>
-  </main>
+  <aside class="card chat-card">
+    <div class="card-header">
+      <span class="name">💬 Chat en Vivo</span>
+      <button class="chat-toggle" id="chatToggle" aria-label="Minimizar chat">
+        ⬇️
+      </button>
+    </div>
+    <iframe 
+      id="twitchChat" 
+      src="" 
+      title="Chat de Twitch" 
+      referrerpolicy="no-referrer"
+      loading="lazy">
+    </iframe>
+  </aside>
+</main>
 
-  <footer class="site-footer">
-    <small>© 2025 | <a href="dmca.html">DMCA</a></small>
-    <small><a href="https://x.com/AngulismoTV">Twitter</a> | <a href="https://discord.gg/jEayDA7T">Discord</a></small>
-  </footer>
+<!-- Panel de personalización -->
+<div class="customize-panel" id="customizePanel">
+  <div class="panel-header">
+    <h2>🎨 Personalización</h2>
+    <button class="close-panel" id="closePanel" aria-label="Cerrar panel">✕</button>
+  </div>
 
-  <script defer src="scripts/transmision.js"></script>
-  <script>
-    // Generar estrellas dinámicamente - Optimizado para móvil
-    const starfield = document.getElementById('starfield');
-    const numStars = 60; // Reducido para mejor rendimiento en móvil
+  <div class="control-group">
+    <h3>🌟 Apariencia</h3>
     
-    for(let i=0; i<numStars; i++){
+    <div class="control-item">
+      <label for="accentColor">Color de acento</label>
+      <div class="color-picker-grid">
+        <button class="color-option active" data-color="#72d6ff" style="background: #72d6ff;" aria-label="Cyan"></button>
+        <button class="color-option" data-color="#ff7fff" style="background: #ff7fff;" aria-label="Magenta"></button>
+        <button class="color-option" data-color="#4ade80" style="background: #4ade80;" aria-label="Verde"></button>
+        <button class="color-option" data-color="#fbbf24" style="background: #fbbf24;" aria-label="Amarillo"></button>
+        <button class="color-option" data-color="#f87171" style="background: #f87171;" aria-label="Rojo"></button>
+        <button class="color-option" data-color="#a78bfa" style="background: #a78bfa;" aria-label="Púrpura"></button>
+        <button class="color-option" data-color="#fb923c" style="background: #fb923c;" aria-label="Naranja"></button>
+        <button class="color-option" data-color="#38bdf8" style="background: #38bdf8;" aria-label="Azul cielo"></button>
+      </div>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Estrellas animadas
+        <label class="toggle-switch">
+          <input type="checkbox" id="starsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label for="starsIntensity">
+        Intensidad de estrellas
+        <span class="value-display" id="starsValue">80</span>
+      </label>
+      <input type="range" id="starsIntensity" min="20" max="150" value="80" step="10">
+    </div>
+
+    <div class="control-item">
+      <label for="bgOpacity">
+        Opacidad del fondo
+        <span class="value-display" id="opacityValue">70%</span>
+      </label>
+      <input type="range" id="bgOpacity" min="30" max="100" value="70" step="5">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <h3>📺 Reproductor</h3>
+    
+    <div class="control-item">
+      <label>
+        Chat automático
+        <label class="toggle-switch">
+          <input type="checkbox" id="autoChatToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Recarga automática (si falla)
+        <label class="toggle-switch">
+          <input type="checkbox" id="autoReloadToggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <h3>💾 Datos</h3>
+    <button class="btn" id="resetSettings" style="width: 100%;">
+      🔄 Restaurar valores por defecto
+    </button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
+  <small>
+    <a href="https://x.com/AngulismoTV" target="_blank" rel="noopener">Twitter</a> | 
+    <a href="https://discord.gg/jEayDA7T" target="_blank" rel="noopener">Discord</a>
+  </small>
+</footer>
+
+<script defer src="scripts/transmision.js"></script>
+<script>
+(function() {
+  'use strict';
+
+  // ==================== Starfield Generation ====================
+  const starfield = document.getElementById('starfield');
+  let stars = [];
+
+  function generateStars(count) {
+    starfield.innerHTML = '';
+    stars = [];
+    const fragment = document.createDocumentFragment();
+
+    // Estrellas regulares
+    const regularStars = Math.floor(count * 0.95);
+    const shootingStars = Math.ceil(count * 0.05);
+
+    for (let i = 0; i < regularStars; i++) {
       const star = document.createElement('div');
-      star.className='star';
-      const size = Math.random()*2 + 1;
-      star.style.width = star.style.height = size+'px';
-      star.style.top = Math.random()*100 + '%';
-      star.style.left = Math.random()*100 + '%';
-      star.style.animationDuration = (Math.random()*3+2)+'s, '+(Math.random()*50+30)+'s';
-      starfield.appendChild(star);
+      star.className = 'star';
+      const size = Math.random() * 2.5 + 0.5;
+      star.style.width = star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      fragment.appendChild(star);
+      stars.push(star);
     }
 
-    // Optimizaciones para Android
-    document.addEventListener('DOMContentLoaded', function() {
-      // Mejorar experiencia táctil
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        card.addEventListener('touchstart', function() {
-          this.style.transform = 'translateY(-1px) scale(0.99)';
-        });
-        
-        card.addEventListener('touchend', function() {
-          this.style.transform = '';
-        });
-      });
-      
-      // Prevenir zoom de doble tap
-      let lastTouchEnd = 0;
-      document.addEventListener('touchend', function(event) {
-        const now = (new Date()).getTime();
-        if (now - lastTouchEnd <= 300) {
-          event.preventDefault();
-        }
-        lastTouchEnd = now;
-      }, false);
-      
-      // Optimizar botones para touch
-      const buttons = document.querySelectorAll('.btn, nav a');
-      buttons.forEach(button => {
-        button.addEventListener('touchstart', function() {
-          this.style.opacity = '0.8';
-        });
-        
-        button.addEventListener('touchend', function() {
-          this.style.opacity = '1';
-        });
-      });
+    // Estrellas fugaces
+    for (let i = 0; i < shootingStars; i++) {
+      const shootingStar = document.createElement('div');
+      shootingStar.className = 'shooting-star';
+      shootingStar.style.top = Math.random() * 50 + '%';
+      shootingStar.style.left = (Math.random() * 50 + 50) + '%';
+      shootingStar.style.animationDelay = (Math.random() * 5 + 2) + 's';
+      shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
+      fragment.appendChild(shootingStar);
+      stars.push(shootingStar);
+    }
+
+    starfield.appendChild(fragment);
+  }
+
+  // ==================== Settings Management ====================
+  const defaultSettings = {
+    accentColor: '#72d6ff',
+    starsEnabled: true,
+    starsCount: 80,
+    bgOpacity: 70,
+    autoChat: true,
+    autoReload: false
+  };
+
+  function loadSettings() {
+    try {
+      const saved = localStorage.getItem('angulismoSettings');
+      return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+    } catch (error) {
+      console.warn('Error loading settings:', error);
+      return defaultSettings;
+    }
+  }
+
+  function saveSettings(settings) {
+    try {
+      localStorage.setItem('angulismoSettings', JSON.stringify(settings));
+    } catch (error) {
+      console.warn('Error saving settings:', error);
+    }
+  }
+
+  let currentSettings = loadSettings();
+
+  // ==================== Apply Settings ====================
+  function applySettings() {
+    // Accent color
+    document.documentElement.style.setProperty('--accent', currentSettings.accentColor);
+    document.documentElement.style.setProperty('--accent-glow', `${currentSettings.accentColor}80`);
+    
+    // Stars
+    starfield.style.display = currentSettings.starsEnabled ? 'block' : 'none';
+    if (currentSettings.starsEnabled && stars.length !== currentSettings.starsCount) {
+      generateStars(currentSettings.starsCount);
+    }
+    
+    // Background opacity
+    const opacity = currentSettings.bgOpacity / 100;
+    document.documentElement.style.setProperty('--bg-card', `rgba(20, 20, 40, ${opacity * 0.7})`);
+    document.documentElement.style.setProperty('--bg-card-header', `rgba(40, 40, 70, ${opacity * 0.85})`);
+  }
+
+  // ==================== Customization Panel ====================
+  const customizeBtn = document.getElementById('customizeBtn');
+  const customizePanel = document.getElementById('customizePanel');
+  const closePanel = document.getElementById('closePanel');
+
+  if (customizeBtn && customizePanel && closePanel) {
+    customizeBtn.addEventListener('click', () => {
+      customizePanel.classList.add('active');
     });
-  </script>
+
+    closePanel.addEventListener('click', () => {
+      customizePanel.classList.remove('active');
+    });
+
+    // Close panel on click outside
+    document.addEventListener('click', (e) => {
+      if (customizePanel.classList.contains('active') && 
+          !customizePanel.contains(e.target) && 
+          e.target !== customizeBtn) {
+        customizePanel.classList.remove('active');
+      }
+    });
+  }
+
+  // Close panel on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && customizePanel && customizePanel.classList.contains('active')) {
+      customizePanel.classList.remove('active');
+    }
+  });
+
+  // ==================== Color Picker ====================
+  const colorOptions = document.querySelectorAll('.color-option');
+  
+  colorOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      colorOptions.forEach(opt => opt.classList.remove('active'));
+      option.classList.add('active');
+      
+      const color = option.getAttribute('data-color');
+      currentSettings.accentColor = color;
+      applySettings();
+      saveSettings(currentSettings);
+    });
+  });
+
+  // ==================== Stars Toggle ====================
+  const starsToggle = document.getElementById('starsToggle');
+  
+  if (starsToggle) {
+    starsToggle.addEventListener('change', () => {
+      currentSettings.starsEnabled = starsToggle.checked;
+      applySettings();
+      saveSettings(currentSettings);
+    });
+  }
+
+  // ==================== Stars Intensity ====================
+  const starsIntensity = document.getElementById('starsIntensity');
+  const starsValue = document.getElementById('starsValue');
+  
+  if (starsIntensity && starsValue) {
+    starsIntensity.addEventListener('input', () => {
+      const value = parseInt(starsIntensity.value);
+      starsValue.textContent = value;
+      currentSettings.starsCount = value;
+      applySettings();
+      saveSettings(currentSettings);
+    });
+  }
+
+  // ==================== Background Opacity ====================
+  const bgOpacity = document.getElementById('bgOpacity');
+  const opacityValue = document.getElementById('opacityValue');
+  
+  if (bgOpacity && opacityValue) {
+    bgOpacity.addEventListener('input', () => {
+      const value = parseInt(bgOpacity.value);
+      opacityValue.textContent = value + '%';
+      currentSettings.bgOpacity = value;
+      applySettings();
+      saveSettings(currentSettings);
+    });
+  }
+
+  // ==================== Auto Chat Toggle ====================
+  const autoChatToggle = document.getElementById('autoChatToggle');
+  
+  if (autoChatToggle) {
+    autoChatToggle.addEventListener('change', () => {
+      currentSettings.autoChat = autoChatToggle.checked;
+      saveSettings(currentSettings);
+    });
+  }
+
+  // ==================== Auto Reload Toggle ====================
+  const autoReloadToggle = document.getElementById('autoReloadToggle');
+  
+  if (autoReloadToggle) {
+    autoReloadToggle.addEventListener('change', () => {
+      currentSettings.autoReload = autoReloadToggle.checked;
+      saveSettings(currentSettings);
+    });
+  }
+
+  // ==================== Reset Settings ====================
+  const resetSettings = document.getElementById('resetSettings');
+  
+  if (resetSettings) {
+    resetSettings.addEventListener('click', () => {
+      if (confirm('¿Estás seguro de que deseas restaurar todos los ajustes?')) {
+        currentSettings = { ...defaultSettings };
+        saveSettings(currentSettings);
+        
+        // Update UI
+        if (starsToggle) starsToggle.checked = currentSettings.starsEnabled;
+        if (starsIntensity) starsIntensity.value = currentSettings.starsCount;
+        if (starsValue) starsValue.textContent = currentSettings.starsCount;
+        if (bgOpacity) bgOpacity.value = currentSettings.bgOpacity;
+        if (opacityValue) opacityValue.textContent = currentSettings.bgOpacity + '%';
+        if (autoChatToggle) autoChatToggle.checked = currentSettings.autoChat;
+        if (autoReloadToggle) autoReloadToggle.checked = currentSettings.autoReload;
+        
+        colorOptions.forEach(option => {
+          option.classList.toggle('active', option.getAttribute('data-color') === currentSettings.accentColor);
+        });
+        
+        applySettings();
+        
+        // Visual feedback
+        const originalText = resetSettings.textContent;
+        resetSettings.textContent = '✓ Restaurado';
+        resetSettings.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
+        setTimeout(() => {
+          resetSettings.textContent = originalText;
+          resetSettings.style.background = '';
+        }, 2000);
+      }
+    });
+  }
+
+  // ==================== Initialize UI with saved settings ====================
+  function initializeUI() {
+    if (starsToggle) starsToggle.checked = currentSettings.starsEnabled;
+    if (starsIntensity) starsIntensity.value = currentSettings.starsCount;
+    if (starsValue) starsValue.textContent = currentSettings.starsCount;
+    if (bgOpacity) bgOpacity.value = currentSettings.bgOpacity;
+    if (opacityValue) opacityValue.textContent = currentSettings.bgOpacity + '%';
+    if (autoChatToggle) autoChatToggle.checked = currentSettings.autoChat;
+    if (autoReloadToggle) autoReloadToggle.checked = currentSettings.autoReload;
+    
+    colorOptions.forEach(option => {
+      if (option.getAttribute('data-color') === currentSettings.accentColor) {
+        option.classList.add('active');
+      }
+    });
+    
+    applySettings();
+  }
+
+  // ==================== Chat Toggle ====================
+  const chatToggle = document.getElementById('chatToggle');
+  const chatCard = document.querySelector('.chat-card');
+  const chatIframe = document.getElementById('twitchChat');
+  let chatMinimized = false;
+
+  if (chatToggle && chatCard && chatIframe) {
+    chatToggle.addEventListener('click', () => {
+      chatMinimized = !chatMinimized;
+      
+      if (chatMinimized) {
+        chatIframe.style.display = 'none';
+        chatCard.style.minHeight = 'auto';
+        chatToggle.textContent = '⬆️';
+        chatToggle.setAttribute('aria-label', 'Expandir chat');
+      } else {
+        chatIframe.style.display = 'block';
+        chatCard.style.minHeight = '';
+        chatToggle.textContent = '⬇️';
+        chatToggle.setAttribute('aria-label', 'Minimizar chat');
+      }
+    });
+  }
+
+  // ==================== Reload Button ====================
+  const reloadBtn = document.getElementById('reloadBtn');
+  const playerFrame = document.getElementById('playerFrame');
+  
+  if (reloadBtn && playerFrame) {
+    reloadBtn.addEventListener('click', () => {
+      const currentSrc = playerFrame.src;
+      if (!currentSrc) return;
+      
+      playerFrame.classList.add('loading');
+      reloadBtn.disabled = true;
+      reloadBtn.textContent = '⏳ Recargando...';
+      
+      playerFrame.src = '';
+      
+      setTimeout(() => {
+        playerFrame.src = currentSrc;
+        playerFrame.classList.remove('loading');
+        reloadBtn.disabled = false;
+        reloadBtn.textContent = '🔄 Recargar';
+      }, 500);
+    });
+  }
+
+  // ==================== Auto Reload on Error ====================
+  let reloadAttempts = 0;
+  const maxReloadAttempts = 3;
+
+  if (playerFrame) {
+    playerFrame.addEventListener('error', () => {
+      if (currentSettings.autoReload && reloadAttempts < maxReloadAttempts) {
+        reloadAttempts++;
+        console.log(`Auto-reload attempt ${reloadAttempts}/${maxReloadAttempts}`);
+        
+        setTimeout(() => {
+          const currentSrc = playerFrame.src;
+          if (currentSrc) {
+            playerFrame.src = '';
+            setTimeout(() => {
+              playerFrame.src = currentSrc;
+            }, 1000);
+          }
+        }, 2000);
+      }
+    });
+
+    playerFrame.addEventListener('load', () => {
+      reloadAttempts = 0;
+      playerFrame.classList.remove('loading');
+    });
+  }
+
+  // ==================== Initialize ====================
+  generateStars(currentSettings.starsCount);
+  initializeUI();
+
+  // ==================== Keyboard Shortcuts ====================
+  document.addEventListener('keydown', (e) => {
+    // F for fullscreen
+    if (e.key === 'f' || e.key === 'F') {
+      if (!e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else if (playerFrame) {
+          playerFrame.requestFullscreen().catch(err => {
+            console.log('Fullscreen error:', err);
+          });
+        }
+      }
+    }
+    
+    // Ctrl/Cmd+R for reload
+    if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+      e.preventDefault();
+      if (reloadBtn) reloadBtn.click();
+    }
+    
+    // Ctrl/Cmd+K for customize panel
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      if (customizePanel) {
+        if (customizePanel.classList.contains('active')) {
+          customizePanel.classList.remove('active');
+        } else {
+          customizePanel.classList.add('active');
+        }
+      }
+    }
+  });
+
+  // ==================== Visibility API for battery saving ====================
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Pause animations when tab is hidden
+      stars.forEach(star => {
+        star.style.animationPlayState = 'paused';
+      });
+    } else {
+      stars.forEach(star => {
+        star.style.animationPlayState = 'running';
+      });
+    }
+  });
+
+  // ==================== Performance Monitoring ====================
+  if ('PerformanceObserver' in window) {
+    try {
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.duration > 100) {
+            console.warn('Slow operation detected:', entry.name, entry.duration);
+          }
+        }
+      });
+      
+      observer.observe({ entryTypes: ['measure'] });
+    } catch (error) {
+      console.warn('PerformanceObserver not supported');
+    }
+  }
+
+  console.log('🎨 AngulismoTV - Personalización cargada');
+  console.log('Atajos: F (pantalla completa) | Ctrl+R (recargar) | Ctrl+K (personalizar)');
+})();
+</script>
 </body>
 </html>

@@ -16,7 +16,9 @@
       --accent: #72d6ff;
       --accent-purple: #ff7fff;
       --border-color: rgba(255,255,255,0.1);
+      --border-accent: rgba(114, 214, 255, 0.3);
       --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
       --radius: 12px;
       --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
     }
@@ -37,6 +39,27 @@
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       position: relative;
+    }
+
+    /* Animated gradient overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(114, 214, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 127, 255, 0.08) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 1;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.8; }
     }
 
     /* FONDO GALAXIA CON ESTRELLAS ANIMADAS */
@@ -66,54 +89,119 @@
       50% { opacity:1; } 
     }
 
-    /* HEADER IDÉNTICO A TRANSMISION E INDEX */
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: linear-gradient(90deg, #fff, transparent);
+      border-radius: 50%;
+      animation: shoot 3s linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes shoot {
+      0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-300px) translateY(300px);
+        opacity: 0;
+      }
+    }
+
+    /* HEADER */
     header {
-      background: rgba(10,10,30,0.9);
-      backdrop-filter: blur(6px);
-      padding:12px 5%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;
-      top:0;
-      z-index:1000;
-      box-shadow:0 0 20px rgba(114,214,255,0.5);
-      border-bottom:1px solid rgba(255,255,255,0.1);
+      background: rgba(10, 10, 30, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(114, 214, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
+      animation: headerGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes headerGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
     }
 
     .logo {
-      height:50px;
-      transition:0.3s;
+      height: 50px;
+      transition: var(--transition);
+      cursor: pointer;
+      filter: drop-shadow(0 0 8px rgba(114, 214, 255, 0.3));
     }
 
     .logo:hover {
-      transform:scale(1.05);
-      filter:drop-shadow(0 0 12px #72d6ff);
+      transform: scale(1.05) rotate(2deg);
+      filter: drop-shadow(0 0 16px var(--accent));
     }
 
     nav {
-      display:flex;
-      gap:15px;
-      z-index:2;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     nav a {
-      padding:10px 14px;
-      font-weight:600;
-      border-radius:6px;
-      background: rgba(50,50,80,0.5);
-      transition:0.3s;
+      padding: 10px 14px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      background: rgba(50, 50, 80, 0.5);
+      transition: var(--transition);
       min-height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #72d6ff;
+      color: var(--text-secondary);
       text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(114, 214, 255, 0.2);
     }
 
-    nav a:hover {
-      background: rgba(114,214,255,0.2);
-      color: #ff7fff;
+    nav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: rgba(114, 214, 255, 0.2);
+      color: var(--accent-purple);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+      border-color: var(--accent);
     }
 
     .container {
@@ -133,11 +221,33 @@
 
     .multicam-controls {
       background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: var(--radius);
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border-color);
+      position: relative;
+      z-index: 10; /* Añadido para asegurar que esté por encima del contenido */
+    }
+
+    .multicam-controls::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(114, 214, 255, 0.05), rgba(255, 127, 255, 0.05));
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+      border-radius: var(--radius);
+    }
+
+    .multicam-controls:hover::before {
+      opacity: 1;
     }
 
     .controls-header {
@@ -163,7 +273,9 @@
 
     .layout-dropdown-btn {
       background: rgba(20,20,40,0.9);
-      border: 1px solid rgba(114,214,255,0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-accent);
       color: var(--text-primary);
       padding: 0.75rem 1rem;
       border-radius: 8px;
@@ -182,6 +294,7 @@
       border-color: var(--accent);
       background: rgba(114,214,255,0.15);
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.2);
     }
 
     .layout-dropdown-btn::after {
@@ -199,14 +312,27 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: rgba(20,20,40,0.95);
-      border: 1px solid var(--border-color);
+      background: rgba(20,20,40,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-accent);
       border-radius: 8px;
       margin-top: 0.5rem;
-      z-index: 100;
+      z-index: 1001;
       display: none;
-      box-shadow: var(--shadow-md);
-      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-md), 0 0 30px rgba(114, 214, 255, 0.2);
+      animation: dropdownSlide 0.2s ease;
+    }
+
+    @keyframes dropdownSlide {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .layout-dropdown-content.show {
@@ -217,11 +343,29 @@
       padding: 0.75rem 1rem;
       cursor: pointer;
       transition: var(--transition);
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .layout-option::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-purple));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .layout-option:hover::before {
+      opacity: 1;
     }
 
     .layout-option:hover {
       background: rgba(114,214,255,0.15);
+      padding-left: 1.3rem;
     }
 
     .layout-option:last-child {
@@ -229,9 +373,9 @@
     }
 
     .fullscreen-btn {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--accent-purple));
       border: none;
-      color: #000;
+      color: white;
       padding: 0.75rem 1.5rem;
       border-radius: 8px;
       cursor: pointer;
@@ -245,10 +389,30 @@
       min-width: 180px;
       max-width: 250px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fullscreen-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .fullscreen-btn:active::before {
+      width: 300px;
+      height: 300px;
     }
 
     .fullscreen-btn:hover {
-      background: rgba(114,214,255,0.8);
+      box-shadow: 0 0 20px rgba(114, 214, 255, 0.5);
       transform: translateY(-2px);
     }
 
@@ -256,24 +420,28 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 2px solid var(--accent);
       color: var(--text-primary);
       padding: 1rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       font-weight: 600;
       z-index: 10000;
       display: none;
       align-items: center;
       gap: 0.5rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 20px rgba(114,214,255,0.5);
+      box-shadow: 0 0 30px rgba(114,214,255,0.6), 0 4px 12px rgba(0, 0, 0, 0.8);
+      transition: var(--transition);
     }
 
     .exit-fullscreen-btn:hover {
-      background: rgba(0, 0, 0, 1);
+      background: rgba(20, 20, 40, 1);
       border-color: var(--accent-purple);
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255, 127, 255, 0.6);
     }
 
     .stream-selector {
@@ -289,7 +457,9 @@
 
     .dropdown-btn {
       background: rgba(20,20,40,0.9);
-      border: 1px solid rgba(114,214,255,0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border-accent);
       color: var(--text-primary);
       padding: 0.75rem 1rem;
       border-radius: 8px;
@@ -308,6 +478,7 @@
       border-color: var(--accent);
       background: rgba(114,214,255,0.15);
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.2);
     }
 
     .dropdown-btn::after {
@@ -325,31 +496,69 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: rgba(20,20,40,0.95);
-      border: 1px solid var(--border-color);
+      background: rgba(20,20,40,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-accent);
       border-radius: 8px;
       margin-top: 0.5rem;
       max-height: 300px;
       overflow-y: auto;
-      z-index: 100;
+      z-index: 1001; /* Aumentado para asegurar que esté por encima de los videos */
       display: none;
-      box-shadow: var(--shadow-md);
-      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-md), 0 0 30px rgba(114, 214, 255, 0.2);
+      animation: dropdownSlide 0.2s ease;
     }
 
     .dropdown-content.show {
       display: block;
     }
 
+    .dropdown-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .dropdown-content::-webkit-scrollbar-track {
+      background: rgba(20, 20, 40, 0.5);
+      border-radius: 4px;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    .dropdown-content::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-purple);
+    }
+
     .stream-option {
       padding: 0.75rem 1rem;
       cursor: pointer;
       transition: var(--transition);
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+    }
+
+    .stream-option::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-purple));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .stream-option:hover::before {
+      opacity: 1;
     }
 
     .stream-option:hover {
       background: rgba(114,214,255,0.15);
+      padding-left: 1.3rem;
     }
 
     .stream-option:last-child {
@@ -376,7 +585,9 @@
       display: grid;
       gap: 1rem;
       margin-bottom: 1.5rem;
-      min-height: 400px;
+      min-height: 500px;
+      position: relative;
+      z-index: 5; /* Asegurar que esté por debajo de los controles */
     }
 
     .layout-1 { grid-template-columns: 1fr; }
@@ -395,36 +606,66 @@
 
     .stream-item {
       background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-md);
       border: 2px solid transparent;
       transition: var(--transition);
       position: relative;
+      z-index: 1; /* Asegurar que esté por debajo de los dropdowns */
+    }
+
+    .stream-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(114, 214, 255, 0.08), rgba(255, 127, 255, 0.08));
+      opacity: 0;
+      transition: var(--transition);
+      pointer-events: none;
+    }
+
+    .stream-item:hover::before {
+      opacity: 1;
     }
 
     .stream-item.active {
       border-color: var(--accent);
+      box-shadow: var(--shadow-lg), 0 0 30px rgba(114, 214, 255, 0.3);
     }
 
     .stream-item:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6), 0 0 20px rgba(114, 214, 255, 0.2);
     }
 
     .stream-header {
-      background: rgba(40,40,70,0.8);
+      background: rgba(40,40,70,0.9);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       padding: 0.75rem 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(114,214,255,0.2);
+      border-bottom: 1px solid var(--border-accent);
+      position: relative;
+      z-index: 1;
     }
 
     .stream-title-bar {
       flex: 1;
       font-size: 0.9rem;
       color: var(--text-secondary);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .stream-title-bar strong {
+      color: var(--accent);
     }
 
     .stream-actions {
@@ -434,10 +675,10 @@
 
     .action-btn {
       background: rgba(255, 255, 255, 0.1);
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--text-primary);
       padding: 0.5rem;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 0.8rem;
       transition: var(--transition);
@@ -450,38 +691,50 @@
 
     .action-btn:hover {
       background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(114, 214, 255, 0.3);
     }
 
     .close-btn:hover {
       background: #ef4444;
+      border-color: #ef4444;
     }
 
     .stream-placeholder {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 300px;
+      min-height: 400px;
       color: var(--text-secondary);
       flex-direction: column;
       gap: 1rem;
       font-size: 1.2rem;
+      background: rgba(0, 0, 0, 0.3);
     }
 
     .stream-placeholder span:first-child {
       font-size: 3rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
 
     .stream-iframe {
       width: 100%;
-      height: 400px;
+      height: 500px;
       border: none;
       background: #000;
+      position: relative;
+      z-index: 1; /* Asegurar que esté por debajo de los dropdowns */
     }
 
     .layout-2 .stream-iframe,
     .layout-3 .stream-iframe,
     .layout-4 .stream-iframe {
-      height: 300px;
+      height: 400px;
     }
 
     body.fullscreen-mode {
@@ -521,20 +774,33 @@
     body.fullscreen-mode .layout-4 .stream-iframe { height: calc(50vh - 60px); }
 
     footer.site-footer {
-      background: rgba(10,10,30,0.9);
-      text-align:center;
-      padding:1rem 0;
-      border-top:1px solid rgba(114,214,255,0.3);
-      position:relative;
-      z-index:2;
+      background: rgba(10, 10, 30, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      text-align: center;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border-accent);
+      position: relative;
+      z-index: 2;
       margin-top: 2rem;
+    }
+
+    footer.site-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
+      opacity: 0.5;
     }
 
     footer.site-footer small {
       display: block;
       color: var(--text-secondary);
-      margin: 0.25rem 0;
-      font-size: 0.8rem;
+      margin: 0.5rem 0;
+      font-size: 0.85rem;
     }
 
     footer.site-footer a {
@@ -542,17 +808,34 @@
       text-decoration: none;
       font-weight: 500;
       transition: var(--transition);
+      position: relative;
+    }
+
+    footer.site-footer a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+      transition: width 0.3s ease;
+    }
+
+    footer.site-footer a:hover::after {
+      width: 100%;
     }
 
     footer.site-footer a:hover {
-      text-decoration: underline;
+      color: var(--accent-purple);
+      text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
       .container {
         max-width: 720px;
-        padding: 0 1.5rem;
+        padding: 0 0.75rem;
       }
       
       .layout-2,
@@ -580,7 +863,11 @@
       }
       
       .stream-iframe {
-        height: 250px;
+        height: 300px;
+      }
+
+      .stream-placeholder {
+        min-height: 300px;
       }
 
       body.fullscreen-mode .streams-grid {
@@ -595,25 +882,27 @@
 
     @media (max-width: 480px) {
       header {
-        flex-direction:column;
-        gap:12px;
+        flex-direction: column;
+        gap: 12px;
         padding: 10px 4%;
       }
       
       nav {
-        gap:10px;
-        flex-wrap:wrap;
+        gap: 8px;
         justify-content: center;
+        width: 100%;
       }
       
       nav a {
-        font-size:0.85rem;
-        padding:8px 10px;
+        font-size: 0.8rem;
+        padding: 8px 10px;
         min-height: 40px;
+        flex: 1;
+        min-width: calc(50% - 4px);
       }
       
       .logo {
-        height:45px;
+        height: 45px;
       }
       
       .multicam-controls {
@@ -626,114 +915,161 @@
         padding: 0.75rem 1rem;
         font-size: 0.9rem;
       }
+
+      .stream-iframe {
+        height: 250px;
+      }
+
+      .stream-placeholder {
+        min-height: 250px;
+      }
+
+      .dropdown-content {
+        max-height: 250px;
+      }
     }
 
-    @media (max-width: 360px) {
-      .container {
-        padding: 0 0.75rem;
-      }
-      
-      nav {
-        gap: 12px;
-      }
-      
-      nav a {
-        font-size: 0.8rem;
-        padding: 5px 8px;
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
+<div id="starfield"></div>
+
 <header>
-  <a href="index.html">
+  <a href="index.html" aria-label="AngulismoTV - Inicio">
     <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
   </a>
-  <nav>
+  <nav role="navigation" aria-label="Navegación principal">
     <a href="index.html#channelsSection">Canales</a>
     <a href="index.html">Agenda</a>
     <a href="multicam.html">Pantalla Dividida</a>
-    <a href="https://nowevents.xyz" target="_blank">Entretenimiento</a>
-    <a href="https://nowstats.netlify.app" target="_blank">Estadisticas (beta)</a>
+    <a href="https://nowevents.xyz" target="_blank" rel="noopener">Entretenimiento</a>
+    <a href="https://nowstats.netlify.app" target="_blank" rel="noopener">Estadísticas</a>
   </nav>
 </header>
 
-  <main class="container">
-    <div class="multicam-controls">
-      <div class="controls-header">
-        <div class="controls-row">
-          <div class="layout-selector">
-            <button class="layout-dropdown-btn" id="layoutDropdownBtn">
-              1 Pantalla
-            </button>
-            <div class="layout-dropdown-content" id="layoutDropdown">
-              <div class="layout-option" data-layout="1">1 Pantalla</div>
-              <div class="layout-option" data-layout="2">2 Pantallas</div>
-              <div class="layout-option" data-layout="3">3 Pantallas</div>
-              <div class="layout-option" data-layout="4">4 Pantallas</div>
-            </div>
-          </div>
-          
-          <button class="fullscreen-btn" id="globalFullscreen">
-            <span>⛶</span>
-            Pantalla Completa
+<main class="container">
+  <div class="multicam-controls">
+    <div class="controls-header">
+      <div class="controls-row">
+        <div class="layout-selector">
+          <button class="layout-dropdown-btn" id="layoutDropdownBtn" aria-label="Seleccionar distribución">
+            1 Pantalla
           </button>
+          <div class="layout-dropdown-content" id="layoutDropdown">
+            <div class="layout-option" data-layout="1">1 Pantalla</div>
+            <div class="layout-option" data-layout="2">2 Pantallas</div>
+            <div class="layout-option" data-layout="3">3 Pantallas</div>
+            <div class="layout-option" data-layout="4">4 Pantallas</div>
+          </div>
         </div>
         
-        <div class="stream-selector">
-          <div class="stream-dropdown">
-            <button class="dropdown-btn" data-slot="1">Seleccionar evento para la pantalla 1</button>
-            <div class="dropdown-content" id="dropdown-1"></div>
-          </div>
-          
-          <div class="stream-dropdown" style="display: none;" id="dropdown-container-2">
-            <button class="dropdown-btn" data-slot="2">Seleccionar evento para la pantalla 2</button>
-            <div class="dropdown-content" id="dropdown-2"></div>
-          </div>
-          
-          <div class="stream-dropdown" style="display: none;" id="dropdown-container-3">
-            <button class="dropdown-btn" data-slot="3">Seleccionar evento para la pantalla 3</button>
-            <div class="dropdown-content" id="dropdown-3"></div>
-          </div>
-          
-          <div class="stream-dropdown" style="display: none;" id="dropdown-container-4">
-            <button class="dropdown-btn" data-slot="4">Seleccionar evento para la pantalla 4</button>
-            <div class="dropdown-content" id="dropdown-4"></div>
-          </div>
+        <button class="fullscreen-btn" id="globalFullscreen" aria-label="Activar pantalla completa">
+          <span>⛶</span>
+          Pantalla Completa
+        </button>
+      </div>
+      
+      <div class="stream-selector">
+        <div class="stream-dropdown">
+          <button class="dropdown-btn" data-slot="1" aria-label="Seleccionar evento para pantalla 1">Seleccionar evento para la pantalla 1</button>
+          <div class="dropdown-content" id="dropdown-1"></div>
+        </div>
+        
+        <div class="stream-dropdown" style="display: none;" id="dropdown-container-2">
+          <button class="dropdown-btn" data-slot="2" aria-label="Seleccionar evento para pantalla 2">Seleccionar evento para la pantalla 2</button>
+          <div class="dropdown-content" id="dropdown-2"></div>
+        </div>
+        
+        <div class="stream-dropdown" style="display: none;" id="dropdown-container-3">
+          <button class="dropdown-btn" data-slot="3" aria-label="Seleccionar evento para pantalla 3">Seleccionar evento para la pantalla 3</button>
+          <div class="dropdown-content" id="dropdown-3"></div>
+        </div>
+        
+        <div class="stream-dropdown" style="display: none;" id="dropdown-container-4">
+          <button class="dropdown-btn" data-slot="4" aria-label="Seleccionar evento para pantalla 4">Seleccionar evento para la pantalla 4</button>
+          <div class="dropdown-content" id="dropdown-4"></div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="streams-grid layout-1" id="streamsGrid">
-      <div class="stream-item active" id="stream-1">
-        <div class="stream-header">
-          <div class="stream-title-bar">
-            <strong>Pantalla 1</strong>
-          </div>
-          <div class="stream-actions"></div>
+  <div class="streams-grid layout-1" id="streamsGrid">
+    <div class="stream-item active" id="stream-1">
+      <div class="stream-header">
+        <div class="stream-title-bar">
+          <strong>Pantalla 1</strong>
         </div>
-        <div class="stream-placeholder">
-          <span>📺</span>
-          <span>Selecciona un evento para comenzar</span>
-        </div>
+        <div class="stream-actions"></div>
+      </div>
+      <div class="stream-placeholder">
+        <span>📺</span>
+        <span>Selecciona un evento para comenzar</span>
       </div>
     </div>
-  </main>
+  </div>
+</main>
 
-  <button class="exit-fullscreen-btn" id="exitFullscreenBtn">
-    <span>✕</span>
-    Salir de Pantalla Completa
-  </button>
 
-  <footer class="site-footer">
-    <div class="container">
-      <small>© 2025 | <a href="dmca.html">DMCA</a></small>
-      <small><a href="https://x.com/AngulismoTV">Twitter</a> | <a href="https://discord.gg/jEayDA7T">Discord</a></small>
-    </div>
-  </footer>
 
-  <script>
+<footer class="site-footer">
+  <div class="container">
+    <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
+    <small>
+      <a href="https://x.com/AngulismoTV" target="_blank" rel="noopener">Twitter</a> | 
+      <a href="https://discord.gg/jEayDA7T" target="_blank" rel="noopener">Discord</a>
+    </small>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    'use strict';
+
+    // ==================== Starfield Generation ====================
+    const starfield = document.getElementById('starfield');
+    const numStars = 80;
+    const numShootingStars = 2;
+    const fragment = document.createDocumentFragment();
+
+    // Estrellas regulares
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2.5 + 0.5;
+      star.style.width = star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      fragment.appendChild(star);
+    }
+
+    // Estrellas fugaces
+    for (let i = 0; i < numShootingStars; i++) {
+      const shootingStar = document.createElement('div');
+      shootingStar.className = 'shooting-star';
+      shootingStar.style.top = Math.random() * 50 + '%';
+      shootingStar.style.left = (Math.random() * 50 + 50) + '%';
+      shootingStar.style.animationDelay = (Math.random() * 5 + 2) + 's';
+      shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
+      fragment.appendChild(shootingStar);
+    }
+
+    starfield.appendChild(fragment);
+
+    // ==================== Constants & Variables ====================
     const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
     const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
     const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
@@ -743,6 +1079,7 @@
     let activeStreams = {};
     let isFullscreen = false;
 
+    // ==================== Fetch JSON ====================
     async function fetchJSON(url, options = {}) {
       try {
         const response = await fetch(url, {
@@ -758,6 +1095,7 @@
       }
     }
 
+    // ==================== Get Direct Player URL ====================
     function getDirectPlayerUrl(streamData) {
       if (!streamData || !streamData.tv_networks || streamData.tv_networks.length === 0) {
         return null;
@@ -778,6 +1116,7 @@
       return null;
     }
 
+    // ==================== Adapt Events ====================
     async function adaptManualEvents(events) {
       if (!Array.isArray(events)) return [];
       
@@ -872,6 +1211,7 @@
       });
     }
 
+    // ==================== Load Agenda Data ====================
     async function loadAgendaData() {
       try {
         const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw] = await Promise.all([
@@ -909,11 +1249,7 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      loadAgendaData();
-      setupEventListeners();
-    });
-
+    // ==================== Load Stream Options ====================
     function loadStreamOptions() {
       for (let i = 1; i <= 4; i++) {
         const dropdown = document.getElementById(`dropdown-${i}`);
@@ -939,6 +1275,7 @@
       });
     }
 
+    // ==================== Format Time ====================
     function formatTime(str) {
       if (!str) return '--:--';
       if (str.includes(' ')) {
@@ -948,23 +1285,26 @@
       return str.includes(':') ? str : '--:--';
     }
 
+    // ==================== Setup Event Listeners ====================
     function setupEventListeners() {
       const layoutDropdownBtn = document.getElementById('layoutDropdownBtn');
       const layoutDropdown = document.getElementById('layoutDropdown');
       
-      layoutDropdownBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        layoutDropdown.classList.toggle('show');
-        this.classList.toggle('active');
-      });
+      if (layoutDropdownBtn && layoutDropdown) {
+        layoutDropdownBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          layoutDropdown.classList.toggle('show');
+          this.classList.toggle('active');
+        });
+      }
 
       document.querySelectorAll('.layout-option').forEach(option => {
         option.addEventListener('click', function() {
           const layout = parseInt(this.dataset.layout);
           changeLayout(layout);
-          layoutDropdownBtn.textContent = this.textContent;
-          layoutDropdown.classList.remove('show');
-          layoutDropdownBtn.classList.remove('active');
+          if (layoutDropdownBtn) layoutDropdownBtn.textContent = this.textContent;
+          if (layoutDropdown) layoutDropdown.classList.remove('show');
+          if (layoutDropdownBtn) layoutDropdownBtn.classList.remove('active');
         });
       });
 
@@ -976,16 +1316,32 @@
         });
       });
 
-      document.getElementById('globalFullscreen').addEventListener('click', toggleGlobalFullscreen);
-      document.getElementById('exitFullscreenBtn').addEventListener('click', toggleGlobalFullscreen);
+      const globalFullscreenBtn = document.getElementById('globalFullscreen');
+      const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
+      
+      if (globalFullscreenBtn) {
+        globalFullscreenBtn.addEventListener('click', toggleGlobalFullscreen);
+      }
+      
+      if (exitFullscreenBtn) {
+        exitFullscreenBtn.addEventListener('click', toggleGlobalFullscreen);
+      }
 
       document.addEventListener('click', function(e) {
-        if (!e.target.closest('.layout-selector')) {
+        // Cerrar dropdown de layout
+        if (layoutDropdown && layoutDropdownBtn && !e.target.closest('.layout-selector')) {
           layoutDropdown.classList.remove('show');
           layoutDropdownBtn.classList.remove('active');
         }
-        if (!e.target.closest('.stream-dropdown')) {
-          closeAllStreamDropdowns();
+        
+        // Cerrar dropdowns de streams
+        if (!e.target.closest('.stream-dropdown') && !e.target.closest('.layout-selector')) {
+          document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.remove('show');
+          });
+          document.querySelectorAll('.dropdown-btn').forEach(btn => {
+            btn.classList.remove('active');
+          });
         }
       });
 
@@ -1001,6 +1357,7 @@
       document.addEventListener('MSFullscreenChange', handleFullscreenChange);
     }
 
+    // ==================== Handle Fullscreen Change ====================
     function handleFullscreenChange() {
       const fullscreenElement = document.fullscreenElement || 
                                document.webkitFullscreenElement || 
@@ -1012,6 +1369,7 @@
       }
     }
 
+    // ==================== Close All Stream Dropdowns ====================
     function closeAllStreamDropdowns() {
       document.querySelectorAll('.dropdown-content').forEach(dropdown => {
         dropdown.classList.remove('show');
@@ -1019,11 +1377,20 @@
       document.querySelectorAll('.dropdown-btn').forEach(btn => {
         btn.classList.remove('active');
       });
+      
+      // También cerrar el dropdown de layout
+      const layoutDropdown = document.getElementById('layoutDropdown');
+      const layoutDropdownBtn = document.getElementById('layoutDropdownBtn');
+      if (layoutDropdown) layoutDropdown.classList.remove('show');
+      if (layoutDropdownBtn) layoutDropdownBtn.classList.remove('active');
     }
 
+    // ==================== Toggle Stream Dropdown ====================
     function toggleStreamDropdown(slot) {
       const dropdown = document.getElementById(`dropdown-${slot}`);
       const btn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
+      
+      if (!dropdown || !btn) return;
       
       const wasOpen = dropdown.classList.contains('show');
       closeAllStreamDropdowns();
@@ -1034,11 +1401,14 @@
       }
     }
 
+    // ==================== Change Layout ====================
     function changeLayout(layout) {
       currentLayout = layout;
       
       const grid = document.getElementById('streamsGrid');
-      grid.className = `streams-grid layout-${layout}`;
+      if (grid) {
+        grid.className = `streams-grid layout-${layout}`;
+      }
       
       for (let i = 1; i <= 4; i++) {
         const streamElement = document.getElementById(`stream-${i}`);
@@ -1069,11 +1439,12 @@
       }
     }
 
+    // ==================== Create Stream Element ====================
     function createStreamElement(slot) {
       const grid = document.getElementById('streamsGrid');
       const existingElement = document.getElementById(`stream-${slot}`);
       
-      if (existingElement) {
+      if (existingElement || !grid) {
         return;
       }
       
@@ -1094,7 +1465,7 @@
             </div>
             <div class="stream-actions"></div>
           </div>
-          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen"></iframe>
+          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen" title="Stream ${slot}"></iframe>
         `;
       } else {
         streamElement.innerHTML = `
@@ -1114,6 +1485,7 @@
       grid.appendChild(streamElement);
     }
 
+    // ==================== Select Stream ====================
     function selectStream(slot, stream) {
       activeStreams[slot] = stream;
       const playerUrl = getDirectPlayerUrl(stream);
@@ -1136,7 +1508,7 @@
               </div>
               <div class="stream-actions"></div>
             </div>
-            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen"></iframe>
+            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen" title="Stream ${slot}"></iframe>
           `;
         } else {
           existingElement.classList.remove('active');
@@ -1161,10 +1533,13 @@
       closeAllStreamDropdowns();
     }
 
+    // ==================== Toggle Global Fullscreen ====================
     function toggleGlobalFullscreen() {
+      const exitBtn = document.getElementById('exitFullscreenBtn');
+      
       if (!isFullscreen) {
         document.body.classList.add('fullscreen-mode');
-        document.getElementById('exitFullscreenBtn').style.display = 'flex';
+        if (exitBtn) exitBtn.style.display = 'flex';
         isFullscreen = true;
         
         const element = document.documentElement;
@@ -1179,7 +1554,7 @@
         }
       } else {
         document.body.classList.remove('fullscreen-mode');
-        document.getElementById('exitFullscreenBtn').style.display = 'none';
+        if (exitBtn) exitBtn.style.display = 'none';
         isFullscreen = false;
         
         if (document.exitFullscreen) {
@@ -1193,6 +1568,16 @@
         }
       }
     }
-  </script>
+
+    // ==================== Initialize ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAgendaData();
+      setupEventListeners();
+    });
+
+    console.log('🎬 AngulismoTV Multicámara - Cargado');
+    console.log('Atajo: ESC (salir de pantalla completa)');
+  })();
+</script>
 </body>
 </html>
