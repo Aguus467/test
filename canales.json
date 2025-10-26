@@ -14,9 +14,6 @@
       }
     ]
   },
-   {
-    "seccionTitulo": "Agenda"
-  },
   {
     "seccionTitulo": "Deportes Argentina",
     "canales": [
@@ -1110,6 +1107,7 @@
     ]
   }
 ]
+
 
 
 
