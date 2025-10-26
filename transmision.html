@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Transmisión en Vivo - AngulismoTV</title>
 <meta name="description" content="Disfruta de transmisiones en vivo de tus canales favoritos con experiencia personalizable">
 
@@ -20,9 +20,6 @@
   /* ==================== Variables CSS ==================== */
   :root {
     --bg-dark: #0b0d1b;
-    --bg-gradient-start: #0b0d1b;
-    --bg-gradient-mid: #1a1f3b;
-    --bg-gradient-end: #000014;
     --bg-card: rgba(20, 20, 40, 0.7);
     --bg-card-header: rgba(40, 40, 70, 0.85);
     --text-primary: #ffffff;
@@ -50,6 +47,7 @@
 
   html {
     scroll-behavior: smooth;
+    height: 100%;
   }
 
   body {
@@ -59,12 +57,26 @@
     color: var(--text-primary);
     overflow-x: hidden;
     position: relative;
-    background: radial-gradient(circle at top, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
+    background: #000014;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
 
-  /* Animated gradient overlay */
+  /* ==================== Fondo homogéneo sin cortes ==================== */
   body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
     content: '';
     position: fixed;
     top: 0;
@@ -91,10 +103,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
     overflow: hidden;
-    will-change: transform;
   }
 
   .star {
@@ -103,7 +114,6 @@
     border-radius: 50%;
     opacity: 0.8;
     animation: twinkle 3s infinite linear;
-    will-change: opacity;
   }
 
   @keyframes twinkle {
@@ -181,11 +191,11 @@
     transition: var(--transition);
     cursor: pointer;
     filter: drop-shadow(0 0 8px rgba(114, 214, 255, 0.3));
+    touch-action: manipulation;
   }
 
-  .logo:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 0 16px var(--accent));
+  .logo:active {
+    transform: scale(0.98);
   }
 
   nav {
@@ -210,6 +220,9 @@
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(114, 214, 255, 0.2);
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   nav a::before {
@@ -223,16 +236,28 @@
     transition: left 0.5s;
   }
 
-  nav a:hover::before {
-    left: 100%;
+  nav a:active {
+    transform: scale(0.95);
+    background: rgba(114, 214, 255, 0.2);
   }
 
-  nav a:hover,
-  nav a:focus {
-    background: rgba(114, 214, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
-    border-color: var(--accent);
+  @media (hover: hover) {
+    .logo:hover {
+      transform: scale(1.05) rotate(2deg);
+      filter: drop-shadow(0 0 16px var(--accent));
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: rgba(114, 214, 255, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+      border-color: var(--accent);
+    }
   }
 
   /* ==================== Options Bar ==================== */
@@ -282,6 +307,7 @@
     font-size: 16px;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    touch-action: manipulation;
   }
 
   select:hover,
@@ -324,6 +350,19 @@
     transform: scale(0.98);
   }
 
+  /* Iconos SVG inline */
+  .icon-reload {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+
+  .icon-settings {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+
   /* Botón de personalización */
   .customize-btn {
     margin-left: auto;
@@ -332,9 +371,11 @@
     color: white;
   }
 
-  .customize-btn:hover {
-    box-shadow: 0 0 20px var(--accent-glow);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    .customize-btn:hover {
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-2px);
+    }
   }
 
   /* ==================== Container & Layout ==================== */
@@ -379,13 +420,15 @@
     pointer-events: none;
   }
 
-  .card:hover::before {
-    opacity: 1;
-  }
+  @media (hover: hover) {
+    .card:hover::before {
+      opacity: 1;
+    }
 
-  .card:hover {
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(114, 214, 255, 0.15);
-    border-color: var(--border-accent);
+    .card:hover {
+      box-shadow: var(--shadow-lg), 0 0 30px rgba(114, 214, 255, 0.15);
+      border-color: var(--border-accent);
+    }
   }
 
   .card-header {
@@ -419,12 +462,15 @@
     flex-shrink: 0;
     object-fit: cover;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
   }
 
-  .channel-head img:hover {
-    transform: scale(1.1) rotate(5deg);
-    border-color: var(--accent-purple);
-    box-shadow: 0 0 15px var(--accent-glow);
+  @media (hover: hover) {
+    .channel-head img:hover {
+      transform: scale(1.1) rotate(5deg);
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
   }
 
   .channel-info {
@@ -518,12 +564,19 @@
     justify-content: center;
     width: 36px;
     height: 36px;
+    touch-action: manipulation;
   }
 
-  .chat-toggle:hover {
-    background: rgba(114, 214, 255, 0.15);
-    color: var(--accent-purple);
-    transform: scale(1.1);
+  .chat-toggle:active {
+    transform: scale(0.9);
+  }
+
+  @media (hover: hover) {
+    .chat-toggle:hover {
+      background: rgba(114, 214, 255, 0.15);
+      color: var(--accent-purple);
+      transform: scale(1.1);
+    }
   }
 
   /* ==================== Customization Panel ==================== */
@@ -541,6 +594,7 @@
     z-index: 2000;
     padding: 2rem;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 1px solid var(--border-accent);
   }
@@ -586,12 +640,19 @@
     justify-content: center;
     border-radius: 50%;
     transition: var(--transition);
+    touch-action: manipulation;
   }
 
-  .close-panel:hover {
-    background: rgba(114, 214, 255, 0.2);
-    color: var(--accent-purple);
-    transform: rotate(90deg);
+  .close-panel:active {
+    transform: rotate(45deg) scale(0.9);
+  }
+
+  @media (hover: hover) {
+    .close-panel:hover {
+      background: rgba(114, 214, 255, 0.2);
+      color: var(--accent-purple);
+      transform: rotate(90deg);
+    }
   }
 
   .control-group {
@@ -677,6 +738,7 @@
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    touch-action: manipulation;
   }
 
   .color-option::before {
@@ -692,14 +754,20 @@
     transition: width 0.3s, height 0.3s;
   }
 
-  .color-option:hover::before {
-    width: 100%;
-    height: 100%;
+  .color-option:active {
+    transform: scale(0.9);
   }
 
-  .color-option:hover {
-    transform: scale(1.1);
-    border-color: rgba(255, 255, 255, 0.3);
+  @media (hover: hover) {
+    .color-option:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
   }
 
   .color-option.active {
@@ -756,8 +824,10 @@
     transform: translateX(24px);
   }
 
-  .toggle-slider:hover {
-    box-shadow: 0 0 10px rgba(114, 214, 255, 0.3);
+  @media (hover: hover) {
+    .toggle-slider:hover {
+      box-shadow: 0 0 10px rgba(114, 214, 255, 0.3);
+    }
   }
 
   .value-display {
@@ -803,6 +873,7 @@
     color: var(--accent);
     transition: var(--transition);
     position: relative;
+    touch-action: manipulation;
   }
 
   footer.site-footer a::after {
@@ -816,13 +887,15 @@
     transition: width 0.3s ease;
   }
 
-  footer.site-footer a:hover::after {
-    width: 100%;
-  }
+  @media (hover: hover) {
+    footer.site-footer a:hover::after {
+      width: 100%;
+    }
 
-  footer.site-footer a:hover {
-    color: var(--accent-purple);
-    text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
+    footer.site-footer a:hover {
+      color: var(--accent-purple);
+      text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
+    }
   }
 
   /* ==================== Responsive Design ==================== */
@@ -887,7 +960,7 @@
     nav a {
       font-size: 0.8rem;
       padding: 8px 10px;
-      min-height: 40px;
+      min-height: 44px;
       flex: 1;
       min-width: calc(50% - 4px);
     }
@@ -949,9 +1022,9 @@
   }
 
   /* ==================== Accessibility ==================== */
-  a:focus,
-  button:focus,
-  select:focus {
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
@@ -984,6 +1057,18 @@
   .customize-panel::-webkit-scrollbar-thumb:hover {
     background: var(--accent-purple);
   }
+
+  /* Android específico */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      -webkit-user-select: none;
+    }
+    
+    .channel-head .name,
+    .control-item label {
+      -webkit-user-select: text;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1008,10 +1093,17 @@
     <option value="">Cargando opciones...</option>
   </select>
   <button class="btn" id="reloadBtn" aria-label="Recargar transmisión">
-    🔄 Recargar
+    <svg class="icon-reload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+    </svg>
+    Recargar
   </button>
   <button class="btn customize-btn" id="customizeBtn" aria-label="Personalizar interfaz">
-    ⚙️ Personalizar
+    <svg class="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 1v6m0 6v6m6-12h-6m6 6h-6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24m-4.24-13.56l-4.24 4.24m-5.08 5.08l-4.24 4.24"/>
+    </svg>
+    Personalizar
   </button>
 </section>
 
@@ -1040,9 +1132,11 @@
 
   <aside class="card chat-card">
     <div class="card-header">
-      <span class="name">💬 Chat en Vivo</span>
+      <span class="name">Chat en Vivo</span>
       <button class="chat-toggle" id="chatToggle" aria-label="Minimizar chat">
-        ⬇️
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
       </button>
     </div>
     <iframe 
@@ -1058,12 +1152,12 @@
 <!-- Panel de personalización -->
 <div class="customize-panel" id="customizePanel">
   <div class="panel-header">
-    <h2>🎨 Personalización</h2>
+    <h2>Personalización</h2>
     <button class="close-panel" id="closePanel" aria-label="Cerrar panel">✕</button>
   </div>
 
   <div class="control-group">
-    <h3>🌟 Apariencia</h3>
+    <h3>Apariencia</h3>
     
     <div class="control-item">
       <label for="accentColor">Color de acento</label>
@@ -1107,7 +1201,7 @@
   </div>
 
   <div class="control-group">
-    <h3>📺 Reproductor</h3>
+    <h3>Reproductor</h3>
     
     <div class="control-item">
       <label>
@@ -1131,9 +1225,9 @@
   </div>
 
   <div class="control-group">
-    <h3>💾 Datos</h3>
+    <h3>Configuración</h3>
     <button class="btn" id="resetSettings" style="width: 100%;">
-      🔄 Restaurar valores por defecto
+      Restaurar valores por defecto
     </button>
   </div>
 </div>
@@ -1259,7 +1353,8 @@
     document.addEventListener('click', (e) => {
       if (customizePanel.classList.contains('active') && 
           !customizePanel.contains(e.target) && 
-          e.target !== customizeBtn) {
+          e.target !== customizeBtn &&
+          !customizeBtn.contains(e.target)) {
         customizePanel.classList.remove('active');
       }
     });
@@ -1414,12 +1509,12 @@
       if (chatMinimized) {
         chatIframe.style.display = 'none';
         chatCard.style.minHeight = 'auto';
-        chatToggle.textContent = '⬆️';
+        chatToggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>';
         chatToggle.setAttribute('aria-label', 'Expandir chat');
       } else {
         chatIframe.style.display = 'block';
         chatCard.style.minHeight = '';
-        chatToggle.textContent = '⬇️';
+        chatToggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
         chatToggle.setAttribute('aria-label', 'Minimizar chat');
       }
     });
@@ -1436,7 +1531,8 @@
       
       playerFrame.classList.add('loading');
       reloadBtn.disabled = true;
-      reloadBtn.textContent = '⏳ Recargando...';
+      const originalHTML = reloadBtn.innerHTML;
+      reloadBtn.innerHTML = '<svg class="icon-reload" style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg> Recargando...';
       
       playerFrame.src = '';
       
@@ -1444,7 +1540,7 @@
         playerFrame.src = currentSrc;
         playerFrame.classList.remove('loading');
         reloadBtn.disabled = false;
-        reloadBtn.textContent = '🔄 Recargar';
+        reloadBtn.innerHTML = originalHTML;
       }, 500);
     });
   }
@@ -1480,6 +1576,16 @@
   // ==================== Initialize ====================
   generateStars(currentSettings.starsCount);
   initializeUI();
+
+  // ==================== Prevenir zoom en double-tap ====================
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', function(e) {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      e.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, false);
 
   // ==================== Keyboard Shortcuts ====================
   document.addEventListener('keydown', (e) => {
@@ -1518,7 +1624,6 @@
   // ==================== Visibility API for battery saving ====================
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      // Pause animations when tab is hidden
       stars.forEach(star => {
         star.style.animationPlayState = 'paused';
       });
@@ -1529,24 +1634,12 @@
     }
   });
 
-  // ==================== Performance Monitoring ====================
-  if ('PerformanceObserver' in window) {
-    try {
-      const observer = new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) {
-          if (entry.duration > 100) {
-            console.warn('Slow operation detected:', entry.name, entry.duration);
-          }
-        }
-      });
-      
-      observer.observe({ entryTypes: ['measure'] });
-    } catch (error) {
-      console.warn('PerformanceObserver not supported');
-    }
-  }
+  // Animación de spin para el icono de recarga
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
 
-  console.log('🎨 AngulismoTV - Personalización cargada');
+  console.log('AngulismoTV - Transmisión optimizada');
   console.log('Atajos: F (pantalla completa) | Ctrl+R (recargar) | Ctrl+K (personalizar)');
 })();
 </script>

@@ -2,8 +2,12 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="description" content="AngulismoTV - Plataforma de streaming deportivo con agenda en vivo y múltiples canales">
+<meta name="theme-color" content="#0b0d1b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>AngulismoTV - Streaming Deportivo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +27,7 @@
     --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.5);
     --radius: 12px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --header-height: 70px;
   }
 
   /* ==================== Reset & Base ==================== */
@@ -34,17 +39,35 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  html {
+    height: 100%;
+  }
+
   body {
     min-height: 100vh;
-    background: radial-gradient(circle at top, #0b0d1b, #1a1f3b, #000014);
+    background: #000014;
     color: var(--text-primary);
     overflow-x: hidden;
     position: relative;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
 
-  /* ==================== Animated Gradient Overlay ==================== */
+  /* ==================== Fondo homogéneo sin cortes ==================== */
   body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
     content: '';
     position: fixed;
     top: 0;
@@ -71,10 +94,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
     overflow: hidden;
-    will-change: transform;
   }
 
   .star {
@@ -83,7 +105,6 @@
     border-radius: 50%;
     opacity: 0.8;
     animation: twinkle 3s infinite linear;
-    will-change: opacity;
   }
 
   @keyframes twinkle {
@@ -113,7 +134,7 @@
     }
   }
 
-  /* ==================== Header ==================== */
+  /* ==================== Header (Optimizado para touch) ==================== */
   header {
     background: rgba(10, 10, 30, 0.95);
     backdrop-filter: blur(12px);
@@ -127,6 +148,7 @@
     z-index: 1000;
     box-shadow: 0 0 20px rgba(114, 214, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
     border-bottom: 1px solid var(--border-color);
+    min-height: var(--header-height);
   }
 
   header::before {
@@ -150,11 +172,11 @@
     transition: var(--transition);
     cursor: pointer;
     filter: drop-shadow(0 0 8px rgba(114, 214, 255, 0.3));
+    touch-action: manipulation;
   }
 
-  .logo:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 0 16px var(--accent));
+  .logo:active {
+    transform: scale(0.98);
   }
 
   nav {
@@ -181,6 +203,9 @@
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(114, 214, 255, 0.2);
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   nav a::before {
@@ -194,17 +219,29 @@
     transition: left 0.5s;
   }
 
-  nav a:hover::before {
-    left: 100%;
+  nav a:active {
+    transform: scale(0.95);
+    background: rgba(114, 214, 255, 0.2);
   }
 
-  nav a:hover,
-  nav a:focus {
-    background: rgba(114, 214, 255, 0.2);
-    color: var(--accent-purple);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
-    border-color: var(--accent);
+  @media (hover: hover) {
+    .logo:hover {
+      transform: scale(1.05) rotate(2deg);
+      filter: drop-shadow(0 0 16px var(--accent));
+    }
+
+    nav a:hover::before {
+      left: 100%;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: rgba(114, 214, 255, 0.2);
+      color: var(--accent-purple);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+      border-color: var(--accent);
+    }
   }
 
   /* ==================== Container ==================== */
@@ -265,15 +302,22 @@
     border-bottom: 1px solid transparent;
     position: relative;
     z-index: 1;
+    touch-action: manipulation;
   }
 
-  .info-banner a:hover {
-    border-bottom-color: var(--accent);
+  .info-banner a:active {
     color: var(--accent-purple);
-    text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
   }
 
-  /* ==================== Agenda Frame ==================== */
+  @media (hover: hover) {
+    .info-banner a:hover {
+      border-bottom-color: var(--accent);
+      color: var(--accent-purple);
+      text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
+    }
+  }
+
+  /* ==================== Agenda Frame (Optimizado) ==================== */
   iframe#agendaFrame {
     width: 100%;
     height: 500px;
@@ -286,17 +330,10 @@
     margin-bottom: 2rem;
     background: rgba(0, 0, 0, 0.4);
     transition: var(--transition);
+    touch-action: pan-y;
   }
 
-  iframe#agendaFrame:hover {
-    box-shadow: 
-      var(--shadow-lg),
-      0 0 50px rgba(114, 214, 255, 0.25),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-  }
-
-  /* ==================== Channels Section ==================== */
+  /* ==================== Channels Section (Optimizado para touch) ==================== */
   .channels-section {
     display: flex;
     flex-direction: column;
@@ -361,6 +398,9 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .channel-card::before {
@@ -376,19 +416,48 @@
     z-index: 0;
   }
 
-  .channel-card:hover::before {
+  .channel-card:active {
+    transform: scale(0.95);
+    box-shadow: 
+      var(--shadow-md),
+      0 0 20px rgba(114, 214, 255, 0.2);
+  }
+
+  .channel-card:active::before {
     opacity: 1;
   }
 
-  .channel-card:hover,
-  .channel-card:focus {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 
-      var(--shadow-lg),
-      0 0 30px rgba(114, 214, 255, 0.3),
-      inset 0 0 0 1px rgba(114, 214, 255, 0.2);
-    border-color: var(--accent);
-    background: rgba(20, 20, 40, 0.9);
+  @media (hover: hover) {
+    .channel-card:hover::before {
+      opacity: 1;
+    }
+
+    .channel-card:hover,
+    .channel-card:focus {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 
+        var(--shadow-lg),
+        0 0 30px rgba(114, 214, 255, 0.3),
+        inset 0 0 0 1px rgba(114, 214, 255, 0.2);
+      border-color: var(--accent);
+      background: rgba(20, 20, 40, 0.9);
+    }
+
+    .channel-card:hover img {
+      transform: scale(1.15) rotate(5deg);
+      border-color: var(--accent);
+      box-shadow: 
+        0 0 20px rgba(114, 214, 255, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    iframe#agendaFrame:hover {
+      box-shadow: 
+        var(--shadow-lg),
+        0 0 50px rgba(114, 214, 255, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
   }
 
   .channel-card > * {
@@ -405,14 +474,7 @@
     border: 2px solid rgba(114, 214, 255, 0.3);
     transition: var(--transition);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .channel-card:hover img {
-    transform: scale(1.15) rotate(5deg);
-    border-color: var(--accent);
-    box-shadow: 
-      0 0 20px rgba(114, 214, 255, 0.6),
-      0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
   }
 
   .channel-card span {
@@ -422,6 +484,7 @@
     font-size: 0.9rem;
     line-height: 1.3;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
   }
 
   /* ==================== Footer ==================== */
@@ -460,6 +523,7 @@
     font-weight: 500;
     transition: var(--transition);
     position: relative;
+    touch-action: manipulation;
   }
 
   footer.site-footer a::after {
@@ -473,17 +537,23 @@
     transition: width 0.3s ease;
   }
 
-  footer.site-footer a:hover::after {
-    width: 100%;
+  @media (hover: hover) {
+    footer.site-footer a:hover::after {
+      width: 100%;
+    }
+
+    footer.site-footer a:hover {
+      color: var(--accent-purple);
+      text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
+    }
   }
 
-  footer.site-footer a:hover {
-    color: var(--accent-purple);
-    text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
-  }
-
-  /* ==================== Responsive Design ==================== */
+  /* ==================== Responsive Design (Android optimizado) ==================== */
   @media (max-width: 768px) {
+    :root {
+      --header-height: 120px;
+    }
+
     .channels-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 0.75rem;
@@ -520,7 +590,7 @@
     nav a {
       font-size: 0.8rem;
       padding: 8px 10px;
-      min-height: 40px;
+      min-height: 44px;
       flex: 1;
       min-width: calc(50% - 4px);
     }
@@ -580,8 +650,8 @@
   }
 
   /* ==================== Accessibility ==================== */
-  a:focus,
-  button:focus {
+  a:focus-visible,
+  button:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
@@ -593,6 +663,18 @@
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ==================== Android específico ==================== */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      -webkit-user-select: none;
+    }
+    
+    .info-banner,
+    .channel-card span {
+      -webkit-user-select: text;
     }
   }
 </style>
@@ -667,9 +749,13 @@
           const targetElement = document.querySelector(targetId);
           
           if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
             });
             
             targetElement.setAttribute('tabindex', '-1');
@@ -678,6 +764,16 @@
         }
       });
     });
+
+    // Prevenir zoom en double-tap
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(e) {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
   });
 
   // ==================== Starfield Generation ====================
@@ -720,18 +816,36 @@
 
   // ==================== Performance Optimization ====================
   const agendaFrame = document.getElementById('agendaFrame');
+  
   if ('IntersectionObserver' in window) {
     const frameObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !agendaFrame.src) {
+        if (entry.isIntersecting && !agendaFrame.hasAttribute('data-loaded')) {
           agendaFrame.src = 'agenda.html';
+          agendaFrame.setAttribute('data-loaded', 'true');
           frameObserver.unobserve(agendaFrame);
         }
       });
+    }, {
+      rootMargin: '50px'
     });
     
     frameObserver.observe(agendaFrame);
+  } else {
+    agendaFrame.src = 'agenda.html';
   }
+
+  // Optimización de scroll
+  let ticking = false;
+  
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 </script>
 </body>
