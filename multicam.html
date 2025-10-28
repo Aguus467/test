@@ -31,8 +31,12 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: radial-gradient(circle at top, #0b0d1b, #1a1f3b, #000014);
+      background: #000014;
       color: var(--text-primary);
       margin: 0;
       min-height: 100vh;
@@ -41,8 +45,20 @@
       position: relative;
     }
 
-    /* Animated gradient overlay */
+    /* ==================== Fondo Espacial Optimizado ==================== */
     body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
       content: '';
       position: fixed;
       top: 0;
@@ -55,6 +71,7 @@
       pointer-events: none;
       z-index: 1;
       animation: gradientShift 15s ease infinite;
+      will-change: opacity;
     }
 
     @keyframes gradientShift {
@@ -62,41 +79,113 @@
       50% { opacity: 0.8; }
     }
 
-    /* FONDO GALAXIA CON ESTRELLAS ANIMADAS */
+    /* ==================== Starfield Background Optimizado ==================== */
     #starfield {
       position: fixed;
       top:0; 
       left:0;
       width:100%; 
       height:100%;
-      z-index:0;
+      z-index: 1;
       pointer-events:none;
       overflow:hidden;
-      will-change: transform;
-    }
-    
-    .star {
-      position:absolute;
-      background:white;
-      border-radius:50%;
-      opacity:0.8;
-      animation: twinkle 3s infinite linear;
-      will-change: opacity;
-    }
-    
-    @keyframes twinkle { 
-      0%, 100% { opacity:0.3; } 
-      50% { opacity:1; } 
     }
 
+    /* Galaxia espiral */
+    .spiral-galaxy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, 
+        rgba(114, 214, 255, 0.04) 0%, 
+        rgba(255, 127, 255, 0.04) 30%, 
+        transparent 70%);
+      border-radius: 50%;
+      animation: spiralRotate 120s linear infinite;
+      will-change: transform;
+    }
+
+    @keyframes spiralRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Auroras boreales */
+    .aurora {
+      position: absolute;
+      width: 100%;
+      height: 250px;
+      opacity: 0.12;
+      animation: auroraWave 25s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    .aurora-1 {
+      top: 10%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(114, 214, 255, 0.3) 25%, 
+        rgba(255, 127, 255, 0.3) 50%, 
+        rgba(114, 214, 255, 0.3) 75%, 
+        transparent 100%);
+      filter: blur(40px);
+    }
+
+    .aurora-2 {
+      top: 30%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 127, 255, 0.2) 30%, 
+        rgba(114, 214, 255, 0.2) 60%, 
+        transparent 100%);
+      filter: blur(50px);
+      animation-delay: -12s;
+    }
+
+    @keyframes auroraWave {
+      0%, 100% { 
+        transform: translateX(-10%) skewX(-5deg); 
+        opacity: 0.08;
+      }
+      50% { 
+        transform: translateX(10%) skewX(5deg); 
+        opacity: 0.15;
+      }
+    }
+
+    /* Estrellas con paralaje */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 4s ease-in-out infinite;
+      will-change: opacity;
+      transition: transform 0.1s ease-out;
+    }
+
+    .star.layer-1 { z-index: 1; }
+    .star.layer-2 { z-index: 2; }
+    .star.layer-3 { z-index: 3; }
+
+    @keyframes twinkle { 
+      0%, 100% { opacity: 0.3; } 
+      50% { opacity: 1; } 
+    }
+
+    /* Shooting stars */
     .shooting-star {
       position: absolute;
       width: 2px;
       height: 2px;
       background: linear-gradient(90deg, #fff, transparent);
       border-radius: 50%;
-      animation: shoot 3s linear infinite;
+      animation: shoot 4s ease-out infinite;
       opacity: 0;
+      will-change: transform, opacity;
     }
 
     @keyframes shoot {
@@ -110,11 +199,105 @@
       }
     }
 
-    /* HEADER */
+    /* Cometas */
+    .comet {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #fff, rgba(114, 214, 255, 0.8));
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(114, 214, 255, 0.8);
+      animation: cometFly 10s ease-in infinite;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .comet::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150px;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        rgba(114, 214, 255, 0.8), 
+        rgba(255, 127, 255, 0.4), 
+        transparent);
+      transform: translate(-10%, -50%);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    @keyframes cometFly {
+      0% {
+        transform: translate(0, 0) rotate(-45deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-700px, 700px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Planetas flotantes */
+    .planet {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: planetFloat 35s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .planet-1 {
+      width: 60px;
+      height: 60px;
+      top: 15%;
+      right: 12%;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 127, 255, 0.3), 
+        rgba(114, 214, 255, 0.15));
+      box-shadow: 
+        inset -8px -8px 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 127, 255, 0.2);
+    }
+
+    .planet-2 {
+      width: 90px;
+      height: 90px;
+      bottom: 25%;
+      left: 10%;
+      background: radial-gradient(circle at 35% 35%, 
+        rgba(114, 214, 255, 0.3), 
+        rgba(255, 127, 255, 0.15));
+      box-shadow: 
+        inset -12px -12px 30px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(114, 214, 255, 0.2);
+      animation-delay: -17s;
+    }
+
+    @keyframes planetFloat {
+      0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+      }
+      50% { 
+        transform: translateY(-25px) rotate(180deg); 
+      }
+    }
+
+    /* ==================== Header Espacial ==================== */
     header {
-      background: rgba(10, 10, 30, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(114, 214, 255, 0.15), transparent 50%),
+        radial-gradient(ellipse at 80% 50%, rgba(255, 127, 255, 0.15), transparent 50%),
+        rgba(10, 10, 30, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 12px 5%;
       display: flex;
       justify-content: space-between;
@@ -122,36 +305,98 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 0 20px rgba(114, 214, 255, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
-      border-bottom: 1px solid var(--border-color);
+      box-shadow: 
+        0 0 30px rgba(114, 214, 255, 0.3), 
+        0 8px 40px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(114, 214, 255, 0.2);
+      position: relative;
+      overflow: hidden;
     }
 
+    /* Nebulosas animadas en el header */
     header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 30% 50%, rgba(114, 214, 255, 0.2), transparent 30%),
+        radial-gradient(circle at 70% 50%, rgba(255, 127, 255, 0.2), transparent 30%);
+      animation: nebulaFloat 15s ease-in-out infinite;
+      will-change: transform;
+      pointer-events: none;
+    }
+
+    @keyframes nebulaFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-10px, 10px) rotate(120deg); }
+      66% { transform: translate(10px, -10px) rotate(240deg); }
+    }
+
+    /* Línea brillante superior */
+    header::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
-      animation: headerGlow 3s ease-in-out infinite;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent, 
+        var(--accent) 20%, 
+        var(--accent-purple) 50%,
+        var(--accent) 80%, 
+        transparent);
+      animation: headerGlow 6s ease-in-out infinite;
+      will-change: opacity;
+      box-shadow: 0 0 20px rgba(114, 214, 255, 0.5);
     }
 
     @keyframes headerGlow {
-      0%, 100% { opacity: 0.5; }
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* Estrellas pequeñas en el header */
+    .header-star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: headerTwinkle 3s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      will-change: opacity;
+    }
+
+    @keyframes headerTwinkle {
+      0%, 100% { opacity: 0.3; }
       50% { opacity: 1; }
     }
 
     .logo {
       height: 50px;
-      transition: var(--transition);
+      transition: transform var(--transition);
       cursor: pointer;
-      filter: drop-shadow(0 0 8px rgba(114, 214, 255, 0.3));
+      filter: drop-shadow(0 0 12px rgba(114, 214, 255, 0.5));
+      touch-action: manipulation;
+      position: relative;
+      z-index: 2;
+      will-change: transform;
     }
 
-    .logo:hover {
-      transform: scale(1.05) rotate(2deg);
-      filter: drop-shadow(0 0 16px var(--accent));
+    .logo:active {
+      transform: scale(0.98);
+    }
+
+    @media (hover: hover) {
+      .logo:hover {
+        transform: scale(1.05) rotate(2deg);
+        filter: drop-shadow(0 0 16px var(--accent));
+      }
     }
 
     nav {
@@ -159,6 +404,8 @@
       gap: 15px;
       flex-wrap: wrap;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
     nav a {
@@ -178,6 +425,10 @@
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(114, 214, 255, 0.2);
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+      will-change: transform;
     }
 
     nav a::before {
@@ -188,20 +439,27 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
-      transition: left 0.5s;
+      transition: left 0.6s ease;
     }
 
-    nav a:hover::before {
-      left: 100%;
-    }
-
-    nav a:hover,
-    nav a:focus {
+    nav a:active {
+      transform: scale(0.95);
       background: rgba(114, 214, 255, 0.2);
-      color: var(--accent-purple);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
-      border-color: var(--accent);
+    }
+
+    @media (hover: hover) {
+      nav a:hover::before {
+        left: 100%;
+      }
+
+      nav a:hover,
+      nav a:focus {
+        background: rgba(114, 214, 255, 0.2);
+        color: var(--accent-purple);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+        border-color: var(--accent);
+      }
     }
 
     .container {
@@ -229,7 +487,7 @@
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border-color);
       position: relative;
-      z-index: 10; /* Añadido para asegurar que esté por encima del contenido */
+      z-index: 10;
     }
 
     .multicam-controls::before {
@@ -288,6 +546,7 @@
       transition: var(--transition);
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      will-change: transform;
     }
 
     .layout-dropdown-btn:hover {
@@ -322,6 +581,7 @@
       display: none;
       box-shadow: var(--shadow-md), 0 0 30px rgba(114, 214, 255, 0.2);
       animation: dropdownSlide 0.2s ease;
+      will-change: transform, opacity;
     }
 
     @keyframes dropdownSlide {
@@ -391,6 +651,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       position: relative;
       overflow: hidden;
+      will-change: transform;
     }
 
     .fullscreen-btn::before {
@@ -435,6 +696,7 @@
       gap: 0.5rem;
       box-shadow: 0 0 30px rgba(114,214,255,0.6), 0 4px 12px rgba(0, 0, 0, 0.8);
       transition: var(--transition);
+      will-change: transform;
     }
 
     .exit-fullscreen-btn:hover {
@@ -472,6 +734,7 @@
       transition: var(--transition);
       font-size: 0.9rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      will-change: transform;
     }
 
     .dropdown-btn:hover {
@@ -504,10 +767,11 @@
       margin-top: 0.5rem;
       max-height: 300px;
       overflow-y: auto;
-      z-index: 1001; /* Aumentado para asegurar que esté por encima de los videos */
+      z-index: 1001;
       display: none;
       box-shadow: var(--shadow-md), 0 0 30px rgba(114, 214, 255, 0.2);
       animation: dropdownSlide 0.2s ease;
+      will-change: transform, opacity;
     }
 
     .dropdown-content.show {
@@ -587,7 +851,7 @@
       margin-bottom: 1.5rem;
       min-height: 500px;
       position: relative;
-      z-index: 5; /* Asegurar que esté por debajo de los controles */
+      z-index: 5;
     }
 
     .layout-1 { grid-template-columns: 1fr; }
@@ -614,7 +878,8 @@
       border: 2px solid transparent;
       transition: var(--transition);
       position: relative;
-      z-index: 1; /* Asegurar que esté por debajo de los dropdowns */
+      z-index: 1;
+      will-change: transform;
     }
 
     .stream-item::before {
@@ -687,6 +952,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      will-change: transform;
     }
 
     .action-btn:hover {
@@ -715,6 +981,7 @@
     .stream-placeholder span:first-child {
       font-size: 3rem;
       animation: pulse 2s ease-in-out infinite;
+      will-change: opacity;
     }
 
     @keyframes pulse {
@@ -728,7 +995,7 @@
       border: none;
       background: #000;
       position: relative;
-      z-index: 1; /* Asegurar que esté por debajo de los dropdowns */
+      z-index: 1;
     }
 
     .layout-2 .stream-iframe,
@@ -773,6 +1040,7 @@
     body.fullscreen-mode .layout-3 .stream-item:nth-child(1) .stream-iframe { height: calc(50vh - 60px); }
     body.fullscreen-mode .layout-4 .stream-iframe { height: calc(50vh - 60px); }
 
+    /* ==================== Footer ==================== */
     footer.site-footer {
       background: rgba(10, 10, 30, 0.95);
       backdrop-filter: blur(12px);
@@ -831,7 +1099,7 @@
       text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
     }
 
-    /* RESPONSIVE */
+    /* ==================== Responsive Design ==================== */
     @media (max-width: 768px) {
       .container {
         max-width: 720px;
@@ -929,7 +1197,7 @@
       }
     }
 
-    /* Accessibility */
+    /* ==================== Accessibility ==================== */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -943,7 +1211,11 @@
 </head>
 
 <body>
-<div id="starfield"></div>
+<div id="starfield">
+  <div class="spiral-galaxy"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+</div>
 
 <header>
   <a href="index.html" aria-label="AngulismoTV - Inicio">
@@ -1020,8 +1292,6 @@
   </div>
 </main>
 
-
-
 <footer class="site-footer">
   <div class="container">
     <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
@@ -1036,38 +1306,128 @@
   (function() {
     'use strict';
 
-    // ==================== Starfield Generation ====================
+    // ==================== DETECCIÓN DE DISPOSITIVO ====================
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isLowPerfDevice = isMobile || /(Android|iPhone).*AppleWebKit/.test(navigator.userAgent);
+
+    // ==================== Starfield Generation Optimizado ====================
     const starfield = document.getElementById('starfield');
-    const numStars = 80;
-    const numShootingStars = 2;
+    
+    // Ajustar densidad según dispositivo
+    const numStars = isLowPerfDevice ? 50 : 80;
+    const numShootingStars = isLowPerfDevice ? 1 : 2;
+    const numComets = isLowPerfDevice ? 0 : 1;
+    
     const fragment = document.createDocumentFragment();
+
+    // Galaxia espiral
+    const spiralGalaxy = document.createElement('div');
+    spiralGalaxy.className = 'spiral-galaxy';
+    fragment.appendChild(spiralGalaxy);
+
+    // Auroras
+    const aurora1 = document.createElement('div');
+    aurora1.className = 'aurora aurora-1';
+    fragment.appendChild(aurora1);
+
+    const aurora2 = document.createElement('div');
+    aurora2.className = 'aurora aurora-2';
+    fragment.appendChild(aurora2);
 
     // Estrellas regulares
     for (let i = 0; i < numStars; i++) {
       const star = document.createElement('div');
       star.className = 'star';
+      const layer = Math.floor(Math.random() * 3) + 1;
+      star.classList.add(`layer-${layer}`);
+      star.setAttribute('data-speed', layer * 0.2);
+      
       const size = Math.random() * 2.5 + 0.5;
-      star.style.width = star.style.height = size + 'px';
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
       star.style.top = Math.random() * 100 + '%';
       star.style.left = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
-      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      star.style.animationDuration = (Math.random() * 3 + 3) + 's';
       fragment.appendChild(star);
     }
 
-    // Estrellas fugaces
+    // Shooting stars (reducidas en móviles)
     for (let i = 0; i < numShootingStars; i++) {
       const shootingStar = document.createElement('div');
       shootingStar.className = 'shooting-star';
       shootingStar.style.top = Math.random() * 50 + '%';
       shootingStar.style.left = (Math.random() * 50 + 50) + '%';
-      shootingStar.style.animationDelay = (Math.random() * 5 + 2) + 's';
-      shootingStar.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      shootingStar.style.animationDelay = (Math.random() * 6 + 3) + 's';
+      shootingStar.style.animationDuration = (Math.random() * 3 + 3) + 's';
       shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
       fragment.appendChild(shootingStar);
     }
 
+    // Cometas (solo en PC)
+    if (!isLowPerfDevice) {
+      for (let i = 0; i < numComets; i++) {
+        const comet = document.createElement('div');
+        comet.className = 'comet';
+        comet.style.top = Math.random() * 30 + '%';
+        comet.style.left = (Math.random() * 30 + 70) + '%';
+        comet.style.animationDelay = (Math.random() * 12 + 6) + 's';
+        fragment.appendChild(comet);
+      }
+    }
+
+    // Planetas
+    for (let i = 1; i <= 2; i++) {
+      const planet = document.createElement('div');
+      planet.className = `planet planet-${i}`;
+      fragment.appendChild(planet);
+    }
+
     starfield.appendChild(fragment);
+
+    // ==================== Efecto Paralaje Optimizado ====================
+    let scrollY = 0;
+    let ticking = false;
+    
+    function updateParallax() {
+      const stars = document.querySelectorAll('.star');
+      stars.forEach(star => {
+        const speed = parseFloat(star.getAttribute('data-speed')) || 0;
+        const yPos = scrollY * speed;
+        star.style.transform = `translateY(${yPos}px)`;
+      });
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      scrollY = window.pageYOffset;
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // ==================== Header Stars Generation Optimizada ====================
+    const header = document.querySelector('header');
+    const headerStarsFragment = document.createDocumentFragment();
+    const numHeaderStars = isLowPerfDevice ? 8 : 12;
+
+    for (let i = 0; i < numHeaderStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'header-star';
+      
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      
+      headerStarsFragment.appendChild(star);
+    }
+    
+    header.appendChild(headerStarsFragment);
 
     // ==================== Constants & Variables ====================
     const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
@@ -1317,14 +1677,9 @@
       });
 
       const globalFullscreenBtn = document.getElementById('globalFullscreen');
-      const exitFullscreenBtn = document.getElementById('exitFullscreenBtn');
       
       if (globalFullscreenBtn) {
         globalFullscreenBtn.addEventListener('click', toggleGlobalFullscreen);
-      }
-      
-      if (exitFullscreenBtn) {
-        exitFullscreenBtn.addEventListener('click', toggleGlobalFullscreen);
       }
 
       document.addEventListener('click', function(e) {
@@ -1535,11 +1890,17 @@
 
     // ==================== Toggle Global Fullscreen ====================
     function toggleGlobalFullscreen() {
-      const exitBtn = document.getElementById('exitFullscreenBtn');
-      
       if (!isFullscreen) {
         document.body.classList.add('fullscreen-mode');
-        if (exitBtn) exitBtn.style.display = 'flex';
+        
+        // Crear botón de salida de pantalla completa
+        const exitBtn = document.createElement('button');
+        exitBtn.className = 'exit-fullscreen-btn';
+        exitBtn.id = 'exitFullscreenBtn';
+        exitBtn.innerHTML = '<span>✕</span> Salir de pantalla completa';
+        exitBtn.addEventListener('click', toggleGlobalFullscreen);
+        document.body.appendChild(exitBtn);
+        
         isFullscreen = true;
         
         const element = document.documentElement;
@@ -1554,7 +1915,8 @@
         }
       } else {
         document.body.classList.remove('fullscreen-mode');
-        if (exitBtn) exitBtn.style.display = 'none';
+        const exitBtn = document.getElementById('exitFullscreenBtn');
+        if (exitBtn) exitBtn.remove();
         isFullscreen = false;
         
         if (document.exitFullscreen) {
@@ -1569,14 +1931,39 @@
       }
     }
 
+    // ==================== Optimización para preferencia de movimiento reducido ====================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Reducir animaciones intensivas
+      document.querySelectorAll('.star, .shooting-star, .comet, .planet, .header-star').forEach(el => {
+        el.style.animation = 'none';
+      });
+      
+      // Desactivar efectos de paralaje
+      window.removeEventListener('scroll', updateParallax);
+    }
+
+    // ==================== Prevenir zoom en double-tap (solo móviles) ====================
+    if (isMobile) {
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+    }
+
     // ==================== Initialize ====================
     document.addEventListener('DOMContentLoaded', function() {
       loadAgendaData();
       setupEventListeners();
     });
 
-    console.log('🎬 AngulismoTV Multicámara - Cargado');
-    console.log('Atajo: ESC (salir de pantalla completa)');
+    console.log('🎬 AngulismoTV Multicámara - Optimizado para ' + (isMobile ? 'Android' : 'PC'));
+    console.log('Atajos: ESC (salir de pantalla completa)');
   })();
 </script>
 </body>
