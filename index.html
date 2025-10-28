@@ -1,361 +1,4 @@
-<script>
-(function() {
-  'use strict';
-
-  // ==================== Smooth Scroll Navigation ====================
-  document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('nav a[href*="#"]');
-    
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        
-        if (href.startsWith('#')) {
-          e.preventDefault();
-          const targetId = href;
-          const targetElement = document.querySelector(targetId);
-          
-          if (targetElement) {
-            const headerOffset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-            
-            targetElement.setAttribute('tabindex', '-1');
-            targetElement.focus();
-          }
-        }
-      });
-    });
-
-    // Prevenir zoom en double-tap
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(e) {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        e.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-  });
-
-  // ==================== Starfield Generation (COMPLETO) ====================
-  const starfield = document.getElementById('starfield');
-  const numStars = 100;
-  const numShootingStars = 3;
-  const numComets = 2;
-  const numPlanets = 3;
-  const numStardust = 50;
-  const numConstellations = 2;
-  const fragment = document.createDocumentFragment();
-
-  // Regular stars con 3 capas de paralaje
-  for (let i = 0; i < numStars; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    
-    // Asignar capa aleatoria para paralaje
-    const layer = Math.floor(Math.random() * 3) + 1;
-    star.classList.add(`layer-${layer}`);
-    star.setAttribute('data-speed', layer * 0.3);
-    
-    const size = Math.random() * 2.5 + 0.5;
-    star.style.width = size + 'px';
-    star.style.height = size + 'px';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 4 + 's';
-    star.style.animationDuration = (Math.random() * 3 + 3) + 's';
-    
-    fragment.appendChild(star);
-  }
-
-  // Shooting stars
-  for (let i = 0; i < numShootingStars; i++) {
-    const shootingStar = document.createElement('div');
-    shootingStar.className = 'shooting-star';
-    
-    shootingStar.style.top = Math.random() * 50 + '%';
-    shootingStar.style.left = (Math.random() * 50 + 50) + '%';
-    shootingStar.style.animationDelay = (Math.random() * 6 + 3) + 's';
-    shootingStar.style.animationDuration = (Math.random() * 3 + 3) + 's';
-    shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
-    
-    fragment.appendChild(shootingStar);
-  }
-
-  // Cometas
-  for (let i = 0; i < numComets; i++) {
-    const comet = document.createElement('div');
-    comet.className = 'comet';
-    
-    comet.style.top = Math.random() * 30 + '%';
-    comet.style.left = (Math.random() * 30 + 70) + '%';
-    comet.style.animationDelay = (Math.random() * 10 + 5) + 's';
-    
-    fragment.appendChild(comet);
-  }
-
-  // Planetas flotantes
-  for (let i = 1; i <= numPlanets; i++) {
-    const planet = document.createElement('div');
-    planet.className = `planet planet-${i}`;
-    fragment.appendChild(planet);
-  }
-
-  // Polvo estelar
-  for (let i = 0; i < numStardust; i++) {
-    const dust = document.createElement('div');
-    dust.className = 'stardust';
-    
-    dust.style.left = Math.random() * 100 + '%';
-    dust.style.bottom = '0';
-    dust.style.animationDelay = Math.random() * 20 + 's';
-    dust.style.animationDuration = (Math.random() * 10 + 15) + 's';
-    
-    fragment.appendChild(dust);
-  }
-
-  // Constelaciones
-  for (let i = 0; i < numConstellations; i++) {
-    const constellation = document.createElement('div');
-    constellation.className = 'constellation';
-    constellation.style.top = (Math.random() * 60 + 10) + '%';
-    constellation.style.left = (Math.random() * 60 + 10) + '%';
-    
-    // Crear puntos y líneas de constelación
-    const points = 5;
-    const positions = [];
-    
-    for (let j = 0; j < points; j++) {
-      const dot = document.createElement('div');
-      dot.className = 'constellation-dot';
-      const x = Math.random() * 150;
-      const y = Math.random() * 150;
-      dot.style.left = x + 'px';
-      dot.style.top = y + 'px';
-      positions.push({x, y});
-      constellation.appendChild(dot);
-    }
-    
-    // Conectar puntos con líneas
-    for (let j = 0; j < points - 1; j++) {
-      const line = document.createElement('div');
-      line.className = 'constellation-line';
-      const dx = positions[j + 1].x - positions[j].x;
-      const dy = positions[j + 1].y - positions[j].y;
-      const length = Math.sqrt(dx * dx + dy * dy);
-      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-      
-      line.style.width = length + 'px';
-      line.style.left = positions[j].x + 'px';
-      line.style.top = positions[j].y + 'px';
-      line.style.transform = `rotate(${angle}deg)`;
-      constellation.appendChild(line);
-    }
-    
-    fragment.appendChild(constellation);
-  }
-  
-  starfield.appendChild(fragment);
-
-  // ==================== Efecto Paralaje ====================
-  let scrollY = 0;
-  window.addEventListener('scroll', function() {
-    scrollY = window.pageYOffset;
-    requestAnimationFrame(updateParallax);
-  }, { passive: true });
-
-  function updateParallax() {
-    const stars = document.querySelectorAll('.star');
-    stars.forEach(star => {
-      const speed = parseFloat(star.getAttribute('data-speed')) || 0;
-      const yPos = scrollY * speed;
-      star.style.transform = `translateY(${yPos}px)`;
-    });
-  }
-
-  // ==================== Header Stars Generation ====================
-  const header = document.querySelector('header');
-  const headerStarsFragment = document.createDocumentFragment();
-  const numHeaderStars = 15;
-
-  for (let i = 0; i < numHeaderStars; i++) {
-    const star = document.createElement('div');
-    star.className = 'header-star';
-    
-    const size = Math.random() * 2 + 1;
-    star.style.width = size + 'px';
-    star.style.height = size + 'px';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 3 + 's';
-    star.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    
-    headerStarsFragment.appendChild(star);
-  }
-  
-  header.appendChild(headerStarsFragment);
-
-  // ==================== Efecto Gravitacional en Cards ====================
-  if (window.matchMedia('(hover: hover)').matches) {
-    document.addEventListener('mousemove', function(e) {
-      const cards = document.querySelectorAll('.channel-card');
-      
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardX = rect.left + rect.width / 2;
-        const cardY = rect.top + rect.height / 2;
-        const distance = Math.sqrt(Math.pow(e.clientX - cardX, 2) + Math.pow(e.clientY - cardY, 2));
-        
-        if (distance < 200) {
-          // Crear partículas gravitacionales
-          if (Math.random() < 0.05) {
-            const particle = document.createElement('div');
-            particle.className = 'gravity-particle';
-            particle.style.left = e.clientX + 'px';
-            particle.style.top = e.clientY + 'px';
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-              particle.style.opacity = '1';
-              particle.style.transform = `translate(${cardX - e.clientX}px, ${cardY - e.clientY}px) scale(2)`;
-            }, 10);
-            
-            setTimeout(() => {
-              particle.remove();
-            }, 650);
-          }
-        }
-      });
-    });
-  }
-
-  // ==================== Warp Speed Effect ====================
-  function createWarpEffect() {
-    const numLines = 15;
-    for (let i = 0; i < numLines; i++) {
-      setTimeout(() => {
-        const line = document.createElement('div');
-        line.className = 'warp-line';
-        line.style.top = Math.random() * 100 + '%';
-        line.style.animationDelay = (i * 0.02) + 's';
-        document.body.appendChild(line);
-        
-        setTimeout(() => line.remove(), 1000);
-      }, i * 30);
-    }
-  }
-
-  // Activar warp speed en navegación interna
-  document.querySelectorAll('a[href^="multicam"], a[href^="dmca"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-      if (!e.ctrlKey && !e.metaKey) {
-        createWarpEffect();
-      }
-    });
-  });
-
-  // ==================== Performance Optimization ====================
-  const agendaFrame = document.getElementById('agendaFrame');
-  
-  if ('IntersectionObserver' in window) {
-    const frameObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !agendaFrame.hasAttribute('data-loaded')) {
-          agendaFrame.src = 'agenda.html';
-          agendaFrame.setAttribute('data-loaded', 'true');
-          frameObserver.unobserve(agendaFrame);
-        }
-      });
-    }, {
-      rootMargin: '50px'
-    });
-    
-    frameObserver.observe(agendaFrame);
-  } else {
-    agendaFrame.src = 'agenda.html';
-  }
-
-  // Optimización de scroll con throttle
-  let ticking = false;
-  
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
-  // ==================== Polvo Estelar Interactivo ====================
-  if (window.matchMedia('(hover: hover)').matches) {
-    let dustCursor = null;
-    
-    document.addEventListener('mousemove', function(e) {
-      if (Math.random() < 0.1) {
-        const dust = document.createElement('div');
-        dust.className = 'stardust';
-        dust.style.left = e.clientX + 'px';
-        dust.style.top = e.clientY + 'px';
-        dust.style.position = 'fixed';
-        dust.style.animation = 'dustFloat 2s ease-out forwards';
-        document.body.appendChild(dust);
-        
-        setTimeout(() => dust.remove(), 2000);
-      }
-    });
-  }
-
-  // ==================== Easter Egg: Constelación al hacer clic ====================
-  let clickCount = 0;
-  document.addEventListener('click', function(e) {
-    clickCount++;
-    if (clickCount === 7) {
-      // Crear mini constelación en la posición del clic
-      const miniConstellation = document.createElement('div');
-      miniConstellation.style.position = 'fixed';
-      miniConstellation.style.left = e.clientX - 50 + 'px';
-      miniConstellation.style.top = e.clientY - 50 + 'px';
-      miniConstellation.style.width = '100px';
-      miniConstellation.style.height = '100px';
-      miniConstellation.style.pointerEvents = 'none';
-      miniConstellation.style.zIndex = '9999';
-      
-      for (let i = 0; i < 5; i++) {
-        const star = document.createElement('div');
-        star.style.position = 'absolute';
-        star.style.width = '4px';
-        star.style.height = '4px';
-        star.style.background = 'rgba(114, 214, 255, 0.9)';
-        star.style.borderRadius = '50%';
-        star.style.boxShadow = '0 0 10px rgba(114, 214, 255, 0.9)';
-        star.style.left = Math.random() * 80 + 10 + 'px';
-        star.style.top = Math.random() * 80 + 10 + 'px';
-        star.style.animation = 'twinkle 1s ease-in-out infinite';
-        miniConstellation.appendChild(star);
-      }
-      
-      document.body.appendChild(miniConstellation);
-      
-      setTimeout(() => {
-        miniConstellation.style.transition = 'opacity 1s';
-        miniConstellation.style.opacity = '0';
-        setTimeout(() => miniConstellation.remove(), 1000);
-      }, 3000);
-      
-      clickCount = 0;
-    }
-  });
-})();
-</script>
-</body>
-</html><!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -1430,6 +1073,8 @@
   </section>
 </main>
 
+<script defer src="scripts/main.js"></script>
+
 <footer class="site-footer">
   <div class="container">
     <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
@@ -1440,12 +1085,13 @@
   </div>
 </footer>
 
-<script defer src="scripts/main.js"></script>
-
 <script>
 (function() {
   'use strict';
 
+  // ==================== Configuración de optimización ====================
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
   // ==================== Smooth Scroll Navigation ====================
   document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('nav a[href*="#"]');
@@ -1476,27 +1122,38 @@
       });
     });
 
-    // Prevenir zoom en double-tap
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(e) {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        e.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
+    // Prevenir zoom en double-tap (solo móviles)
+    if (isMobile) {
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+    }
   });
 
   // ==================== Starfield Generation (Optimizado) ====================
   const starfield = document.getElementById('starfield');
-  const numStars = 80;
-  const numShootingStars = 2;
+  const numStars = isMobile ? 60 : 100;
+  const numShootingStars = isMobile ? 2 : 3;
+  const numComets = isMobile ? 1 : 2;
+  const numPlanets = isMobile ? 2 : 3;
+  const numStardust = isMobile ? 30 : 50;
+  const numConstellations = isMobile ? 1 : 2;
   const fragment = document.createDocumentFragment();
 
-  // Regular stars
+  // Regular stars con 3 capas de paralaje
   for (let i = 0; i < numStars; i++) {
     const star = document.createElement('div');
     star.className = 'star';
+    
+    // Asignar capa aleatoria para paralaje
+    const layer = Math.floor(Math.random() * 3) + 1;
+    star.classList.add(`layer-${layer}`);
+    star.setAttribute('data-speed', layer * 0.3);
     
     const size = Math.random() * 2.5 + 0.5;
     star.style.width = size + 'px';
@@ -1522,13 +1179,112 @@
     
     fragment.appendChild(shootingStar);
   }
+
+  // Cometas (solo en PC o dispositivos potentes)
+  if (!isMobile) {
+    for (let i = 0; i < numComets; i++) {
+      const comet = document.createElement('div');
+      comet.className = 'comet';
+      
+      comet.style.top = Math.random() * 30 + '%';
+      comet.style.left = (Math.random() * 30 + 70) + '%';
+      comet.style.animationDelay = (Math.random() * 10 + 5) + 's';
+      
+      fragment.appendChild(comet);
+    }
+  }
+
+  // Planetas flotantes
+  for (let i = 1; i <= numPlanets; i++) {
+    const planet = document.createElement('div');
+    planet.className = `planet planet-${i}`;
+    fragment.appendChild(planet);
+  }
+
+  // Polvo estelar
+  for (let i = 0; i < numStardust; i++) {
+    const dust = document.createElement('div');
+    dust.className = 'stardust';
+    
+    dust.style.left = Math.random() * 100 + '%';
+    dust.style.bottom = '0';
+    dust.style.animationDelay = Math.random() * 20 + 's';
+    dust.style.animationDuration = (Math.random() * 10 + 15) + 's';
+    
+    fragment.appendChild(dust);
+  }
+
+  // Constelaciones (solo en PC)
+  if (!isMobile) {
+    for (let i = 0; i < numConstellations; i++) {
+      const constellation = document.createElement('div');
+      constellation.className = 'constellation';
+      constellation.style.top = (Math.random() * 60 + 10) + '%';
+      constellation.style.left = (Math.random() * 60 + 10) + '%';
+      
+      // Crear puntos y líneas de constelación
+      const points = 5;
+      const positions = [];
+      
+      for (let j = 0; j < points; j++) {
+        const dot = document.createElement('div');
+        dot.className = 'constellation-dot';
+        const x = Math.random() * 150;
+        const y = Math.random() * 150;
+        dot.style.left = x + 'px';
+        dot.style.top = y + 'px';
+        positions.push({x, y});
+        constellation.appendChild(dot);
+      }
+      
+      // Conectar puntos con líneas
+      for (let j = 0; j < points - 1; j++) {
+        const line = document.createElement('div');
+        line.className = 'constellation-line';
+        const dx = positions[j + 1].x - positions[j].x;
+        const dy = positions[j + 1].y - positions[j].y;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        
+        line.style.width = length + 'px';
+        line.style.left = positions[j].x + 'px';
+        line.style.top = positions[j].y + 'px';
+        line.style.transform = `rotate(${angle}deg)`;
+        constellation.appendChild(line);
+      }
+      
+      fragment.appendChild(constellation);
+    }
+  }
   
   starfield.appendChild(fragment);
+
+  // ==================== Efecto Paralaje (Optimizado) ====================
+  let scrollY = 0;
+  let ticking = false;
+  
+  function updateParallax() {
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+      const speed = parseFloat(star.getAttribute('data-speed')) || 0;
+      const yPos = scrollY * speed;
+      star.style.transform = `translateY(${yPos}px)`;
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    scrollY = window.pageYOffset;
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
 
   // ==================== Header Stars Generation ====================
   const header = document.querySelector('header');
   const headerStarsFragment = document.createDocumentFragment();
-  const numHeaderStars = 15;
+  const numHeaderStars = isMobile ? 10 : 15;
 
   for (let i = 0; i < numHeaderStars; i++) {
     const star = document.createElement('div');
@@ -1546,6 +1302,69 @@
   }
   
   header.appendChild(headerStarsFragment);
+
+  // ==================== Efecto Gravitacional en Cards (solo PC) ====================
+  if (!isMobile && window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', function(e) {
+      const cards = document.querySelectorAll('.channel-card');
+      
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardX = rect.left + rect.width / 2;
+        const cardY = rect.top + rect.height / 2;
+        const distance = Math.sqrt(Math.pow(e.clientX - cardX, 2) + Math.pow(e.clientY - cardY, 2));
+        
+        if (distance < 200) {
+          // Crear partículas gravitacionales
+          if (Math.random() < 0.05) {
+            const particle = document.createElement('div');
+            particle.className = 'gravity-particle';
+            particle.style.left = e.clientX + 'px';
+            particle.style.top = e.clientY + 'px';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+              particle.style.opacity = '1';
+              particle.style.transform = `translate(${cardX - e.clientX}px, ${cardY - e.clientY}px) scale(2)`;
+            }, 10);
+            
+            setTimeout(() => {
+              particle.remove();
+            }, 650);
+          }
+        }
+      });
+    });
+  }
+
+  // ==================== Warp Speed Effect (solo PC) ====================
+  function createWarpEffect() {
+    if (isMobile) return;
+    
+    const numLines = 15;
+    for (let i = 0; i < numLines; i++) {
+      setTimeout(() => {
+        const line = document.createElement('div');
+        line.className = 'warp-line';
+        line.style.top = Math.random() * 100 + '%';
+        line.style.animationDelay = (i * 0.02) + 's';
+        document.body.appendChild(line);
+        
+        setTimeout(() => line.remove(), 1000);
+      }, i * 30);
+    }
+  }
+
+  // Activar warp speed en navegación interna (solo PC)
+  if (!isMobile) {
+    document.querySelectorAll('a[href^="multicam"], a[href^="dmca"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (!e.ctrlKey && !e.metaKey) {
+          createWarpEffect();
+        }
+      });
+    });
+  }
 
   // ==================== Performance Optimization ====================
   const agendaFrame = document.getElementById('agendaFrame');
@@ -1568,17 +1387,78 @@
     agendaFrame.src = 'agenda.html';
   }
 
-  // Optimización de scroll con throttle
-  let ticking = false;
-  
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        ticking = false;
-      });
-      ticking = true;
+  // ==================== Polvo Estelar Interactivo (solo PC) ====================
+  if (!isMobile && window.matchMedia('(hover: hover)').matches) {
+    let dustCursor = null;
+    
+    document.addEventListener('mousemove', function(e) {
+      if (Math.random() < 0.1) {
+        const dust = document.createElement('div');
+        dust.className = 'stardust';
+        dust.style.left = e.clientX + 'px';
+        dust.style.top = e.clientY + 'px';
+        dust.style.position = 'fixed';
+        dust.style.animation = 'dustFloat 2s ease-out forwards';
+        document.body.appendChild(dust);
+        
+        setTimeout(() => dust.remove(), 2000);
+      }
+    });
+  }
+
+  // ==================== Easter Egg: Constelación al hacer clic ====================
+  let clickCount = 0;
+  document.addEventListener('click', function(e) {
+    clickCount++;
+    if (clickCount === 7) {
+      // Crear mini constelación en la posición del clic
+      const miniConstellation = document.createElement('div');
+      miniConstellation.style.position = 'fixed';
+      miniConstellation.style.left = e.clientX - 50 + 'px';
+      miniConstellation.style.top = e.clientY - 50 + 'px';
+      miniConstellation.style.width = '100px';
+      miniConstellation.style.height = '100px';
+      miniConstellation.style.pointerEvents = 'none';
+      miniConstellation.style.zIndex = '9999';
+      
+      for (let i = 0; i < 5; i++) {
+        const star = document.createElement('div');
+        star.style.position = 'absolute';
+        star.style.width = '4px';
+        star.style.height = '4px';
+        star.style.background = 'rgba(114, 214, 255, 0.9)';
+        star.style.borderRadius = '50%';
+        star.style.boxShadow = '0 0 10px rgba(114, 214, 255, 0.9)';
+        star.style.left = Math.random() * 80 + 10 + 'px';
+        star.style.top = Math.random() * 80 + 10 + 'px';
+        star.style.animation = 'twinkle 1s ease-in-out infinite';
+        miniConstellation.appendChild(star);
+      }
+      
+      document.body.appendChild(miniConstellation);
+      
+      setTimeout(() => {
+        miniConstellation.style.transition = 'opacity 1s';
+        miniConstellation.style.opacity = '0';
+        setTimeout(() => miniConstellation.remove(), 1000);
+      }, 3000);
+      
+      clickCount = 0;
     }
-  }, { passive: true });
+  });
+
+  // ==================== Optimización para preferencia de movimiento reducido ====================
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  if (prefersReducedMotion) {
+    // Reducir animaciones intensivas
+    document.querySelectorAll('.star, .shooting-star, .comet, .planet, .stardust, .header-star').forEach(el => {
+      el.style.animation = 'none';
+    });
+    
+    // Desactivar efectos de paralaje
+    window.removeEventListener('scroll', updateParallax);
+  }
 })();
 </script>
 </body>
