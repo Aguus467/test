@@ -34,7 +34,7 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #0b0d1b, #1a1f3b, #000014);
+      background: #000014;
       color: var(--text-primary);
       margin: 0;
       min-height: 100vh;
@@ -43,8 +43,21 @@
       position: relative;
     }
 
-    /* Animated gradient overlay */
+    /* Fondo base */
     body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Animated gradient overlay */
+    body::after {
       content: '';
       position: fixed;
       top: 0;
@@ -56,7 +69,8 @@
         radial-gradient(circle at 80% 70%, rgba(255, 127, 255, 0.08) 0%, transparent 40%);
       pointer-events: none;
       z-index: 1;
-      animation: gradientShift 15s ease infinite;
+      animation: gradientShift 20s ease infinite;
+      will-change: opacity;
     }
 
     @keyframes gradientShift {
@@ -64,41 +78,113 @@
       50% { opacity: 0.8; }
     }
 
-    /* FONDO GALAXIA CON ESTRELLAS ANIMADAS */
+    /* STARFIELD COMPLETO */
     #starfield {
       position: fixed;
-      top:0; 
-      left:0;
-      width:100%; 
-      height:100%;
-      z-index:0;
-      pointer-events:none;
-      overflow:hidden;
-      will-change: transform;
-    }
-    
-    .star {
-      position:absolute;
-      background:white;
-      border-radius:50%;
-      opacity:0.8;
-      animation: twinkle 3s infinite linear;
-      will-change: opacity;
-    }
-    
-    @keyframes twinkle { 
-      0%, 100% { opacity:0.3; } 
-      50% { opacity:1; } 
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
     }
 
+    /* Galaxia espiral */
+    .spiral-galaxy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, 
+        rgba(114, 214, 255, 0.04) 0%, 
+        rgba(255, 127, 255, 0.04) 30%, 
+        transparent 70%);
+      border-radius: 50%;
+      animation: spiralRotate 120s linear infinite;
+      will-change: transform;
+    }
+
+    @keyframes spiralRotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Auroras boreales */
+    .aurora {
+      position: absolute;
+      width: 100%;
+      height: 250px;
+      opacity: 0.12;
+      animation: auroraWave 25s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    .aurora-1 {
+      top: 10%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(114, 214, 255, 0.3) 25%, 
+        rgba(255, 127, 255, 0.3) 50%, 
+        rgba(114, 214, 255, 0.3) 75%, 
+        transparent 100%);
+      filter: blur(40px);
+    }
+
+    .aurora-2 {
+      top: 30%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 127, 255, 0.2) 30%, 
+        rgba(114, 214, 255, 0.2) 60%, 
+        transparent 100%);
+      filter: blur(50px);
+      animation-delay: -12s;
+    }
+
+    @keyframes auroraWave {
+      0%, 100% { 
+        transform: translateX(-10%) skewX(-5deg); 
+        opacity: 0.08;
+      }
+      50% { 
+        transform: translateX(10%) skewX(5deg); 
+        opacity: 0.15;
+      }
+    }
+
+    /* Estrellas con paralaje */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 4s ease-in-out infinite;
+      will-change: opacity;
+      transition: transform 0.1s ease-out;
+    }
+
+    .star.layer-1 { z-index: 1; }
+    .star.layer-2 { z-index: 2; }
+    .star.layer-3 { z-index: 3; }
+    
+    @keyframes twinkle { 
+      0%, 100% { opacity: 0.3; } 
+      50% { opacity: 1; } 
+    }
+
+    /* Shooting stars */
     .shooting-star {
       position: absolute;
       width: 2px;
       height: 2px;
       background: linear-gradient(90deg, #fff, transparent);
       border-radius: 50%;
-      animation: shoot 3s linear infinite;
+      animation: shoot 4s ease-out infinite;
       opacity: 0;
+      will-change: transform, opacity;
     }
 
     @keyframes shoot {
@@ -108,6 +194,151 @@
       }
       100% {
         transform: translateX(-300px) translateY(300px);
+        opacity: 0;
+      }
+    }
+
+    /* Cometas */
+    .comet {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, #fff, rgba(114, 214, 255, 0.8));
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(114, 214, 255, 0.8);
+      animation: cometFly 10s ease-in infinite;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .comet::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150px;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        rgba(114, 214, 255, 0.8), 
+        rgba(255, 127, 255, 0.4), 
+        transparent);
+      transform: translate(-10%, -50%);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    @keyframes cometFly {
+      0% {
+        transform: translate(0, 0) rotate(-45deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-700px, 700px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Planetas flotantes */
+    .planet {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: planetFloat 35s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .planet-1 {
+      width: 60px;
+      height: 60px;
+      top: 15%;
+      right: 12%;
+      background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 127, 255, 0.3), 
+        rgba(114, 214, 255, 0.15));
+      box-shadow: 
+        inset -8px -8px 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 127, 255, 0.2);
+    }
+
+    .planet-2 {
+      width: 90px;
+      height: 90px;
+      bottom: 25%;
+      left: 10%;
+      background: radial-gradient(circle at 35% 35%, 
+        rgba(114, 214, 255, 0.3), 
+        rgba(255, 127, 255, 0.15));
+      box-shadow: 
+        inset -12px -12px 30px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(114, 214, 255, 0.2);
+      animation-delay: -17s;
+    }
+
+    @keyframes planetFloat {
+      0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+      }
+      50% { 
+        transform: translateY(-25px) rotate(180deg); 
+      }
+    }
+
+    /* Constelaciones */
+    .constellation {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      opacity: 0.15;
+    }
+
+    .constellation-line {
+      position: absolute;
+      background: linear-gradient(90deg, 
+        rgba(114, 214, 255, 0.3), 
+        rgba(114, 214, 255, 0.1));
+      height: 1px;
+      transform-origin: left center;
+    }
+
+    .constellation-dot {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(114, 214, 255, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 0 4px rgba(114, 214, 255, 0.6);
+    }
+
+    /* Polvo estelar */
+    .stardust {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: dustFloat 20s linear infinite;
+      will-change: transform, opacity;
+    }
+
+    @keyframes dustFloat {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.5;
+      }
+      90% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(50px);
         opacity: 0;
       }
     }
@@ -151,7 +382,7 @@
       width: 200%;
       height: 200%;
       background: linear-gradient(45deg, transparent, rgba(114, 214, 255, 0.1), transparent);
-      animation: bannerShine 4s linear infinite;
+      animation: bannerShine 6s linear infinite;
     }
 
     @keyframes bannerShine {
@@ -181,14 +412,12 @@
       gap: 0.35rem;
     }
 
-    /* Contenedor de partidos */
     .matches {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
 
-    /* Tarjeta de partido */
     .match-card {
       background: var(--bg-card);
       border-radius: var(--radius);
@@ -204,6 +433,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      will-change: transform;
     }
 
     .match-card::before {
@@ -215,21 +445,8 @@
       bottom: 0;
       background: linear-gradient(135deg, rgba(114, 214, 255, 0.08), rgba(255, 127, 255, 0.08));
       opacity: 0;
-      transition: var(--transition);
+      transition: opacity var(--transition);
       z-index: 0;
-    }
-
-    .match-card:hover::before {
-      opacity: 1;
-    }
-
-    .match-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 
-        0 8px 24px rgba(0,0,0,0.6),
-        0 0 30px rgba(114, 214, 255, 0.2);
-      border-color: var(--accent);
-      background: rgba(20, 20, 40, 0.85);
     }
 
     .match-card > * {
@@ -237,7 +454,6 @@
       z-index: 1;
     }
 
-    /* Columna de tiempo */
     .time-col {
       flex-shrink: 0;
     }
@@ -254,14 +470,9 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(114, 214, 255, 0.15);
       transition: var(--transition);
+      will-change: transform;
     }
 
-    .match-card:hover .time-badge {
-      box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
-      transform: scale(1.05);
-    }
-
-    /* Información principal del partido */
     .match-main {
       flex: 1;
       display: flex;
@@ -275,12 +486,7 @@
       color: var(--text-primary);
       line-height: 1.4;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      transition: var(--transition);
-    }
-
-    .match-card:hover .teams {
-      color: var(--accent);
-      text-shadow: 0 0 10px rgba(114, 214, 255, 0.4);
+      transition: color var(--transition);
     }
 
     .meta {
@@ -307,11 +513,6 @@
       transition: var(--transition);
     }
 
-    .match-card:hover .competition {
-      background: rgba(114, 214, 255, 0.15);
-      border-color: rgba(114, 214, 255, 0.3);
-    }
-
     .competition img {
       width: 20px;
       height: 20px;
@@ -319,7 +520,6 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    /* Dropdown de canales */
     .dropdown {
       position: relative;
     }
@@ -343,7 +543,7 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       z-index: 100;
-      animation: dropdownSlide 0.2s ease;
+      animation: dropdownSlide 0.25s ease;
     }
 
     @keyframes dropdownSlide {
@@ -381,20 +581,11 @@
       width: 3px;
       background: linear-gradient(180deg, var(--accent), var(--accent-purple));
       opacity: 0;
-      transition: var(--transition);
-    }
-
-    .channel-item:hover::before {
-      opacity: 1;
+      transition: opacity var(--transition);
     }
 
     .channel-item:last-child {
       border-bottom: none;
-    }
-
-    .channel-item:hover {
-      background: rgba(114,214,255,0.15);
-      padding-left: 1.3rem;
     }
 
     .channel-item .left {
@@ -413,11 +604,7 @@
       background: rgba(114, 214, 255, 0.15);
       border-radius: 50%;
       transition: var(--transition);
-    }
-
-    .channel-item:hover .play-icon {
-      background: rgba(114, 214, 255, 0.3);
-      transform: scale(1.1);
+      will-change: transform;
     }
 
     .play-icon::before {
@@ -426,7 +613,6 @@
       font-size: 0.7rem;
     }
 
-    /* Mensaje de sin eventos */
     .no-events {
       text-align: center;
       padding: 3rem 1rem;
@@ -439,7 +625,6 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Loading state */
     .loading {
       background: linear-gradient(90deg, rgba(20,20,40,0.6) 25%, rgba(40,40,70,0.6) 50%, rgba(20,20,40,0.6) 75%);
       background-size: 200% 100%;
@@ -453,6 +638,51 @@
     @keyframes loading {
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
+    }
+
+    /* Hover effects */
+    @media (hover: hover) {
+      .match-card:hover::before {
+        opacity: 1;
+      }
+
+      .match-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 
+          0 8px 24px rgba(0,0,0,0.6),
+          0 0 30px rgba(114, 214, 255, 0.2);
+        border-color: var(--accent);
+        background: rgba(20, 20, 40, 0.85);
+      }
+
+      .match-card:hover .time-badge {
+        box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+        transform: scale(1.05);
+      }
+
+      .match-card:hover .teams {
+        color: var(--accent);
+        text-shadow: 0 0 10px rgba(114, 214, 255, 0.4);
+      }
+
+      .match-card:hover .competition {
+        background: rgba(114, 214, 255, 0.15);
+        border-color: rgba(114, 214, 255, 0.3);
+      }
+
+      .channel-item:hover::before {
+        opacity: 1;
+      }
+
+      .channel-item:hover {
+        background: rgba(114,214,255,0.15);
+        padding-left: 1.3rem;
+      }
+
+      .channel-item:hover .play-icon {
+        background: rgba(114, 214, 255, 0.3);
+        transform: scale(1.1);
+      }
     }
 
     /* RESPONSIVE */
@@ -549,7 +779,11 @@
   </style>
 </head>
 <body>
-  <div id="starfield"></div>
+  <div id="starfield">
+    <div class="spiral-galaxy"></div>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+  </div>
 
   <main class="container-agenda">
     <section class="intro">
@@ -561,38 +795,262 @@
   <script defer src="scripts/main.js"></script>
   
   <script>
-    // Generar estrellas dinámicamente - Optimizado para scroll suave
-    const starfield = document.getElementById('starfield');
-    const numStars = 80;
-    const numShootingStars = 2;
-    const fragment = document.createDocumentFragment();
+    (function() {
+      'use strict';
 
-    // Estrellas regulares
-    for(let i=0; i<numStars; i++){
-      const star = document.createElement('div');
-      star.className='star';
-      const size = Math.random()*2.5+0.5;
-      star.style.width = star.style.height = size+'px';
-      star.style.top = Math.random()*100+'%';
-      star.style.left = Math.random()*100+'%';
-      star.style.animationDelay = Math.random()*3+'s';
-      star.style.animationDuration = (Math.random()*2+2)+'s';
-      fragment.appendChild(star);
-    }
+      // ==================== Starfield Generation COMPLETO ====================
+      const starfield = document.getElementById('starfield');
+      const numStars = 80;
+      const numShootingStars = 3;
+      const numComets = 2;
+      const numPlanets = 2;
+      const numStardust = 40;
+      const numConstellations = 2;
+      const fragment = document.createDocumentFragment();
 
-    // Estrellas fugaces
-    for(let i=0; i<numShootingStars; i++){
-      const shootingStar = document.createElement('div');
-      shootingStar.className='shooting-star';
-      shootingStar.style.top = Math.random()*50+'%';
-      shootingStar.style.left = (Math.random()*50+50)+'%';
-      shootingStar.style.animationDelay = (Math.random()*5+2)+'s';
-      shootingStar.style.animationDuration = (Math.random()*2+2)+'s';
-      shootingStar.style.width = (Math.random()*100+50)+'px';
-      fragment.appendChild(shootingStar);
-    }
+      // Estrellas regulares con paralaje
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        const layer = Math.floor(Math.random() * 3) + 1;
+        star.classList.add(`layer-${layer}`);
+        star.setAttribute('data-speed', layer * 0.2);
+        
+        const size = Math.random() * 2.5 + 0.5;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 4 + 's';
+        star.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        
+        fragment.appendChild(star);
+      }
 
-    starfield.appendChild(fragment);
+      // Shooting stars
+      for (let i = 0; i < numShootingStars; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+        
+        shootingStar.style.top = Math.random() * 50 + '%';
+        shootingStar.style.left = (Math.random() * 50 + 50) + '%';
+        shootingStar.style.animationDelay = (Math.random() * 6 + 3) + 's';
+        shootingStar.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
+        
+        fragment.appendChild(shootingStar);
+      }
+
+      // Cometas
+      for (let i = 0; i < numComets; i++) {
+        const comet = document.createElement('div');
+        comet.className = 'comet';
+        
+        comet.style.top = Math.random() * 30 + '%';
+        comet.style.left = (Math.random() * 30 + 70) + '%';
+        comet.style.animationDelay = (Math.random() * 12 + 6) + 's';
+        
+        fragment.appendChild(comet);
+      }
+
+      // Planetas
+      for (let i = 1; i <= numPlanets; i++) {
+        const planet = document.createElement('div');
+        planet.className = `planet planet-${i}`;
+        fragment.appendChild(planet);
+      }
+
+      // Polvo estelar
+      for (let i = 0; i < numStardust; i++) {
+        const dust = document.createElement('div');
+        dust.className = 'stardust';
+        
+        dust.style.left = Math.random() * 100 + '%';
+        dust.style.bottom = '0';
+        dust.style.animationDelay = Math.random() * 20 + 's';
+        dust.style.animationDuration = (Math.random() * 10 + 15) + 's';
+        
+        fragment.appendChild(dust);
+      }
+
+      // Constelaciones
+      for (let i = 0; i < numConstellations; i++) {
+        const constellation = document.createElement('div');
+        constellation.className = 'constellation';
+        constellation.style.top = (Math.random() * 60 + 10) + '%';
+        constellation.style.left = (Math.random() * 60 + 10) + '%';
+        
+        const points = 4;
+        const positions = [];
+        
+        for (let j = 0; j < points; j++) {
+          const dot = document.createElement('div');
+          dot.className = 'constellation-dot';
+          const x = Math.random() * 120;
+          const y = Math.random() * 120;
+          dot.style.left = x + 'px';
+          dot.style.top = y + 'px';
+          positions.push({x, y});
+          constellation.appendChild(dot);
+        }
+        
+        for (let j = 0; j < points - 1; j++) {
+          const line = document.createElement('div');
+          line.className = 'constellation-line';
+          const dx = positions[j + 1].x - positions[j].x;
+          const dy = positions[j + 1].y - positions[j].y;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+          
+          line.style.width = length + 'px';
+          line.style.left = positions[j].x + 'px';
+          line.style.top = positions[j].y + 'px';
+          line.style.transform = `rotate(${angle}deg)`;
+          constellation.appendChild(line);
+        }
+        
+        fragment.appendChild(constellation);
+      }
+      
+      starfield.appendChild(fragment);
+
+      // ==================== Efecto Paralaje ====================
+      let scrollY = 0;
+      window.addEventListener('scroll', function() {
+        scrollY = window.pageYOffset;
+        requestAnimationFrame(updateParallax);
+      }, { passive: true });
+
+      function updateParallax() {
+        const stars = document.querySelectorAll('.star');
+        stars.forEach(star => {
+          const speed = parseFloat(star.getAttribute('data-speed')) || 0;
+          const yPos = scrollY * speed;
+          star.style.transform = `translateY(${yPos}px)`;
+        });
+      }
+
+      // ==================== Polvo Estelar Interactivo ====================
+      if (window.matchMedia('(hover: hover)').matches) {
+        document.addEventListener('mousemove', function(e) {
+          if (Math.random() < 0.08) {
+            const dust = document.createElement('div');
+            dust.className = 'stardust';
+            dust.style.left = e.clientX + 'px';
+            dust.style.top = e.clientY + 'px';
+            dust.style.position = 'fixed';
+            dust.style.animation = 'dustFloat 2s ease-out forwards';
+            dust.style.zIndex = '999';
+            document.body.appendChild(dust);
+            
+            setTimeout(() => dust.remove(), 2000);
+          }
+        });
+      }
+
+      // ==================== Easter Egg: Mini Constelación ====================
+      let clickCount = 0;
+      document.addEventListener('click', function(e) {
+        clickCount++;
+        if (clickCount === 5) {
+          const miniConstellation = document.createElement('div');
+          miniConstellation.style.position = 'fixed';
+          miniConstellation.style.left = e.clientX - 50 + 'px';
+          miniConstellation.style.top = e.clientY - 50 + 'px';
+          miniConstellation.style.width = '100px';
+          miniConstellation.style.height = '100px';
+          miniConstellation.style.pointerEvents = 'none';
+          miniConstellation.style.zIndex = '9999';
+          
+          for (let i = 0; i < 5; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.width = '4px';
+            star.style.height = '4px';
+            star.style.background = 'rgba(114, 214, 255, 0.9)';
+            star.style.borderRadius = '50%';
+            star.style.boxShadow = '0 0 10px rgba(114, 214, 255, 0.9)';
+            star.style.left = Math.random() * 80 + 10 + 'px';
+            star.style.top = Math.random() * 80 + 10 + 'px';
+            star.style.animation = 'twinkle 1s ease-in-out infinite';
+            miniConstellation.appendChild(star);
+          }
+          
+          document.body.appendChild(miniConstellation);
+          
+          setTimeout(() => {
+            miniConstellation.style.transition = 'opacity 1s';
+            miniConstellation.style.opacity = '0';
+            setTimeout(() => miniConstellation.remove(), 1000);
+          }, 3000);
+          
+          clickCount = 0;
+        }
+      });
+
+      // ==================== Efecto de Brillo en Match Cards ====================
+      const matchCards = document.querySelectorAll('.match-card');
+      matchCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          // Crear mini partículas alrededor de la card
+          if (window.matchMedia('(hover: hover)').matches) {
+            for (let i = 0; i < 5; i++) {
+              setTimeout(() => {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '3px';
+                particle.style.height = '3px';
+                particle.style.background = 'rgba(114, 214, 255, 0.8)';
+                particle.style.borderRadius = '50%';
+                particle.style.boxShadow = '0 0 6px rgba(114, 214, 255, 0.8)';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '10';
+                
+                const rect = card.getBoundingClientRect();
+                const side = Math.floor(Math.random() * 4);
+                
+                // Posicionar en los bordes
+                if (side === 0) { // Top
+                  particle.style.left = Math.random() * rect.width + 'px';
+                  particle.style.top = '0';
+                } else if (side === 1) { // Right
+                  particle.style.left = rect.width + 'px';
+                  particle.style.top = Math.random() * rect.height + 'px';
+                } else if (side === 2) { // Bottom
+                  particle.style.left = Math.random() * rect.width + 'px';
+                  particle.style.top = rect.height + 'px';
+                } else { // Left
+                  particle.style.left = '0';
+                  particle.style.top = Math.random() * rect.height + 'px';
+                }
+                
+                card.appendChild(particle);
+                
+                setTimeout(() => {
+                  particle.style.transition = 'all 0.8s ease-out';
+                  particle.style.opacity = '0';
+                  particle.style.transform = 'scale(2) translateY(-20px)';
+                }, 10);
+                
+                setTimeout(() => particle.remove(), 850);
+              }, i * 100);
+            }
+          }
+        });
+      });
+
+      // ==================== Optimización de Performance ====================
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
