@@ -19,10 +19,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- CSS separados -->
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/background.css">
 <link rel="stylesheet" href="css/transmision.css">
-<link rel="stylesheet" href="css/components.css">
+<style>
+  /* Reproductor flexible que se adapta al contenido embebido */
+  .player-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #playerFrame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+    background: #000;
+    flex: 1;
+  }
+  
+  /* Eliminar restricciones del CSS base solo para el player */
+  .player-card iframe {
+    min-height: 0 !important;
+    flex-grow: 1 !important;
+  }
+  
+  @media (max-width: 768px) {
+    #playerFrame {
+      min-height: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #playerFrame {
+      min-height: 250px;
+    }
+  }
+</style>
 </head>
 <body>
 <div id="starfield">
@@ -84,6 +115,7 @@
       id="playerFrame" 
       allowfullscreen 
       referrerpolicy="no-referrer" 
+      allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
       title="Reproductor de transmisión en vivo"
       loading="lazy">
     </iframe>
