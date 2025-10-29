@@ -7,10 +7,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="css/espacial-base.css">
-   <link rel="stylesheet" href="css/multicam.css">
+  <link rel="stylesheet" href="css/multicam.css">
   <style>
-
+    /* Ajuste de reproductores multicámara para que se adapten al contenido */
+    .stream-iframe {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      background: #000;
+    }
+    
+    .stream-item {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .stream-item.active {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media (max-width: 768px) {
+      .stream-iframe {
+        min-height: 250px;
+      }
+    }
   </style>
 </head>
 
@@ -624,7 +646,7 @@
             </div>
             <div class="stream-actions"></div>
           </div>
-          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen" title="Stream ${slot}"></iframe>
+          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="Stream ${slot}"></iframe>
         `;
       } else {
         streamElement.innerHTML = `
@@ -667,7 +689,7 @@
               </div>
               <div class="stream-actions"></div>
             </div>
-            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen" title="Stream ${slot}"></iframe>
+            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="Stream ${slot}"></iframe>
           `;
         } else {
           existingElement.classList.remove('active');
