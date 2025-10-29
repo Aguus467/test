@@ -1,4 +1,4 @@
-/* ==================== Variables CSS ==================== */
+/* ==================== Variables CSS Optimizadas ==================== */
 :root {
   --bg-dark: #0b0d1b;
   --bg-card: rgba(20, 20, 40, 0.7);
@@ -14,13 +14,14 @@
   --header-height: 70px;
 }
 
-/* ==================== Reset & Base ==================== */
+/* ==================== Reset & Base Optimizado ==================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   -webkit-tap-highlight-color: transparent;
+  cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
 }
 
 html {
@@ -36,9 +37,10 @@ body {
   position: relative;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  line-height: 1.6;
 }
 
-/* ==================== Fondo base ==================== */
+/* ==================== Fondo Base Optimizado ==================== */
 body::before {
   content: '';
   position: fixed;
@@ -46,23 +48,12 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: 
+    radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%),
     radial-gradient(circle at 20% 30%, rgba(114, 214, 255, 0.08) 0%, transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(255, 127, 255, 0.08) 0%, transparent 40%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   animation: gradientShift 20s ease infinite;
   will-change: opacity;
 }
@@ -72,7 +63,7 @@ body::after {
   50% { opacity: 0.8; }
 }
 
-/* ==================== Starfield Base ==================== */
+/* ==================== Starfield Base Optimizado ==================== */
 #starfield {
   position: fixed;
   top: 0;
@@ -84,13 +75,13 @@ body::after {
   overflow: hidden;
 }
 
-/* Galaxia espiral */
+/* Galaxia espiral optimizada */
 .spiral-galaxy {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 700px;
-  height: 700px;
+  width: min(700px, 90vw);
+  height: min(700px, 90vw);
   transform: translate(-50%, -50%);
   background: radial-gradient(ellipse at center, 
     rgba(114, 214, 255, 0.03) 0%, 
@@ -106,7 +97,7 @@ body::after {
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* Auroras boreales */
+/* Auroras boreales optimizadas */
 .aurora {
   position: absolute;
   width: 100%;
@@ -114,6 +105,7 @@ body::after {
   opacity: 0.12;
   animation: auroraWave 25s ease-in-out infinite;
   will-change: transform, opacity;
+  filter: blur(40px);
 }
 
 .aurora-1 {
@@ -124,7 +116,6 @@ body::after {
     rgba(255, 127, 255, 0.3) 50%, 
     rgba(114, 214, 255, 0.3) 75%, 
     transparent 100%);
-  filter: blur(40px);
 }
 
 .aurora-2 {
@@ -149,7 +140,7 @@ body::after {
   }
 }
 
-/* Estrellas con paralaje */
+/* Estrellas optimizadas */
 .star {
   position: absolute;
   background: white;
@@ -157,7 +148,6 @@ body::after {
   opacity: 0.8;
   animation: twinkle 4s ease-in-out infinite;
   will-change: opacity;
-  transition: transform 0.1s ease-out;
 }
 
 .star.layer-1 { z-index: 1; }
@@ -169,7 +159,7 @@ body::after {
   50% { opacity: 1; }
 }
 
-/* Shooting stars */
+/* Shooting stars optimizadas */
 .shooting-star {
   position: absolute;
   width: 2px;
@@ -192,7 +182,7 @@ body::after {
   }
 }
 
-/* Cometas */
+/* Cometas optimizados */
 .comet {
   position: absolute;
   width: 4px;
@@ -238,7 +228,7 @@ body::after {
   }
 }
 
-/* Planetas flotantes */
+/* Planetas optimizados */
 .planet {
   position: absolute;
   border-radius: 50%;
@@ -297,33 +287,7 @@ body::after {
   }
 }
 
-/* Constelaciones */
-.constellation {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  opacity: 0.15;
-}
-
-.constellation-line {
-  position: absolute;
-  background: linear-gradient(90deg, 
-    rgba(114, 214, 255, 0.3), 
-    rgba(114, 214, 255, 0.1));
-  height: 1px;
-  transform-origin: left center;
-}
-
-.constellation-dot {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: rgba(114, 214, 255, 0.5);
-  border-radius: 50%;
-  box-shadow: 0 0 4px rgba(114, 214, 255, 0.6);
-}
-
-/* Polvo estelar */
+/* Polvo estelar optimizado */
 .stardust {
   position: absolute;
   width: 1px;
@@ -351,7 +315,7 @@ body::after {
   }
 }
 
-/* ==================== Header Espacial ==================== */
+/* ==================== Header Espacial Optimizado ==================== */
 header {
   background: 
     radial-gradient(ellipse at 20% 50%, rgba(114, 214, 255, 0.15), transparent 50%),
@@ -374,9 +338,10 @@ header {
   min-height: var(--header-height);
   position: relative;
   overflow: hidden;
+  gap: 1.5rem;
 }
 
-/* Nebulosas en header */
+/* Nebulosas en header optimizadas */
 header::before {
   content: '';
   position: absolute;
@@ -398,7 +363,7 @@ header::before {
   66% { transform: translate(10px, -10px) rotate(240deg); }
 }
 
-/* Línea brillante superior */
+/* Línea brillante superior optimizada */
 header::after {
   content: '';
   position: absolute;
@@ -422,7 +387,7 @@ header::after {
   50% { opacity: 1; }
 }
 
-/* Estrellas en header */
+/* Estrellas en header optimizadas */
 .header-star {
   position: absolute;
   background: white;
@@ -438,43 +403,13 @@ header::after {
   50% { opacity: 0.8; transform: scale(1.2); }
 }
 
-/* Anillos orbitales en el logo */
+/* Logo y navegación optimizados */
 .logo-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   z-index: 2;
-}
-
-.logo-container::before,
-.logo-container::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px solid rgba(114, 214, 255, 0.3);
-  border-radius: 50%;
-  animation: orbitRing 8s linear infinite;
-  pointer-events: none;
-}
-
-.logo-container::before {
-  width: 80px;
-  height: 80px;
-  transform: translate(-50%, -50%) rotateX(60deg);
-}
-
-.logo-container::after {
-  width: 100px;
-  height: 100px;
-  transform: translate(-50%, -50%) rotateX(60deg);
-  animation-duration: 12s;
-  animation-direction: reverse;
-  opacity: 0.5;
-}
-
-@keyframes orbitRing {
-  from { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg); }
-  to { transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg); }
+  flex-shrink: 0;
 }
 
 .logo {
@@ -499,6 +434,9 @@ nav {
   align-items: center;
   position: relative;
   z-index: 2;
+  flex: 1;
+  justify-content: center;
+  margin: 0 1rem;
 }
 
 nav a {
@@ -512,7 +450,7 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  color: var(--accent);
   text-decoration: none;
   white-space: nowrap;
   position: relative;
@@ -538,6 +476,7 @@ nav a::before {
 nav a:active {
   transform: scale(0.95);
   background: rgba(114, 214, 255, 0.2);
+  color: var(--accent-purple);
 }
 
 @media (hover: hover) {
@@ -560,7 +499,7 @@ nav a:active {
   }
 }
 
-/* ==================== Footer ==================== */
+/* ==================== Footer Optimizado ==================== */
 footer.site-footer {
   background: rgba(10, 10, 30, 0.95);
   backdrop-filter: blur(12px);
@@ -583,10 +522,15 @@ footer.site-footer::before {
   opacity: 0.5;
 }
 
+footer.site-footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 footer.site-footer small {
-  display: block;
   color: var(--text-secondary);
-  margin: 0.5rem 0;
   font-size: 0.85rem;
 }
 
@@ -621,10 +565,40 @@ footer.site-footer a::after {
   }
 }
 
-/* ==================== Responsive Base ==================== */
+/* ==================== Responsive Optimizado ==================== */
 @media (max-width: 768px) {
   :root {
     --header-height: 120px;
+  }
+  
+  header {
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 12px 4%;
+  }
+  
+  nav {
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+    margin: 0.5rem 0 0;
+  }
+  
+  nav a {
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    min-height: 44px;
+    flex: 1;
+    min-width: calc(50% - 4px);
+  }
+  
+  .logo {
+    height: 45px;
+  }
+  
+  .spiral-galaxy {
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
   }
 }
 
@@ -636,25 +610,25 @@ footer.site-footer a::after {
   }
 
   nav {
-    gap: 8px;
-    justify-content: center;
-    width: 100%;
+    gap: 6px;
   }
 
   nav a {
-    font-size: 0.8rem;
-    padding: 8px 10px;
-    min-height: 44px;
-    flex: 1;
-    min-width: calc(50% - 4px);
+    font-size: 0.75rem;
+    padding: 6px 8px;
+    min-width: calc(50% - 3px);
   }
 
   .logo {
-    height: 45px;
+    height: 40px;
+  }
+  
+  .planet {
+    display: none; /* Ocultar planetas en móviles para mejor rendimiento */
   }
 }
 
-/* ==================== Accessibility ==================== */
+/* ==================== Accessibility & Performance ==================== */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--accent);
@@ -668,12 +642,41 @@ button:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* ==================== Android específico ==================== */
+/* Optimización para dispositivos táctiles */
 @supports (-webkit-touch-callout: none) {
   body {
     -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  nav a,
+  .logo {
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Mejora de contraste para accesibilidad */
+@media (prefers-contrast: high) {
+  :root {
+    --text-secondary: #ffffff;
+    --accent: #ffffff;
+    --accent-purple: #ff00ff;
+  }
+  
+  nav a {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--accent);
+  }
+}
+
+/* Soporte para modo oscuro del sistema */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-dark: #000014;
+    --bg-card: rgba(10, 10, 20, 0.9);
   }
 }
