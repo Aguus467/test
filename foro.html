@@ -11,7 +11,7 @@
 <title>Foro - AngulismoTV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 
 <!-- CSS Espacial - mismo que tu index -->
@@ -19,156 +19,427 @@
 <link rel="stylesheet" href="css/header-unificado.css">
 
 <style>
-/* Estilos específicos para el foro */
+/* ===== ESTILOS MEJORADOS PARA EL FORO ===== */
 .foro-container {
-    max-width: 800px;
-    margin: 40px auto;
+    max-width: 900px;
+    margin: 30px auto;
     padding: 0 20px;
+    min-height: calc(100vh - 200px);
 }
 
 .foro-header {
     text-align: center;
     margin-bottom: 30px;
+    padding: 20px 0;
 }
 
 .foro-title {
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    font-size: 2.8rem;
+    background: linear-gradient(135deg, #72d6ff, #ff7fff, #72d6ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .foro-subtitle {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 
-.foro-form {
-    background: rgba(114, 214, 255, 0.1);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    border: 1px solid rgba(114, 214, 255, 0.3);
-    backdrop-filter: blur(10px);
+/* Layout principal mejorado */
+.foro-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: rgba(11, 13, 27, 0.6);
+    border-radius: 20px;
+    border: 1px solid rgba(114, 214, 255, 0.15);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
-
-.foro-input, .foro-textarea {
-    width: 100%;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-}
-
-.foro-input::placeholder, .foro-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.foro-textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.btn-foro {
-    background: linear-gradient(135deg, #72d6ff, #ff7fff);
-    color: #0b0d1b;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-foro:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(114, 214, 255, 0.4);
+/* Área de mensajes */
+.mensajes-area {
+    height: 60vh;
+    overflow-y: auto;
+    padding: 0;
+    background: rgba(5, 7, 15, 0.4);
+    display: flex;
+    flex-direction: column;
 }
 
 .mensajes-container {
-    margin-top: 30px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: min-content;
 }
 
 .mensaje-item {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
     padding: 20px;
-    margin: 20px 0;
-    border-radius: 12px;
-    border-left: 4px solid #72d6ff;
-    transition: all 0.3s ease;
+    margin: 8px 0;
+    border-radius: 16px;
+    border: 1px solid rgba(114, 214, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    animation: slideInUp 0.4s ease-out;
+}
+
+.mensaje-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
 }
 
 .mensaje-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateX(5px);
+    transform: translateY(-2px);
+    border-color: rgba(114, 214, 255, 0.3);
+    box-shadow: 0 8px 30px rgba(114, 214, 255, 0.15);
 }
 
 .mensaje-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .mensaje-nombre {
     color: #72d6ff;
     font-weight: 600;
     font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mensaje-nombre::before {
+    content: '👤';
+    font-size: 0.9em;
+    opacity: 0.8;
 }
 
 .mensaje-fecha {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9em;
+    font-size: 0.85em;
+    font-weight: 500;
 }
 
 .mensaje-texto {
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.05em;
+    word-wrap: break-word;
 }
 
+/* Área de escritura fija */
+.escritura-area {
+    background: rgba(11, 13, 27, 0.9);
+    border-top: 1px solid rgba(114, 214, 255, 0.2);
+    padding: 25px;
+    position: sticky;
+    bottom: 0;
+    backdrop-filter: blur(20px);
+}
+
+.foro-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.form-group {
+    margin: 0;
+}
+
+.foro-input, .foro-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.foro-input:focus, .foro-textarea:focus {
+    outline: none;
+    border-color: #72d6ff;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(114, 214, 255, 0.1);
+}
+
+.foro-input::placeholder, .foro-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.foro-textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 120px;
+}
+
+.btn-foro {
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    color: #0b0d1b;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: fit-content;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(114, 214, 255, 0.3);
+}
+
+.btn-foro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(114, 214, 255, 0.4);
+}
+
+.btn-foro:active {
+    transform: translateY(0);
+}
+
+/* Estados */
 .loading {
     text-align: center;
-    padding: 40px;
+    padding: 60px 40px;
     color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em;
 }
 
 .empty-state {
     text-align: center;
-    padding: 40px;
-    color: rgba(255, 255, 255, 0.7);
+    padding: 80px 40px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: auto;
 }
 
-/* Responsive */
+.empty-state::before {
+    content: '💬';
+    font-size: 3em;
+    display: block;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+/* Scrollbar personalizado */
+.mensajes-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mensajes-area::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.mensajes-area::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    border-radius: 3px;
+}
+
+.mensajes-area::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #8adfff, #ff99ff);
+}
+
+/* ===== RESPONSIVE - MÓVIL ===== */
 @media (max-width: 768px) {
     .foro-container {
-        margin: 20px auto;
+        margin: 15px auto;
         padding: 0 15px;
     }
     
     .foro-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
-    .foro-form {
-        padding: 20px;
+    .foro-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .foro-layout {
+        border-radius: 16px;
+    }
+    
+    .mensajes-area {
+        height: 65vh;
+    }
+    
+    .mensajes-container {
+        padding: 15px;
+    }
+    
+    .mensaje-item {
+        padding: 18px;
+        margin: 6px 0;
+        border-radius: 14px;
     }
     
     .mensaje-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 5px;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+    
+    .mensaje-fecha {
+        font-size: 0.8em;
+    }
+    
+    .escritura-area {
+        padding: 20px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+        border-top: 1px solid rgba(114, 214, 255, 0.3);
+        z-index: 1000;
+    }
+    
+    .foro-form {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .btn-foro {
+        padding: 16px 24px;
+        font-size: 1.1em;
+    }
+    
+    /* Ajustar espacio para el área fija de escritura */
+    .mensajes-area {
+        margin-bottom: 180px;
+    }
+}
+
+/* ===== RESPONSIVE - PC GRANDE ===== */
+@media (min-width: 1200px) {
+    .foro-container {
+        max-width: 1000px;
+    }
+    
+    .foro-layout {
+        grid-template-columns: 1fr 400px;
+    }
+    
+    .escritura-area {
+        border-top: none;
+        border-left: 1px solid rgba(114, 214, 255, 0.2);
+        position: static;
+    }
+    
+    .foro-form {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Animaciones */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes highlight {
+    0% {
+        background: linear-gradient(135deg, rgba(114, 214, 255, 0.2), rgba(255, 127, 255, 0.1));
+    }
+    100% {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    }
+}
+
+.mensaje-nuevo {
+    animation: highlight 2s ease-in-out;
+}
+
+/* Indicador de nuevos mensajes */
+.new-message-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 8px;
+    height: 8px;
+    background: #ff7fff;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Contador de mensajes */
+.mensajes-count {
+    position: sticky;
+    top: 0;
+    background: rgba(11, 13, 27, 0.9);
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(114, 214, 255, 0.2);
+    backdrop-filter: blur(20px);
+    z-index: 10;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* Indicador de scroll */
+.scroll-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(114, 214, 255, 0.9);
+    color: #0b0d1b;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    z-index: 5;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-3px);
     }
 }
 </style>
@@ -197,34 +468,37 @@
     <a href="https://nowstats.netlify.app">Estadísticas</a>
     <a href="foro.html">Foro</a>
   </nav>
-  
-  
 </header>
 
 <main class="foro-container">
     <div class="foro-header">
         <h1 class="foro-title">💬 Foro de la Comunidad</h1>
-        <p class="foro-subtitle">No me saturen el server gordis gracias.</p>
+        <p class="foro-subtitle">Compartí tu opinión, ideas y experiencias con otros fans</p>
     </div>
 
-    <!-- Lista de mensajes -->
-    <div id="listaMensajes" class="mensajes-container">
-        <div class="loading">Cargando mensajes...</div>
+    <div class="foro-layout">
+        <!-- Área de mensajes -->
+        <div class="mensajes-area">
+            <div class="mensajes-count" id="mensajesCount">Cargando mensajes...</div>
+            <div id="listaMensajes" class="mensajes-container">
+                <div class="loading">Cargando mensajes...</div>
+            </div>
+        </div>
+
+        <!-- Área de escritura fija -->
+        <div class="escritura-area">
+            <div class="foro-form">
+                <div class="form-group">
+                    <input type="text" id="foroNombre" placeholder="Tu nombre" maxlength="30" class="foro-input">
+                </div>
+                <div class="form-group">
+                    <textarea id="foroMensaje" placeholder="Escribe tu mensaje..." rows="3" maxlength="500" class="foro-textarea"></textarea>
+                </div>
+                <button onclick="enviarMensaje()" class="btn-foro">Enviar</button>
+            </div>
+        </div>
     </div>
 </main>
-
-    <!-- Formulario para nuevo mensaje -->
-    <div class="foro-form">
-        <div class="form-group">
-            <input type="text" id="foroNombre" placeholder="Tu nombre o apodo" maxlength="50" class="foro-input">
-        </div>
-        <div class="form-group">
-            <textarea id="foroMensaje" placeholder="¿Qué querés compartir con la comunidad?" rows="4" maxlength="500" class="foro-textarea"></textarea>
-        </div>
-        <button onclick="enviarMensaje()" class="btn-foro">Publicar Mensaje</button>
-    </div>
-
-
 
 <footer class="site-footer">
   <div class="container">
@@ -237,59 +511,126 @@
 </footer>
 
 <script>
-// URL de tu Worker del foro - CORREGIDA (sin barra final)
+// URL de tu Worker del foro
 const FORO_API_URL = 'https://foro.angulismotv.workers.dev';
 
 // Cargar mensajes cuando la página se carga
 document.addEventListener('DOMContentLoaded', function() {
     cargarMensajes();
     
-    // Permitir enviar con Ctrl+Enter
+    // Permitir enviar con Enter (Shift+Enter para nueva línea)
     document.getElementById('foroMensaje').addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.key === 'Enter') {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             enviarMensaje();
         }
     });
+    
+    // Auto-focus en el textarea
+    document.getElementById('foroMensaje').focus();
 });
 
 // Función para cargar mensajes
 async function cargarMensajes() {
     try {
-        console.log('Cargando mensajes desde:', FORO_API_URL + '/mensajes');
         const response = await fetch(FORO_API_URL + '/mensajes');
-        
-        console.log('Respuesta GET:', response.status, response.statusText);
         
         if (!response.ok) {
             throw new Error('Error en la respuesta: ' + response.status);
         }
         
         const mensajes = await response.json();
-        console.log('Mensajes recibidos:', mensajes);
-        
         const lista = document.getElementById('listaMensajes');
+        const countElement = document.getElementById('mensajesCount');
+        
+        // Actualizar contador
+        if (mensajes && mensajes.length > 0) {
+            countElement.textContent = `${mensajes.length} mensaje${mensajes.length !== 1 ? 's' : ''} en el foro`;
+        } else {
+            countElement.textContent = 'Foro de la comunidad';
+        }
         
         if (!mensajes || mensajes.length === 0) {
-            lista.innerHTML = '<div class="empty-state">No hay mensajes todavía. ¡Sé el primero en publicar!</div>';
+            lista.innerHTML = '<div class="empty-state">No hay mensajes todavía.<br>¡Sé el primero en publicar!</div>';
             return;
         }
         
+        // ORDENAR MENSAJES: más antiguos primero (para que los nuevos queden abajo)
+        const mensajesOrdenados = [...mensajes].sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+        
         // Crear HTML de los mensajes
-        lista.innerHTML = mensajes.map(msg => `
-            <div class="mensaje-item">
+        lista.innerHTML = mensajesOrdenados.map((msg, index) => `
+            <div class="mensaje-item" style="animation-delay: ${index * 0.05}s">
+                ${index === mensajesOrdenados.length - 1 ? '<div class="new-message-indicator"></div>' : ''}
                 <div class="mensaje-header">
                     <span class="mensaje-nombre">${msg.nombre}</span>
-                    <span class="mensaje-fecha">${new Date(msg.fecha).toLocaleString('es-ES')}</span>
+                    <span class="mensaje-fecha">${formatFecha(msg.fecha)}</span>
                 </div>
                 <div class="mensaje-texto">${msg.mensaje}</div>
             </div>
         `).join('');
         
+        // Scroll al final (mensajes más recientes)
+        setTimeout(() => {
+            const mensajesArea = document.querySelector('.mensajes-area');
+            mensajesArea.scrollTop = mensajesArea.scrollHeight;
+        }, 100);
+        
     } catch (error) {
         console.error('Error cargando mensajes:', error);
         document.getElementById('listaMensajes').innerHTML = 
-            '<div class="empty-state">Error al cargar los mensajes. Intenta recargar la página.</div>';
+            '<div class="empty-state">Error al cargar los mensajes.<br>Intenta recargar la página.</div>';
     }
+}
+
+// Función para formatear fecha - MOSTRAR HORA EXACTA
+function formatFecha(fechaString) {
+    const fecha = new Date(fechaString);
+    const ahora = new Date();
+    const diffMs = ahora - fecha;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / (3600000 * 24));
+    
+    // Si el mensaje es de hoy, mostrar solo la hora
+    if (fecha.toDateString() === ahora.toDateString()) {
+        return `Hoy ${fecha.toLocaleTimeString('es-ES', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: false 
+        })}`;
+    }
+    
+    // Si el mensaje es de ayer
+    const ayer = new Date(ahora);
+    ayer.setDate(ahora.getDate() - 1);
+    if (fecha.toDateString() === ayer.toDateString()) {
+        return `Ayer ${fecha.toLocaleTimeString('es-ES', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: false 
+        })}`;
+    }
+    
+    // Si el mensaje es de esta semana
+    if (diffDays < 7) {
+        const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        return `${dias[fecha.getDay()]} ${fecha.toLocaleTimeString('es-ES', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: false 
+        })}`;
+    }
+    
+    // Mensajes más antiguos: fecha completa
+    return fecha.toLocaleDateString('es-ES', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    });
 }
 
 // Función para enviar mensaje
@@ -299,17 +640,22 @@ async function enviarMensaje() {
     
     if (!nombre) {
         alert('Por favor, ingresá tu nombre');
+        document.getElementById('foroNombre').focus();
         return;
     }
     
     if (!mensaje) {
         alert('Por favor, escribí un mensaje');
+        document.getElementById('foroMensaje').focus();
+        return;
+    }
+    
+    if (mensaje.length < 2) {
+        alert('El mensaje es muy corto');
         return;
     }
     
     try {
-        console.log('Enviando mensaje:', { nombre, mensaje });
-        
         const response = await fetch(FORO_API_URL + '/mensajes', {
             method: 'POST',
             headers: {
@@ -321,19 +667,17 @@ async function enviarMensaje() {
             })
         });
         
-        console.log('Respuesta POST:', response.status, response.statusText);
-        
         const resultado = await response.json();
-        console.log('Resultado JSON:', resultado);
         
         if (response.ok && resultado.success) {
             // Limpiar formulario
             document.getElementById('foroMensaje').value = '';
+            // Mantener el foco en el textarea
+            document.getElementById('foroMensaje').focus();
             // Recargar mensajes
             await cargarMensajes();
-         
         } else {
-            alert('Error: ' + (resultado.error || 'Desconocido - ver consola'));
+            alert('Error: ' + (resultado.error || 'Error desconocido'));
         }
     } catch (error) {
         console.error('Error completo:', error);
@@ -341,11 +685,10 @@ async function enviarMensaje() {
     }
 }
 
-// Recargar mensajes cada 30 segundos
-setInterval(cargarMensajes, 30000);
+// Recargar mensajes cada 20 segundos
+setInterval(cargarMensajes, 20000);
 </script>
 
 <script defer src="scripts/main.js"></script>
 </body>
-
 </html>
