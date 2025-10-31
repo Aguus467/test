@@ -1,0 +1,652 @@
+/* ==================== AGENDA OPTIMIZADA ==================== */
+.container-agenda {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.intro {
+  margin-bottom: 1.5rem;
+}
+
+/* Banner del día optimizado */
+.day-banner {
+  background: linear-gradient(135deg, 
+    rgba(114, 214, 255, 0.25), 
+    rgba(255, 127, 255, 0.25));
+  border: 1px solid rgba(114, 214, 255, 0.4);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.5rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  box-shadow: 
+    var(--shadow-md),
+    0 0 30px rgba(114, 214, 255, 0.15);
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.day-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    transparent, 
+    rgba(114, 214, 255, 0.1), 
+    transparent);
+  animation: bannerShine 8s linear infinite;
+}
+
+@keyframes bannerShine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.day-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent), 
+    var(--accent-purple), 
+    transparent);
+  border-radius: 2px;
+}
+
+/* Contenedor de agenda optimizado */
+.agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.agenda.compact {
+  gap: 0.35rem;
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Match Card optimizado */
+.match-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.match-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(114, 214, 255, 0.08), 
+    rgba(255, 127, 255, 0.08));
+  opacity: 0;
+  transition: opacity var(--transition);
+  z-index: 0;
+}
+
+.match-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Columna de tiempo optimizada */
+.time-col {
+  flex-shrink: 0;
+}
+
+.time-badge {
+  background: linear-gradient(135deg, 
+    rgba(114, 214, 255, 0.2), 
+    rgba(114, 214, 255, 0.1));
+  border: 1px solid rgba(114, 214, 255, 0.4);
+  color: var(--accent);
+  padding: 0.6rem 0.95rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  min-width: 75px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(114, 214, 255, 0.15);
+  transition: var(--transition);
+}
+
+/* Contenido principal del partido */
+.match-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.teams {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: color var(--transition);
+}
+
+.meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.meta span {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Competencia optimizada */
+.competition {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(114, 214, 255, 0.08);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(114, 214, 255, 0.15);
+  transition: var(--transition);
+}
+
+.competition img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* Dropdown de canales optimizado */
+.dropdown {
+  position: relative;
+}
+
+.channel-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: rgba(20, 20, 40, 0.98);
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  min-width: 220px;
+  box-shadow: 
+    var(--shadow-md),
+    0 0 30px rgba(114, 214, 255, 0.2);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  animation: dropdownSlide 0.25s ease;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.channel-menu.show {
+  display: block;
+}
+
+.channel-item {
+  padding: 0.875rem 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  touch-action: manipulation;
+}
+
+.channel-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-purple));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.channel-item:last-child {
+  border-bottom: none;
+}
+
+.channel-item .left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Icono de play optimizado */
+.play-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(114, 214, 255, 0.15);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.play-icon::before {
+  content: '▶';
+  color: var(--accent);
+  font-size: 0.7rem;
+  transition: color var(--transition);
+}
+
+/* Estados de mensajes optimizados */
+.no-events {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  background: rgba(114, 214, 255, 0.05);
+  border-radius: var(--radius);
+  border: 1px solid rgba(114, 214, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.loading {
+  background: linear-gradient(90deg, 
+    rgba(20, 20, 40, 0.6) 25%, 
+    rgba(40, 40, 70, 0.6) 50%, 
+    rgba(20, 20, 40, 0.6) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==================== INTERACCIONES TÁCTILES ==================== */
+.match-card:active {
+  transform: scale(0.98);
+  background: rgba(20, 20, 40, 0.9);
+}
+
+.channel-item:active {
+  background: rgba(114, 214, 255, 0.2);
+  transform: scale(0.98);
+}
+
+/* ==================== INTERACCIONES HOVER ==================== */
+@media (hover: hover) and (pointer: fine) {
+  .match-card:hover::before {
+    opacity: 1;
+  }
+
+  .match-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    background: rgba(20, 20, 40, 0.85);
+  }
+
+  .match-card:hover .time-badge {
+    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+    transform: scale(1.05);
+    background: linear-gradient(135deg, 
+      rgba(114, 214, 255, 0.3), 
+      rgba(114, 214, 255, 0.2));
+  }
+
+  .match-card:hover .teams {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(114, 214, 255, 0.4);
+  }
+
+  .match-card:hover .competition {
+    background: rgba(114, 214, 255, 0.15);
+    border-color: rgba(114, 214, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .channel-item:hover::before {
+    opacity: 1;
+  }
+
+  .channel-item:hover {
+    background: rgba(114, 214, 255, 0.15);
+    padding-left: 1.3rem;
+  }
+
+  .channel-item:hover .play-icon {
+    background: rgba(114, 214, 255, 0.3);
+    transform: scale(1.1);
+  }
+
+  .channel-item:hover .play-icon::before {
+    color: var(--accent-purple);
+  }
+}
+
+/* ==================== DISEÑO RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .container-agenda {
+    padding: 1rem 0.75rem;
+  }
+
+  .day-banner {
+    font-size: 1.15rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .match-card {
+    padding: 0.875rem 1rem;
+    gap: 0.875rem;
+  }
+
+  .teams {
+    font-size: 1rem;
+  }
+
+  .time-badge {
+    min-width: 70px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .meta {
+    gap: 0.6rem;
+  }
+
+  .channel-menu {
+    min-width: 200px;
+    right: -0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .match-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .time-col {
+    width: 100%;
+  }
+
+  .time-badge {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .match-main {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-agenda {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .day-banner {
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .match-card {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .teams {
+    font-size: 0.95rem;
+  }
+
+  .meta {
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .meta span {
+    font-size: 0.8rem;
+  }
+
+  .competition {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .channel-menu {
+    min-width: 180px;
+    right: -1rem;
+  }
+
+  .channel-item {
+    padding: 0.75rem 1rem;
+  }
+
+  .no-events {
+    padding: 2rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container-agenda {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .day-banner {
+    font-size: 0.9rem;
+    padding: 0.75rem 0.875rem;
+  }
+
+  .match-card {
+    padding: 0.625rem 0.75rem;
+  }
+
+  .channel-menu {
+    min-width: 160px;
+    right: -1.5rem;
+  }
+}
+
+/* ==================== MEJORAS DE ACCESIBILIDAD ==================== */
+.match-card:focus-visible,
+.channel-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ==================== OPTIMIZACIONES DE RENDIMIENTO ==================== */
+@media (prefers-reduced-motion: reduce) {
+  .day-banner::before,
+  .match-card,
+  .time-badge,
+  .channel-menu,
+  .play-icon,
+  .competition {
+    animation: none;
+    transition: none;
+  }
+  
+  .channel-menu {
+    animation: none;
+  }
+  
+  .loading {
+    animation: none;
+    background: rgba(20, 20, 40, 0.6);
+  }
+}
+
+/* Alto contraste para accesibilidad */
+@media (prefers-contrast: high) {
+  .match-card {
+    border: 2px solid var(--accent);
+  }
+  
+  .time-badge {
+    background: var(--accent);
+    color: var(--bg-dark);
+    border: 2px solid var(--accent);
+  }
+  
+  .channel-menu {
+    border: 2px solid var(--accent);
+  }
+  
+  .channel-item::before {
+    opacity: 1;
+    width: 4px;
+  }
+}
+
+/* ==================== SCROLLBAR ESPACIAL ==================== */
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: 
+    linear-gradient(180deg, 
+      rgba(10, 15, 30, 0.9) 0%,
+      rgba(20, 25, 50, 0.7) 50%,
+      rgba(10, 15, 30, 0.9) 100%);
+  border-radius: 12px;
+  margin: 2px;
+  border: 1px solid rgba(114, 214, 255, 0.1);
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(114, 214, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: 
+    linear-gradient(135deg, 
+      rgba(114, 214, 255, 0.9) 0%,
+      rgba(114, 214, 255, 0.7) 30%,
+      rgba(255, 127, 255, 0.7) 70%,
+      rgba(255, 127, 255, 0.9) 100%);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 0 15px rgba(114, 214, 255, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent);
+  animation: scrollbarShine 3s infinite;
+}
+
+@keyframes scrollbarShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: 
+    linear-gradient(135deg, 
+      rgba(114, 214, 255, 1) 0%,
+      rgba(114, 214, 255, 0.8) 30%,
+      rgba(255, 127, 255, 0.8) 70%,
+      rgba(255, 127, 255, 1) 100%);
+  box-shadow: 
+    0 0 20px rgba(114, 214, 255, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: 
+    linear-gradient(135deg, 
+      rgba(114, 214, 255, 0.8) 0%,
+      rgba(114, 214, 255, 0.6) 30%,
+      rgba(255, 127, 255, 0.6) 70%,
+      rgba(255, 127, 255, 0.8) 100%);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: 
+    rgba(114, 214, 255, 0.8) 
+    rgba(10, 15, 30, 0.9);
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: 
+    rgba(114, 214, 255, 0.8) 
+    rgba(10, 15, 30, 0.9);
+}

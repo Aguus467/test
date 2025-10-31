@@ -1,0 +1,1078 @@
+/* ==================== Variables de Optimización ==================== */
+:root {
+  /* Detectar si es touch device */
+  --blur-amount: 12px;
+  --animation-speed: 0.3s;
+}
+
+/* Optimización para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  :root {
+    --blur-amount: 6px; /* Reduce blur en móviles para mejor performance */
+    --animation-speed: 0.2s; /* Animaciones más rápidas en móviles */
+  }
+}
+
+/* ==================== Optimizaciones Globales ==================== */
+
+/* Mejora de rendimiento con will-change solo cuando sea necesario */
+.channel-card,
+iframe#agendaFrame {
+  will-change: auto;
+}
+
+.channel-card:active {
+  will-change: transform;
+}
+
+/* Prevenir problemas de scroll en Android */
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+/* ==================== Container ==================== */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==================== Main Content ==================== */
+
+main {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.info-banner {
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 1.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  padding: 1.2rem;
+  background: rgba(114, 214, 255, 0.08);
+  border-radius: var(--radius);
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+}
+
+.info-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(114, 214, 255, 0.05), transparent);
+  animation: bannerShine 5s linear infinite;
+  will-change: transform;
+}
+
+@keyframes bannerShine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.info-banner a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  border-bottom: 1px solid transparent;
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.info-banner a:active {
+  color: var(--accent-purple);
+}
+
+@media (hover: hover) {
+  .info-banner a:hover {
+    border-bottom-color: var(--accent);
+    color: var(--accent-purple);
+    text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
+  }
+}
+
+/* ==================== Agenda Frame (Optimizado) ==================== */
+
+iframe#agendaFrame {
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  box-shadow: 
+    var(--shadow-md),
+    0 0 40px rgba(114, 214, 255, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.4);
+  transition: var(--transition);
+  touch-action: pan-y;
+  transform: translateZ(0); /* Force GPU acceleration */
+  -webkit-transform: translateZ(0);
+}
+
+/* Optimización específica para Android */
+@media (hover: none) and (pointer: coarse) {
+  iframe#agendaFrame {
+    box-shadow: var(--shadow-md); /* Simplificar sombras en móviles */
+  }
+}
+
+/* ==================== Channels Section ==================== */
+
+.channels-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 100%;
+  animation: titleGradient 5s ease infinite;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
+  border-radius: 2px;
+}
+
+@keyframes titleGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+/* ==================== Channel Cards (Optimizadas) ==================== */
+
+.channel-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border-radius: var(--radius);
+  overflow: visible;
+  transition: transform var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow var(--animation-speed) ease;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0); /* GPU acceleration */
+  -webkit-transform: translateZ(0);
+}
+
+.channel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(114, 214, 255, 0.1), rgba(255, 127, 255, 0.1));
+  opacity: 0;
+  transition: opacity var(--animation-speed);
+  z-index: 0;
+  border-radius: var(--radius);
+}
+
+.channel-card:active {
+  transform: scale(0.95) translateZ(0);
+  box-shadow: 
+    var(--shadow-md),
+    0 0 20px rgba(114, 214, 255, 0.2);
+}
+
+.channel-card:active::before {
+  opacity: 1;
+}
+
+.channel-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.channel-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 0.75rem;
+  border: 2px solid rgba(114, 214, 255, 0.3);
+  transition: transform var(--animation-speed) ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.channel-card span {
+  display: block;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* ==================== Panel de Personalización (Optimizado) ==================== */
+
+.customize-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  background: var(--bg-card);
+  backdrop-filter: blur(calc(var(--blur-amount) * 1.5));
+  -webkit-backdrop-filter: blur(calc(var(--blur-amount) * 1.5));
+  border-left: 1px solid rgba(114, 214, 255, 0.2);
+  box-shadow: 
+    -8px 0 32px rgba(0, 0, 0, 0.4),
+    inset 1px 0 0 rgba(255, 255, 255, 0.1);
+  z-index: 9999;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.customize-panel.active {
+  right: 0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(114, 214, 255, 0.2);
+  background: rgba(20, 20, 40, 0.6);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+.panel-header h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.close-panel {
+  background: rgba(114, 214, 255, 0.1);
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  border-radius: var(--radius);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--accent);
+  font-size: 1.2rem;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+}
+
+.close-panel:active {
+  background: rgba(114, 214, 255, 0.2);
+  border-color: var(--accent);
+  transform: scale(0.95) translateZ(0);
+  color: var(--accent-purple);
+}
+
+@media (hover: hover) {
+  .close-panel:hover {
+    background: rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    color: var(--accent-purple);
+    box-shadow: 0 0 15px rgba(114, 214, 255, 0.3);
+  }
+}
+
+/* Controles del Panel */
+.control-group {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(114, 214, 255, 0.1);
+}
+
+.control-group:last-child {
+  border-bottom: none;
+}
+
+.control-group h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(20, 20, 40, 0.4);
+  border-radius: var(--radius);
+  border: 1px solid rgba(114, 214, 255, 0.1);
+  transition: var(--transition);
+}
+
+.control-item:last-child {
+  margin-bottom: 0;
+}
+
+.control-item label {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.control-item input[type="range"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: rgba(114, 214, 255, 0.1);
+  border-radius: 10px;
+  height: 6px;
+  outline: none;
+  -webkit-appearance: none;
+  touch-action: pan-x;
+}
+
+.control-item input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(114, 214, 255, 0.6);
+  transition: transform 0.1s ease;
+}
+
+.control-item input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+.control-item input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(114, 214, 255, 0.6);
+  transition: transform 0.1s ease;
+}
+
+.control-item input[type="range"]::-moz-range-thumb:active {
+  transform: scale(1.2);
+}
+
+.value-display {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-left: 0.5rem;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(114, 214, 255, 0.2);
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  border-radius: 34px;
+  transition: var(--transition);
+  touch-action: manipulation;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+input:checked + .toggle-slider {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+  background: white;
+}
+
+/* Color Picker */
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.color-option {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
+  position: relative;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+}
+
+.color-option:active {
+  transform: scale(0.9) translateZ(0);
+}
+
+.color-option.active {
+  border-color: white;
+  box-shadow: 
+    0 0 0 2px var(--bg-card),
+    0 0 15px currentColor;
+  transform: scale(1.1) translateZ(0);
+}
+
+@media (hover: hover) {
+  .color-option:hover {
+    transform: scale(1.05) translateZ(0);
+    box-shadow: 0 0 10px currentColor;
+  }
+}
+
+/* Botones del Panel */
+.customize-panel .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+  background: rgba(114, 214, 255, 0.1);
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  color: var(--accent);
+  transition: var(--transition);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.customize-panel .btn:active {
+  background: rgba(114, 214, 255, 0.2);
+  border-color: var(--accent);
+  transform: scale(0.98);
+  color: var(--accent-purple);
+}
+
+@media (hover: hover) {
+  .customize-panel .btn:hover {
+    background: rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    color: var(--accent-purple);
+    box-shadow: 0 0 15px rgba(114, 214, 255, 0.3);
+  }
+}
+
+/* Overlay de fondo */
+.panel-overlay {
+  display: none;
+}
+
+.customize-panel.active ~ .panel-overlay,
+.customize-panel.active + .panel-overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Partículas gravitacionales (Optimizadas) */
+.gravity-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(114, 214, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 4px rgba(114, 214, 255, 0.8);
+  will-change: transform, opacity;
+}
+
+/* Warp speed effect */
+@keyframes warpSpeed {
+  0% {
+    transform: scaleX(1) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(3) translateX(-100vw);
+    opacity: 0;
+  }
+}
+
+.warp-line {
+  position: fixed;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.8), transparent);
+  width: 100px;
+  left: 100%;
+  animation: warpSpeed 0.8s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Hover effects (solo en dispositivos con hover) */
+@media (hover: hover) and (pointer: fine) {
+  .channel-card:hover::before {
+    opacity: 1;
+  }
+
+  .channel-card:hover,
+  .channel-card:focus {
+    transform: translateY(-6px) scale(1.02) translateZ(0);
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 30px rgba(114, 214, 255, 0.3),
+      inset 0 0 0 1px rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    background: rgba(20, 20, 40, 0.9);
+  }
+
+  .channel-card:hover img {
+    transform: scale(1.15) rotate(5deg) translateZ(0);
+    border-color: var(--accent);
+    box-shadow: 
+      0 0 20px rgba(114, 214, 255, 0.6),
+      0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  iframe#agendaFrame:hover {
+    box-shadow: 
+      var(--shadow-lg),
+      0 0 50px rgba(114, 214, 255, 0.25),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px) translateZ(0);
+  }
+}
+
+/* ==================== Responsive Design ==================== */
+
+@media (max-width: 768px) {
+  .channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .channel-card {
+    padding: 0.75rem;
+    min-height: 120px;
+  }
+
+  .channel-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .customize-panel {
+    max-width: 320px;
+  }
+
+  .panel-header {
+    padding: 1.25rem;
+  }
+
+  .control-group {
+    padding: 1.25rem;
+  }
+
+  .control-item {
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .channel-card {
+    padding: 0.6rem;
+    min-height: 110px;
+  }
+
+  .channel-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .channel-card span {
+    font-size: 0.85rem;
+  }
+
+  iframe#agendaFrame {
+    height: 450px;
+  }
+
+  .info-banner {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  main {
+    padding: 1.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .customize-panel {
+    max-width: 280px;
+  }
+
+  .panel-header {
+    padding: 1rem;
+  }
+
+  .panel-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .control-group {
+    padding: 1rem;
+  }
+
+  .control-group h3 {
+    font-size: 1rem;
+  }
+
+  .control-item {
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .color-picker-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+
+  .color-option {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* ==================== Optimización Android Landscape ==================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .customize-panel {
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  .channel-card {
+    min-height: 100px;
+  }
+
+  .channel-card img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ==================== Optimización específica para Android ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Reducir efectos visuales pesados */
+  .info-banner::before {
+    animation: none; /* Desactiva la animación del banner en móviles */
+  }
+
+  .section-title {
+    animation-duration: 8s; /* Ralentiza la animación del gradiente */
+  }
+
+  /* Mejorar área táctil en móviles */
+  .channel-card {
+    min-height: 130px;
+    padding: 1rem;
+  }
+
+  .close-panel,
+  .color-option {
+    min-width: 44px; /* Área táctil mínima recomendada */
+    min-height: 44px;
+  }
+
+  /* Prevenir zoom accidental */
+  input[type="range"] {
+    font-size: 16px;
+  }
+
+  /* Optimizar scroll en panel */
+  .customize-panel {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* ==================== Optimización para PC de alto rendimiento ==================== */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  /* Aumentar blur en PC potentes */
+  :root {
+    --blur-amount: 16px;
+  }
+
+  /* Transiciones más suaves en PC */
+  .channel-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Grid más amplio en PC */
+  .channels-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .channel-card {
+    padding: 1.25rem;
+    min-height: 160px;
+  }
+
+  .channel-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Panel más amplio en PC */
+  .customize-panel {
+    max-width: 420px;
+  }
+
+  /* Efectos hover más pronunciados */
+  .channel-card:hover {
+    transform: translateY(-8px) scale(1.03) translateZ(0);
+  }
+
+  iframe#agendaFrame {
+    height: 600px;
+  }
+}
+
+/* ==================== Optimización para pantallas 4K/Retina ==================== */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .channels-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .channel-card {
+    min-height: 180px;
+  }
+
+  .channel-card img {
+    width: 90px;
+    height: 90px;
+  }
+
+  iframe#agendaFrame {
+    height: 700px;
+  }
+}
+
+/* ==================== Accesibilidad ==================== */
+.channel-card:focus-visible,
+.close-panel:focus-visible,
+.color-option:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* Navegación por teclado */
+.channel-card:focus {
+  box-shadow: 
+    var(--shadow-lg),
+    0 0 0 3px var(--accent);
+}
+
+/* ==================== Smooth Scrolling ==================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivar smooth scroll en Android para mejor rendimiento */
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==================== Preferencias de movimiento reducido ==================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .section-title {
+    background: var(--accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ==================== Optimización de Fuentes ==================== */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed; /* Mejor rendimiento en móviles */
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    text-rendering: optimizeLegibility; /* Mejor calidad en PC */
+  }
+}
+
+/* ==================== Prevenir problemas de Safari iOS ==================== */
+@supports (-webkit-touch-callout: none) {
+  /* Específico para iOS Safari */
+  .customize-panel {
+    height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* ==================== Dark Mode Nativo (Opcional) ==================== */
+@media (prefers-color-scheme: dark) {
+  /* Ya está optimizado para dark, pero se puede ajustar si hay light mode */
+}
+
+/* ==================== Optimización de Imágenes ==================== */
+.channel-card img {
+  image-rendering: -webkit-optimize-contrast; /* Mejor calidad en WebKit */
+  image-rendering: crisp-edges;
+}
+
+@media (min-width: 1024px) {
+  .channel-card img {
+    image-rendering: auto; /* Calidad normal en PC */
+  }
+}
+
+/* ==================== Hardware Acceleration Global ==================== */
+.channel-card,
+.customize-panel,
+.channel-card img,
+iframe#agendaFrame {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* ==================== Prevenir Selección de Texto No Deseada ==================== */
+.channel-card,
+.close-panel,
+.color-option {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Permitir selección de texto en contenido importante */
+.info-banner,
+.section-title,
+.control-group h3,
+.control-item label {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* ==================== Optimización de Sombras según Dispositivo ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Sombras simplificadas en móviles */
+  .channel-card,
+  .customize-panel {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .channel-card:active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ==================== Fix para Notch en móviles ==================== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .customize-panel {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ==================== Prevenir Overscroll ==================== */
+body,
+.customize-panel {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: none;
+}
+
+/* ==================== Optimización Final ==================== */
+/* Forzar compositing layer para elementos animados */
+@media (hover: hover) and (pointer: fine) {
+  .channel-card:hover {
+    will-change: transform;
+  }
+
+  .channel-card:not(:hover) {
+    will-change: auto;
+  }
+}
