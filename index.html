@@ -28,6 +28,114 @@
   gtag('js', new Date());
   gtag('config', 'G-P2V7GWXLHJ');
 </script>
+
+<style>
+/* Estilos para el control de música */
+.music-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(11, 13, 27, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 8px 15px;
+  border: 1px solid rgba(114, 214, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.music-controls:hover {
+  background: rgba(11, 13, 27, 0.9);
+  border-color: rgba(114, 214, 255, 0.6);
+}
+
+.music-toggle {
+  background: none;
+  border: none;
+  color: #72d6ff;
+  cursor: pointer;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.music-toggle:hover {
+  background: rgba(114, 214, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.volume-control {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.volume-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #72d6ff;
+  border-radius: 2px;
+  width: 70%;
+}
+
+.volume-handle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: #72d6ff;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  box-shadow: 0 0 5px rgba(114, 214, 255, 0.8);
+  cursor: grab;
+}
+
+.volume-handle:active {
+  cursor: grabbing;
+}
+
+.music-info {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .music-controls {
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 12px;
+  }
+  
+  .music-info {
+    max-width: 80px;
+    font-size: 10px;
+  }
+  
+  .volume-control {
+    width: 60px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -35,6 +143,18 @@
   <div class="spiral-galaxy"></div>
   <div class="aurora aurora-1"></div>
   <div class="aurora aurora-2"></div>
+</div>
+
+<!-- Controles de música -->
+<div class="music-controls">
+  <div class="music-info">Música de fondo</div>
+  <div class="volume-control" id="volumeControl">
+    <div class="volume-slider" id="volumeSlider"></div>
+    <div class="volume-handle" id="volumeHandle"></div>
+  </div>
+  <button class="music-toggle" id="musicToggle" aria-label="Reproducir/Pausar música">
+    <span id="musicIcon">▶</span>
+  </button>
 </div>
 
 <!-- HEADER UNIFICADO -->
@@ -368,6 +488,14 @@
   </div>
 </footer>
 
+<!-- Elemento de audio para la música de fondo -->
+<audio id="backgroundMusic" loop>
+  <!-- Reemplaza esta URL con la de tu archivo de música -->
+  <source src="music/background-music.mp3" type="audio/mpeg">
+  <source src="music/background-music.ogg" type="audio/ogg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
+
 <script defer src="scripts/main.js"></script>
 <script defer src="scripts/customization.js"></script>
 
@@ -377,6 +505,147 @@
 
   // ==================== Configuración de optimización ====================
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  // ==================== Control de Música de Fondo ====================
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  const musicToggle = document.getElementById('musicToggle');
+  const musicIcon = document.getElementById('musicIcon');
+  const volumeControl = document.getElementById('volumeControl');
+  const volumeSlider = document.getElementById('volumeSlider');
+  const volumeHandle = document.getElementById('volumeHandle');
+  
+  // Estado inicial de la música
+  let isMusicPlaying = false;
+  let volume = 0.7; // Volumen por defecto (70%)
+  
+  // Cargar configuración guardada
+  function loadMusicSettings() {
+    const savedVolume = localStorage.getItem('angulismotv_music_volume');
+    const savedState = localStorage.getItem('angulismotv_music_state');
+    
+    if (savedVolume !== null) {
+      volume = parseFloat(savedVolume);
+      updateVolumeUI();
+    }
+    
+    if (savedState === 'playing') {
+      playMusic();
+    }
+  }
+  
+  // Guardar configuración
+  function saveMusicSettings() {
+    localStorage.setItem('angulismotv_music_volume', volume);
+    localStorage.setItem('angulismotv_music_state', isMusicPlaying ? 'playing' : 'paused');
+  }
+  
+  // Actualizar interfaz de volumen
+  function updateVolumeUI() {
+    volumeSlider.style.width = (volume * 100) + '%';
+    volumeHandle.style.right = ((1 - volume) * 100) + '%';
+    backgroundMusic.volume = volume;
+  }
+  
+  // Reproducir música
+  function playMusic() {
+    backgroundMusic.play().then(() => {
+      isMusicPlaying = true;
+      musicIcon.textContent = '⏸';
+      saveMusicSettings();
+    }).catch(error => {
+      console.log('Error al reproducir música:', error);
+      // En algunos navegadores, la reproducción automática está bloqueada
+      // El usuario tendrá que interactuar manualmente
+    });
+  }
+  
+  // Pausar música
+  function pauseMusic() {
+    backgroundMusic.pause();
+    isMusicPlaying = false;
+    musicIcon.textContent = '▶';
+    saveMusicSettings();
+  }
+  
+  // Alternar reproducción/pausa
+  function toggleMusic() {
+    if (isMusicPlaying) {
+      pauseMusic();
+    } else {
+      playMusic();
+    }
+  }
+  
+  // Configurar controles de volumen
+  function setupVolumeControls() {
+    let isDragging = false;
+    
+    // Actualizar volumen al hacer clic en la barra
+    volumeControl.addEventListener('click', (e) => {
+      const rect = volumeControl.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      volume = Math.max(0, Math.min(1, clickX / rect.width));
+      updateVolumeUI();
+      saveMusicSettings();
+    });
+    
+    // Arrastrar el controlador de volumen
+    volumeHandle.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      
+      const rect = volumeControl.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      volume = Math.max(0, Math.min(1, clickX / rect.width));
+      updateVolumeUI();
+    });
+    
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        saveMusicSettings();
+      }
+    });
+    
+    // Soporte táctil para móviles
+    volumeHandle.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      
+      const rect = volumeControl.getBoundingClientRect();
+      const touchX = e.touches[0].clientX - rect.left;
+      volume = Math.max(0, Math.min(1, touchX / rect.width));
+      updateVolumeUI();
+    });
+    
+    document.addEventListener('touchend', () => {
+      if (isDragging) {
+        isDragging = false;
+        saveMusicSettings();
+      }
+    });
+  }
+  
+  // Inicializar controles de música
+  function initMusicControls() {
+    musicToggle.addEventListener('click', toggleMusic);
+    setupVolumeControls();
+    loadMusicSettings();
+    updateVolumeUI();
+    
+    // En móviles, empezar con la música pausada para ahorrar batería
+    if (isMobile) {
+      pauseMusic();
+    }
+  }
 
   // ==================== Efecto Paralaje ====================
   let scrollY = 0;
@@ -465,6 +734,9 @@
         lastTouchEnd = now;
       }, { passive: false });
     }
+    
+    // Inicializar controles de música cuando el DOM esté listo
+    initMusicControls();
   });
 
   // ==================== Polvo Estelar Interactivo ====================
