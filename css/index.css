@@ -1,38 +1,28 @@
-/* ==================== Variables de Optimización ==================== */
+/* ==================== Variables de Optimización Adaptativa ==================== */
 :root {
-  /* Detectar si es touch device */
   --blur-amount: 12px;
   --animation-speed: 0.3s;
+  --shadow-complexity: 3;
 }
 
-/* Optimización para dispositivos táctiles */
+/* Detección automática de capacidad del dispositivo */
 @media (hover: none) and (pointer: coarse) {
   :root {
-    --blur-amount: 6px; /* Reduce blur en móviles para mejor performance */
-    --animation-speed: 0.2s; /* Animaciones más rápidas en móviles */
+    --blur-amount: 4px;
+    --animation-speed: 0.2s;
+    --shadow-complexity: 1;
   }
 }
 
-/* ==================== Optimizaciones Globales ==================== */
-
-/* Mejora de rendimiento con will-change solo cuando sea necesario */
-.channel-card,
-iframe#agendaFrame {
-  will-change: auto;
-}
-
-.channel-card:active {
-  will-change: transform;
-}
-
-/* Prevenir problemas de scroll en Android */
-body {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
+@media (min-width: 1024px) and (hover: hover) {
+  :root {
+    --blur-amount: 16px;
+    --animation-speed: 0.4s;
+    --shadow-complexity: 4;
+  }
 }
 
 /* ==================== Container ==================== */
-
 .container {
   width: 100%;
   max-width: 1200px;
@@ -43,13 +33,13 @@ body {
 }
 
 /* ==================== Main Content ==================== */
-
 main {
   padding: 2rem 0;
   position: relative;
   z-index: 2;
 }
 
+/* ==================== Info Banner (Optimizado) ==================== */
 .info-banner {
   font-weight: 500;
   color: var(--text-secondary);
@@ -67,28 +57,30 @@ main {
   -webkit-backdrop-filter: blur(var(--blur-amount));
 }
 
-.info-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(114, 214, 255, 0.05), transparent);
-  animation: bannerShine 5s linear infinite;
-  will-change: transform;
-}
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .info-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(114, 214, 255, 0.05), transparent);
+    animation: bannerShine 5s linear infinite;
+  }
 
-@keyframes bannerShine {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  @keyframes bannerShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
 }
 
 .info-banner a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  transition: var(--transition);
+  transition: color var(--animation-speed);
   border-bottom: 1px solid transparent;
   position: relative;
   z-index: 1;
@@ -108,34 +100,45 @@ main {
   }
 }
 
-/* ==================== Agenda Frame (Optimizado) ==================== */
-
+/* ==================== Agenda Frame (Ultra Optimizado) ==================== */
 iframe#agendaFrame {
   width: 100%;
   height: 500px;
   border-radius: var(--radius);
   border: 1px solid rgba(114, 214, 255, 0.3);
-  box-shadow: 
-    var(--shadow-md),
-    0 0 40px rgba(114, 214, 255, 0.15),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   margin-bottom: 2rem;
   background: rgba(0, 0, 0, 0.4);
-  transition: var(--transition);
+  transition: transform var(--animation-speed) ease;
   touch-action: pan-y;
-  transform: translateZ(0); /* Force GPU acceleration */
+  transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
 
-/* Optimización específica para Android */
+/* Sombras adaptativas según dispositivo */
 @media (hover: none) and (pointer: coarse) {
   iframe#agendaFrame {
-    box-shadow: var(--shadow-md); /* Simplificar sombras en móviles */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  iframe#agendaFrame {
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.5),
+      0 0 40px rgba(114, 214, 255, 0.15),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  iframe#agendaFrame:hover {
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.5),
+      0 0 50px rgba(114, 214, 255, 0.25),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px) translateZ(0);
   }
 }
 
 /* ==================== Channels Section ==================== */
-
 .channels-section {
   display: flex;
   flex-direction: column;
@@ -152,11 +155,22 @@ iframe#agendaFrame {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 100%;
-  animation: titleGradient 5s ease infinite;
   margin-bottom: 0.5rem;
   letter-spacing: -0.5px;
   position: relative;
   padding-bottom: 1rem;
+}
+
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .section-title {
+    animation: titleGradient 5s ease infinite;
+  }
+
+  @keyframes titleGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
 }
 
 .section-title::after {
@@ -171,28 +185,19 @@ iframe#agendaFrame {
   border-radius: 2px;
 }
 
-@keyframes titleGradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
 .channels-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
 }
 
-/* ==================== Channel Cards (Optimizadas) ==================== */
-
+/* ==================== Channel Cards (Altamente Optimizadas) ==================== */
 .channel-card {
   background: var(--bg-card);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(var(--blur-amount));
   border-radius: var(--radius);
   overflow: visible;
-  transition: transform var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow var(--animation-speed) ease;
-  box-shadow: var(--shadow-md);
   cursor: pointer;
   text-align: center;
   padding: 1rem;
@@ -207,8 +212,23 @@ iframe#agendaFrame {
   -webkit-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transform: translateZ(0); /* GPU acceleration */
+  transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  transition: transform var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sombras adaptativas */
+@media (hover: none) and (pointer: coarse) {
+  .channel-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .channel-card {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: all var(--animation-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .channel-card::before {
@@ -225,15 +245,40 @@ iframe#agendaFrame {
   border-radius: var(--radius);
 }
 
-.channel-card:active {
-  transform: scale(0.95) translateZ(0);
-  box-shadow: 
-    var(--shadow-md),
-    0 0 20px rgba(114, 214, 255, 0.2);
+/* Estados móviles simplificados */
+@media (hover: none) and (pointer: coarse) {
+  .channel-card:active {
+    transform: scale(0.97) translateZ(0);
+  }
+
+  .channel-card:active::before {
+    opacity: 1;
+  }
 }
 
-.channel-card:active::before {
-  opacity: 1;
+/* Hover complejo solo en PC */
+@media (hover: hover) and (pointer: fine) {
+  .channel-card:hover::before {
+    opacity: 1;
+  }
+
+  .channel-card:hover {
+    transform: translateY(-6px) scale(1.02) translateZ(0);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(114, 214, 255, 0.3),
+      inset 0 0 0 1px rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    background: rgba(20, 20, 40, 0.9);
+  }
+
+  .channel-card:hover img {
+    transform: scale(1.15) rotate(5deg) translateZ(0);
+    border-color: var(--accent);
+    box-shadow: 
+      0 0 20px rgba(114, 214, 255, 0.6),
+      0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .channel-card > * {
@@ -249,10 +294,22 @@ iframe#agendaFrame {
   margin-bottom: 0.75rem;
   border: 2px solid rgba(114, 214, 255, 0.3);
   transition: transform var(--animation-speed) ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+}
+
+/* Sombras de imagen adaptativas */
+@media (hover: none) and (pointer: coarse) {
+  .channel-card img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .channel-card img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .channel-card span {
@@ -266,7 +323,6 @@ iframe#agendaFrame {
 }
 
 /* ==================== Panel de Personalización (Optimizado) ==================== */
-
 .customize-panel {
   position: fixed;
   top: 0;
@@ -275,12 +331,9 @@ iframe#agendaFrame {
   max-width: 380px;
   height: 100vh;
   background: var(--bg-card);
-  backdrop-filter: blur(calc(var(--blur-amount) * 1.5));
-  -webkit-backdrop-filter: blur(calc(var(--blur-amount) * 1.5));
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
   border-left: 1px solid rgba(114, 214, 255, 0.2);
-  box-shadow: 
-    -8px 0 32px rgba(0, 0, 0, 0.4),
-    inset 1px 0 0 rgba(255, 255, 255, 0.1);
   z-index: 9999;
   transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
@@ -288,6 +341,21 @@ iframe#agendaFrame {
   -webkit-overflow-scrolling: touch;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+}
+
+/* Sombras adaptativas para panel */
+@media (hover: none) and (pointer: coarse) {
+  .customize-panel {
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .customize-panel {
+    box-shadow: 
+      -8px 0 32px rgba(0, 0, 0, 0.4),
+      inset 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
 }
 
 .customize-panel.active {
@@ -323,6 +391,8 @@ iframe#agendaFrame {
   border-radius: var(--radius);
   width: 40px;
   height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,7 +421,7 @@ iframe#agendaFrame {
   }
 }
 
-/* Controles del Panel */
+/* ==================== Controles del Panel ==================== */
 .control-group {
   padding: 1.5rem;
   border-bottom: 1px solid rgba(114, 214, 255, 0.1);
@@ -380,7 +450,7 @@ iframe#agendaFrame {
   background: rgba(20, 20, 40, 0.4);
   border-radius: var(--radius);
   border: 1px solid rgba(114, 214, 255, 0.1);
-  transition: var(--transition);
+  transition: background var(--animation-speed);
 }
 
 .control-item:last-child {
@@ -444,7 +514,7 @@ iframe#agendaFrame {
   text-align: right;
 }
 
-/* Toggle Switch */
+/* ==================== Toggle Switch ==================== */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -495,7 +565,7 @@ input:checked + .toggle-slider:before {
   background: white;
 }
 
-/* Color Picker */
+/* ==================== Color Picker ==================== */
 .color-picker-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -506,10 +576,12 @@ input:checked + .toggle-slider:before {
 .color-option {
   width: 40px;
   height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: transform var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
+  transition: transform var(--animation-speed) ease;
   position: relative;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
@@ -522,20 +594,30 @@ input:checked + .toggle-slider:before {
 
 .color-option.active {
   border-color: white;
-  box-shadow: 
-    0 0 0 2px var(--bg-card),
-    0 0 15px currentColor;
   transform: scale(1.1) translateZ(0);
 }
 
-@media (hover: hover) {
+/* Sombras adaptativas para color picker */
+@media (hover: none) and (pointer: coarse) {
+  .color-option.active {
+    box-shadow: 0 0 0 2px var(--bg-card), 0 0 8px currentColor;
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .color-option.active {
+    box-shadow: 
+      0 0 0 2px var(--bg-card),
+      0 0 15px currentColor;
+  }
+
   .color-option:hover {
     transform: scale(1.05) translateZ(0);
     box-shadow: 0 0 10px currentColor;
   }
 }
 
-/* Botones del Panel */
+/* ==================== Botones del Panel ==================== */
 .customize-panel .btn {
   width: 100%;
   justify-content: center;
@@ -546,6 +628,12 @@ input:checked + .toggle-slider:before {
   transition: var(--transition);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .customize-panel .btn:active {
@@ -564,7 +652,7 @@ input:checked + .toggle-slider:before {
   }
 }
 
-/* Overlay de fondo */
+/* ==================== Overlay de Fondo ==================== */
 .panel-overlay {
   display: none;
 }
@@ -578,10 +666,17 @@ input:checked + .toggle-slider:before {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   z-index: 9998;
   animation: fadeIn 0.3s ease;
+}
+
+/* Blur adaptativo para overlay */
+@media (min-width: 1024px) and (hover: hover) {
+  .customize-panel.active ~ .panel-overlay,
+  .customize-panel.active + .panel-overlay {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
 }
 
 @keyframes fadeIn {
@@ -589,48 +684,50 @@ input:checked + .toggle-slider:before {
   to { opacity: 1; }
 }
 
-/* Partículas gravitacionales (Optimizadas) */
-.gravity-particle {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(114, 214, 255, 0.8);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 4px rgba(114, 214, 255, 0.8);
-  will-change: transform, opacity;
-}
-
-/* Warp speed effect */
-@keyframes warpSpeed {
-  0% {
-    transform: scaleX(1) translateX(0);
+/* ==================== Partículas Gravitacionales (Solo PC) ==================== */
+@media (min-width: 1024px) and (hover: hover) {
+  .gravity-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(114, 214, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
     opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(3) translateX(-100vw);
-    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 4px rgba(114, 214, 255, 0.8);
   }
 }
 
-.warp-line {
-  position: fixed;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.8), transparent);
-  width: 100px;
-  left: 100%;
-  animation: warpSpeed 0.8s ease-out forwards;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
+/* ==================== Warp Speed Effect (Solo PC) ==================== */
+@media (min-width: 1024px) and (hover: hover) {
+  @keyframes warpSpeed {
+    0% {
+      transform: scaleX(1) translateX(0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(3) translateX(-100vw);
+      opacity: 0;
+    }
+  }
+
+  .warp-line {
+    position: fixed;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.8), transparent);
+    width: 100px;
+    left: 100%;
+    animation: warpSpeed 0.8s ease-out forwards;
+    pointer-events: none;
+    z-index: 9999;
+  }
 }
 
-/* Loading state */
+/* ==================== Loading State ==================== */
 .loading {
   text-align: center;
   padding: 2rem;
@@ -643,42 +740,7 @@ input:checked + .toggle-slider:before {
   50% { opacity: 1; }
 }
 
-/* Hover effects (solo en dispositivos con hover) */
-@media (hover: hover) and (pointer: fine) {
-  .channel-card:hover::before {
-    opacity: 1;
-  }
-
-  .channel-card:hover,
-  .channel-card:focus {
-    transform: translateY(-6px) scale(1.02) translateZ(0);
-    box-shadow: 
-      var(--shadow-lg),
-      0 0 30px rgba(114, 214, 255, 0.3),
-      inset 0 0 0 1px rgba(114, 214, 255, 0.2);
-    border-color: var(--accent);
-    background: rgba(20, 20, 40, 0.9);
-  }
-
-  .channel-card:hover img {
-    transform: scale(1.15) rotate(5deg) translateZ(0);
-    border-color: var(--accent);
-    box-shadow: 
-      0 0 20px rgba(114, 214, 255, 0.6),
-      0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  iframe#agendaFrame:hover {
-    box-shadow: 
-      var(--shadow-lg),
-      0 0 50px rgba(114, 214, 255, 0.25),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px) translateZ(0);
-  }
-}
-
 /* ==================== Responsive Design ==================== */
-
 @media (max-width: 768px) {
   .channels-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -788,74 +850,13 @@ input:checked + .toggle-slider:before {
   .color-option {
     width: 35px;
     height: 35px;
+    min-width: 40px;
+    min-height: 40px;
   }
 }
 
-/* ==================== Optimización Android Landscape ==================== */
-@media (max-width: 768px) and (orientation: landscape) {
-  .customize-panel {
-    height: 100vh;
-    max-height: 100vh;
-  }
-
-  .channel-card {
-    min-height: 100px;
-  }
-
-  .channel-card img {
-    width: 50px;
-    height: 50px;
-  }
-}
-
-/* ==================== Optimización específica para Android ==================== */
-@media (hover: none) and (pointer: coarse) {
-  /* Reducir efectos visuales pesados */
-  .info-banner::before {
-    animation: none; /* Desactiva la animación del banner en móviles */
-  }
-
-  .section-title {
-    animation-duration: 8s; /* Ralentiza la animación del gradiente */
-  }
-
-  /* Mejorar área táctil en móviles */
-  .channel-card {
-    min-height: 130px;
-    padding: 1rem;
-  }
-
-  .close-panel,
-  .color-option {
-    min-width: 44px; /* Área táctil mínima recomendada */
-    min-height: 44px;
-  }
-
-  /* Prevenir zoom accidental */
-  input[type="range"] {
-    font-size: 16px;
-  }
-
-  /* Optimizar scroll en panel */
-  .customize-panel {
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-  }
-}
-
-/* ==================== Optimización para PC de alto rendimiento ==================== */
-@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
-  /* Aumentar blur en PC potentes */
-  :root {
-    --blur-amount: 16px;
-  }
-
-  /* Transiciones más suaves en PC */
-  .channel-card {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Grid más amplio en PC */
+/* ==================== PC High Performance ==================== */
+@media (min-width: 1024px) and (hover: hover) {
   .channels-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.5rem;
@@ -871,14 +872,8 @@ input:checked + .toggle-slider:before {
     height: 80px;
   }
 
-  /* Panel más amplio en PC */
   .customize-panel {
     max-width: 420px;
-  }
-
-  /* Efectos hover más pronunciados */
-  .channel-card:hover {
-    transform: translateY(-8px) scale(1.03) translateZ(0);
   }
 
   iframe#agendaFrame {
@@ -886,7 +881,7 @@ input:checked + .toggle-slider:before {
   }
 }
 
-/* ==================== Optimización para pantallas 4K/Retina ==================== */
+/* ==================== 4K/Retina Displays ==================== */
 @media (min-width: 1920px) {
   .container {
     max-width: 1400px;
@@ -924,26 +919,13 @@ input:checked + .toggle-slider:before {
   border-radius: var(--radius);
 }
 
-/* Navegación por teclado */
 .channel-card:focus {
   box-shadow: 
-    var(--shadow-lg),
+    0 4px 16px rgba(0, 0, 0, 0.5),
     0 0 0 3px var(--accent);
 }
 
-/* ==================== Smooth Scrolling ==================== */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Desactivar smooth scroll en Android para mejor rendimiento */
-@media (hover: none) and (pointer: coarse) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* ==================== Preferencias de movimiento reducido ==================== */
+/* ==================== Preferencias de Movimiento Reducido ==================== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -967,19 +949,18 @@ html {
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeSpeed; /* Mejor rendimiento en móviles */
+    text-rendering: optimizeSpeed;
   }
 }
 
 @media (min-width: 1024px) {
   body {
-    text-rendering: optimizeLegibility; /* Mejor calidad en PC */
+    text-rendering: optimizeLegibility;
   }
 }
 
-/* ==================== Prevenir problemas de Safari iOS ==================== */
+/* ==================== Fix Safari iOS ==================== */
 @supports (-webkit-touch-callout: none) {
-  /* Específico para iOS Safari */
   .customize-panel {
     height: -webkit-fill-available;
   }
@@ -989,33 +970,19 @@ html {
   }
 }
 
-/* ==================== Dark Mode Nativo (Opcional) ==================== */
-@media (prefers-color-scheme: dark) {
-  /* Ya está optimizado para dark, pero se puede ajustar si hay light mode */
-}
-
 /* ==================== Optimización de Imágenes ==================== */
 .channel-card img {
-  image-rendering: -webkit-optimize-contrast; /* Mejor calidad en WebKit */
+  image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
 @media (min-width: 1024px) {
   .channel-card img {
-    image-rendering: auto; /* Calidad normal en PC */
+    image-rendering: auto;
   }
 }
 
-/* ==================== Hardware Acceleration Global ==================== */
-.channel-card,
-.customize-panel,
-.channel-card img,
-iframe#agendaFrame {
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
-/* ==================== Prevenir Selección de Texto No Deseada ==================== */
+/* ==================== Prevenir Selección No Deseada ==================== */
 .channel-card,
 .close-panel,
 .color-option {
@@ -1027,7 +994,6 @@ iframe#agendaFrame {
   user-select: none;
 }
 
-/* Permitir selección de texto en contenido importante */
 .info-banner,
 .section-title,
 .control-group h3,
@@ -1038,20 +1004,7 @@ iframe#agendaFrame {
   user-select: text;
 }
 
-/* ==================== Optimización de Sombras según Dispositivo ==================== */
-@media (hover: none) and (pointer: coarse) {
-  /* Sombras simplificadas en móviles */
-  .channel-card,
-  .customize-panel {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  .channel-card:active {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  }
-}
-
-/* ==================== Fix para Notch en móviles ==================== */
+/* ==================== Fix Notch en Móviles ==================== */
 @supports (padding-top: env(safe-area-inset-top)) {
   .customize-panel {
     padding-top: env(safe-area-inset-top);
@@ -1065,14 +1018,149 @@ body,
   overscroll-behavior-x: none;
 }
 
-/* ==================== Optimización Final ==================== */
-/* Forzar compositing layer para elementos animados */
+/* ==================== Smooth Scrolling Adaptativo ==================== */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==================== Optimización Android Específica ==================== */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* Simplificar transiciones en móviles */
+  .channel-card,
+  .channel-card img {
+    transition: transform var(--animation-speed) ease;
+  }
+
+  /* Área táctil mínima recomendada */
+  .close-panel,
+  .color-option,
+  .customize-panel .btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Prevenir zoom accidental */
+  input[type="range"] {
+    font-size: 16px;
+  }
+}
+
+/* ==================== Optimización Landscape en Móviles ==================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .customize-panel {
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  .channel-card {
+    min-height: 100px;
+  }
+
+  .channel-card img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ==================== Performance: Will-Change Inteligente ==================== */
 @media (hover: hover) and (pointer: fine) {
-  .channel-card:hover {
+  /* Solo activar will-change durante interacción en PC */
+  .channel-card:hover,
+  .channel-card:focus {
     will-change: transform;
   }
 
-  .channel-card:not(:hover) {
+  .channel-card:not(:hover):not(:focus) {
     will-change: auto;
   }
 }
+
+@media (hover: none) and (pointer: coarse) {
+  /* En móviles, minimizar uso de will-change */
+  .channel-card:active {
+    will-change: transform;
+  }
+}
+
+/* ==================== Hardware Acceleration Selectivo ==================== */
+.channel-card,
+.customize-panel,
+.close-panel,
+.color-option,
+iframe#agendaFrame {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* ==================== Contraste Alto ==================== */
+@media (prefers-contrast: high) {
+  :root {
+    --text-secondary: #ffffff;
+    --accent: #ffffff;
+    --accent-purple: #ff00ff;
+  }
+
+  .channel-card,
+  .customize-panel .btn {
+    border: 2px solid var(--accent);
+  }
+}
+
+/* ==================== Modo Oscuro del Sistema ==================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-dark: #000014;
+    --bg-card: rgba(10, 10, 20, 0.9);
+  }
+}
+
+/* ==================== Optimización de Performance Final ==================== */
+
+/* Reducir complejidad en móviles de gama baja */
+@media (hover: none) and (pointer: coarse) and (max-width: 768px) {
+  /* Eliminar backdrop-filter en móviles viejos si es necesario */
+  @supports not (backdrop-filter: blur(4px)) {
+    .info-banner,
+    .channel-card,
+    .customize-panel {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(20, 20, 40, 0.95);
+    }
+  }
+}
+
+/* Optimización para conexiones lentas */
+@media (prefers-reduced-data: reduce) {
+  /* Deshabilitar animaciones costosas */
+  .info-banner::before,
+  .section-title {
+    animation: none;
+  }
+
+  /* Simplificar sombras */
+  .channel-card,
+  iframe#agendaFrame {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==================== Debug: Performance Monitor (Comentado por defecto) ==================== */
+/*
+@media (min-width: 1024px) {
+  * {
+    outline: 1px solid rgba(255, 0, 0, 0.1);
+  }
+}
+*/

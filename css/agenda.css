@@ -1,4 +1,24 @@
-/* ==================== AGENDA OPTIMIZADA ==================== */
+/* ==================== Variables de Optimización Agenda ==================== */
+:root {
+  --agenda-blur: 10px;
+  --agenda-transition: 0.3s;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  :root {
+    --agenda-blur: 4px;
+    --agenda-transition: 0.2s;
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  :root {
+    --agenda-blur: 16px;
+    --agenda-transition: 0.35s;
+  }
+}
+
+/* ==================== Container Agenda ==================== */
 .container-agenda {
   max-width: 1200px;
   margin: 0 auto;
@@ -11,7 +31,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* Banner del día optimizado */
+/* ==================== Banner del Día (Optimizado) ==================== */
 .day-banner {
   background: linear-gradient(135deg, 
     rgba(114, 214, 255, 0.25), 
@@ -23,31 +43,48 @@
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-secondary);
-  box-shadow: 
-    var(--shadow-md),
-    0 0 30px rgba(114, 214, 255, 0.15);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(var(--agenda-blur));
+  -webkit-backdrop-filter: blur(var(--agenda-blur));
   position: relative;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
-.day-banner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, 
-    transparent, 
-    rgba(114, 214, 255, 0.1), 
-    transparent);
-  animation: bannerShine 8s linear infinite;
+/* Sombras adaptativas para banner */
+@media (hover: none) and (pointer: coarse) {
+  .day-banner {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
 }
 
-@keyframes bannerShine {
-  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+@media (min-width: 1024px) and (hover: hover) {
+  .day-banner {
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(114, 214, 255, 0.15);
+  }
+}
+
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .day-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+      transparent, 
+      rgba(114, 214, 255, 0.1), 
+      transparent);
+    animation: bannerShine 8s linear infinite;
+  }
+
+  @keyframes bannerShine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
 }
 
 .day-banner::after {
@@ -66,7 +103,7 @@
   border-radius: 2px;
 }
 
-/* Contenedor de agenda optimizado */
+/* ==================== Contenedor de Agenda ==================== */
 .agenda {
   display: flex;
   flex-direction: column;
@@ -83,15 +120,14 @@
   gap: 0.75rem;
 }
 
-/* Match Card optimizado */
+/* ==================== Match Card (Ultra Optimizado) ==================== */
 .match-card {
   background: var(--bg-card);
   border-radius: var(--radius);
   padding: 1rem 1.25rem;
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--agenda-blur));
+  -webkit-backdrop-filter: blur(var(--agenda-blur));
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -99,7 +135,25 @@
   position: relative;
   overflow: hidden;
   touch-action: manipulation;
+  -webkit-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+  transition: transform var(--agenda-transition) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sombras adaptativas para match cards */
+@media (hover: none) and (pointer: coarse) {
+  .match-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .match-card {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: all var(--agenda-transition) cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .match-card::before {
@@ -113,8 +167,9 @@
     rgba(114, 214, 255, 0.08), 
     rgba(255, 127, 255, 0.08));
   opacity: 0;
-  transition: opacity var(--transition);
+  transition: opacity var(--agenda-transition);
   z-index: 0;
+  border-radius: var(--radius);
 }
 
 .match-card > * {
@@ -122,7 +177,54 @@
   z-index: 1;
 }
 
-/* Columna de tiempo optimizada */
+/* ==================== Estados Móviles (Simplificados) ==================== */
+@media (hover: none) and (pointer: coarse) {
+  .match-card:active {
+    transform: scale(0.98) translateZ(0);
+    background: rgba(20, 20, 40, 0.9);
+  }
+
+  .match-card:active::before {
+    opacity: 1;
+  }
+}
+
+/* ==================== Estados Hover (Solo PC) ==================== */
+@media (hover: hover) and (pointer: fine) {
+  .match-card:hover::before {
+    opacity: 1;
+  }
+
+  .match-card:hover {
+    transform: translateY(-3px) translateZ(0);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    background: rgba(20, 20, 40, 0.85);
+  }
+
+  .match-card:hover .time-badge {
+    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+    transform: scale(1.05) translateZ(0);
+    background: linear-gradient(135deg, 
+      rgba(114, 214, 255, 0.3), 
+      rgba(114, 214, 255, 0.2));
+  }
+
+  .match-card:hover .teams {
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(114, 214, 255, 0.4);
+  }
+
+  .match-card:hover .competition {
+    background: rgba(114, 214, 255, 0.15);
+    border-color: rgba(114, 214, 255, 0.3);
+    transform: translateY(-1px) translateZ(0);
+  }
+}
+
+/* ==================== Columna de Tiempo ==================== */
 .time-col {
   flex-shrink: 0;
 }
@@ -139,11 +241,24 @@
   font-weight: 700;
   min-width: 75px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(114, 214, 255, 0.15);
-  transition: var(--transition);
+  transition: transform var(--agenda-transition) ease;
+  transform: translateZ(0);
 }
 
-/* Contenido principal del partido */
+/* Sombras adaptativas para time badge */
+@media (hover: none) and (pointer: coarse) {
+  .time-badge {
+    box-shadow: 0 2px 6px rgba(114, 214, 255, 0.15);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .time-badge {
+    box-shadow: 0 2px 8px rgba(114, 214, 255, 0.15);
+  }
+}
+
+/* ==================== Contenido Principal del Partido ==================== */
 .match-main {
   flex: 1;
   display: flex;
@@ -157,7 +272,7 @@
   color: var(--text-primary);
   line-height: 1.4;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  transition: color var(--transition);
+  transition: color var(--agenda-transition);
 }
 
 .meta {
@@ -173,7 +288,7 @@
   font-weight: 500;
 }
 
-/* Competencia optimizada */
+/* ==================== Competencia ==================== */
 .competition {
   display: inline-flex;
   align-items: center;
@@ -182,18 +297,32 @@
   padding: 0.25rem 0.6rem;
   border-radius: 6px;
   border: 1px solid rgba(114, 214, 255, 0.15);
-  transition: var(--transition);
+  transition: all var(--agenda-transition);
+  transform: translateZ(0);
 }
 
 .competition img {
   width: 20px;
   height: 20px;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   object-fit: cover;
+  transform: translateZ(0);
 }
 
-/* Dropdown de canales optimizado */
+/* Sombras adaptativas para logo competencia */
+@media (hover: none) and (pointer: coarse) {
+  .competition img {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .competition img {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ==================== Dropdown de Canales (Optimizado) ==================== */
 .dropdown {
   position: relative;
 }
@@ -211,22 +340,36 @@
   border-radius: 10px;
   margin-top: 0.5rem;
   min-width: 220px;
-  box-shadow: 
-    var(--shadow-md),
-    0 0 30px rgba(114, 214, 255, 0.2);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(var(--agenda-blur));
+  -webkit-backdrop-filter: blur(var(--agenda-blur));
   z-index: 100;
-  animation: dropdownSlide 0.25s ease;
+  transform: translateZ(0);
 }
 
-@keyframes dropdownSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.95);
+/* Sombras adaptativas para dropdown */
+@media (hover: none) and (pointer: coarse) {
+  .channel-menu {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .channel-menu {
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(114, 214, 255, 0.2);
+    animation: dropdownSlide 0.25s ease;
+  }
+
+  @keyframes dropdownSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.95) translateZ(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1) translateZ(0);
+    }
   }
 }
 
@@ -237,13 +380,15 @@
 .channel-item {
   padding: 0.875rem 1.1rem;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all var(--agenda-transition);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 44px;
 }
 
 .channel-item::before {
@@ -255,7 +400,7 @@
   width: 3px;
   background: linear-gradient(180deg, var(--accent), var(--accent-purple));
   opacity: 0;
-  transition: opacity var(--transition);
+  transition: opacity var(--agenda-transition);
 }
 
 .channel-item:last-child {
@@ -270,100 +415,20 @@
   color: var(--text-primary);
 }
 
-/* Icono de play optimizado */
-.play-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(114, 214, 255, 0.15);
-  border-radius: 50%;
-  transition: var(--transition);
-}
+/* Estados móviles para channel item */
+@media (hover: none) and (pointer: coarse) {
+  .channel-item:active {
+    background: rgba(114, 214, 255, 0.2);
+    transform: scale(0.98);
+  }
 
-.play-icon::before {
-  content: '▶';
-  color: var(--accent);
-  font-size: 0.7rem;
-  transition: color var(--transition);
-}
-
-/* Estados de mensajes optimizados */
-.no-events {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  background: rgba(114, 214, 255, 0.05);
-  border-radius: var(--radius);
-  border: 1px solid rgba(114, 214, 255, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.loading {
-  background: linear-gradient(90deg, 
-    rgba(20, 20, 40, 0.6) 25%, 
-    rgba(40, 40, 70, 0.6) 50%, 
-    rgba(20, 20, 40, 0.6) 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-  border-radius: var(--radius);
-  padding: 2rem;
-  text-align: center;
-  color: var(--text-secondary);
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* ==================== INTERACCIONES TÁCTILES ==================== */
-.match-card:active {
-  transform: scale(0.98);
-  background: rgba(20, 20, 40, 0.9);
-}
-
-.channel-item:active {
-  background: rgba(114, 214, 255, 0.2);
-  transform: scale(0.98);
-}
-
-/* ==================== INTERACCIONES HOVER ==================== */
-@media (hover: hover) and (pointer: fine) {
-  .match-card:hover::before {
+  .channel-item:active::before {
     opacity: 1;
   }
+}
 
-  .match-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.6),
-      0 0 30px rgba(114, 214, 255, 0.2);
-    border-color: var(--accent);
-    background: rgba(20, 20, 40, 0.85);
-  }
-
-  .match-card:hover .time-badge {
-    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
-    transform: scale(1.05);
-    background: linear-gradient(135deg, 
-      rgba(114, 214, 255, 0.3), 
-      rgba(114, 214, 255, 0.2));
-  }
-
-  .match-card:hover .teams {
-    color: var(--accent);
-    text-shadow: 0 0 10px rgba(114, 214, 255, 0.4);
-  }
-
-  .match-card:hover .competition {
-    background: rgba(114, 214, 255, 0.15);
-    border-color: rgba(114, 214, 255, 0.3);
-    transform: translateY(-1px);
-  }
-
+/* Estados hover para channel item (solo PC) */
+@media (hover: hover) and (pointer: fine) {
   .channel-item:hover::before {
     opacity: 1;
   }
@@ -375,7 +440,7 @@
 
   .channel-item:hover .play-icon {
     background: rgba(114, 214, 255, 0.3);
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
   }
 
   .channel-item:hover .play-icon::before {
@@ -383,7 +448,66 @@
   }
 }
 
-/* ==================== DISEÑO RESPONSIVE ==================== */
+/* ==================== Icono de Play ==================== */
+.play-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(114, 214, 255, 0.15);
+  border-radius: 50%;
+  transition: all var(--agenda-transition);
+  transform: translateZ(0);
+}
+
+.play-icon::before {
+  content: '▶';
+  color: var(--accent);
+  font-size: 0.7rem;
+  transition: color var(--agenda-transition);
+}
+
+/* ==================== Estados de Mensajes ==================== */
+.no-events {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  background: rgba(114, 214, 255, 0.05);
+  border-radius: var(--radius);
+  border: 1px solid rgba(114, 214, 255, 0.2);
+  backdrop-filter: blur(var(--agenda-blur));
+  -webkit-backdrop-filter: blur(var(--agenda-blur));
+}
+
+.loading {
+  background: linear-gradient(90deg, 
+    rgba(20, 20, 40, 0.6) 25%, 
+    rgba(40, 40, 70, 0.6) 50%, 
+    rgba(20, 20, 40, 0.6) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* Animación loading solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .loading {
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+}
+
+/* ==================== Responsive Design ==================== */
 @media (max-width: 768px) {
   .container-agenda {
     padding: 1rem 0.75rem;
@@ -508,27 +632,24 @@
   }
 }
 
-/* ==================== MEJORAS DE ACCESIBILIDAD ==================== */
+/* ==================== Accesibilidad ==================== */
 .match-card:focus-visible,
 .channel-item:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* ==================== OPTIMIZACIONES DE RENDIMIENTO ==================== */
+/* ==================== Preferencias de Movimiento Reducido ==================== */
 @media (prefers-reduced-motion: reduce) {
   .day-banner::before,
   .match-card,
   .time-badge,
   .channel-menu,
   .play-icon,
-  .competition {
-    animation: none;
-    transition: none;
-  }
-  
-  .channel-menu {
-    animation: none;
+  .competition,
+  .channel-item {
+    animation: none !important;
+    transition: none !important;
   }
   
   .loading {
@@ -537,7 +658,7 @@
   }
 }
 
-/* Alto contraste para accesibilidad */
+/* ==================== Alto Contraste ==================== */
 @media (prefers-contrast: high) {
   .match-card {
     border: 2px solid var(--accent);
@@ -559,81 +680,146 @@
   }
 }
 
-/* ==================== SCROLLBAR ESPACIAL ==================== */
+/* ==================== Optimización Android Específica ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Prevenir scroll issues */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
 
-::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+  /* Simplificar transiciones */
+  .match-card,
+  .time-badge,
+  .teams,
+  .competition,
+  .channel-item,
+  .play-icon {
+    transition: transform var(--agenda-transition) ease;
+  }
+
+  /* Desactivar backdrop-filter si no es soportado */
+  @supports not (backdrop-filter: blur(4px)) {
+    .day-banner,
+    .match-card,
+    .channel-menu,
+    .no-events {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(20, 20, 40, 0.95);
+    }
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: 
-    linear-gradient(180deg, 
-      rgba(10, 15, 30, 0.9) 0%,
-      rgba(20, 25, 50, 0.7) 50%,
-      rgba(10, 15, 30, 0.9) 100%);
-  border-radius: 12px;
-  margin: 2px;
-  border: 1px solid rgba(114, 214, 255, 0.1);
-  box-shadow: 
-    inset 0 0 10px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(114, 214, 255, 0.1);
+/* ==================== Will-Change Inteligente ==================== */
+@media (hover: hover) and (pointer: fine) {
+  .match-card:hover,
+  .channel-item:hover {
+    will-change: transform;
+  }
+
+  .match-card:not(:hover),
+  .channel-item:not(:hover) {
+    will-change: auto;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: 
-    linear-gradient(135deg, 
-      rgba(114, 214, 255, 0.9) 0%,
-      rgba(114, 214, 255, 0.7) 30%,
-      rgba(255, 127, 255, 0.7) 70%,
-      rgba(255, 127, 255, 0.9) 100%);
-  border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 0 15px rgba(114, 214, 255, 0.4),
-    inset 0 0 10px rgba(255, 255, 255, 0.2);
+/* ==================== Scrollbar Espacial (Solo PC) ==================== */
+@media (min-width: 1024px) and (hover: hover) {
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: 
+      linear-gradient(180deg, 
+        rgba(10, 15, 30, 0.9) 0%,
+        rgba(20, 25, 50, 0.7) 50%,
+        rgba(10, 15, 30, 0.9) 100%);
+    border-radius: 12px;
+    margin: 2px;
+    border: 1px solid rgba(114, 214, 255, 0.1);
+    box-shadow: 
+      inset 0 0 10px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(114, 214, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: 
+      linear-gradient(135deg, 
+        rgba(114, 214, 255, 0.9) 0%,
+        rgba(114, 214, 255, 0.7) 30%,
+        rgba(255, 127, 255, 0.7) 70%,
+        rgba(255, 127, 255, 0.9) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 0 15px rgba(114, 214, 255, 0.4),
+      inset 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+    animation: scrollbarShine 3s infinite;
+  }
+
+  @keyframes scrollbarShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: 
+      linear-gradient(135deg, 
+        rgba(114, 214, 255, 1) 0%,
+        rgba(114, 214, 255, 0.8) 30%,
+        rgba(255, 127, 255, 0.8) 70%,
+        rgba(255, 127, 255, 1) 100%);
+    box-shadow: 
+      0 0 20px rgba(114, 214, 255, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: 
+      linear-gradient(135deg, 
+        rgba(114, 214, 255, 0.8) 0%,
+        rgba(114, 214, 255, 0.6) 30%,
+        rgba(255, 127, 255, 0.6) 70%,
+        rgba(255, 127, 255, 0.8) 100%);
+  }
 }
 
-::-webkit-scrollbar-thumb::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent);
-  animation: scrollbarShine 3s infinite;
-}
+/* Scrollbar simplificado en móviles */
+@media (hover: none) and (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
 
-@keyframes scrollbarShine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
+  ::-webkit-scrollbar-track {
+    background: rgba(10, 15, 30, 0.8);
+    border-radius: 8px;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: 
-    linear-gradient(135deg, 
-      rgba(114, 214, 255, 1) 0%,
-      rgba(114, 214, 255, 0.8) 30%,
-      rgba(255, 127, 255, 0.8) 70%,
-      rgba(255, 127, 255, 1) 100%);
-  box-shadow: 
-    0 0 20px rgba(114, 214, 255, 0.6),
-    inset 0 0 15px rgba(255, 255, 255, 0.3);
-}
+  ::-webkit-scrollbar-thumb {
+    background: rgba(114, 214, 255, 0.6);
+    border-radius: 8px;
+  }
 
-::-webkit-scrollbar-thumb:active {
-  background: 
-    linear-gradient(135deg, 
-      rgba(114, 214, 255, 0.8) 0%,
-      rgba(114, 214, 255, 0.6) 30%,
-      rgba(255, 127, 255, 0.6) 70%,
-      rgba(255, 127, 255, 0.8) 100%);
+  ::-webkit-scrollbar-thumb:active {
+    background: rgba(114, 214, 255, 0.8);
+  }
 }
 
 /* Firefox */
@@ -644,9 +830,11 @@ html {
     rgba(10, 15, 30, 0.9);
 }
 
-body {
-  scrollbar-width: thin;
-  scrollbar-color: 
-    rgba(114, 214, 255, 0.8) 
-    rgba(10, 15, 30, 0.9);
+/* ==================== Performance Final ==================== */
+.match-card,
+.channel-menu,
+.time-badge,
+.competition {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }

@@ -1,4 +1,4 @@
-/* ==================== Variables CSS ==================== */
+/* ==================== Variables de Optimización Transmisión ==================== */
 :root {
   --bg-dark: #0b0d1b;
   --bg-card: rgba(20, 20, 40, 0.7);
@@ -16,6 +16,23 @@
   --radius: 12px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --header-height: 70px;
+  --transmision-blur: 12px;
+}
+
+/* Optimización móvil */
+@media (hover: none) and (pointer: coarse) {
+  :root {
+    --transmision-blur: 4px;
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Optimización PC */
+@media (min-width: 1024px) and (hover: hover) {
+  :root {
+    --transmision-blur: 16px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 /* ==================== Reset & Base ==================== */
@@ -44,7 +61,7 @@ body {
   overscroll-behavior-y: contain;
 }
 
-/* ==================== Fondo homogéneo sin cortes ==================== */
+/* ==================== Fondo Optimizado ==================== */
 body::before {
   content: '';
   position: fixed;
@@ -52,8 +69,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
+  background: radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -70,15 +86,21 @@ body::after {
     radial-gradient(circle at 80% 70%, rgba(255, 127, 255, 0.08) 0%, transparent 40%);
   pointer-events: none;
   z-index: 1;
-  animation: gradientShift 15s ease infinite;
 }
 
-@keyframes gradientShift {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  body::after {
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
 }
 
-/* ==================== Starfield Background (COMPLETO) ==================== */
+/* ==================== Starfield (Optimizado) ==================== */
 #starfield {
   position: fixed;
   top: 0;
@@ -90,7 +112,7 @@ body::after {
   overflow: hidden;
 }
 
-/* Galaxia espiral de fondo */
+/* Galaxia espiral - animación solo en PC */
 .spiral-galaxy {
   position: absolute;
   top: 50%;
@@ -103,233 +125,249 @@ body::after {
     rgba(255, 127, 255, 0.03) 30%, 
     transparent 70%);
   border-radius: 50%;
-  animation: spiralRotate 120s linear infinite;
 }
 
-@keyframes spiralRotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* Aurora boreal */
-.aurora {
-  position: absolute;
-  width: 100%;
-  height: 300px;
-  opacity: 0.15;
-  animation: auroraWave 25s ease-in-out infinite;
-}
-
-.aurora-1 {
-  top: 10%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(114, 214, 255, 0.3) 25%, 
-    rgba(255, 127, 255, 0.3) 50%, 
-    rgba(114, 214, 255, 0.3) 75%, 
-    transparent 100%);
-  filter: blur(40px);
-}
-
-.aurora-2 {
-  top: 30%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 127, 255, 0.2) 30%, 
-    rgba(114, 214, 255, 0.2) 60%, 
-    transparent 100%);
-  filter: blur(50px);
-  animation-delay: -12s;
-}
-
-@keyframes auroraWave {
-  0%, 100% { 
-    transform: translateX(-10%) skewX(-5deg); 
-    opacity: 0.1;
+@media (min-width: 1024px) and (hover: hover) {
+  .spiral-galaxy {
+    animation: spiralRotate 120s linear infinite;
   }
-  50% { 
-    transform: translateX(10%) skewX(5deg); 
-    opacity: 0.2;
+
+  @keyframes spiralRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
   }
 }
 
-/* Estrellas con paralaje */
+/* Aurora - solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .aurora {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    opacity: 0.15;
+    animation: auroraWave 25s ease-in-out infinite;
+  }
+
+  .aurora-1 {
+    top: 10%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(114, 214, 255, 0.3) 25%, 
+      rgba(255, 127, 255, 0.3) 50%, 
+      rgba(114, 214, 255, 0.3) 75%, 
+      transparent 100%);
+    filter: blur(40px);
+  }
+
+  .aurora-2 {
+    top: 30%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 127, 255, 0.2) 30%, 
+      rgba(114, 214, 255, 0.2) 60%, 
+      transparent 100%);
+    filter: blur(50px);
+    animation-delay: -12s;
+  }
+
+  @keyframes auroraWave {
+    0%, 100% { 
+      transform: translateX(-10%) skewX(-5deg); 
+      opacity: 0.1;
+    }
+    50% { 
+      transform: translateX(10%) skewX(5deg); 
+      opacity: 0.2;
+    }
+  }
+}
+
+/* Estrellas */
 .star {
   position: absolute;
   background: white;
   border-radius: 50%;
   opacity: 0.8;
-  animation: twinkle 4s ease-in-out infinite;
-  transition: transform 0.1s ease-out;
+}
+
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .star {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
 }
 
 .star.layer-1 { z-index: 1; }
 .star.layer-2 { z-index: 2; }
 .star.layer-3 { z-index: 3; }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* Shooting stars mejoradas */
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: linear-gradient(90deg, #fff, transparent);
-  border-radius: 50%;
-  animation: shoot 4s ease-out infinite;
-  opacity: 0;
-}
-
-@keyframes shoot {
-  0% {
-    transform: translateX(0) translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-300px) translateY(300px);
+/* Shooting stars y cometas - solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, transparent);
+    border-radius: 50%;
+    animation: shoot 4s ease-out infinite;
     opacity: 0;
   }
-}
 
-/* Cometas */
-.comet {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #fff, rgba(114, 214, 255, 0.8));
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(114, 214, 255, 0.8);
-  animation: cometFly 8s ease-in infinite;
-  opacity: 0;
-}
+  @keyframes shoot {
+    0% {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-300px) translateY(300px);
+      opacity: 0;
+    }
+  }
 
-.comet::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  height: 3px;
-  background: linear-gradient(90deg, 
-    rgba(114, 214, 255, 0.8), 
-    rgba(255, 127, 255, 0.4), 
-    transparent);
-  transform: translate(-10%, -50%);
-  border-radius: 50%;
-  filter: blur(2px);
-}
-
-@keyframes cometFly {
-  0% {
-    transform: translate(0, 0) rotate(-45deg);
+  .comet {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #fff, rgba(114, 214, 255, 0.8));
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(114, 214, 255, 0.8);
+    animation: cometFly 8s ease-in infinite;
     opacity: 0;
   }
-  10% {
-    opacity: 1;
+
+  .comet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      rgba(114, 214, 255, 0.8), 
+      rgba(255, 127, 255, 0.4), 
+      transparent);
+    transform: translate(-10%, -50%);
+    border-radius: 50%;
+    filter: blur(2px);
   }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-800px, 800px) rotate(-45deg);
-    opacity: 0;
-  }
-}
 
-/* Planetas flotantes */
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: planetFloat 30s ease-in-out infinite;
-}
-
-.planet-1 {
-  width: 80px;
-  height: 80px;
-  top: 15%;
-  right: 10%;
-  background: radial-gradient(circle at 30% 30%, 
-    rgba(255, 127, 255, 0.4), 
-    rgba(114, 214, 255, 0.2));
-  box-shadow: 
-    inset -10px -10px 30px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(255, 127, 255, 0.3);
-}
-
-.planet-2 {
-  width: 120px;
-  height: 120px;
-  bottom: 20%;
-  left: 8%;
-  background: radial-gradient(circle at 35% 35%, 
-    rgba(114, 214, 255, 0.4), 
-    rgba(255, 127, 255, 0.2));
-  box-shadow: 
-    inset -15px -15px 40px rgba(0, 0, 0, 0.3),
-    0 0 50px rgba(114, 214, 255, 0.3);
-  animation-delay: -15s;
-}
-
-.planet-3 {
-  width: 60px;
-  height: 60px;
-  top: 60%;
-  right: 15%;
-  background: radial-gradient(circle at 40% 40%, 
-    rgba(255, 200, 100, 0.3), 
-    rgba(255, 127, 255, 0.2));
-  box-shadow: 
-    inset -8px -8px 20px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(255, 200, 100, 0.2);
-  animation-delay: -22s;
-}
-
-@keyframes planetFloat {
-  0%, 100% { 
-    transform: translateY(0) rotate(0deg); 
-  }
-  50% { 
-    transform: translateY(-30px) rotate(180deg); 
+  @keyframes cometFly {
+    0% {
+      transform: translate(0, 0) rotate(-45deg);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+      transform: translate(-800px, 800px) rotate(-45deg);
+      opacity: 0;
+    }
   }
 }
 
-/* Polvo estelar */
-.stardust {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  animation: dustFloat 20s linear infinite;
-}
-
-@keyframes dustFloat {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
+/* Planetas - ocultos en móviles */
+@media (min-width: 768px) {
+  .planet {
+    position: absolute;
+    border-radius: 50%;
     opacity: 0.6;
   }
-  90% {
-    opacity: 0.6;
+
+  .planet-1 {
+    width: 80px;
+    height: 80px;
+    top: 15%;
+    right: 10%;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 127, 255, 0.4), 
+      rgba(114, 214, 255, 0.2));
+    box-shadow: 
+      inset -10px -10px 30px rgba(0, 0, 0, 0.3),
+      0 0 40px rgba(255, 127, 255, 0.3);
   }
-  100% {
-    transform: translateY(-100vh) translateX(50px);
-    opacity: 0;
+
+  .planet-2 {
+    width: 120px;
+    height: 120px;
+    bottom: 20%;
+    left: 8%;
+    background: radial-gradient(circle at 35% 35%, 
+      rgba(114, 214, 255, 0.4), 
+      rgba(255, 127, 255, 0.2));
+    box-shadow: 
+      inset -15px -15px 40px rgba(0, 0, 0, 0.3),
+      0 0 50px rgba(114, 214, 255, 0.3);
+  }
+
+  .planet-3 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    background: radial-gradient(circle at 40% 40%, 
+      rgba(255, 200, 100, 0.3), 
+      rgba(255, 127, 255, 0.2));
+    box-shadow: 
+      inset -8px -8px 20px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(255, 200, 100, 0.2);
   }
 }
 
-/* ==================== Options Bar ==================== */
+/* Animación de planetas solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .planet {
+    animation: planetFloat 30s ease-in-out infinite;
+  }
+
+  .planet-2 { animation-delay: -15s; }
+  .planet-3 { animation-delay: -22s; }
+
+  @keyframes planetFloat {
+    0%, 100% { 
+      transform: translateY(0) rotate(0deg); 
+    }
+    50% { 
+      transform: translateY(-30px) rotate(180deg); 
+    }
+  }
+}
+
+/* Polvo estelar - solo PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .stardust {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: dustFloat 20s linear infinite;
+  }
+
+  @keyframes dustFloat {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% {
+      transform: translateY(-100vh) translateX(50px);
+      opacity: 0;
+    }
+  }
+}
+
+/* ==================== Options Bar (Optimizada) ==================== */
 .options-bar {
   padding: 16px 5%;
   background: rgba(30, 30, 60, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--transmision-blur));
+  -webkit-backdrop-filter: blur(var(--transmision-blur));
   border-bottom: 1px solid var(--border-accent);
   display: flex;
   justify-content: flex-start;
@@ -338,7 +376,20 @@ body::after {
   z-index: 2;
   flex-wrap: wrap;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateZ(0);
+}
+
+/* Sombras adaptativas */
+@media (hover: none) and (pointer: coarse) {
+  .options-bar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .options-bar {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .options-bar::after {
@@ -372,16 +423,29 @@ select,
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   touch-action: manipulation;
+  transform: translateZ(0);
 }
 
-select:hover,
-select:focus,
-.btn:hover,
-.btn:focus {
-  background: rgba(114, 214, 255, 0.2);
-  border-color: var(--accent);
-  outline: none;
-  box-shadow: 0 0 15px rgba(114, 214, 255, 0.2);
+/* Estados móviles simplificados */
+@media (hover: none) and (pointer: coarse) {
+  select:active,
+  .btn:active {
+    background: rgba(114, 214, 255, 0.2);
+    transform: scale(0.98) translateZ(0);
+  }
+}
+
+/* Estados hover complejos solo en PC */
+@media (hover: hover) and (pointer: fine) {
+  select:hover,
+  select:focus,
+  .btn:hover,
+  .btn:focus {
+    background: rgba(114, 214, 255, 0.2);
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 15px rgba(114, 214, 255, 0.2);
+  }
 }
 
 .btn {
@@ -392,35 +456,33 @@ select:focus,
   overflow: hidden;
 }
 
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(114, 214, 255, 0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
+/* Efecto ripple solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(114, 214, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
 
-.btn:active::before {
-  width: 300px;
-  height: 300px;
+  .btn:active::before {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.98) translateZ(0);
 }
 
-/* Iconos SVG inline */
-.icon-reload {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-}
-
+/* Iconos */
+.icon-reload,
 .icon-settings {
   width: 16px;
   height: 16px;
@@ -435,10 +497,10 @@ select:focus,
   color: white;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .customize-btn:hover {
     box-shadow: 0 0 20px var(--accent-glow);
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
   }
 }
 
@@ -458,17 +520,29 @@ select:focus,
 
 .card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--transmision-blur));
+  -webkit-backdrop-filter: blur(var(--transmision-blur));
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
   transform: translateZ(0);
   transition: var(--transition);
   position: relative;
+}
+
+/* Sombras adaptativas para cards */
+@media (hover: none) and (pointer: coarse) {
+  .card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .card {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .card::before {
@@ -484,13 +558,16 @@ select:focus,
   pointer-events: none;
 }
 
-@media (hover: hover) {
+/* Hover solo en PC */
+@media (hover: hover) and (pointer: fine) {
   .card:hover::before {
     opacity: 1;
   }
 
   .card:hover {
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(114, 214, 255, 0.15);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(114, 214, 255, 0.15);
     border-color: var(--border-accent);
   }
 }
@@ -508,6 +585,7 @@ select:focus,
   min-height: 64px;
   position: relative;
   z-index: 1;
+  transform: translateZ(0);
 }
 
 .channel-head {
@@ -525,13 +603,24 @@ select:focus,
   transition: var(--transition);
   flex-shrink: 0;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   pointer-events: none;
+  transform: translateZ(0);
 }
 
-@media (hover: hover) {
+/* Sombras adaptativas para logo */
+@media (hover: none) and (pointer: coarse) {
+  .channel-head img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .channel-head img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
   .channel-head img:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1) rotate(5deg) translateZ(0);
     border-color: var(--accent-purple);
     box-shadow: 0 0 15px var(--accent-glow);
   }
@@ -564,18 +653,24 @@ select:focus,
   height: 8px;
   border-radius: 50%;
   background: #4ade80;
-  animation: pulse 2s infinite;
   box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
 }
 
-@keyframes pulse {
-  0%, 100% { 
-    opacity: 1;
-    transform: scale(1);
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .status-dot {
+    animation: pulse 2s infinite;
   }
-  50% { 
-    opacity: 0.5;
-    transform: scale(0.95);
+
+  @keyframes pulse {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.5;
+      transform: scale(0.95);
+    }
   }
 }
 
@@ -591,23 +686,31 @@ iframe {
   min-height: 500px;
   background: rgba(0, 0, 0, 0.6);
   position: relative;
+  transform: translateZ(0);
 }
 
-/* Loading state */
-iframe.loading {
-  background: linear-gradient(
-    90deg,
-    rgba(20, 20, 40, 0.6) 25%,
-    rgba(40, 40, 70, 0.6) 50%,
-    rgba(20, 20, 40, 0.6) 75%
-  );
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
+/* Loading state - animación solo en PC */
+.loading {
+  background: rgba(20, 20, 40, 0.6);
 }
 
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+@media (min-width: 1024px) and (hover: hover) {
+  iframe.loading,
+  .loading {
+    background: linear-gradient(
+      90deg,
+      rgba(20, 20, 40, 0.6) 25%,
+      rgba(40, 40, 70, 0.6) 50%,
+      rgba(20, 20, 40, 0.6) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
 }
 
 /* ==================== Chat ==================== */
@@ -628,22 +731,25 @@ iframe.loading {
   justify-content: center;
   width: 36px;
   height: 36px;
+  min-width: 44px;
+  min-height: 44px;
   touch-action: manipulation;
+  transform: translateZ(0);
 }
 
 .chat-toggle:active {
-  transform: scale(0.9);
+  transform: scale(0.9) translateZ(0);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .chat-toggle:hover {
     background: rgba(114, 214, 255, 0.15);
     color: var(--accent-purple);
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
   }
 }
 
-/* ==================== Customization Panel ==================== */
+/* ==================== Customization Panel (Optimizado) ==================== */
 .customize-panel {
   position: fixed;
   top: 0;
@@ -652,15 +758,30 @@ iframe.loading {
   max-width: 400px;
   height: 100vh;
   background: rgba(10, 10, 30, 0.98);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: -4px 0 30px rgba(0, 0, 0, 0.6), -2px 0 20px rgba(114, 214, 255, 0.2);
+  backdrop-filter: blur(var(--transmision-blur));
+  -webkit-backdrop-filter: blur(var(--transmision-blur));
   z-index: 2000;
   padding: 2rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-left: 1px solid var(--border-accent);
+  transform: translateZ(0);
+}
+
+/* Sombras adaptativas */
+@media (hover: none) and (pointer: coarse) {
+  .customize-panel {
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .customize-panel {
+    box-shadow: 
+      -4px 0 30px rgba(0, 0, 0, 0.6),
+      -2px 0 20px rgba(114, 214, 255, 0.2);
+  }
 }
 
 .customize-panel.active {
@@ -683,12 +804,18 @@ iframe.loading {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 100%;
-  animation: titleGradient 3s ease infinite;
 }
 
-@keyframes titleGradient {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .panel-header h2 {
+    animation: titleGradient 3s ease infinite;
+  }
+
+  @keyframes titleGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
 }
 
 .close-panel {
@@ -699,23 +826,26 @@ iframe.loading {
   cursor: pointer;
   width: 40px;
   height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   transition: var(--transition);
   touch-action: manipulation;
+  transform: translateZ(0);
 }
 
 .close-panel:active {
-  transform: rotate(45deg) scale(0.9);
+  transform: rotate(45deg) scale(0.9) translateZ(0);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .close-panel:hover {
     background: rgba(114, 214, 255, 0.2);
     color: var(--accent-purple);
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateZ(0);
   }
 }
 
@@ -752,6 +882,7 @@ iframe.loading {
   outline: none;
   -webkit-appearance: none;
   appearance: none;
+  touch-action: pan-x;
 }
 
 .control-item input[type="range"]::-webkit-slider-thumb {
@@ -762,13 +893,29 @@ iframe.loading {
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
-  box-shadow: 0 0 12px var(--accent-glow);
   transition: var(--transition);
 }
 
-.control-item input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 20px var(--accent-glow);
+/* Sombras adaptativas para slider */
+@media (hover: none) and (pointer: coarse) {
+  .control-item input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  .control-item input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .control-item input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  .control-item input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
 }
 
 .control-item input[type="range"]::-moz-range-thumb {
@@ -778,13 +925,29 @@ iframe.loading {
   background: var(--accent);
   cursor: pointer;
   border: none;
-  box-shadow: 0 0 12px var(--accent-glow);
   transition: var(--transition);
 }
 
-.control-item input[type="range"]::-moz-range-thumb:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 20px var(--accent-glow);
+/* Sombras adaptativas para slider Firefox */
+@media (hover: none) and (pointer: coarse) {
+  .control-item input[type="range"]::-moz-range-thumb {
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  .control-item input[type="range"]::-moz-range-thumb:active {
+    transform: scale(1.2);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .control-item input[type="range"]::-moz-range-thumb {
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  .control-item input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
 }
 
 .color-picker-grid {
@@ -803,41 +966,57 @@ iframe.loading {
   position: relative;
   overflow: hidden;
   touch-action: manipulation;
+  min-width: 44px;
+  min-height: 44px;
+  transform: translateZ(0);
 }
 
-.color-option::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transition: width 0.3s, height 0.3s;
-}
+/* Efecto ripple solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .color-option::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: width 0.3s, height 0.3s;
+  }
 
-.color-option:active {
-  transform: scale(0.9);
-}
-
-@media (hover: hover) {
   .color-option:hover::before {
     width: 100%;
     height: 100%;
   }
 
   .color-option:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0);
     border-color: rgba(255, 255, 255, 0.3);
   }
 }
 
+.color-option:active {
+  transform: scale(0.9) translateZ(0);
+}
+
 .color-option.active {
   border-color: white;
-  box-shadow: 0 0 20px var(--accent-glow);
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(0);
+}
+
+/* Sombras adaptativas para color picker */
+@media (hover: none) and (pointer: coarse) {
+  .color-option.active {
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .color-option.active {
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
 }
 
 .toggle-switch {
@@ -864,6 +1043,7 @@ iframe.loading {
   border-radius: 26px;
   transition: var(--transition);
   border: 1px solid rgba(114, 214, 255, 0.3);
+  touch-action: manipulation;
 }
 
 .toggle-slider:before {
@@ -888,7 +1068,7 @@ input:checked + .toggle-slider:before {
   transform: translateX(24px);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .toggle-slider:hover {
     box-shadow: 0 0 10px rgba(114, 214, 255, 0.3);
   }
@@ -905,8 +1085,8 @@ input:checked + .toggle-slider:before {
 /* ==================== Footer ==================== */
 footer.site-footer {
   background: rgba(10, 10, 30, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--transmision-blur));
+  -webkit-backdrop-filter: blur(var(--transmision-blur));
   text-align: center;
   padding: 1.5rem 0;
   border-top: 1px solid var(--border-accent);
@@ -938,6 +1118,7 @@ footer.site-footer a {
   transition: var(--transition);
   position: relative;
   touch-action: manipulation;
+  text-decoration: none;
 }
 
 footer.site-footer a::after {
@@ -951,7 +1132,7 @@ footer.site-footer a::after {
   transition: width 0.3s ease;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   footer.site-footer a:hover::after {
     width: 100%;
   }
@@ -1061,7 +1242,7 @@ footer.site-footer a::after {
   }
 }
 
-/* ==================== Accessibility ==================== */
+/* ==================== Accesibilidad ==================== */
 a:focus-visible,
 button:focus-visible,
 select:focus-visible {
@@ -1069,6 +1250,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+/* ==================== Preferencias de Movimiento Reducido ==================== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1077,35 +1259,282 @@ select:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .panel-header h2 {
+    background: var(--accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
-/* Scrollbar styling */
-.customize-panel::-webkit-scrollbar {
-  width: 8px;
+/* ==================== Scrollbar (Optimizada) ==================== */
+/* Scrollbar completa solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .customize-panel::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .customize-panel::-webkit-scrollbar-track {
+    background: rgba(20, 20, 40, 0.5);
+    border-radius: 4px;
+  }
+
+  .customize-panel::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+  }
+
+  .customize-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-purple);
+  }
 }
 
-.customize-panel::-webkit-scrollbar-track {
-  background: rgba(20, 20, 40, 0.5);
-  border-radius: 4px;
+/* Scrollbar simplificada en móviles */
+@media (hover: none) and (pointer: coarse) {
+  .customize-panel::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .customize-panel::-webkit-scrollbar-track {
+    background: rgba(20, 20, 40, 0.3);
+  }
+
+  .customize-panel::-webkit-scrollbar-thumb {
+    background: rgba(114, 214, 255, 0.6);
+    border-radius: 2px;
+  }
 }
 
-.customize-panel::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 4px;
+/* ==================== Optimización Android Específica ==================== */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* Simplificar transiciones en móviles */
+  .card,
+  .channel-head img,
+  .btn,
+  select,
+  .color-option,
+  .toggle-slider {
+    transition: transform var(--transition) ease;
+  }
+
+  /* Desactivar backdrop-filter si no es soportado */
+  @supports not (backdrop-filter: blur(4px)) {
+    .options-bar,
+    .card,
+    .card-header,
+    .customize-panel,
+    footer.site-footer {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(20, 20, 40, 0.95);
+    }
+
+    .card-header {
+      background: rgba(40, 40, 70, 0.95);
+    }
+  }
+
+  /* Prevenir zoom accidental */
+  input[type="range"],
+  select {
+    font-size: 16px;
+  }
+
+  /* Área táctil mínima */
+  .btn,
+  select,
+  .chat-toggle,
+  .close-panel,
+  .color-option {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
 
-.customize-panel::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-purple);
+/* ==================== Will-Change Inteligente ==================== */
+@media (hover: hover) and (pointer: fine) {
+  /* Solo activar will-change durante interacción en PC */
+  .card:hover,
+  .channel-head img:hover,
+  .btn:hover,
+  .color-option:hover {
+    will-change: transform;
+  }
+
+  .card:not(:hover),
+  .channel-head img:not(:hover),
+  .btn:not(:hover),
+  .color-option:not(:hover) {
+    will-change: auto;
+  }
 }
 
-/* Android específico */
+/* ==================== Hardware Acceleration ==================== */
+.card,
+.options-bar,
+.customize-panel,
+.card-header,
+iframe,
+.btn,
+select,
+.color-option,
+.channel-head img {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* ==================== Optimización Safari iOS ==================== */
 @supports (-webkit-touch-callout: none) {
   body {
     -webkit-user-select: none;
+    min-height: -webkit-fill-available;
   }
   
   .channel-head .name,
-  .control-item label {
+  .control-item label,
+  .panel-header h2 {
     -webkit-user-select: text;
+  }
+
+  .customize-panel {
+    height: -webkit-fill-available;
+  }
+}
+
+/* ==================== Alto Contraste ==================== */
+@media (prefers-contrast: high) {
+  :root {
+    --text-secondary: #ffffff;
+    --accent: #ffffff;
+    --accent-purple: #ff00ff;
+  }
+
+  .card,
+  select,
+  .btn {
+    border: 2px solid var(--accent);
+  }
+
+  .channel-head img {
+    border: 3px solid var(--accent);
+  }
+}
+
+/* ==================== Modo Oscuro del Sistema ==================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-dark: #000014;
+    --bg-card: rgba(10, 10, 20, 0.9);
+  }
+}
+
+/* ==================== Optimización de Performance Final ==================== */
+
+/* Reducir complejidad en móviles de gama baja */
+@media (hover: none) and (pointer: coarse) and (max-width: 768px) {
+  /* Ocultar elementos decorativos pesados */
+  .spiral-galaxy,
+  .aurora,
+  .comet,
+  .shooting-star,
+  .planet,
+  .stardust {
+    display: none;
+  }
+
+  /* Simplificar gradientes */
+  body::after {
+    background: radial-gradient(circle at 50% 50%, rgba(114, 214, 255, 0.05) 0%, transparent 50%);
+  }
+}
+
+/* Optimización para conexiones lentas */
+@media (prefers-reduced-data: reduce) {
+  /* Deshabilitar animaciones costosas */
+  .spiral-galaxy,
+  .aurora,
+  .comet,
+  .shooting-star,
+  .stardust,
+  .status-dot {
+    animation: none;
+  }
+
+  body::after {
+    animation: none;
+  }
+
+  /* Simplificar sombras */
+  .card,
+  .options-bar,
+  .channel-head img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==================== Optimización Landscape en Móviles ==================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .customize-panel {
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  iframe {
+    min-height: 300px;
+  }
+
+  .channel-head img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ==================== Prevenir Overscroll ==================== */
+body,
+.customize-panel {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: none;
+}
+
+/* ==================== Smooth Scrolling Adaptativo ==================== */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==================== Optimización de Fuentes ==================== */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ==================== Fix Notch en Móviles ==================== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .customize-panel {
+    padding-top: calc(env(safe-area-inset-top) + 2rem);
+  }
+
+  .options-bar {
+    padding-top: calc(env(safe-area-inset-top) + 16px);
   }
 }
