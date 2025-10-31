@@ -7,7 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+  
+  <!-- CSS separados - ORDEN CORRECTO -->
+  <link rel="stylesheet" href="css/espacial-base.css">
+  <link rel="stylesheet" href="css/header-unificado.css">
   <link rel="stylesheet" href="css/multicam.css">
+  <link rel="stylesheet" href="css/customization-panel.css">
+  
   <style>
     /* Ajuste de reproductores multicámara para que se adapten al contenido */
     .stream-iframe {
@@ -33,6 +40,42 @@
         min-height: 250px;
       }
     }
+    
+    /* Botones de filtro */
+    .filter-selector {
+      display: flex;
+      gap: 8px;
+      background: rgba(30, 30, 60, 0.8);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid rgba(114, 214, 255, 0.2);
+    }
+    
+    .filter-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .filter-btn:hover {
+      background: rgba(114, 214, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .filter-btn.active {
+      background: linear-gradient(135deg, rgba(114, 214, 255, 0.3), rgba(255, 127, 255, 0.3));
+      color: white;
+      box-shadow: 0 0 15px rgba(114, 214, 255, 0.3);
+    }
   </style>
 </head>
 
@@ -43,10 +86,14 @@
   <div class="aurora aurora-2"></div>
 </div>
 
-<header>
-  <a href="index.html" aria-label="AngulismoTV - Inicio">
-    <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
-  </a>
+<!-- HEADER UNIFICADO -->
+<header class="site-header">
+  <div class="logo-container">
+    <a href="index.html" aria-label="AngulismoTV - Inicio">
+      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+    </a>
+  </div>
+  
   <nav role="navigation" aria-label="Navegación principal">
     <a href="index.html#channelsSection">Canales</a>
     <a href="index.html">Agenda</a>
@@ -54,6 +101,9 @@
     <a href="https://nowevents.xyz" target="_blank" rel="noopener">Entretenimiento</a>
     <a href="https://nowstats.netlify.app" target="_blank" rel="noopener">Estadísticas</a>
   </nav>
+  
+  <!-- Botón de personalización como tuerca -->
+  
 </header>
 
 <main class="container">
@@ -70,6 +120,15 @@
             <div class="layout-option" data-layout="3">3 Pantallas</div>
             <div class="layout-option" data-layout="4">4 Pantallas</div>
           </div>
+        </div>
+        
+        <div class="filter-selector">
+          <button class="filter-btn active" id="filterAgenda" aria-label="Mostrar eventos">
+            📅 Eventos
+          </button>
+          <button class="filter-btn" id="filterChannels" aria-label="Mostrar canales">
+            📺 Canales
+          </button>
         </div>
         
         <button class="fullscreen-btn" id="globalFullscreen" aria-label="Activar pantalla completa">
@@ -127,7 +186,7 @@
     </small>
   </div>
 </footer>
-
+<script defer src="scripts/customization.js"></script>
 <script>
   (function() {
     'use strict';
@@ -234,7 +293,7 @@
     }, { passive: true });
 
     // ==================== Header Stars Generation Optimizada ====================
-    const header = document.querySelector('header');
+    const header = document.querySelector('.site-header');
     const headerStarsFragment = document.createDocumentFragment();
     const numHeaderStars = isLowPerfDevice ? 8 : 12;
 
@@ -259,8 +318,11 @@
     const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
     const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
     const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
+    const CANALES_JSON = 'https://json.angulismotv.workers.dev/channels'; // CORREGIDO
 
     let agendaStreams = [];
+    let channelsData = [];
+    let currentFilter = 'agenda';
     let currentLayout = 1;
     let activeStreams = {};
     let isFullscreen = false;
@@ -283,22 +345,38 @@
 
     // ==================== Get Direct Player URL ====================
     function getDirectPlayerUrl(streamData) {
-      if (!streamData || !streamData.tv_networks || streamData.tv_networks.length === 0) {
-        return null;
-      }
-
-      const network = streamData.tv_networks[0];
+      console.log('Procesando stream:', streamData);
       
-      if (network.link) {
-        try {
-          const decodedLink = atob(network.link);
-          return decodedLink;
-        } catch (e) {
-          console.error('Error decoding base64 link:', e);
-          return null;
+      // Para canales con la nueva estructura
+      if (streamData.url) {
+        return streamData.url;
+      }
+      
+      // Para eventos de agenda
+      if (streamData.tv_networks && streamData.tv_networks.length > 0) {
+        const network = streamData.tv_networks[0];
+        
+        if (network.link) {
+          try {
+            const decodedLink = atob(network.link);
+            return decodedLink;
+          } catch (e) {
+            console.error('Error decoding base64 link:', e);
+            return network.link;
+          }
+        }
+        
+        if (network.url) {
+          return network.url;
         }
       }
       
+      // Fallbacks adicionales
+      if (streamData.iframe) {
+        return streamData.iframe;
+      }
+      
+      console.warn('No se encontró URL para:', streamData);
       return null;
     }
 
@@ -397,14 +475,17 @@
       });
     }
 
-    // ==================== Load Agenda Data ====================
+    // ==================== Load Agenda Data - CORREGIDO ====================
     async function loadAgendaData() {
       try {
-        const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw] = await Promise.all([
+        const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw, canalesRaw] = await Promise.all([
           fetchJSON(EVENTOS_JSON),
           fetchJSON(STREAMTP_EVENTOS),
-          fetchJSON(LA14HD_EVENTOS)
+          fetchJSON(LA14HD_EVENTOS),
+          fetchJSON(CANALES_JSON)
         ]);
+
+        console.log('Canales cargados (raw):', canalesRaw);
 
         const manualEvents = await adaptManualEvents(Array.isArray(manualEventsRaw) ? manualEventsRaw : []);
         
@@ -427,34 +508,104 @@
 
         agendaStreams = [...manualEvents, ...streamTPEvents, ...la14HDEvents];
         
-        console.log('Eventos cargados:', agendaStreams.length);
+        // ADAPTACIÓN PARA LA ESTRUCTURA DE CANALES CON OPCIONES MÚLTIPLES
+        if (canalesRaw && canalesRaw.channels && Array.isArray(canalesRaw.channels)) {
+          channelsData = [];
+          canalesRaw.channels.forEach(channel => {
+            if (channel.show && channel.options && channel.options.length > 0) {
+              // Crear una entrada por cada opción del canal
+              channel.options.forEach((option, index) => {
+                channelsData.push({
+                  name: channel.name,
+                  logo: channel.logo,
+                  optionName: option.name,
+                  url: option.iframe,
+                  displayName: channel.options.length > 1 ? `${channel.name} - ${option.name}` : channel.name,
+                  categoria: 'Canal deportivo'
+                });
+              });
+            }
+          });
+        } else if (Array.isArray(canalesRaw)) {
+          channelsData = canalesRaw;
+        } else {
+          channelsData = [];
+        }
+        
+        console.log('✅ Eventos cargados:', agendaStreams.length);
+        console.log('✅ Canales procesados:', channelsData.length);
+        if (channelsData.length > 0) {
+          console.log('Estructura de primer canal:', channelsData[0]);
+        }
+        
         loadStreamOptions();
         
       } catch (error) {
-        console.error('Error cargando datos:', error);
+        console.error('❌ Error cargando datos:', error);
       }
     }
 
-    // ==================== Load Stream Options ====================
+    // ==================== Load Stream Options - ACTUALIZADO ====================
     function loadStreamOptions() {
+      // Limpiar todos los dropdowns
       for (let i = 1; i <= 4; i++) {
         const dropdown = document.getElementById(`dropdown-${i}`);
         if (dropdown) dropdown.innerHTML = '';
       }
 
-      agendaStreams.forEach(stream => {
+      const dataToShow = currentFilter === 'agenda' ? agendaStreams : channelsData;
+
+      console.log('Filtro actual:', currentFilter);
+      console.log('Datos a mostrar:', dataToShow.length, 'items');
+
+      if (!dataToShow || dataToShow.length === 0) {
+        // Mostrar mensaje si no hay datos
+        for (let i = 1; i <= 4; i++) {
+          const dropdown = document.getElementById(`dropdown-${i}`);
+          if (dropdown) {
+            const noDataMsg = document.createElement('div');
+            noDataMsg.className = 'stream-option';
+            noDataMsg.style.opacity = '0.6';
+            noDataMsg.innerHTML = `
+              <div class="stream-info">
+                <div class="stream-title">No hay ${currentFilter === 'agenda' ? 'eventos' : 'canales'} disponibles</div>
+              </div>
+            `;
+            dropdown.appendChild(noDataMsg);
+          }
+        }
+        return;
+      }
+
+      dataToShow.forEach((item, index) => {
         for (let i = 1; i <= 4; i++) {
           const dropdown = document.getElementById(`dropdown-${i}`);
           if (dropdown) {
             const option = document.createElement('div');
             option.className = 'stream-option';
-            option.innerHTML = `
-              <div class="stream-info">
-                <div class="stream-title">${stream.evento}</div>
-                <div class="stream-meta">${stream.competition_name} • ${formatTime(stream.start_time)}</div>
-              </div>
-            `;
-            option.addEventListener('click', () => selectStream(i, stream));
+            
+            if (currentFilter === 'agenda') {
+              // Formato para eventos de agenda
+              option.innerHTML = `
+                <div class="stream-info">
+                  <div class="stream-title">${item.evento || 'Evento sin título'}</div>
+                  <div class="stream-meta">${item.competition_name || 'Sin competencia'} • ${formatTime(item.start_time)}</div>
+                </div>
+              `;
+            } else {
+              // Formato para canales
+              const channelName = item.displayName || item.name || `Canal ${index + 1}`;
+              const channelCategory = item.categoria || item.optionName || 'Canal en vivo';
+              
+              option.innerHTML = `
+                <div class="stream-info">
+                  <div class="stream-title">${channelName}</div>
+                  <div class="stream-meta">${channelCategory}</div>
+                </div>
+              `;
+            }
+            
+            option.addEventListener('click', () => selectStream(i, item));
             dropdown.appendChild(option);
           }
         }
@@ -481,6 +632,32 @@
           e.stopPropagation();
           layoutDropdown.classList.toggle('show');
           this.classList.toggle('active');
+        });
+      }
+
+      // Filtros de eventos/canales
+      const filterAgenda = document.getElementById('filterAgenda');
+      const filterChannels = document.getElementById('filterChannels');
+      
+      if (filterAgenda) {
+        filterAgenda.addEventListener('click', () => {
+          if (currentFilter !== 'agenda') {
+            currentFilter = 'agenda';
+            filterAgenda.classList.add('active');
+            filterChannels.classList.remove('active');
+            loadStreamOptions();
+          }
+        });
+      }
+      
+      if (filterChannels) {
+        filterChannels.addEventListener('click', () => {
+          if (currentFilter !== 'channels') {
+            currentFilter = 'channels';
+            filterChannels.classList.add('active');
+            filterAgenda.classList.remove('active');
+            loadStreamOptions();
+          }
         });
       }
 
@@ -638,15 +815,16 @@
       
       if (streamData && playerUrl) {
         streamElement.classList.add('active');
+        const streamTitle = streamData.displayName || streamData.evento || streamData.name || `Stream ${slot}`;
         streamElement.innerHTML = `
           <div class="stream-header">
             <div class="stream-title-bar">
               <strong>Pantalla ${slot}</strong>
-              <span> - ${streamData.evento}</span>
+              <span> - ${streamTitle}</span>
             </div>
             <div class="stream-actions"></div>
           </div>
-          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="Stream ${slot}"></iframe>
+          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
         `;
       } else {
         streamElement.innerHTML = `
@@ -666,14 +844,20 @@
       grid.appendChild(streamElement);
     }
 
-    // ==================== Select Stream ====================
+    // ==================== Select Stream - ACTUALIZADO ====================
     function selectStream(slot, stream) {
+      console.log('Seleccionando stream para slot', slot, ':', stream);
+      
       activeStreams[slot] = stream;
       const playerUrl = getDirectPlayerUrl(stream);
       
+      console.log('URL del reproductor:', playerUrl);
+      
       const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
       if (dropdownBtn) {
-        const displayText = stream.evento.length > 30 ? stream.evento.substring(0, 30) + '...' : stream.evento;
+        // Obtener nombre para mostrar
+        const displayName = stream.displayName || stream.evento || stream.name || `Stream ${slot}`;
+        const displayText = displayName.length > 40 ? displayName.substring(0, 40) + '...' : displayName;
         dropdownBtn.textContent = displayText;
       }
       
@@ -681,15 +865,16 @@
       if (existingElement) {
         if (playerUrl) {
           existingElement.classList.add('active');
+          const streamTitle = stream.displayName || stream.evento || stream.name || `Stream ${slot}`;
           existingElement.innerHTML = `
             <div class="stream-header">
               <div class="stream-title-bar">
                 <strong>Pantalla ${slot}</strong>
-                <span> - ${stream.evento}</span>
+                <span> - ${streamTitle}</span>
               </div>
               <div class="stream-actions"></div>
             </div>
-            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="Stream ${slot}"></iframe>
+            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
           `;
         } else {
           existingElement.classList.remove('active');
@@ -697,13 +882,14 @@
             <div class="stream-header">
               <div class="stream-title-bar">
                 <strong>Pantalla ${slot}</strong>
-                <span> - ${stream.evento}</span>
+                <span> - ${stream.displayName || stream.evento || stream.name || 'Stream'}</span>
               </div>
               <div class="stream-actions"></div>
             </div>
             <div class="stream-placeholder">
               <span>❌</span>
               <span>No se pudo cargar el reproductor</span>
+              <small style="color: rgba(255,255,255,0.5); margin-top: 10px;">URL no disponible para este canal</small>
             </div>
           `;
         }

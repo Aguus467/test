@@ -1,0 +1,271 @@
+<!-- Panel de personalización completo -->
+<div class="customize-panel" id="customizePanel">
+  <div class="panel-header">
+    <h2>Personalización</h2>
+    <button class="close-panel" id="closePanel" aria-label="Cerrar panel">✕</button>
+  </div>
+
+  <!-- Presets rápidos -->
+  <div class="control-group">
+    <h3>⚡ Perfiles de rendimiento</h3>
+    <div class="preset-buttons">
+      <button class="preset-btn" data-preset="ultra" aria-label="Calidad Ultra">
+        <span class="preset-icon">🚀</span>
+        <span class="preset-name">Ultra</span>
+        <span class="preset-desc">PC potente</span>
+      </button>
+      <button class="preset-btn" data-preset="high" aria-label="Calidad Alta">
+        <span class="preset-icon">💎</span>
+        <span class="preset-name">Alta</span>
+        <span class="preset-desc">PC estándar</span>
+      </button>
+      <button class="preset-btn" data-preset="medium" aria-label="Calidad Media">
+        <span class="preset-icon">⚙️</span>
+        <span class="preset-name">Media</span>
+        <span class="preset-desc">Tablet/móvil</span>
+      </button>
+      <button class="preset-btn active" data-preset="low" aria-label="Calidad Baja">
+        <span class="preset-icon">🔋</span>
+        <span class="preset-name">Ahorro</span>
+        <span class="preset-desc">Batería</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Efectos visuales -->
+  <div class="control-group">
+    <h3>✨ Efectos visuales</h3>
+    
+    <div class="control-item">
+      <label>
+        Estrellas animadas
+        <label class="toggle-switch">
+          <input type="checkbox" id="starsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label for="starsIntensity">
+        Densidad de estrellas
+        <span class="value-display" id="starsValue">70</span>
+      </label>
+      <input type="range" id="starsIntensity" min="20" max="150" value="70" step="10">
+    </div>
+
+    <div class="control-item">
+      <label>
+        Estrellas fugaces
+        <label class="toggle-switch">
+          <input type="checkbox" id="shootingStarsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Cometas
+        <label class="toggle-switch">
+          <input type="checkbox" id="cometsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Planetas
+        <label class="toggle-switch">
+          <input type="checkbox" id="planetsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Auroras boreales
+        <label class="toggle-switch">
+          <input type="checkbox" id="aurorasToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Galaxia espiral
+        <label class="toggle-switch">
+          <input type="checkbox" id="galaxyToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Polvo estelar
+        <label class="toggle-switch">
+          <input type="checkbox" id="stardustToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <!-- Animaciones -->
+  <div class="control-group">
+    <h3>🎬 Animaciones</h3>
+    
+    <div class="control-item">
+      <label for="animationSpeed">
+        Velocidad de animaciones
+        <span class="value-display" id="animSpeedValue">Normal</span>
+      </label>
+      <input type="range" id="animationSpeed" min="0" max="2" value="1" step="0.5">
+    </div>
+
+    <div class="control-item">
+      <label>
+        Efectos hover
+        <label class="toggle-switch">
+          <input type="checkbox" id="hoverEffectsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Paralaje al scroll
+        <label class="toggle-switch">
+          <input type="checkbox" id="parallaxToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Partículas interactivas
+        <label class="toggle-switch">
+          <input type="checkbox" id="particlesToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <!-- Efectos de desenfoque -->
+  <div class="control-group">
+    <h3>🌫️ Desenfoques</h3>
+    
+    <div class="control-item">
+      <label for="blurIntensity">
+        Intensidad de blur
+        <span class="value-display" id="blurValue">16px</span>
+      </label>
+      <input type="range" id="blurIntensity" min="0" max="30" value="16" step="2">
+    </div>
+
+    <div class="control-item">
+      <label>
+        Backdrop filter (header/cards)
+        <label class="toggle-switch">
+          <input type="checkbox" id="backdropToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <!-- Transparencias -->
+  <div class="control-group">
+    <h3>🎨 Apariencia</h3>
+    
+    <div class="control-item">
+      <label for="bgOpacity">
+        Opacidad de cards
+        <span class="value-display" id="opacityValue">70%</span>
+      </label>
+      <input type="range" id="bgOpacity" min="30" max="100" value="70" step="5">
+    </div>
+
+    <div class="control-item">
+      <label for="shadowIntensity">
+        Intensidad de sombras
+        <span class="value-display" id="shadowValue">100%</span>
+      </label>
+      <input type="range" id="shadowIntensity" min="0" max="150" value="100" step="25">
+    </div>
+
+    <div class="control-item">
+      <label for="accentColor">Color de acento</label>
+      <div class="color-picker-grid">
+        <button class="color-option active" data-color="#72d6ff" style="background: #72d6ff;" aria-label="Cyan"></button>
+        <button class="color-option" data-color="#ff7fff" style="background: #ff7fff;" aria-label="Magenta"></button>
+        <button class="color-option" data-color="#4ade80" style="background: #4ade80;" aria-label="Verde"></button>
+        <button class="color-option" data-color="#fbbf24" style="background: #fbbf24;" aria-label="Amarillo"></button>
+        <button class="color-option" data-color="#f87171" style="background: #f87171;" aria-label="Rojo"></button>
+        <button class="color-option" data-color="#a78bfa" style="background: #a78bfa;" aria-label="Púrpura"></button>
+        <button class="color-option" data-color="#fb923c" style="background: #fb923c;" aria-label="Naranja"></button>
+        <button class="color-option" data-color="#38bdf8" style="background: #38bdf8;" aria-label="Azul cielo"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rendimiento -->
+  <div class="control-group">
+    <h3>⚙️ Optimización</h3>
+    
+    <div class="control-item">
+      <label>
+        Modo bajo consumo
+        <label class="toggle-switch">
+          <input type="checkbox" id="batterySaverToggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        GPU Acceleration
+        <label class="toggle-switch">
+          <input type="checkbox" id="gpuAccelToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item performance-info">
+      <div class="info-row">
+        <span>FPS estimado:</span>
+        <strong id="fpsEstimate">60 FPS</strong>
+      </div>
+      <div class="info-row">
+        <span>Elementos activos:</span>
+        <strong id="activeElements">-</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Acciones -->
+  <div class="control-group">
+    <h3>🔧 Configuración</h3>
+    <button class="btn btn-primary" id="resetSettings">
+      Restaurar valores por defecto
+    </button>
+    <button class="btn btn-secondary" id="exportSettings">
+      Exportar configuración
+    </button>
+    <button class="btn btn-secondary" id="importSettings">
+      Importar configuración
+    </button>
+  </div>
+</div>
+
+<!-- Overlay cuando el panel está abierto -->
+<div class="panel-overlay" id="panelOverlay"></div>

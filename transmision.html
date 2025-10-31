@@ -18,7 +18,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- CSS separados -->
+<!-- CSS separados - ORDEN CORRECTO -->
+<link rel="stylesheet" href="css/espacial-base.css">
+<link rel="stylesheet" href="css/header-unificado.css">
 <link rel="stylesheet" href="css/transmision.css">
 <style>
   /* Reproductor flexible que se adapta al contenido embebido */
@@ -62,12 +64,14 @@
   <div class="aurora aurora-2"></div>
 </div>
 
-<header>
+<!-- HEADER UNIFICADO -->
+<header class="site-header">
   <div class="logo-container">
     <a href="index.html" aria-label="AngulismoTV - Inicio">
       <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
     </a>
   </div>
+  
   <nav role="navigation" aria-label="Navegación principal">
     <a href="index.html#channelsSection">Canales</a>
     <a href="index.html">Agenda</a>
@@ -75,6 +79,9 @@
     <a href="https://nowevents.xyz">Entretenimiento</a>
     <a href="https://nowstats.netlify.app">Estadísticas</a>
   </nav>
+  
+  <!-- Botón de personalización como tuerca -->
+
 </header>
 
 <section class="options-bar">
@@ -339,7 +346,7 @@
   }
 
   // ==================== Header Stars ====================
-  const header = document.querySelector('header');
+  const header = document.querySelector('.site-header');
   const headerStarsFragment = document.createDocumentFragment();
   const numHeaderStars = 15;
 

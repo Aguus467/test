@@ -14,20 +14,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 
-<!-- CSS Espacial -->
+<!-- CSS Espacial - puto el que me robe el code-->
 <link rel="stylesheet" href="css/espacial-base.css">
+<link rel="stylesheet" href="css/header-unificado.css">
 <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/customization-panel.css">
 
 <!-- Google Analytics -->
-</head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-P2V7GWXLHJ');
 </script>
+</head>
 
 <body>
 <div id="starfield">
@@ -36,12 +37,14 @@
   <div class="aurora aurora-2"></div>
 </div>
 
-<header>
+<!-- HEADER UNIFICADO -->
+<header class="site-header">
   <div class="logo-container">
     <a href="index.html" aria-label="AngulismoTV - Inicio">
       <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
     </a>
   </div>
+  
   <nav role="navigation" aria-label="Navegación principal">
     <a href="#channelsSection">Canales</a>
     <a href="#agendaFrame">Agenda</a>
@@ -83,16 +86,209 @@
   </section>
 </main>
 
-<!-- Panel de personalización (idéntico al de transmisión) -->
+<!-- Panel de personalización completo -->
 <div class="customize-panel" id="customizePanel">
   <div class="panel-header">
     <h2>Personalización</h2>
     <button class="close-panel" id="closePanel" aria-label="Cerrar panel">✕</button>
   </div>
 
+  <!-- Presets rápidos -->
+  <div class="control-group">
+    <h3>⚡ Perfiles de rendimiento</h3>
+    <div class="preset-buttons">
+      <button class="preset-btn" data-preset="ultra" aria-label="Calidad Ultra">
+        <span class="preset-icon">🚀</span>
+        <span class="preset-name">Ultra</span>
+        <span class="preset-desc">PC potente</span>
+      </button>
+      <button class="preset-btn" data-preset="high" aria-label="Calidad Alta">
+        <span class="preset-icon">💎</span>
+        <span class="preset-name">Alta</span>
+        <span class="preset-desc">PC estándar</span>
+      </button>
+      <button class="preset-btn" data-preset="medium" aria-label="Calidad Media">
+        <span class="preset-icon">⚙️</span>
+        <span class="preset-name">Media</span>
+        <span class="preset-desc">Tablet/móvil</span>
+      </button>
+      <button class="preset-btn active" data-preset="low" aria-label="Calidad Baja">
+        <span class="preset-icon">🔋</span>
+        <span class="preset-name">Ahorro</span>
+        <span class="preset-desc">Batería</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Efectos visuales -->
+  <div class="control-group">
+    <h3>✨ Efectos visuales</h3>
+    
+    <div class="control-item">
+      <label>
+        Estrellas animadas
+        <label class="toggle-switch">
+          <input type="checkbox" id="starsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label for="starsIntensity">
+        Densidad de estrellas
+        <span class="value-display" id="starsValue">70</span>
+      </label>
+      <input type="range" id="starsIntensity" min="20" max="150" value="70" step="10">
+    </div>
+
+    <div class="control-item">
+      <label>
+        Estrellas fugaces
+        <label class="toggle-switch">
+          <input type="checkbox" id="shootingStarsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Cometas
+        <label class="toggle-switch">
+          <input type="checkbox" id="cometsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Planetas
+        <label class="toggle-switch">
+          <input type="checkbox" id="planetsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Auroras boreales
+        <label class="toggle-switch">
+          <input type="checkbox" id="aurorasToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Galaxia espiral
+        <label class="toggle-switch">
+          <input type="checkbox" id="galaxyToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Polvo estelar
+        <label class="toggle-switch">
+          <input type="checkbox" id="stardustToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <!-- Animaciones -->
+  <div class="control-group">
+    <h3>🎬 Animaciones</h3>
+    
+    <div class="control-item">
+      <label for="animationSpeed">
+        Velocidad de animaciones
+        <span class="value-display" id="animSpeedValue">Normal</span>
+      </label>
+      <input type="range" id="animationSpeed" min="0" max="2" value="1" step="0.5">
+    </div>
+
+    <div class="control-item">
+      <label>
+        Efectos hover
+        <label class="toggle-switch">
+          <input type="checkbox" id="hoverEffectsToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Paralaje al scroll
+        <label class="toggle-switch">
+          <input type="checkbox" id="parallaxToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+
+    <div class="control-item">
+      <label>
+        Partículas interactivas
+        <label class="toggle-switch">
+          <input type="checkbox" id="particlesToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <!-- Efectos de desenfoque -->
+  <div class="control-group">
+    <h3>🌫️ Desenfoques</h3>
+    
+    <div class="control-item">
+      <label for="blurIntensity">
+        Intensidad de blur
+        <span class="value-display" id="blurValue">16px</span>
+      </label>
+      <input type="range" id="blurIntensity" min="0" max="30" value="16" step="2">
+    </div>
+
+    <div class="control-item">
+      <label>
+        Backdrop filter (header/cards)
+        <label class="toggle-switch">
+          <input type="checkbox" id="backdropToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+    </div>
+  </div>
+
+  <!-- Transparencias -->
   <div class="control-group">
     <h3>🎨 Apariencia</h3>
     
+    <div class="control-item">
+      <label for="bgOpacity">
+        Opacidad de cards
+        <span class="value-display" id="opacityValue">70%</span>
+      </label>
+      <input type="range" id="bgOpacity" min="30" max="100" value="70" step="5">
+    </div>
+
+    <div class="control-item">
+      <label for="shadowIntensity">
+        Intensidad de sombras
+        <span class="value-display" id="shadowValue">100%</span>
+      </label>
+      <input type="range" id="shadowIntensity" min="0" max="150" value="100" step="25">
+    </div>
+
     <div class="control-item">
       <label for="accentColor">Color de acento</label>
       <div class="color-picker-grid">
@@ -106,41 +302,61 @@
         <button class="color-option" data-color="#38bdf8" style="background: #38bdf8;" aria-label="Azul cielo"></button>
       </div>
     </div>
+  </div>
 
+  <!-- Rendimiento -->
+  <div class="control-group">
+    <h3>⚙️ Optimización</h3>
+    
     <div class="control-item">
       <label>
-        Estrellas animadas
+        Modo bajo consumo
         <label class="toggle-switch">
-          <input type="checkbox" id="starsToggle" checked>
+          <input type="checkbox" id="batterySaverToggle">
           <span class="toggle-slider"></span>
         </label>
       </label>
     </div>
 
     <div class="control-item">
-      <label for="starsIntensity">
-        Intensidad de estrellas
-        <span class="value-display" id="starsValue">70</span>
+      <label>
+        GPU Acceleration
+        <label class="toggle-switch">
+          <input type="checkbox" id="gpuAccelToggle" checked>
+          <span class="toggle-slider"></span>
+        </label>
       </label>
-      <input type="range" id="starsIntensity" min="20" max="120" value="70" step="10">
     </div>
 
-    <div class="control-item">
-      <label for="bgOpacity">
-        Opacidad del fondo
-        <span class="value-display" id="opacityValue">70%</span>
-      </label>
-      <input type="range" id="bgOpacity" min="30" max="100" value="70" step="5">
+    <div class="control-item performance-info">
+      <div class="info-row">
+        <span>FPS estimado:</span>
+        <strong id="fpsEstimate">60 FPS</strong>
+      </div>
+      <div class="info-row">
+        <span>Elementos activos:</span>
+        <strong id="activeElements">-</strong>
+      </div>
     </div>
   </div>
 
+  <!-- Acciones -->
   <div class="control-group">
-    <h3>⚙️ Configuración</h3>
-    <button class="btn" id="resetSettings" style="width: 100%;">
+    <h3>🔧 Configuración</h3>
+    <button class="btn btn-primary" id="resetSettings">
       Restaurar valores por defecto
+    </button>
+    <button class="btn btn-secondary" id="exportSettings">
+      Exportar configuración
+    </button>
+    <button class="btn btn-secondary" id="importSettings">
+      Importar configuración
     </button>
   </div>
 </div>
+
+<!-- Overlay cuando el panel está abierto -->
+<div class="panel-overlay" id="panelOverlay"></div>
 
 <footer class="site-footer">
   <div class="container">
@@ -153,6 +369,7 @@
 </footer>
 
 <script defer src="scripts/main.js"></script>
+<script defer src="scripts/customization.js"></script>
 
 <script>
 (function() {
@@ -160,285 +377,13 @@
 
   // ==================== Configuración de optimización ====================
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  
-  // ==================== Settings Management (igual que transmisión) ====================
-  const defaultSettings = {
-    accentColor: '#72d6ff',
-    starsEnabled: true,
-    starsCount: 70,
-    bgOpacity: 70
-  };
-
-  function loadSettings() {
-    try {
-      const saved = localStorage.getItem('angulismoSettings');
-      return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
-    } catch (error) {
-      console.warn('Error loading settings:', error);
-      return defaultSettings;
-    }
-  }
-
-  function saveSettings(settings) {
-    try {
-      localStorage.setItem('angulismoSettings', JSON.stringify(settings));
-    } catch (error) {
-      console.warn('Error saving settings:', error);
-    }
-  }
-
-  let currentSettings = loadSettings();
-
-  // ==================== Starfield Generation (igual que transmisión) ====================
-  const starfield = document.getElementById('starfield');
-  let stars = [];
-
-  function generateStars(count) {
-    // Limpiar estrellas existentes (excepto galaxia y auroras)
-    const existingStars = starfield.querySelectorAll('.star, .shooting-star, .comet, .planet, .stardust');
-    existingStars.forEach(star => star.remove());
-    
-    stars = [];
-    const fragment = document.createDocumentFragment();
-
-    // Estrellas regulares con paralaje
-    const regularStars = Math.floor(count * 0.85);
-    const shootingStars = Math.ceil(count * 0.05);
-    const comets = 2;
-    const planets = 2;
-    const stardust = Math.floor(count * 0.3);
-
-    // Estrellas con 3 capas de paralaje
-    for (let i = 0; i < regularStars; i++) {
-      const star = document.createElement('div');
-      star.className = 'star';
-      
-      const layer = Math.floor(Math.random() * 3) + 1;
-      star.classList.add(`layer-${layer}`);
-      star.setAttribute('data-speed', layer * 0.2);
-      
-      const size = Math.random() * 2.5 + 0.5;
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      star.style.animationDelay = Math.random() * 4 + 's';
-      fragment.appendChild(star);
-      stars.push(star);
-    }
-
-    // Estrellas fugaces
-    for (let i = 0; i < shootingStars; i++) {
-      const shootingStar = document.createElement('div');
-      shootingStar.className = 'shooting-star';
-      shootingStar.style.top = Math.random() * 50 + '%';
-      shootingStar.style.left = (Math.random() * 50 + 50) + '%';
-      shootingStar.style.animationDelay = (Math.random() * 6 + 3) + 's';
-      shootingStar.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
-      fragment.appendChild(shootingStar);
-      stars.push(shootingStar);
-    }
-
-    // Cometas
-    for (let i = 0; i < comets; i++) {
-      const comet = document.createElement('div');
-      comet.className = 'comet';
-      comet.style.top = Math.random() * 30 + '%';
-      comet.style.left = (Math.random() * 30 + 70) + '%';
-      comet.style.animationDelay = (Math.random() * 12 + 6) + 's';
-      fragment.appendChild(comet);
-      stars.push(comet);
-    }
-
-    // Planetas
-    for (let i = 1; i <= planets; i++) {
-      const planet = document.createElement('div');
-      planet.className = `planet planet-${i}`;
-      fragment.appendChild(planet);
-      stars.push(planet);
-    }
-
-    // Polvo estelar
-    for (let i = 0; i < stardust; i++) {
-      const dust = document.createElement('div');
-      dust.className = 'stardust';
-      dust.style.left = Math.random() * 100 + '%';
-      dust.style.bottom = '0';
-      dust.style.animationDelay = Math.random() * 20 + 's';
-      dust.style.animationDuration = (Math.random() * 10 + 15) + 's';
-      fragment.appendChild(dust);
-      stars.push(dust);
-    }
-
-    starfield.appendChild(fragment);
-  }
-
-  // ==================== Apply Settings (igual que transmisión) ====================
-  function applySettings() {
-    // Accent color
-    document.documentElement.style.setProperty('--accent', currentSettings.accentColor);
-    document.documentElement.style.setProperty('--accent-glow', `${currentSettings.accentColor}80`);
-    
-    // Stars
-    starfield.style.display = currentSettings.starsEnabled ? 'block' : 'none';
-    if (currentSettings.starsEnabled && stars.length === 0) {
-      generateStars(currentSettings.starsCount);
-    } else if (currentSettings.starsEnabled) {
-      // Regenerar si cambió la cantidad
-      const currentCount = document.querySelectorAll('.star.layer-1, .star.layer-2, .star.layer-3').length;
-      if (Math.abs(currentCount - Math.floor(currentSettings.starsCount * 0.85)) > 10) {
-        generateStars(currentSettings.starsCount);
-      }
-    }
-    
-    // Background opacity
-    const opacity = currentSettings.bgOpacity / 100;
-    document.documentElement.style.setProperty('--bg-card', `rgba(20, 20, 40, ${opacity * 0.7})`);
-    document.documentElement.style.setProperty('--bg-card-header', `rgba(40, 40, 70, ${opacity * 0.85})`);
-  }
-
-  // ==================== Customization Panel (igual que transmisión) ====================
-  const customizeGear = document.getElementById('customizeGear');
-  const customizePanel = document.getElementById('customizePanel');
-  const closePanel = document.getElementById('closePanel');
-
-  if (customizeGear && customizePanel && closePanel) {
-    customizeGear.addEventListener('click', () => {
-      customizePanel.classList.add('active');
-    });
-
-    closePanel.addEventListener('click', () => {
-      customizePanel.classList.remove('active');
-    });
-
-    // Close panel on click outside
-    document.addEventListener('click', (e) => {
-      if (customizePanel.classList.contains('active') && 
-          !customizePanel.contains(e.target) && 
-          e.target !== customizeGear &&
-          !customizeGear.contains(e.target)) {
-        customizePanel.classList.remove('active');
-      }
-    });
-  }
-
-  // Close panel on escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && customizePanel && customizePanel.classList.contains('active')) {
-      customizePanel.classList.remove('active');
-    }
-  });
-
-  // ==================== Color Picker (igual que transmisión) ====================
-  const colorOptions = document.querySelectorAll('.color-option');
-  
-  colorOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      colorOptions.forEach(opt => opt.classList.remove('active'));
-      option.classList.add('active');
-      
-      const color = option.getAttribute('data-color');
-      currentSettings.accentColor = color;
-      applySettings();
-      saveSettings(currentSettings);
-    });
-  });
-
-  // ==================== Stars Toggle (igual que transmisión) ====================
-  const starsToggle = document.getElementById('starsToggle');
-  
-  if (starsToggle) {
-    starsToggle.addEventListener('change', () => {
-      currentSettings.starsEnabled = starsToggle.checked;
-      applySettings();
-      saveSettings(currentSettings);
-    });
-  }
-
-  // ==================== Stars Intensity (igual que transmisión) ====================
-  const starsIntensity = document.getElementById('starsIntensity');
-  const starsValue = document.getElementById('starsValue');
-  
-  if (starsIntensity && starsValue) {
-    starsIntensity.addEventListener('input', () => {
-      const value = parseInt(starsIntensity.value);
-      starsValue.textContent = value;
-      currentSettings.starsCount = value;
-      applySettings();
-      saveSettings(currentSettings);
-    });
-  }
-
-  // ==================== Background Opacity (igual que transmisión) ====================
-  const bgOpacity = document.getElementById('bgOpacity');
-  const opacityValue = document.getElementById('opacityValue');
-  
-  if (bgOpacity && opacityValue) {
-    bgOpacity.addEventListener('input', () => {
-      const value = parseInt(bgOpacity.value);
-      opacityValue.textContent = value + '%';
-      currentSettings.bgOpacity = value;
-      applySettings();
-      saveSettings(currentSettings);
-    });
-  }
-
-  // ==================== Reset Settings (igual que transmisión) ====================
-  const resetSettings = document.getElementById('resetSettings');
-  
-  if (resetSettings) {
-    resetSettings.addEventListener('click', () => {
-      if (confirm('¿Estás seguro de que deseas restaurar todos los ajustes?')) {
-        currentSettings = { ...defaultSettings };
-        saveSettings(currentSettings);
-        
-        // Update UI
-        if (starsToggle) starsToggle.checked = currentSettings.starsEnabled;
-        if (starsIntensity) starsIntensity.value = currentSettings.starsCount;
-        if (starsValue) starsValue.textContent = currentSettings.starsCount;
-        if (bgOpacity) bgOpacity.value = currentSettings.bgOpacity;
-        if (opacityValue) opacityValue.textContent = currentSettings.bgOpacity + '%';
-        
-        colorOptions.forEach(option => {
-          option.classList.toggle('active', option.getAttribute('data-color') === currentSettings.accentColor);
-        });
-        
-        applySettings();
-        
-        // Visual feedback
-        const originalText = resetSettings.textContent;
-        resetSettings.textContent = '✓ Restaurado';
-        resetSettings.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
-        setTimeout(() => {
-          resetSettings.textContent = originalText;
-          resetSettings.style.background = '';
-        }, 2000);
-      }
-    });
-  }
-
-  // ==================== Initialize UI with saved settings (igual que transmisión) ====================
-  function initializeUI() {
-    if (starsToggle) starsToggle.checked = currentSettings.starsEnabled;
-    if (starsIntensity) starsIntensity.value = currentSettings.starsCount;
-    if (starsValue) starsValue.textContent = currentSettings.starsCount;
-    if (bgOpacity) bgOpacity.value = currentSettings.bgOpacity;
-    if (opacityValue) opacityValue.textContent = currentSettings.bgOpacity + '%';
-    
-    colorOptions.forEach(option => {
-      if (option.getAttribute('data-color') === currentSettings.accentColor) {
-        option.classList.add('active');
-      }
-    });
-    
-    applySettings();
-  }
 
   // ==================== Efecto Paralaje ====================
   let scrollY = 0;
+  let parallaxEnabled = true;
+  
   window.addEventListener('scroll', function() {
+    if (!parallaxEnabled) return;
     scrollY = window.pageYOffset;
     requestAnimationFrame(updateParallax);
   }, { passive: true });
@@ -452,8 +397,13 @@
     });
   }
 
+  // Exponer control de paralaje
+  window.setParallaxEnabled = function(enabled) {
+    parallaxEnabled = enabled;
+  };
+
   // ==================== Header Stars ====================
-  const header = document.querySelector('header');
+  const header = document.querySelector('.site-header');
   const headerStarsFragment = document.createDocumentFragment();
   const numHeaderStars = isMobile ? 10 : 15;
 
@@ -476,7 +426,7 @@
 
   // ==================== Smooth Scroll Navigation ====================
   document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('nav a[href*="#"]');
+    const navLinks = document.querySelectorAll('.site-header nav a[href*="#"]');
     
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
@@ -518,8 +468,11 @@
   });
 
   // ==================== Polvo Estelar Interactivo ====================
+  let interactiveParticlesEnabled = true;
+  
   if (window.matchMedia('(hover: hover)').matches) {
     document.addEventListener('mousemove', function(e) {
+      if (!interactiveParticlesEnabled) return;
       if (Math.random() < 0.05) {
         const dust = document.createElement('div');
         dust.className = 'stardust';
@@ -535,9 +488,14 @@
     });
   }
 
+  window.setInteractiveParticles = function(enabled) {
+    interactiveParticlesEnabled = enabled;
+  };
+
   // ==================== Efecto Gravitacional ====================
   if (!isMobile && window.matchMedia('(hover: hover)').matches) {
     document.addEventListener('mousemove', function(e) {
+      if (!interactiveParticlesEnabled) return;
       const cards = document.querySelectorAll('.channel-card');
       
       cards.forEach(card => {
@@ -651,38 +609,6 @@
       clickCount = 0;
     }
   });
-
-  // ==================== Keyboard Shortcuts ====================
-  document.addEventListener('keydown', (e) => {
-    // Ctrl/Cmd+K for customize panel (igual que transmisión)
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault();
-      if (customizePanel) {
-        if (customizePanel.classList.contains('active')) {
-          customizePanel.classList.remove('active');
-        } else {
-          customizePanel.classList.add('active');
-        }
-      }
-    }
-  });
-
-  // ==================== Visibility API for battery saving ====================
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      stars.forEach(star => {
-        if (star.style) star.style.animationPlayState = 'paused';
-      });
-    } else {
-      stars.forEach(star => {
-        if (star.style) star.style.animationPlayState = 'running';
-      });
-    }
-  });
-
-  // ==================== Initialize ====================
-  generateStars(currentSettings.starsCount);
-  initializeUI();
 
   console.log('AngulismoTV - Inicio espacial optimizado 🚀');
   console.log('Atajo: Ctrl+K (personalizar) | Easter Egg: 7 clicks 🌟');
