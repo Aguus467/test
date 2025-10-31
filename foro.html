@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="Foro de la comunidad AngulismoTV">
+<meta name="theme-color" content="#0b0d1b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Foro - AngulismoTV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+
+<!-- CSS Espacial - mismo que tu index -->
+<link rel="stylesheet" href="css/espacial-base.css">
+<link rel="stylesheet" href="css/header-unificado.css">
+
+<style>
+/* Estilos específicos para el foro */
+.foro-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.foro-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.foro-title {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.foro-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+.foro-form {
+    background: rgba(114, 214, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(114, 214, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.foro-input, .foro-textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+.foro-input::placeholder, .foro-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.foro-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-foro {
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    color: #0b0d1b;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-foro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(114, 214, 255, 0.4);
+}
+
+.mensajes-container {
+    margin-top: 30px;
+}
+
+.mensaje-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    border-left: 4px solid #72d6ff;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.mensaje-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.mensaje-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.mensaje-nombre {
+    color: #72d6ff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.mensaje-fecha {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9em;
+}
+
+.mensaje-texto {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .foro-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    .foro-title {
+        font-size: 2rem;
+    }
+    
+    .foro-form {
+        padding: 20px;
+    }
+    
+    .mensaje-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div id="starfield">
+  <div class="spiral-galaxy"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+</div>
+
+<!-- HEADER UNIFICADO - mismo que tu index -->
+<header class="site-header">
+  <div class="logo-container">
+    <a href="index.html" aria-label="AngulismoTV - Inicio">
+      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+    </a>
+  </div>
+  
+  <nav role="navigation" aria-label="Navegación principal">
+    <a href="index.html#channelsSection">Canales</a>
+    <a href="index.html#agendaFrame">Agenda</a>
+    <a href="multicam.html">Pantalla Dividida</a>
+    <a href="https://nowevents.xyz">Entretenimiento</a>
+    <a href="https://nowstats.netlify.app">Estadísticas</a>
+    <a href="foro.html">Foro</a>
+  </nav>
+  
+  
+</header>
+
+<main class="foro-container">
+    <div class="foro-header">
+        <h1 class="foro-title">💬 Foro de la Comunidad</h1>
+        <p class="foro-subtitle">Compartí tu opinión, ideas y experiencias con otros fans</p>
+    </div>
+
+    <!-- Lista de mensajes -->
+    <div id="listaMensajes" class="mensajes-container">
+        <div class="loading">Cargando mensajes...</div>
+    </div>
+</main>
+
+    <!-- Formulario para nuevo mensaje -->
+    <div class="foro-form">
+        <div class="form-group">
+            <input type="text" id="foroNombre" placeholder="Tu nombre o apodo" maxlength="50" class="foro-input">
+        </div>
+        <div class="form-group">
+            <textarea id="foroMensaje" placeholder="¿Qué querés compartir con la comunidad?" rows="4" maxlength="500" class="foro-textarea"></textarea>
+        </div>
+        <button onclick="enviarMensaje()" class="btn-foro">Publicar Mensaje</button>
+    </div>
+
+
+
+<footer class="site-footer">
+  <div class="container">
+    <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
+    <small>
+      <a href="https://x.com/AngulismoTV">Twitter</a> | 
+      <a href="https://discord.gg/jEayDA7T">Discord</a>
+    </small>
+  </div>
+</footer>
+
+<script>
+// URL de tu Worker del foro - CORREGIDA (sin barra final)
+const FORO_API_URL = 'https://foro.angulismotv.workers.dev';
+
+// Cargar mensajes cuando la página se carga
+document.addEventListener('DOMContentLoaded', function() {
+    cargarMensajes();
+    
+    // Permitir enviar con Ctrl+Enter
+    document.getElementById('foroMensaje').addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'Enter') {
+            enviarMensaje();
+        }
+    });
+});
+
+// Función para cargar mensajes
+async function cargarMensajes() {
+    try {
+        console.log('Cargando mensajes desde:', FORO_API_URL + '/mensajes');
+        const response = await fetch(FORO_API_URL + '/mensajes');
+        
+        console.log('Respuesta GET:', response.status, response.statusText);
+        
+        if (!response.ok) {
+            throw new Error('Error en la respuesta: ' + response.status);
+        }
+        
+        const mensajes = await response.json();
+        console.log('Mensajes recibidos:', mensajes);
+        
+        const lista = document.getElementById('listaMensajes');
+        
+        if (!mensajes || mensajes.length === 0) {
+            lista.innerHTML = '<div class="empty-state">No hay mensajes todavía. ¡Sé el primero en publicar!</div>';
+            return;
+        }
+        
+        // Crear HTML de los mensajes
+        lista.innerHTML = mensajes.map(msg => `
+            <div class="mensaje-item">
+                <div class="mensaje-header">
+                    <span class="mensaje-nombre">${msg.nombre}</span>
+                    <span class="mensaje-fecha">${new Date(msg.fecha).toLocaleString('es-ES')}</span>
+                </div>
+                <div class="mensaje-texto">${msg.mensaje}</div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error cargando mensajes:', error);
+        document.getElementById('listaMensajes').innerHTML = 
+            '<div class="empty-state">Error al cargar los mensajes. Intenta recargar la página.</div>';
+    }
+}
+
+// Función para enviar mensaje
+async function enviarMensaje() {
+    const nombre = document.getElementById('foroNombre').value.trim();
+    const mensaje = document.getElementById('foroMensaje').value.trim();
+    
+    if (!nombre) {
+        alert('Por favor, ingresá tu nombre');
+        return;
+    }
+    
+    if (!mensaje) {
+        alert('Por favor, escribí un mensaje');
+        return;
+    }
+    
+    try {
+        console.log('Enviando mensaje:', { nombre, mensaje });
+        
+        const response = await fetch(FORO_API_URL + '/mensajes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nombre: nombre,
+                mensaje: mensaje
+            })
+        });
+        
+        console.log('Respuesta POST:', response.status, response.statusText);
+        
+        const resultado = await response.json();
+        console.log('Resultado JSON:', resultado);
+        
+        if (response.ok && resultado.success) {
+            // Limpiar formulario
+            document.getElementById('foroMensaje').value = '';
+            // Recargar mensajes
+            await cargarMensajes();
+         
+        } else {
+            alert('Error: ' + (resultado.error || 'Desconocido - ver consola'));
+        }
+    } catch (error) {
+        console.error('Error completo:', error);
+        alert('Error de conexión. Intenta nuevamente.');
+    }
+}
+
+// Recargar mensajes cada 30 segundos
+setInterval(cargarMensajes, 30000);
+</script>
+
+<script defer src="scripts/main.js"></script>
+</body>
+</html>
