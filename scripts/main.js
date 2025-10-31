@@ -167,12 +167,12 @@ function buildMatchCard(match) {
       const firstNetwork = networks[0];
       const link = firstNetwork.link || '';
       if (link) {
-        window.open(`transmision.html?event=${link}`, '_blank').focus();
+        window.top.location.href = `transmision.html?event=${link}`;
       } else {
         const params = new URLSearchParams();
         params.set('channel', firstNetwork.name);
         if (match.slug) params.set('match', match.slug);
-        window.open(`transmision.html?${params.toString()}`, '_blank').focus();
+        window.top.location.href = `transmision.html?${params.toString()}`;
       }
     }
   });
@@ -183,12 +183,12 @@ function buildMatchCard(match) {
       const firstNetwork = networks[0];
       const link = firstNetwork.link || '';
       if (link) {
-        window.open(`transmision.html?event=${link}`, '_blank').focus();
+        window.top.location.href = `transmision.html?event=${link}`;
       } else {
         const params = new URLSearchParams();
         params.set('channel', firstNetwork.name);
         if (match.slug) params.set('match', match.slug);
-        window.open(`transmision.html?${params.toString()}`, '_blank').focus();
+        window.top.location.href = `transmision.html?${params.toString()}`;
       }
     });
   }
@@ -211,13 +211,13 @@ function buildMatchCard(match) {
         event.stopPropagation();
         // Si el canal tiene un enlace codificado en base64, lo usamos
         if (net.link) {
-          window.open(`transmision.html?event=${net.link}`, '_blank').focus();
+          window.top.location.href = `transmision.html?event=${net.link}`;
         } else {
           // Si no, usamos el método tradicional
           const params = new URLSearchParams();
           params.set('channel', net.name);
           if (match.slug) params.set('match', match.slug);
-          window.open(`transmision.html?${params.toString()}`, '_blank').focus();
+          window.top.location.href = `transmision.html?${params.toString()}`;
         }
       });
       menu.appendChild(li);
@@ -328,7 +328,7 @@ async function renderChannels(channelData) {
     card.addEventListener('click', () => {
       const params = new URLSearchParams();
       params.set('channel', ch.name);
-      window.open(`transmision.html?${params.toString()}`, '_blank').focus();
+      window.top.location.href = `transmision.html?${params.toString()}`;
     });
     if (ch.show == true) {
       channelsGrid.appendChild(card);
@@ -617,4 +617,3 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
