@@ -1,4 +1,4 @@
-/* ==================== Variables CSS Optimizadas ==================== */
+/* ==================== Variables CSS Optimizadas Adaptativas ==================== */
 :root {
   --bg-dark: #0b0d1b;
   --bg-card: rgba(20, 20, 40, 0.7);
@@ -12,6 +12,23 @@
   --radius: 12px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --header-height: 70px;
+  --base-blur: 16px;
+}
+
+/* Optimización móvil */
+@media (hover: none) and (pointer: coarse) {
+  :root {
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --base-blur: 8px;
+  }
+}
+
+/* Optimización PC */
+@media (min-width: 1024px) and (hover: hover) {
+  :root {
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --base-blur: 20px;
+  }
 }
 
 /* ==================== Reset & Base Optimizado ==================== */
@@ -53,13 +70,18 @@ body::before {
     radial-gradient(circle at 80% 70%, rgba(255, 127, 255, 0.08) 0%, transparent 40%);
   pointer-events: none;
   z-index: 0;
-  animation: gradientShift 20s ease infinite;
-  will-change: opacity;
 }
 
-@keyframes gradientShift {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  body::before {
+    animation: gradientShift 20s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
 }
 
 /* ==================== Starfield Base Optimizado ==================== */
@@ -74,7 +96,7 @@ body::before {
   overflow: hidden;
 }
 
-/* Galaxia espiral optimizada */
+/* Galaxia espiral - animación solo en PC */
 .spiral-galaxy {
   position: absolute;
   top: 50%;
@@ -87,230 +109,243 @@ body::before {
     rgba(255, 127, 255, 0.03) 30%, 
     transparent 70%);
   border-radius: 50%;
-  animation: spiralRotate 120s linear infinite;
-  will-change: transform;
 }
 
-@keyframes spiralRotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* Auroras boreales optimizadas */
-.aurora {
-  position: absolute;
-  width: 100%;
-  height: 250px;
-  opacity: 0.12;
-  animation: auroraWave 25s ease-in-out infinite;
-  will-change: transform, opacity;
-  filter: blur(40px);
-}
-
-.aurora-1 {
-  top: 10%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(114, 214, 255, 0.3) 25%, 
-    rgba(255, 127, 255, 0.3) 50%, 
-    rgba(114, 214, 255, 0.3) 75%, 
-    transparent 100%);
-}
-
-.aurora-2 {
-  top: 30%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 127, 255, 0.2) 30%, 
-    rgba(114, 214, 255, 0.2) 60%, 
-    transparent 100%);
-  filter: blur(50px);
-  animation-delay: -12s;
-}
-
-@keyframes auroraWave {
-  0%, 100% { 
-    transform: translateX(-10%) skewX(-5deg); 
-    opacity: 0.08;
+@media (min-width: 1024px) and (hover: hover) {
+  .spiral-galaxy {
+    animation: spiralRotate 120s linear infinite;
   }
-  50% { 
-    transform: translateX(10%) skewX(5deg); 
-    opacity: 0.15;
+
+  @keyframes spiralRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
   }
 }
 
-/* Estrellas optimizadas */
+/* Auroras boreales - solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .aurora {
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    opacity: 0.12;
+    animation: auroraWave 25s ease-in-out infinite;
+    filter: blur(40px);
+  }
+
+  .aurora-1 {
+    top: 10%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(114, 214, 255, 0.3) 25%, 
+      rgba(255, 127, 255, 0.3) 50%, 
+      rgba(114, 214, 255, 0.3) 75%, 
+      transparent 100%);
+  }
+
+  .aurora-2 {
+    top: 30%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 127, 255, 0.2) 30%, 
+      rgba(114, 214, 255, 0.2) 60%, 
+      transparent 100%);
+    filter: blur(50px);
+    animation-delay: -12s;
+  }
+
+  @keyframes auroraWave {
+    0%, 100% { 
+      transform: translateX(-10%) skewX(-5deg); 
+      opacity: 0.08;
+    }
+    50% { 
+      transform: translateX(10%) skewX(5deg); 
+      opacity: 0.15;
+    }
+  }
+}
+
+/* Estrellas */
 .star {
   position: absolute;
   background: white;
   border-radius: 50%;
   opacity: 0.8;
-  animation: twinkle 4s ease-in-out infinite;
-  will-change: opacity;
+}
+
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .star {
+    animation: twinkle 4s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
 }
 
 .star.layer-1 { z-index: 1; }
 .star.layer-2 { z-index: 2; }
 .star.layer-3 { z-index: 3; }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* Shooting stars optimizadas */
-.shooting-star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: linear-gradient(90deg, #fff, transparent);
-  border-radius: 50%;
-  animation: shoot 4s ease-out infinite;
-  opacity: 0;
-  will-change: transform, opacity;
-}
-
-@keyframes shoot {
-  0% {
-    transform: translateX(0) translateY(0);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-300px) translateY(300px);
+/* Shooting stars - solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, transparent);
+    border-radius: 50%;
+    animation: shoot 4s ease-out infinite;
     opacity: 0;
   }
+
+  @keyframes shoot {
+    0% {
+      transform: translateX(0) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-300px) translateY(300px);
+      opacity: 0;
+    }
+  }
 }
 
-/* Cometas optimizados */
-.comet {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: radial-gradient(circle, #fff, rgba(114, 214, 255, 0.8));
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(114, 214, 255, 0.8);
-  animation: cometFly 10s ease-in infinite;
-  opacity: 0;
-  will-change: transform, opacity;
-}
-
-.comet::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 3px;
-  background: linear-gradient(90deg, 
-    rgba(114, 214, 255, 0.8), 
-    rgba(255, 127, 255, 0.4), 
-    transparent);
-  transform: translate(-10%, -50%);
-  border-radius: 50%;
-  filter: blur(2px);
-}
-
-@keyframes cometFly {
-  0% {
-    transform: translate(0, 0) rotate(-45deg);
+/* Cometas - solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .comet {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #fff, rgba(114, 214, 255, 0.8));
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(114, 214, 255, 0.8);
+    animation: cometFly 10s ease-in infinite;
     opacity: 0;
   }
-  10% {
-    opacity: 1;
+
+  .comet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      rgba(114, 214, 255, 0.8), 
+      rgba(255, 127, 255, 0.4), 
+      transparent);
+    transform: translate(-10%, -50%);
+    border-radius: 50%;
+    filter: blur(2px);
   }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-700px, 700px) rotate(-45deg);
-    opacity: 0;
-  }
-}
 
-/* Planetas optimizados */
-.planet {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: planetFloat 35s ease-in-out infinite;
-  will-change: transform;
-}
-
-.planet-1 {
-  width: 70px;
-  height: 70px;
-  top: 15%;
-  right: 10%;
-  background: radial-gradient(circle at 30% 30%, 
-    rgba(255, 127, 255, 0.3), 
-    rgba(114, 214, 255, 0.15));
-  box-shadow: 
-    inset -10px -10px 25px rgba(0, 0, 0, 0.3),
-    0 0 35px rgba(255, 127, 255, 0.2);
-}
-
-.planet-2 {
-  width: 100px;
-  height: 100px;
-  bottom: 20%;
-  left: 8%;
-  background: radial-gradient(circle at 35% 35%, 
-    rgba(114, 214, 255, 0.3), 
-    rgba(255, 127, 255, 0.15));
-  box-shadow: 
-    inset -15px -15px 35px rgba(0, 0, 0, 0.3),
-    0 0 45px rgba(114, 214, 255, 0.2);
-  animation-delay: -17s;
-}
-
-.planet-3 {
-  width: 60px;
-  height: 60px;
-  top: 60%;
-  right: 15%;
-  background: radial-gradient(circle at 40% 40%, 
-    rgba(255, 200, 100, 0.3), 
-    rgba(255, 127, 255, 0.2));
-  box-shadow: 
-    inset -8px -8px 20px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(255, 200, 100, 0.2);
-  animation-delay: -22s;
-}
-
-@keyframes planetFloat {
-  0%, 100% { 
-    transform: translateY(0) rotate(0deg); 
-  }
-  50% { 
-    transform: translateY(-25px) rotate(180deg); 
+  @keyframes cometFly {
+    0% {
+      transform: translate(0, 0) rotate(-45deg);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+      transform: translate(-700px, 700px) rotate(-45deg);
+      opacity: 0;
+    }
   }
 }
 
-/* Polvo estelar optimizado */
-.stardust {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  animation: dustFloat 20s linear infinite;
-  will-change: transform, opacity;
-}
-
-@keyframes dustFloat {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
+/* Planetas - ocultos en móviles */
+@media (min-width: 768px) {
+  .planet {
+    position: absolute;
+    border-radius: 50%;
     opacity: 0.5;
   }
-  90% {
-    opacity: 0.5;
+
+  .planet-1 {
+    width: 70px;
+    height: 70px;
+    top: 15%;
+    right: 10%;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 127, 255, 0.3), 
+      rgba(114, 214, 255, 0.15));
+    box-shadow: 
+      inset -10px -10px 25px rgba(0, 0, 0, 0.3),
+      0 0 35px rgba(255, 127, 255, 0.2);
   }
-  100% {
-    transform: translateY(-100vh) translateX(50px);
-    opacity: 0;
+
+  .planet-2 {
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    left: 8%;
+    background: radial-gradient(circle at 35% 35%, 
+      rgba(114, 214, 255, 0.3), 
+      rgba(255, 127, 255, 0.15));
+    box-shadow: 
+      inset -15px -15px 35px rgba(0, 0, 0, 0.3),
+      0 0 45px rgba(114, 214, 255, 0.2);
+  }
+
+  .planet-3 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    right: 15%;
+    background: radial-gradient(circle at 40% 40%, 
+      rgba(255, 200, 100, 0.3), 
+      rgba(255, 127, 255, 0.2));
+    box-shadow: 
+      inset -8px -8px 20px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(255, 200, 100, 0.2);
+  }
+}
+
+/* Animación de planetas solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .planet {
+    animation: planetFloat 35s ease-in-out infinite;
+  }
+
+  .planet-2 { animation-delay: -17s; }
+  .planet-3 { animation-delay: -22s; }
+
+  @keyframes planetFloat {
+    0%, 100% { 
+      transform: translateY(0) rotate(0deg); 
+    }
+    50% { 
+      transform: translateY(-25px) rotate(180deg); 
+    }
+  }
+}
+
+/* Polvo estelar - solo PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .stardust {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: dustFloat 20s linear infinite;
+  }
+
+  @keyframes dustFloat {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% {
+      transform: translateY(-100vh) translateX(50px);
+      opacity: 0;
+    }
   }
 }
 
@@ -320,8 +355,8 @@ header {
     radial-gradient(ellipse at 20% 50%, rgba(114, 214, 255, 0.15), transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(255, 127, 255, 0.15), transparent 50%),
     rgba(10, 10, 30, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(var(--base-blur));
+  -webkit-backdrop-filter: blur(var(--base-blur));
   padding: 12px 5%;
   display: flex;
   justify-content: space-between;
@@ -329,40 +364,56 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 
-    0 0 30px rgba(114, 214, 255, 0.3), 
-    0 8px 40px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(114, 214, 255, 0.2);
   min-height: var(--header-height);
   position: relative;
   overflow: hidden;
   gap: 1.5rem;
+  transform: translateZ(0);
 }
 
-/* Nebulosas en header optimizadas */
-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: 
-    radial-gradient(circle at 30% 50%, rgba(114, 214, 255, 0.2), transparent 30%),
-    radial-gradient(circle at 70% 50%, rgba(255, 127, 255, 0.2), transparent 30%);
-  animation: nebulaFloat 15s ease-in-out infinite;
-  will-change: transform;
-  pointer-events: none;
+/* Sombras adaptativas para header */
+@media (hover: none) and (pointer: coarse) {
+  header {
+    box-shadow: 
+      0 0 20px rgba(114, 214, 255, 0.2), 
+      0 4px 20px rgba(0, 0, 0, 0.5);
+  }
 }
 
-@keyframes nebulaFloat {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(-10px, 10px) rotate(120deg); }
-  66% { transform: translate(10px, -10px) rotate(240deg); }
+@media (min-width: 1024px) and (hover: hover) {
+  header {
+    box-shadow: 
+      0 0 30px rgba(114, 214, 255, 0.3), 
+      0 8px 40px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
 }
 
-/* Línea brillante superior optimizada */
+/* Nebulosas en header - solo PC */
+@media (min-width: 1024px) and (hover: hover) {
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+      radial-gradient(circle at 30% 50%, rgba(114, 214, 255, 0.2), transparent 30%),
+      radial-gradient(circle at 70% 50%, rgba(255, 127, 255, 0.2), transparent 30%);
+    animation: nebulaFloat 15s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes nebulaFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(-10px, 10px) rotate(120deg); }
+    66% { transform: translate(10px, -10px) rotate(240deg); }
+  }
+}
+
+/* Línea brillante superior */
 header::after {
   content: '';
   position: absolute;
@@ -376,30 +427,37 @@ header::after {
     var(--accent-purple) 50%,
     var(--accent) 80%, 
     transparent);
-  animation: headerGlow 6s ease-in-out infinite;
-  will-change: opacity;
   box-shadow: 0 0 20px rgba(114, 214, 255, 0.5);
 }
 
-@keyframes headerGlow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+/* Animación solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  header::after {
+    animation: headerGlow 6s ease-in-out infinite;
+  }
+
+  @keyframes headerGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
 }
 
-/* Estrellas en header optimizadas */
-.header-star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: headerTwinkle 3s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
+/* Estrellas en header - solo PC */
+@media (min-width: 1024px) and (hover: hover) {
+  .header-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: headerTwinkle 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-@keyframes headerTwinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.2); }
+  @keyframes headerTwinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.2); }
+  }
 }
 
 /* Logo y navegación optimizados */
@@ -417,13 +475,20 @@ header::after {
   cursor: pointer;
   filter: drop-shadow(0 0 12px rgba(114, 214, 255, 0.5));
   touch-action: manipulation;
-  will-change: transform;
   position: relative;
   z-index: 2;
+  transform: translateZ(0);
 }
 
 .logo:active {
-  transform: scale(0.98);
+  transform: scale(0.98) translateZ(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover {
+    transform: scale(1.05) rotate(2deg) translateZ(0);
+    filter: drop-shadow(0 0 16px var(--accent));
+  }
 }
 
 nav {
@@ -458,30 +523,20 @@ nav a {
   touch-action: manipulation;
   -webkit-user-select: none;
   user-select: none;
-  will-change: transform;
+  transform: translateZ(0);
 }
 
-nav a::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
-  transition: left 0.6s ease;
-}
-
-nav a:active {
-  transform: scale(0.95);
-  background: rgba(114, 214, 255, 0.2);
-  color: var(--accent-purple);
-}
-
-@media (hover: hover) {
-  .logo:hover {
-    transform: scale(1.05) rotate(2deg);
-    filter: drop-shadow(0 0 16px var(--accent));
+/* Efecto de brillo solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(114, 214, 255, 0.3), transparent);
+    transition: left 0.6s ease;
   }
 
   nav a:hover::before {
@@ -492,16 +547,26 @@ nav a:active {
   nav a:focus {
     background: rgba(114, 214, 255, 0.2);
     color: var(--accent-purple);
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
     box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
     border-color: var(--accent);
+  }
+}
+
+/* Estados móviles simplificados */
+@media (hover: none) and (pointer: coarse) {
+  nav a:active {
+    transform: scale(0.95) translateZ(0);
+    background: rgba(114, 214, 255, 0.2);
+    color: var(--accent-purple);
   }
 }
 
 /* ==================== Footer Optimizado ==================== */
 footer.site-footer {
   background: rgba(10, 10, 30, 0.95);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--base-blur));
+  -webkit-backdrop-filter: blur(var(--base-blur));
   text-align: center;
   padding: 2rem 0;
   border-top: 1px solid rgba(114, 214, 255, 0.2);
@@ -553,7 +618,7 @@ footer.site-footer a::after {
   transition: width 0.3s ease;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   footer.site-footer a:hover::after {
     width: 100%;
   }
@@ -562,6 +627,114 @@ footer.site-footer a::after {
     color: var(--accent-purple);
     text-shadow: 0 0 8px rgba(114, 214, 255, 0.5);
   }
+}
+
+/* ==================== Scrollbar Espacial (Optimizado) ==================== */
+
+/* Scrollbar completa solo en PC */
+@media (min-width: 1024px) and (hover: hover) {
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: 
+      linear-gradient(180deg, 
+        rgba(10, 15, 30, 0.9) 0%,
+        rgba(20, 25, 50, 0.7) 50%,
+        rgba(10, 15, 30, 0.9) 100%);
+    border-radius: 12px;
+    margin: 2px;
+    border: 1px solid rgba(114, 214, 255, 0.1);
+    box-shadow: 
+      inset 0 0 10px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(114, 214, 255, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: 
+      linear-gradient(135deg, 
+        rgba(114, 214, 255, 0.9) 0%,
+        rgba(114, 214, 255, 0.7) 30%,
+        rgba(255, 127, 255, 0.7) 70%,
+        rgba(255, 127, 255, 0.9) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 0 15px rgba(114, 214, 255, 0.4),
+      inset 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+    animation: scrollbarShine 3s infinite;
+  }
+
+  @keyframes scrollbarShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: 
+      linear-gradient(135deg, 
+        rgba(114, 214, 255, 1) 0%,
+        rgba(114, 214, 255, 0.8) 30%,
+        rgba(255, 127, 255, 0.8) 70%,
+        rgba(255, 127, 255, 1) 100%);
+    box-shadow: 
+      0 0 20px rgba(114, 214, 255, 0.6),
+      inset 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: 
+      linear-gradient(135deg, 
+        rgba(114, 214, 255, 0.8) 0%,
+        rgba(114, 214, 255, 0.6) 30%,
+        rgba(255, 127, 255, 0.6) 70%,
+        rgba(255, 127, 255, 0.8) 100%);
+  }
+}
+
+/* Scrollbar simplificada en móviles */
+@media (hover: none) and (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(10, 15, 30, 0.8);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(114, 214, 255, 0.6);
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: rgba(114, 214, 255, 0.8);
+  }
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: 
+    rgba(114, 214, 255, 0.8) 
+    rgba(10, 15, 30, 0.9);
 }
 
 /* ==================== Responsive Optimizado ==================== */
@@ -621,10 +794,6 @@ footer.site-footer a::after {
   .logo {
     height: 40px;
   }
-  
-  .planet {
-    display: none; /* Ocultar planetas en móviles para mejor rendimiento */
-  }
 }
 
 /* ==================== Accessibility & Performance ==================== */
@@ -680,94 +849,415 @@ button:focus-visible {
   }
 }
 
-/* ==================== SCROLLBAR ESPACIAL ==================== */
-
-::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+/* ==================== Optimización Android Específica ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Desactivar backdrop-filter si no es soportado */
+  @supports not (backdrop-filter: blur(8px)) {
+    header,
+    footer.site-footer {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(10, 10, 30, 0.98);
+    }
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: 
-    linear-gradient(180deg, 
-      rgba(10, 15, 30, 0.9) 0%,
-      rgba(20, 25, 50, 0.7) 50%,
-      rgba(10, 15, 30, 0.9) 100%);
-  border-radius: 12px;
-  margin: 2px;
-  border: 1px solid rgba(114, 214, 255, 0.1);
-  box-shadow: 
-    inset 0 0 10px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(114, 214, 255, 0.1);
+/* ==================== Hardware Acceleration ==================== */
+header,
+.logo,
+nav a,
+footer.site-footer {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
-::-webkit-scrollbar-thumb {
-  background: 
-    linear-gradient(135deg, 
-      rgba(114, 214, 255, 0.9) 0%,
-      rgba(114, 214, 255, 0.7) 30%,
-      rgba(255, 127, 255, 0.7) 70%,
-      rgba(255, 127, 255, 0.9) 100%);
-  border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+/* ==================== Optimización de Performance Final ==================== */
+@media (hover: none) and (pointer: coarse) and (max-width: 768px) {
+  /* Ocultar elementos decorativos pesados en móviles */
+  .spiral-galaxy,
+  .aurora,
+  .comet,
+  .shooting-star,
+  .planet,
+  .stardust,
+  .header-star {
+    display: none;
+  }
+}
+
+/* Optimización para conexiones lentas */
+@media (prefers-reduced-data: reduce) {
+  /* Deshabilitar animaciones costosas */
+  .spiral-galaxy,
+  .aurora,
+  .comet,
+  .shooting-star,
+  .stardust,
+  header::before,
+  header::after,
+  body::before {
+    animation: none !important;
+  }
+
+  /* Simplificar sombras */
+  header,
+  footer.site-footer {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Simplificar gradientes */
+  body::before {
+    background: radial-gradient(ellipse at top, #1a1f3b 0%, #000014 100%);
+  }
+}
+
+/* ==================== Will-Change Inteligente ==================== */
+@media (hover: hover) and (pointer: fine) {
+  /* Solo activar will-change durante interacción en PC */
+  .logo:hover,
+  nav a:hover {
+    will-change: transform;
+  }
+
+  .logo:not(:hover),
+  nav a:not(:hover) {
+    will-change: auto;
+  }
+}
+
+/* ==================== Smooth Scrolling Adaptativo ==================== */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==================== Optimización de Fuentes ==================== */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* ==================== Fix Safari iOS ==================== */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* ==================== Prevenir Overscroll ==================== */
+body {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: none;
+}
+
+/* ==================== Fix Notch en Móviles ==================== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  header {
+    padding-top: calc(env(safe-area-inset-top) + 12px);
+  }
+}
+
+/* ==================== Clases de Utilidad para Personalización ==================== */
+
+/* Alto contraste */
+body.high-contrast {
+  --text-secondary: #ffffff;
+  --accent: #ffffff;
+  --accent-purple: #ff00ff;
+  --border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.high-contrast nav a {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid var(--accent);
+}
+
+/* Modo compacto */
+body.compact-mode header {
+  min-height: 50px;
+  padding: 8px 5%;
+}
+
+body.compact-mode .logo {
+  height: 35px;
+}
+
+body.compact-mode nav a {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+}
+
+/* Header oculto */
+body header.hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* Header minimalista */
+body header.minimal {
+  background: rgba(10, 10, 30, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+body header.minimal::before,
+body header.minimal::after {
+  display: none;
+}
+
+/* Sin efectos hover */
+body.hide-hover-effects nav a:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+body.hide-hover-effects .logo:hover {
+  transform: none !important;
+  filter: drop-shadow(0 0 12px rgba(114, 214, 255, 0.5)) !important;
+}
+
+/* Modo ahorro de energía */
+body.power-saving * {
+  animation-play-state: paused !important;
+  transition: none !important;
+}
+
+body.power-saving #starfield {
+  display: none;
+}
+
+/* Reducir animaciones */
+body.reduce-animations * {
+  animation-duration: 0.1s !important;
+  transition-duration: 0.1s !important;
+}
+
+/* Hardware acceleration */
+body.hw-accel * {
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* Modo daltónico */
+body.colorblind-mode {
+  filter: grayscale(0.3) contrast(1.2);
+}
+
+/* Contraste de texto aumentado */
+body.text-contrast {
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Resaltar enlaces */
+body.highlight-links a:focus,
+body.highlight-links a:hover {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Navegación por teclado mejorada */
+body.keyboard-nav *:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Filtro CRT */
+body.crt-filter {
   position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 0 15px rgba(114, 214, 255, 0.4),
-    inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-::-webkit-scrollbar-thumb::before {
+body.crt-filter::after {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent);
-  animation: scrollbarShine 3s infinite;
-}
-
-@keyframes scrollbarShine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-::-webkit-scrollbar-thumb:hover {
   background: 
-    linear-gradient(135deg, 
-      rgba(114, 214, 255, 1) 0%,
-      rgba(114, 214, 255, 0.8) 30%,
-      rgba(255, 127, 255, 0.8) 70%,
-      rgba(255, 127, 255, 1) 100%);
-  box-shadow: 
-    0 0 20px rgba(114, 214, 255, 0.6),
-    inset 0 0 15px rgba(255, 255, 255, 0.3);
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+  z-index: 9998;
+  animation: flicker 0.15s infinite;
 }
 
-::-webkit-scrollbar-thumb:active {
-  background: 
-    linear-gradient(135deg, 
-      rgba(114, 214, 255, 0.8) 0%,
-      rgba(114, 214, 255, 0.6) 30%,
-      rgba(255, 127, 255, 0.6) 70%,
-      rgba(255, 127, 255, 0.8) 100%);
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 0.99; }
+  100% { opacity: 0.98; }
 }
 
-/* Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: 
-    rgba(114, 214, 255, 0.8) 
-    rgba(10, 15, 30, 0.9);
+/* Parallax habilitado */
+body.parallax-enabled .star[data-speed] {
+  transition: transform 0.1s ease-out;
 }
 
-body {
-  scrollbar-width: thin;
-  scrollbar-color: 
-    rgba(114, 214, 255, 0.8) 
-    rgba(10, 15, 30, 0.9);
+/* ==================== Optimización Final ==================== */
+
+/* Reducir complejidad visual en móviles de gama baja */
+@media (hover: none) and (pointer: coarse) and (max-width: 768px) {
+  /* Simplificar header */
+  header {
+    background: rgba(10, 10, 30, 0.95);
+  }
+
+  header::before,
+  header::after {
+    display: none;
+  }
+
+  /* Simplificar footer */
+  footer.site-footer {
+    background: rgba(10, 10, 30, 0.95);
+  }
+
+  footer.site-footer::before {
+    display: none;
+  }
+
+  /* Simplificar gradientes del body */
+  body::before {
+    background: radial-gradient(ellipse at top, #1a1f3b 0%, #000014 100%);
+    animation: none;
+  }
 }
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Print styles */
+@media print {
+  #starfield,
+  header::before,
+  header::after,
+  footer.site-footer::before {
+    display: none !important;
+  }
+
+  header {
+    position: static;
+    background: white;
+    color: black;
+    box-shadow: none;
+  }
+
+  nav a {
+    background: white;
+    color: black;
+    border: 1px solid black;
+  }
+}
+
+/* ==================== Debug Mode (Opcional) ==================== */
+body.debug-mode * {
+  outline: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+body.debug-mode *:hover {
+  outline: 2px solid rgba(255, 0, 0, 0.5);
+}
+
+/* ==================== Performance Monitoring ==================== */
+/* Indicador visual si hay lag (experimental) */
+@supports (content-visibility: auto) {
+  #starfield {
+    content-visibility: auto;
+    contain-intrinsic-size: 100vw 100vh;
+  }
+}
+
+/* ==================== Landscape en Móviles ==================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  header {
+    min-height: 60px;
+    padding: 8px 4%;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  nav a {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ==================== Muy Pantallas Pequeñas ==================== */
+@media (max-width: 360px) {
+  :root {
+    --header-height: 100px;
+  }
+
+  header {
+    gap: 0.5rem;
+  }
+
+  nav {
+    gap: 4px;
+  }
+
+  nav a {
+    font-size: 0.7rem;
+    padding: 5px 7px;
+    min-height: 40px;
+  }
+
+  .logo {
+    height: 35px;
+  }
+
+  footer.site-footer {
+    padding: 1.5rem 0;
+  }
+
+  footer.site-footer small {
+    font-size: 0.75rem;
+  }
+}
+
+/* ==================== Pantallas Grandes ==================== */
+@media (min-width: 1920px) {
+  header {
+    padding: 16px 8%;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  nav a {
+    font-size: 1rem;
+    padding: 12px 18px;
+  }
+
+  .spiral-galaxy {
+    width: min(900px, 90vw);
+    height: min(900px, 90vw);
+  }
+}
+
+/* ==================== Fin de Optimizaciones ==================== */
