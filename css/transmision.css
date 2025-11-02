@@ -674,12 +674,14 @@ select,
   }
 }
 
-/* ==================== Player ==================== */
+/* ==================== Player (CORREGIDO - SIN SCROLL) ==================== */
 .player-card {
   grid-column: 1;
+  overflow: hidden !important;
 }
 
-iframe {
+iframe,
+#playerFrame {
   width: 100%;
   flex-grow: 1;
   border: none;
@@ -687,6 +689,19 @@ iframe {
   background: rgba(0, 0, 0, 0.6);
   position: relative;
   transform: translateZ(0);
+  
+  /* 🔥 ESTAS LÍNEAS ELIMINAN EL SCROLL VISIBLE */
+  overflow: hidden !important;
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE/Edge */
+}
+
+/* 🔥 Oculta scrollbars en navegadores WebKit (Chrome, Edge, Safari) */
+iframe::-webkit-scrollbar,
+#playerFrame::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Loading state - animación solo en PC */
