@@ -17,19 +17,54 @@ async function fetchJSON(url) {
   return res.json();
 }
 
-function setTwitchChat() {
+// 🔥 FUNCIÓN CORREGIDA - Ahora acepta el nombre del canal de Twitch
+function setTwitchChat(twitchChannel = 'AngulismoTV') {
   const chat = document.getElementById('twitchChat');
+  if (!chat) return;
+  
   const parents = ['localhost', '127.0.0.1', 'angulismotv.pages.dev', location.hostname].filter(Boolean);
   const params = new URLSearchParams();
   parents.forEach(p => params.append('parent', p));
-  // Tema oscuro por defecto
   params.set('darkpopout', '');
-  chat.src = `https://www.twitch.tv/embed/AngulismoTV/chat?${params.toString()}`;
+  
+  chat.src = `https://www.twitch.tv/embed/${twitchChannel}/chat?${params.toString()}`;
+  console.log('💬 Chat actualizado:', twitchChannel);
+}
+
+// 🔥 NUEVA FUNCIÓN - Extrae el canal de Twitch de una URL de iframe
+function extractTwitchChannel(iframeUrl) {
+  if (!iframeUrl) return null;
+  
+  try {
+    // Patrones comunes de URLs de Twitch
+    const patterns = [
+      /twitch\.tv\/([^\/\?]+)/i,
+      /twitch\.tv\/embed\/([^\/\?]+)/i,
+      /player\.twitch\.tv\/\?channel=([^&]+)/i
+    ];
+    
+    for (const pattern of patterns) {
+      const match = iframeUrl.match(pattern);
+      if (match && match[1]) {
+        return match[1];
+      }
+    }
+  } catch (e) {
+    console.error('Error extrayendo canal de Twitch:', e);
+  }
+  
+  return null;
 }
 
 function updateIframe(iframeUrl) {
   const frame = document.getElementById('playerFrame');
   frame.src = iframeUrl;
+  
+  // 🔥 ACTUALIZAR CHAT AUTOMÁTICAMENTE
+  const twitchChannel = extractTwitchChannel(iframeUrl);
+  if (twitchChannel) {
+    setTwitchChat(twitchChannel);
+  }
 }
 
 function populateOptions(channel, selectedIndex) {
@@ -38,7 +73,7 @@ function populateOptions(channel, selectedIndex) {
   channel.options.forEach((opt, idx) => {
     const o = document.createElement('option');
     o.value = String(idx);
-    o.textContent = opt.name || `OpciÃ³n ${idx + 1}`;
+    o.textContent = opt.name || `Opción ${idx + 1}`;
     if (idx === selectedIndex) o.selected = true;
     select.appendChild(o);
   });
@@ -59,7 +94,9 @@ function syncUrl(selectedIndex) {
 }
 
 async function init() {
+  // Inicializar chat por defecto
   setTwitchChat();
+  
   const channelName = getSearchParam('channel');
   const matchId = getSearchParam('match');
   const optParam = getSearchParam('opt');
@@ -98,12 +135,11 @@ async function init() {
         optionControls.style.display = 'none';
       }
       
-      // Actualizar el iframe y terminar
+      // Actualizar el iframe y el chat
       updateIframe(iframeUrl);
       return;
     } catch (e) {
       console.error('Error decodificando enlace:', e);
-      // Si hay un error, continuamos con el flujo normal
     }
   }
   
@@ -111,22 +147,18 @@ async function init() {
   if (matchId) {
     console.log('Buscando evento con ID:', matchId);
     try {
-      // Buscar en todas las fuentes de eventos
       const [eventosData, streamTPData, la14HDData] = await Promise.all([
         fetchJSON(EVENTOS_JSON).catch(() => []),
         fetchJSON(STREAMTP_EVENTOS).catch(() => []),
         fetchJSON(LA14HD_EVENTOS).catch(() => [])
       ]);
       
-      // Buscar en eventos locales
       let evento = eventosData.find(ev => `manual-${ev.id}` === matchId);
       
-      // Si no lo encontramos, buscar en streamTP
       if (!evento) {
         evento = streamTPData.find(ev => `streamtp-${ev.id}` === matchId);
       }
       
-      // Si no lo encontramos, buscar en la14HD
       if (!evento) {
         evento = la14HDData.find(ev => `la14hd-${ev.id}` === matchId);
       }
@@ -136,13 +168,10 @@ async function init() {
         matchHasCustomChannels = true;
         availableChannels = evento.canales;
         
-        // Si hay un canal específico solicitado, lo buscamos
         if (channelName) {
           channel = evento.canales.find(c => (c.name || '').toLowerCase() === channelName.toLowerCase());
         }
         
-        // Si no encontramos el canal solicitado o no se especificó ninguno,
-        // redirigimos al primer canal disponible
         if (!channel) {
           const firstChannel = evento.canales[0];
           const params = new URLSearchParams(location.search);
@@ -156,8 +185,6 @@ async function init() {
     }
   }
   
-  // Si no encontramos el canal en el partido y el partido no tiene canales personalizados,
-  // buscamos en la lista general
   if (!channel && !matchHasCustomChannels) {
     if (!channelName) {
       alert('Falta el parámetro "channel" o "event" en la URL');
@@ -176,7 +203,7 @@ async function init() {
   }
   
   if (!channel) {
-    window.location.href = '/'
+    window.location.href = '/';
     return;
   }
 
@@ -184,7 +211,6 @@ async function init() {
   const channelSelector = document.getElementById('channelSelector');
   if (channelSelector) {
     channelSelector.innerHTML = '';
-    // Solo mostramos los canales disponibles para este partido o los canales generales
     availableChannels.forEach(ch => {
       const option = document.createElement('option');
       option.value = ch.name;
@@ -195,7 +221,6 @@ async function init() {
       channelSelector.appendChild(option);
     });
 
-    // Añadir evento para cambiar de canal
     channelSelector.addEventListener('change', (e) => {
       const params = new URLSearchParams(location.search);
       params.set('channel', e.target.value);
@@ -203,7 +228,6 @@ async function init() {
     });
   }
 
-  // Solo mostrar el encabezado del canal si no estamos usando un enlace directo
   if (!getSearchParam('event')) {
     setChannelHeader(channel);
   }
@@ -226,4 +250,3 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
