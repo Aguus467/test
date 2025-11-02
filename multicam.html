@@ -16,23 +16,37 @@
   <link rel="stylesheet" href="css/customization-panel.css">
   
   <style>
-    /* Ajuste de reproductores multicámara para que se adapten al contenido */
+    /* 🔥 Ajuste de reproductores multicámara SIN SCROLL */
     .stream-iframe {
       width: 100%;
       height: 100%;
       aspect-ratio: 16 / 9;
       border: none;
       background: #000;
+      
+      /* Eliminar scroll del iframe */
+      overflow: hidden !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+    }
+    
+    /* Ocultar scrollbar en WebKit */
+    .stream-iframe::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
     }
     
     .stream-item {
       display: flex;
       flex-direction: column;
+      overflow: hidden !important;
     }
     
     .stream-item.active {
       display: flex;
       flex-direction: column;
+      overflow: hidden !important;
     }
     
     @media (max-width: 768px) {
@@ -327,7 +341,7 @@
     const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
     const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
     const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
-    const CANALES_JSON = 'https://json.angulismotv.workers.dev/channels'; // CORREGIDO
+    const CANALES_JSON = 'https://json.angulismotv.workers.dev/channels';
 
     let agendaStreams = [];
     let channelsData = [];
@@ -484,7 +498,7 @@
       });
     }
 
-    // ==================== Load Agenda Data - CORREGIDO ====================
+    // ==================== Load Agenda Data ====================
     async function loadAgendaData() {
       try {
         const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw, canalesRaw] = await Promise.all([
@@ -554,7 +568,7 @@
       }
     }
 
-    // ==================== Load Stream Options - ACTUALIZADO ====================
+    // ==================== Load Stream Options ====================
     function loadStreamOptions() {
       // Limpiar todos los dropdowns
       for (let i = 1; i <= 4; i++) {
@@ -833,7 +847,7 @@
             </div>
             <div class="stream-actions"></div>
           </div>
-          <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
+          <iframe class="stream-iframe" src="${playerUrl}" scrolling="no" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
         `;
       } else {
         streamElement.innerHTML = `
@@ -853,7 +867,7 @@
       grid.appendChild(streamElement);
     }
 
-    // ==================== Select Stream - ACTUALIZADO ====================
+    // ==================== Select Stream ====================
     function selectStream(slot, stream) {
       console.log('Seleccionando stream para slot', slot, ':', stream);
       
@@ -883,7 +897,7 @@
               </div>
               <div class="stream-actions"></div>
             </div>
-            <iframe class="stream-iframe" src="${playerUrl}" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
+            <iframe class="stream-iframe" src="${playerUrl}" scrolling="no" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
           `;
         } else {
           existingElement.classList.remove('active');

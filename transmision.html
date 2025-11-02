@@ -27,6 +27,7 @@
   .player-card {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   
   #playerFrame {
@@ -36,12 +37,14 @@
     border: none;
     background: #000;
     flex: 1;
+    overflow: hidden !important;
   }
   
   /* Eliminar restricciones del CSS base solo para el player */
   .player-card iframe {
     min-height: 0 !important;
     flex-grow: 1 !important;
+    overflow: hidden !important;
   }
   
   @media (max-width: 768px) {
@@ -128,7 +131,8 @@
       </div>
     </div>
     <iframe 
-      id="playerFrame" 
+      id="playerFrame"
+      scrolling="no"
       allowfullscreen 
       referrerpolicy="no-referrer" 
       allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
