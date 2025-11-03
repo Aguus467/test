@@ -52,7 +52,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* 🔥 CORREGIDO: Detrás de todo el contenido */
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -68,7 +68,7 @@ body::before {
     rgba(255, 127, 255, 0.03) 30%, 
     transparent 70%);
   border-radius: 50%;
-  z-index: -1; /* 🔥 CORREGIDO */
+  z-index: -1;
 }
 
 .star {
@@ -76,7 +76,7 @@ body::before {
   background: white;
   border-radius: 50%;
   opacity: 0.8;
-  z-index: -1; /* 🔥 CORREGIDO */
+  z-index: -1;
 }
 
 /* ==================== Options Bar ==================== */
@@ -136,7 +136,7 @@ select,
   grid-template-columns: 3fr 1fr;
   gap: 20px;
   position: relative;
-  z-index: 1; /* 🔥 Asegurar que el contenido esté por encima del fondo */
+  z-index: 1;
 }
 
 .card {
@@ -251,24 +251,45 @@ iframe::-webkit-scrollbar,
   min-height: 44px;
 }
 
-/* ==================== Customization Panel ==================== */
+/* ==================== Customization Panel - CORREGIDO ==================== */
 .customize-panel {
   position: fixed;
   top: 0;
-  right: -400px;
+  right: -100%; /* Cambiado de -400px a -100% para mejor responsive */
   width: 100%;
   max-width: 400px;
   height: 100vh;
   background: rgba(10, 10, 30, 0.98);
-  z-index: 1000; /* 🔥 Alto para el panel de personalización */
+  backdrop-filter: blur(10px); /* Añadido efecto de desenfoque */
+  z-index: 1000;
   padding: 2rem;
   overflow-y: auto;
   transition: right 0.4s ease;
   border-left: 1px solid var(--border-color);
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5); /* Añadida sombra para profundidad */
 }
 
 .customize-panel.active {
   right: 0;
+}
+
+/* Overlay para cerrar al hacer clic fuera */
+.panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.panel-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .panel-header {
@@ -300,6 +321,11 @@ iframe::-webkit-scrollbar,
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  transition: var(--transition);
+}
+
+.close-panel:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .control-group {
@@ -310,6 +336,8 @@ iframe::-webkit-scrollbar,
   color: var(--accent);
   font-size: 1rem;
   margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .control-item {
@@ -322,6 +350,38 @@ iframe::-webkit-scrollbar,
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
+}
+
+/* Mejoras para controles de formulario */
+.control-item input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.control-item input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.control-item input[type="color"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+}
+
+.control-item select {
+  width: 100%;
 }
 
 /* ==================== Footer ==================== */
@@ -347,7 +407,7 @@ footer.site-footer a {
   text-decoration: none;
 }
 
-/* ==================== Responsive Design ==================== */
+/* ==================== Responsive Design - MEJORADO ==================== */
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
@@ -387,6 +447,14 @@ footer.site-footer a {
     max-width: 100%;
     padding: 1.5rem;
   }
+  
+  .options-bar {
+    justify-content: center;
+  }
+  
+  .customize-btn {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -424,6 +492,14 @@ footer.site-footer a {
   iframe {
     min-height: 280px;
   }
+  
+  .customize-panel {
+    padding: 1rem;
+  }
+  
+  .panel-header h2 {
+    font-size: 1.3rem;
+  }
 }
 
 /* ==================== Accesibilidad ==================== */
@@ -439,4 +515,22 @@ select:focus-visible {
   .spiral-galaxy {
     display: none;
   }
+}
+
+/* ==================== Scrollbar Personalizado ==================== */
+.customize-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.customize-panel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.customize-panel::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.customize-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
 }
