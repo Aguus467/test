@@ -1,1 +1,444 @@
 
+
+/* ==================== Variables CSS ==================== */
+:root {
+  --bg-dark: #0b0d1b;
+  --bg-card: rgba(20, 20, 40, 0.7);
+  --text-primary: #ffffff;
+  --text-secondary: #72d6ff;
+  --accent: #72d6ff;
+  --accent-purple: #ff7fff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --radius: 12px;
+  --transition: 0.3s ease;
+  --header-height: 70px;
+}
+
+/* ==================== Reset & Base ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: #000014;
+  overflow-x: hidden;
+}
+
+/* ==================== Fondo Base ==================== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ==================== Starfield (Z-INDEX CORREGIDO) ==================== */
+#starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 🔥 CORREGIDO: Detrás de todo el contenido */
+  pointer-events: none;
+}
+
+.spiral-galaxy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, 
+    rgba(114, 214, 255, 0.03) 0%, 
+    rgba(255, 127, 255, 0.03) 30%, 
+    transparent 70%);
+  border-radius: 50%;
+  z-index: -1; /* 🔥 CORREGIDO */
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  z-index: -1; /* 🔥 CORREGIDO */
+}
+
+/* ==================== Options Bar ==================== */
+.options-bar {
+  padding: 16px 5%;
+  background: rgba(30, 30, 60, 0.9);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.options-bar label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+select,
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 44px;
+  font-size: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customize-btn {
+  margin-left: auto;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  border: none;
+  color: white;
+}
+
+/* ==================== Container & Layout ==================== */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  position: relative;
+  z-index: 1; /* 🔥 Asegurar que el contenido esté por encima del fondo */
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  position: relative;
+  z-index: 1;
+}
+
+.card-header {
+  background: rgba(40, 40, 70, 0.85);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 64px;
+  z-index: 2;
+}
+
+.channel-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.channel-head img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  object-fit: cover;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.channel-head .name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.channel-status {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+/* ==================== Player (SIN SCROLL) ==================== */
+.player-card {
+  grid-column: 1;
+}
+
+iframe,
+#playerFrame {
+  width: 100%;
+  flex-grow: 1;
+  border: none;
+  min-height: 500px;
+  background: rgba(0, 0, 0, 0.6);
+  
+  /* 🔥 ELIMINAR SCROLL VISIBLE */
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* 🔥 Oculta scrollbars en WebKit */
+iframe::-webkit-scrollbar,
+#playerFrame::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ==================== Chat ==================== */
+.chat-card {
+  grid-column: 2;
+}
+
+.chat-toggle {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  transition: var(--transition);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ==================== Customization Panel ==================== */
+.customize-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: rgba(10, 10, 30, 0.98);
+  z-index: 1000; /* 🔥 Alto para el panel de personalización */
+  padding: 2rem;
+  overflow-y: auto;
+  transition: right 0.4s ease;
+  border-left: 1px solid var(--border-color);
+}
+
+.customize-panel.active {
+  right: 0;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h2 {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.close-panel {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.control-group {
+  margin-bottom: 2rem;
+}
+
+.control-group h3 {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.control-item {
+  margin-bottom: 1.5rem;
+}
+
+.control-item label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* ==================== Footer ==================== */
+footer.site-footer {
+  background: rgba(10, 10, 30, 0.95);
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+}
+
+footer.site-footer small {
+  display: block;
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+
+footer.site-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .player-card,
+  .chat-card {
+    grid-column: 1;
+  }
+
+  .chat-card {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.75rem;
+    gap: 15px;
+  }
+
+  .card-header {
+    padding: 12px 14px;
+    min-height: 56px;
+  }
+
+  .channel-head img {
+    width: 40px;
+    height: 40px;
+  }
+
+  iframe {
+    min-height: 350px;
+  }
+
+  .customize-panel {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .options-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 4%;
+  }
+
+  select,
+  .btn {
+    width: 100%;
+  }
+
+  .customize-btn {
+    margin-left: 0;
+  }
+
+  .container {
+    padding: 1rem 0.5rem;
+    gap: 12px;
+  }
+
+  .card-header {
+    min-height: 50px;
+    padding: 10px 12px;
+  }
+
+  .channel-head img {
+    width: 36px;
+    height: 36px;
+  }
+
+  iframe {
+    min-height: 280px;
+  }
+}
+
+/* ==================== Accesibilidad ==================== */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ==================== Optimización Móvil ==================== */
+@media (max-width: 768px) {
+  .spiral-galaxy {
+    display: none;
+  }
+}
