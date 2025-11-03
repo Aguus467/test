@@ -1,0 +1,355 @@
+const events = [
+  {
+    "id": 1,
+    "evento": "LIBERARON A SHISHI",
+    "fecha": "2025-20-08 06:17",
+    "canales": [
+      {
+        "name": "YouTube",
+        "logo": "https://angulismotv.pages.dev/assets/youtube.png",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://www.youtube.com/embed/54esPg_n1_k"
+          }
+        ]
+      }
+    ],
+    "descripcion": "JUSTICIA DIVINA"
+  },
+  {
+    "id": 2,
+    "evento": "Riverpool vs Gimnasia Munich",
+    "fecha": "2025-11-02 20:30",
+    "canales": [
+      {
+        "name": "Riverpool vs Gimnasia Munich",
+        "logo": "https://th.bing.com/th/id/OIP.zJl5rE9EetFqims4y93PlgAAAA?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "options": [
+          {
+            "name": "ESPN",
+            "iframe": "https://streamtpmedia.com/global1.php?stream=espn"
+          },
+          {
+            "name": "ESPN (OPC 2)",
+            "iframe": "https://tvlibree.com/html/fl/?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
+          },
+          {
+            "name": "ESPN Premium",
+            "iframe": "https://dots.bestleague.world/mpdk/?get=aHR0cHM6Ly9jZG4udHJpbWkuY29tLmFyL2xpdmUvc20tbGl2ZS9FU1BOX1BSRU1fQktQNC9zYV9saXZlX2Rhc2hfbGwvRVNQTl9QUkVNX0JLUDQubXBk&key=M2I2ZmE2NTI0ZDI1NGM5NmI1YTEwMWM4MTE4ZDNhZTY=&key2=ZDVlMmE5ZDNlMmM1YWE4NTg3ZWFkYTI4MWFjZWY2YmM=&start=true"
+          },
+          {
+            "name": "Disney+",
+            "iframe": "https://streamtpmedia.com/global1.php?stream=disney3"
+          }
+        ]
+      }
+    ],
+    "descripcion": "SUPERLIGA ULTRAPROFESIONAL CAMPEONES DEL MUNDO ARGENTINA CLAUDIO TAPIA"
+  }
+];
+
+const channels = {
+  "channels": [
+    {
+      "name": "ESPN",
+      "logo": "https://images.infutbol.site/tvnetworks/flfm",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=RVNQTjJIRA&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=espn" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN 2",
+      "logo": "https://images.infutbol.site/tvnetworks/gime",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=RVNQTjJfQXJn&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=espn2" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN 3",
+      "logo": "https://images.infutbol.site/tvnetworks/fkee",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=RVNQTjM=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=espn3" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn3" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN 4",
+      "logo": "https://images.infutbol.site/tvnetworks/kegk",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=RVNQTkhE=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=espn4" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn4" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN 5",
+      "logo": "https://tse4.mm.bing.net/th/id/OIP.IX5j8b6ig3BLnhy3SEN0TAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=RVNQTjQ=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=espn5" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn5" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN 6",
+      "logo": "https://sixdayslater.com/img/espn6.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRzM19VWQ==&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=espn6" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn6" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN 7",
+      "logo": "https://sixdayslater.com/img/espn7.png",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=espn7" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espn7" }
+      ],
+      "show": true
+    },
+    {
+      "name": "ESPN Premium",
+      "logo": "https://images.infutbol.site/tvnetworks/jfkf",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=espnpremium" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=espnpremium" },
+        { "name": "Opción 4", "iframe": "https://fubollibretvgo.com/sw.html?get=https://fubollibretvgo.com/repro/espn-premium.html" },
+        { "name": "Opcion 5", "iframe": "https://tvhdzy.online/domain.php?id=ESPNPREX" }
+      ],
+      "show": true
+    },
+    {
+      "name": "TNT Sports Premium",
+      "logo": "https://images.infutbol.site/tvnetworks/lghi",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=tntsports" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=tntsports" },
+        { "name": "Opción 4", "iframe": "https://tvhdzy.online/player.php?id=TNTSPORTS" },
+        { "name": "Opcion 5", "iframe": "https://streamtpmedia.com/global1.php?stream=disney15" }
+      ],
+      "show": true
+    },
+    {
+      "name": "TyC Sports",
+      "logo": "https://images.infutbol.site/tvnetworks/fefm",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=VHlDU3BvcnQ=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=tycsports" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=tycsports" },
+        { "name": "Opción 4", "iframe": "https://tvhdzy.online/player.php?id=TYC" }
+      ],
+      "show": true
+    },
+    {
+      "name": "TV Publica",
+      "logo": "https://bestleague.world/img/tvpublica.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dot.bestleague.world/cvatt.html?get=Q2FuYWw3&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=tv_publica" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=tvpublica" },
+        { "name": "Opción 4", "iframe": "https://tvlibree.com/html/fl/?get=Q2FuYWw3" }
+      ],
+      "show": true
+    },
+    {
+      "name": "FOX Sports",
+      "logo": "https://images.infutbol.site/tvnetworks/fkeh",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRz&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp11.com/global1.php?stream=fox1ar" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports" }
+      ],
+      "show": true
+    },
+    // NUEVOS CANALES DEPORTIVOS AGREGADOS
+    {
+      "name": "FOX Sports 2",
+      "logo": "https://bestleague.world/img/foxsports2.png",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRzMkhE&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=fox2ar" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports2" }
+      ],
+      "show": true
+    },
+    {
+      "name": "FOX Sports 3",
+      "logo": "https://bestleague.world/img/foxsports3.png",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=Rm94U3BvcnRzM0hE&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=fox3ar" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports3" }
+      ],
+      "show": true
+    },
+    {
+      "name": "GolTV",
+      "logo": "https://images.infutbol.site/tvnetworks/fkdl",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp11.com/global1.php?stream=goltv" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=goltv" },
+        { "name": "Opción 3", "iframe": "https://rojadirectatve.com/sw.html?get=https://rojadirectatve.com/repro/goltv.html" }
+      ],
+      "show": true
+    },
+    {
+      "name": "WIN Sports",
+      "logo": "https://bestleague.world/img/win.png",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp22.com/global1.php?stream=winsports" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=winsports" }
+      ],
+      "show": true
+    },
+    {
+      "name": "WIN Sports+",
+      "logo": "https://bestleague.world/img/winsports.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp22.com/global1.php?stream=dsports" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=winsports2" }
+      ],
+      "show": true
+    },
+    {
+      "name": "GOLPERU",
+      "logo": "https://tse4.mm.bing.net/th/id/OIP.RRwd-20Z5BExVjjhw5fp0QHaHo?r=0&w=908&h=936&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp22.com/global1.php?stream=golperu" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=golperu" }
+      ],
+      "show": true
+    },
+    {
+      "name": "VTV",
+      "logo": "https://bestleague.world/img/vtv.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=VlRWX0hE&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=vtv" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=vtv" }
+      ],
+      "show": true
+    },
+    {
+      "name": "VTV PLUS",
+      "logo": "https://bestleague.world/img/vtvplus.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=VlRWX1BMVVM=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=vtvplus" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=vtvplus" }
+      ],
+      "show": true
+    },
+    {
+      "name": "DAZN Español 1",
+      "logo": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=REFaTjE=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=dazntv1" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=dazn1" }
+      ],
+      "show": true
+    },
+    {
+      "name": "DAZN La Liga",
+      "logo": "https://tse2.mm.bing.net/th/id/OIP.1_oRiOthCWD64KIGtCh0xAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=REFaTkxBTElHQT0=&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtp22.com/global1.php?stream=daznlaliga" },
+        { "name": "Opción 3", "iframe": "https://la14hd.com/vivo/canales.php?stream=daznlaliga" }
+      ],
+      "show": true
+    },
+    {
+      "name": "MLB",
+      "logo": "https://p.alangulotv.blog/E1",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtpglobal.com/global1.php?stream=mlb1" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=mlb1" }
+      ],
+      "show": true
+    },
+    {
+      "name": "NBA",
+      "logo": "https://tse2.mm.bing.net/th/id/OIP.YD5wxIYIG02pjk5W8kzviQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://dots.bestleague.world/cvatt.html?get=TkJBX1RW&lang=1" },
+        { "name": "Opción 2", "iframe": "https://streamtpglobal.com/global1.php?stream=nba1" },
+        { "name": "Opción 3", "iframe": "https://tvlibree.com/html/fl/?get=TkJBX1RW" },
+        { "name": "Opción 4", "iframe": "https://la14hd.com/vivo/canales.php?stream=nba01" }
+      ],
+      "show": true
+    },
+    {
+      "name": "DSports",
+      "logo": "https://images.infutbol.site/tvnetworks/klji",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp11.com/global1.php?stream=dsports" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=dsports" }
+      ],
+      "show": true
+    },
+    {
+      "name": "DSports 2",
+      "logo": "https://bestleague.world/img/dsports2.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp22.com/global1.php?stream=dsports2" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canal.php?stream=dsports2" }
+      ],
+      "show": true
+    },
+    {
+      "name": "DSports Plus",
+      "logo": "https://bestleague.world/img/dsportsplus.webp",
+      "options": [
+        { "name": "Opción 1", "iframe": "https://streamtp22.com/global1.php?stream=dsportsplus" },
+        { "name": "Opción 2", "iframe": "https://la14hd.com/vivo/canales.php?stream=dsportsplus" }
+      ],
+      "show": true
+    }
+  ]
+};
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/events") {
+      return new Response(JSON.stringify(events), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",   // 🚀 Habilita CORS
+        },
+      });
+    }
+
+    if (url.pathname === "/channels") {
+      return new Response(JSON.stringify(channels), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",   // 🚀 Habilita CORS
+        },
+      });
+    }
+
+    return new Response(JSON.stringify({ error: "Not found" }), {
+      status: 404,
+      headers: { "Content-Type": "application/json" },
+    });
+  },
+};
