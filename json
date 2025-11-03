@@ -19,7 +19,7 @@ const events = [
   },
   {
     "id": 2,
-    "evento": "Riverpool vs Gimnasia Munich",
+    "evento": "testeando",
     "fecha": "2025-11-02 20:30",
     "canales": [
       {
