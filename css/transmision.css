@@ -714,7 +714,40 @@ iframe {
 }
 
 /* ==================== Chat ==================== */
+.chat-card {
+  grid-column: 2;
+}
 
+.chat-toggle {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  transition: var(--transition);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 44px;
+  min-height: 44px;
+  touch-action: manipulation;
+  transform: translateZ(0);
+}
+
+.chat-toggle:active {
+  transform: scale(0.9) translateZ(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .chat-toggle:hover {
+    background: rgba(114, 214, 255, 0.15);
+    color: var(--accent-purple);
+    transform: scale(1.1) translateZ(0);
+  }
+}
 
 /* ==================== Customization Panel (Optimizado) ==================== */
 .customize-panel {
