@@ -23,7 +23,7 @@ const events = [
     "fecha": "2025-11-02 20:30",
     "canales": [
       {
-        "name": "Riverpool vs Gimnasia Munich",
+        "name": "TESTEANDO",
         "logo": "https://th.bing.com/th/id/OIP.zJl5rE9EetFqims4y93PlgAAAA?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
         "options": [
           {
