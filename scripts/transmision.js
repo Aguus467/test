@@ -78,6 +78,7 @@
       this.reloadAttempts = 0;
       this.maxReloadAttempts = 3;
       this.currentSource = null;
+      this.currentOptionIndex = 0;
       this.init();
     }
 
@@ -97,17 +98,24 @@
       this.playerFrame.addEventListener('load', () => this.handleLoad());
     }
 
-    setSource(url) {
+    setSource(url, optionIndex = 0) {
       if (!url) {
         console.warn('No URL provided to player');
         return;
       }
       
       this.currentSource = url;
-      this.playerFrame.src = url;
-      this.reloadAttempts = 0;
+      this.currentOptionIndex = optionIndex;
       
-      console.log('🎬 Loading stream:', url);
+      // Usar la URL directamente del JSON sin modificaciones
+      // Ya que en el JSON la opción 4 ya tiene la URL de la extensión
+      let finalUrl = url;
+      
+      console.log('🎬 Loading stream:', finalUrl);
+      console.log('📊 Option index:', optionIndex);
+      
+      this.playerFrame.src = finalUrl;
+      this.reloadAttempts = 0;
     }
 
     reload() {
@@ -129,6 +137,7 @@
       this.playerFrame.src = '';
       
       setTimeout(() => {
+        // Recargar la URL original sin modificaciones
         this.playerFrame.src = this.currentSource;
         this.playerFrame.classList.remove('loading');
       }, 500);
@@ -300,9 +309,9 @@
       const idx = Math.min(Math.max(selectedIndex, 0), Math.max(channel.options.length - 1, 0));
       this.populateOptions(channel, idx);
       
-      // Load stream
+      // Load stream - PASAR EL ÍNDICE AL PLAYER
       if (channel.options[idx] && channel.options[idx].iframe) {
-        this.player.setSource(channel.options[idx].iframe);
+        this.player.setSource(channel.options[idx].iframe, idx);
       }
       
       // Sync URL
@@ -343,11 +352,11 @@
         this.elements.optionSelect.appendChild(option);
       });
 
-      // Add change listener
+      // Add change listener - PASAR EL ÍNDICE AL PLAYER
       this.elements.optionSelect.addEventListener('change', (e) => {
         const i = Number(e.target.value);
         if (this.currentChannel.options[i]) {
-          this.player.setSource(this.currentChannel.options[i].iframe);
+          this.player.setSource(this.currentChannel.options[i].iframe, i);
           Utils.syncURL({ opt: i });
         }
       });
@@ -399,7 +408,7 @@
       channelManager.hideHeader();
       
       // Load stream
-      player.setSource(decodedUrl);
+      player.setSource(decodedUrl, 0);
       
       return true;
     }
