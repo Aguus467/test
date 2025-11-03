@@ -1260,5 +1260,12 @@ body.debug-mode *:hover {
   }
 }
 
+/* ==================== FIX PARA ELEMENTOS EXTERNOS (Twitch, YouTube, etc) ==================== */
+/* Algunos iframes externos bloquean su contenido si detectan overlays */
+.chat-card,
+.player-card {
+  isolation: isolate; /* Aisla el contexto de apilamiento */
+}
 
 /* ==================== Fin de Optimizaciones ==================== */
+
