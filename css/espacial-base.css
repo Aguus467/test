@@ -91,7 +91,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: -1; 
   pointer-events: none;
   overflow: hidden;
 }
@@ -1259,5 +1259,6 @@ body.debug-mode *:hover {
     height: min(900px, 90vw);
   }
 }
+
 
 /* ==================== Fin de Optimizaciones ==================== */
