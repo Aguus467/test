@@ -4,6 +4,7 @@ let CHANNEL_LOGOS = {};
 const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
 const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
 const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
+const GITHUB_EVENTOS = 'https://raw.githubusercontent.com/Aguus467/test/refs/heads/main/json';
 
 async function fetchJSON(url, options = {}) {
   console.log(`Fetching data from: ${url}`);
@@ -145,7 +146,7 @@ function buildMatchCard(match) {
   main.appendChild(meta);
   
   // Asegurarse de que meta tenga al menos un elemento
-  if (!eventDescription && !match.description && !compName) {
+  if (!eventDescription && !match.description) {
     meta.appendChild(createEl('span', '', 'Sin detalles adicionales'));
   }
 
@@ -522,6 +523,80 @@ async function adaptLA14HDEvents(events) {
   });
 }
 
+// Función para adaptar eventos de GitHub
+async function adaptGitHubEvents(events) {
+  if (!Array.isArray(events)) {
+    console.error('gitHubEvents no es un array:', events);
+    return [];
+  }
+  
+  console.log('Adaptando eventos de GitHub:', events.length);
+  
+  return events.map(ev => {
+    console.log('Procesando evento GitHub:', ev);
+    
+    let teams = [];
+    if (ev.title && ev.title.includes(' vs ')) {
+      teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
+    } else if (ev.title) {
+      teams = [{ name: ev.title.trim() }];
+    }
+    
+    // Crear un enlace codificado en base64 para cada canal
+    const canales = [];
+    if (ev.link) {
+      canales.push({
+        name: ev.category || 'Canal',
+        link: btoa(ev.link || '')
+      });
+    }
+    
+    // Formatear la fecha correctamente
+    let formattedDate = '';
+    if (ev.date && ev.time) {
+      // Asegurarse de que la fecha tenga el formato correcto (YYYY-MM-DD)
+      const dateParts = ev.date.split('-');
+      if (dateParts.length === 3) {
+        // Asumimos que ya está en formato YYYY-MM-DD
+        formattedDate = `${ev.date} ${ev.time}`;
+      } else {
+        // Si no tiene el formato esperado, usamos la fecha actual
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = pad(today.getMonth() + 1);
+        const dd = pad(today.getDate());
+        formattedDate = `${yyyy}-${mm}-${dd} ${ev.time}`;
+      }
+      console.log('Fecha formateada GitHub:', formattedDate);
+    } else if (ev.time) {
+      // Si solo tenemos la hora, usamos la fecha actual
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = pad(today.getMonth() + 1);
+      const dd = pad(today.getDate());
+      formattedDate = `${yyyy}-${mm}-${dd} ${ev.time}`;
+      console.log('Fecha formateada GitHub (solo hora):', formattedDate);
+    }
+    
+    const result = {
+      id: `github-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      start_time: formattedDate,
+      teams: teams,
+      evento: ev.title || '',
+      description: ev.status || '',
+      competition_name: ev.category || '',
+      competencia: ev.category || '',
+      tv_networks: canales,
+      canales: canales,
+      status: { name: ev.status || '' },
+      slug: `github-${Date.now()}`
+    };
+    
+    console.log('Evento GitHub procesado:', result);
+    return result;
+  });
+}
+
 async function init() {
   const agenda = document.getElementById('agenda');
   const banner = document.getElementById('dayBanner');
@@ -531,7 +606,7 @@ async function init() {
     console.log('Iniciando carga de eventos...');
     
     // Cargar datos de múltiples fuentes
-    const [data, channelData, manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw] = await Promise.all([
+    const [data, channelData, manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw, gitHubEventsRaw] = await Promise.all([
       fetchJSON(API_URL).catch(err => {
         console.error('Error al cargar API_URL:', err);
         return { matches: [] };
@@ -551,13 +626,18 @@ async function init() {
       fetchJSON(LA14HD_EVENTOS).catch(err => {
         console.error('Error al cargar LA14HD_EVENTOS:', err);
         return [];
+      }),
+      fetchJSON(GITHUB_EVENTOS).catch(err => {
+        console.error('Error al cargar GITHUB_EVENTOS:', err);
+        return [];
       })
     ]);
     
     console.log('Eventos cargados:', {
       manualEvents: Array.isArray(manualEventsRaw) ? manualEventsRaw.length : 'no es un array',
       streamTPEvents: Array.isArray(streamTPEventsRaw) ? streamTPEventsRaw.length : 'no es un array',
-      la14HDEvents: Array.isArray(la14HDEventsRaw) ? la14HDEventsRaw.length : 'no es un array'
+      la14HDEvents: Array.isArray(la14HDEventsRaw) ? la14HDEventsRaw.length : 'no es un array',
+      gitHubEvents: Array.isArray(gitHubEventsRaw) ? gitHubEventsRaw.length : 'no es un array'
     });
     
     if (channelData && Array.isArray(channelData.channels)) {
@@ -593,19 +673,33 @@ async function init() {
       }
     }
     
+    // Verificar la estructura de gitHubEventsRaw
+    let gitHubArray = [];
+    if (gitHubEventsRaw && typeof gitHubEventsRaw === 'object') {
+      if (Array.isArray(gitHubEventsRaw)) {
+        gitHubArray = gitHubEventsRaw;
+      } else if (gitHubEventsRaw.Events && Array.isArray(gitHubEventsRaw.Events)) {
+        gitHubArray = gitHubEventsRaw.Events;
+        console.log('Usando gitHubEventsRaw.Events:', gitHubArray.length);
+      }
+    }
+    
     const streamTPEvents = await adaptStreamTPEvents(streamTPArray);
     console.log('Eventos StreamTP adaptados:', streamTPEvents.length);
     
     const la14HDEvents = await adaptLA14HDEvents(la14HDArray);
     console.log('Eventos LA14HD adaptados:', la14HDEvents.length);
     
+    const gitHubEvents = await adaptGitHubEvents(gitHubArray);
+    console.log('Eventos GitHub adaptados:', gitHubEvents.length);
+    
     // Combinar todos los eventos
-    const allEvents = [...manualEvents, ...streamTPEvents, ...la14HDEvents];
+    const allEvents = [...manualEvents, ...streamTPEvents, ...la14HDEvents, ...gitHubEvents];
     console.log('Total de eventos combinados:', allEvents.length);
     
     if (agenda) {
       console.log('Renderizando agenda unificada...');
-      await renderAgendaUnified(null, allEvents); // Pasamos null como apiData ya que no lo usamos
+      await renderAgendaUnified(null, allEvents);
     }
     
     await renderChannels(channelData);
