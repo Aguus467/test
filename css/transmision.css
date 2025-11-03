@@ -1537,4 +1537,44 @@ html {
   .options-bar {
     padding-top: calc(env(safe-area-inset-top) + 16px);
   }
+
+}
+
+/* ==================== FIX PARA CHAT DE TWITCH ==================== */
+/* Asegurar que el chat no tenga elementos superpuestos */
+.chat-card {
+  position: relative;
+  z-index: auto; /* Resetear z-index */
+  isolation: isolate; /* Crear contexto de apilamiento separado */
+}
+
+#twitchChat {
+  position: relative;
+  z-index: auto;
+  isolation: isolate;
+}
+
+/* Asegurar que starfield esté siempre atrás */
+#starfield {
+  z-index: -1 !important; /* Ya lo tienes en 1, cambialo a -1 */
+}
+
+/* Container no debe tener z-index que interfiera */
+.container {
+  z-index: auto;
+}
+
+/* Solo el panel de personalización debe estar encima de todo cuando esté activo */
+.customize-panel {
+  z-index: 9999;
+}
+
+/* Options bar puede tener z-index bajo */
+.options-bar {
+  z-index: 10;
+}
+
+/* Header también debe estar arriba pero sin interferir con el chat */
+.site-header {
+  z-index: 100;
 }
