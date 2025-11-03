@@ -534,3 +534,26 @@ select:focus-visible {
 .customize-panel::-webkit-scrollbar-thumb:hover {
   background: var(--accent-purple);
 }
+
+/* ==================== Ajustes de Tamaño para Android ==================== */
+.options-bar select,
+.options-bar .btn {
+  font-size: 14px !important;
+  padding: 6px 10px !important;
+  min-height: 36px !important;
+  border-radius: 6px !important;
+}
+
+/* Ícono de recarga dentro del botón */
+.options-bar .btn img,
+.options-bar .btn svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Texto del botón de recargar */
+.options-bar .btn span,
+.options-bar .btn-text {
+  font-size: 13px !important;
+}
+
