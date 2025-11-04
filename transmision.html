@@ -83,19 +83,8 @@
 <!-- Main Content -->
 <main class="container">
   <!-- Player Card -->
-  <section class="card player-card">
-    <div class="card-header">
-      <div class="channel-head" id="channel-info">
-        <img id="channel-logo" src="assets/logo2.png" alt="Logo del canal">
-        <div class="channel-info">
-          <span class="name" id="channel-name">Canal en Vivo</span>
-          <span class="channel-status">
-            <span class="status-dot"></span>
-            En vivo
-          </span>
-        </div>
-      </div>
-    </div>
+
+ 
     <iframe 
       id="playerFrame"
       scrolling="no"
@@ -108,15 +97,7 @@
   </section>
 
   <!-- Chat Card -->
-  <aside class="card chat-card">
-    <div class="card-header">
-      <span class="name">Chat en Vivo</span>
-      <button class="chat-toggle" id="chatToggle" aria-label="Minimizar chat">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 9l6 6 6-6"/>
-        </svg>
-      </button>
-    </div>
+
     <iframe 
       id="twitchChat" 
       src="" 
@@ -210,4 +191,5 @@
 <script defer src="scripts/transmision-ui.js"></script>
 
 </body>
+
 </html>
