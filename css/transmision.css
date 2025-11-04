@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -30,28 +31,24 @@ body {
   color: var(--text-primary);
   background: #000014;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ==================== Fondo Base ==================== */
+/* ==================== Fondo Base MEJORADO ==================== */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: radial-gradient(ellipse at top, #1a1f3b 0%, #0b0d1b 50%, #000014 100%);
   pointer-events: none;
-  z-index: -1;
+  z-index: -2;
 }
 
-/* ==================== Starfield (Z-INDEX CORREGIDO) ==================== */
+/* ==================== Starfield OPTIMIZADO ==================== */
 #starfield {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
 }
@@ -60,12 +57,12 @@ body::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 800px;
-  height: 800px;
+  width: clamp(400px, 60vw, 800px);
+  aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, 
-    rgba(114, 214, 255, 0.03) 0%, 
-    rgba(255, 127, 255, 0.03) 30%, 
+  background: radial-gradient(ellipse at center,
+    rgba(114, 214, 255, 0.03) 0%,
+    rgba(255, 127, 255, 0.03) 30%,
     transparent 70%);
   border-radius: 50%;
   z-index: -1;
@@ -79,17 +76,17 @@ body::before {
   z-index: -1;
 }
 
-/* ==================== Options Bar ==================== */
+/* ==================== Options Bar MEJORADO ==================== */
 .options-bar {
-  padding: 16px 5%;
+  padding: 12px clamp(1%, 2vw, 2%);
   background: rgba(30, 30, 60, 0.9);
   border-bottom: 1px solid var(--border-color);
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
   z-index: 10;
-  flex-wrap: wrap;
   position: relative;
 }
 
@@ -109,14 +106,21 @@ select,
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  font-size: 1rem;
   min-height: 44px;
-  font-size: 16px;
+  line-height: 1.2;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+}
+
+.btn:hover,
+select:hover {
+  background: rgba(30, 30, 60, 0.9);
+  border-color: var(--accent);
 }
 
 .customize-btn {
@@ -126,17 +130,67 @@ select,
   color: white;
 }
 
-/* ==================== Container & Layout ==================== */
+.customize-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ==================== Container & Layout OPTIMIZADO ==================== */
 .container {
   width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.75rem clamp(1%, 1.5vw, 2%);
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 380px;
+  gap: 12px;
   position: relative;
   z-index: 1;
+  align-items: start;
+  flex: 1;
+}
+
+/* Ajustes proporcionales automáticos */
+.player-card iframe,
+.chat-card iframe {
+  width: 100%;
+  height: 100%;
+}
+
+/* Pantallas extra grandes */
+@media (min-width: 1920px) {
+  .container {
+    grid-template-columns: 1fr 420px;
+    padding: 1rem 2%;
+  }
+  
+  .chat-card {
+    min-height: calc(100vh - 180px);
+    max-height: calc(100vh - 180px);
+    height: calc(100vh - 180px);
+  }
+  
+  #playerFrame {
+    min-height: calc(100vh - 180px);
+  }
+}
+
+/* Pantallas ultra anchas */
+@media (min-width: 2560px) {
+  .container {
+    grid-template-columns: 1fr 480px;
+    padding: 1rem 3%;
+  }
+  
+  .chat-card {
+    min-height: calc(100vh - 180px);
+    max-height: calc(100vh - 180px);
+    height: calc(100vh - 180px);
+  }
+  
+  #playerFrame {
+    min-height: calc(100vh - 180px);
+  }
 }
 
 .card {
@@ -150,16 +204,18 @@ select,
   z-index: 1;
 }
 
+/* ==================== Header canal MEJORADO ==================== */
 .card-header {
   background: rgba(40, 40, 70, 0.85);
-  padding: 14px 18px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-height: 64px;
+  min-height: 60px;
   z-index: 2;
+  flex-shrink: 0;
 }
 
 .channel-head {
@@ -202,38 +258,91 @@ select,
   height: 8px;
   border-radius: 50%;
   background: #4ade80;
+  animation: pulse 2s infinite;
 }
 
-/* ==================== Player (SIN SCROLL) ==================== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ==================== Player Card OPTIMIZADO ==================== */
 .player-card {
   grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
-iframe,
 #playerFrame {
   width: 100%;
-  flex-grow: 1;
+  height: auto;
+  aspect-ratio: 16 / 9;
   border: none;
-  min-height: 500px;
-  background: rgba(0, 0, 0, 0.6);
-  
-  /* 🔥 ELIMINAR SCROLL VISIBLE */
+  background: #000;
+  flex: 1;
   overflow: hidden !important;
+  scrolling: no;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
+  min-height: calc(100vh - 200px);
 }
 
-/* 🔥 Oculta scrollbars en WebKit */
-iframe::-webkit-scrollbar,
+/* Oculta scrollbars en WebKit */
 #playerFrame::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
 }
 
-/* ==================== Chat ==================== */
+.player-card iframe {
+  min-height: 0 !important;
+  flex-grow: 1 !important;
+  overflow: hidden !important;
+}
+
+/* ==================== Chat Card OPTIMIZADO - CORREGIDO ==================== */
 .chat-card {
   grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  min-height: 0;
+  height: 100%
+}
+
+#twitchChat {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  min-height: 0;
+}
+
+#twitchChat::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Asegurar que el contenido del chat se ajuste correctamente */
+.chat-card > iframe {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
 }
 
 .chat-toggle {
@@ -251,29 +360,54 @@ iframe::-webkit-scrollbar,
   min-height: 44px;
 }
 
-/* ==================== Customization Panel - CORREGIDO ==================== */
+.chat-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(180deg);
+}
+
+/* ==================== Loading & Animations ==================== */
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+.icon-reload,
+.icon-settings {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==================== Customization Panel ==================== */
 .customize-panel {
   position: fixed;
   top: 0;
-  right: -100%; /* Cambiado de -400px a -100% para mejor responsive */
+  right: -100%;
   width: 100%;
   max-width: 400px;
   height: 100vh;
   background: rgba(10, 10, 30, 0.98);
-  backdrop-filter: blur(10px); /* Añadido efecto de desenfoque */
+  backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 2rem;
   overflow-y: auto;
   transition: right 0.4s ease;
   border-left: 1px solid var(--border-color);
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5); /* Añadida sombra para profundidad */
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
 }
 
 .customize-panel.active {
   right: 0;
 }
 
-/* Overlay para cerrar al hacer clic fuera */
 .panel-overlay {
   position: fixed;
   top: 0;
@@ -326,6 +460,7 @@ iframe::-webkit-scrollbar,
 
 .close-panel:hover {
   background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
 }
 
 .control-group {
@@ -345,14 +480,20 @@ iframe::-webkit-scrollbar,
 }
 
 .control-item label {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: var(--text-secondary);
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
-/* Mejoras para controles de formulario */
+.value-display {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 .control-item input[type="range"] {
   width: 100%;
   height: 6px;
@@ -369,6 +510,20 @@ iframe::-webkit-scrollbar,
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
+  transition: var(--transition);
+}
+
+.control-item input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.control-item input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: none;
 }
 
 .control-item input[type="color"] {
@@ -384,20 +539,96 @@ iframe::-webkit-scrollbar,
   width: 100%;
 }
 
-/* ==================== Footer ==================== */
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: var(--transition);
+  border-radius: 26px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: var(--transition);
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--accent);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+
+/* Color Picker Grid */
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.color-option {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 44px;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.color-option.active {
+  border-color: white;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== Footer MEJORADO ==================== */
 footer.site-footer {
   background: rgba(10, 10, 30, 0.95);
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 1rem clamp(1%, 2vw, 2%);
   border-top: 1px solid var(--border-color);
   position: relative;
   z-index: 2;
-  margin-top: 2rem;
+  margin-top: auto;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 footer.site-footer small {
   display: block;
-  color: var(--text-secondary);
   margin: 0.5rem 0;
   font-size: 0.85rem;
 }
@@ -405,32 +636,88 @@ footer.site-footer small {
 footer.site-footer a {
   color: var(--accent);
   text-decoration: none;
+  transition: var(--transition);
 }
 
-/* ==================== Responsive Design - MEJORADO ==================== */
+footer.site-footer a:hover {
+  color: var(--accent-purple);
+  text-decoration: underline;
+}
+
+/* ==================== Responsive Design PERFECCIONADO ==================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1440px) {
+  .container {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    grid-template-columns: 1fr 340px;
+    padding: 0.75rem 1.5%;
+  }
+  
+  #playerFrame {
+    min-height: calc(100vh - 220px);
+  }
+  
+  .chat-card {
+    min-height: calc(100vh - 180px);
+    max-height: calc(100vh - 180px);
+    height: calc(100vh - 180px);
+  }
+}
+
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
+    padding: 1rem 2%;
+    gap: 15px;
   }
 
   .player-card,
   .chat-card {
     grid-column: 1;
+    height: auto;
   }
 
   .chat-card {
-    min-height: 400px;
+    order: 2;
+    min-height: 450px;
+    max-height: 550px;
+    height: auto;
+  }
+
+  .player-card {
+    order: 1;
+  }
+
+  #playerFrame {
+    min-height: 500px;
+    aspect-ratio: 16 / 9;
+  }
+
+  #twitchChat {
+    min-height: 350px;
+    height: 450px;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 1rem 0.75rem;
-    gap: 15px;
+    padding: 1rem 1%;
+    gap: 12px;
+  }
+
+  .player-card,
+  .chat-card {
+    height: auto;
   }
 
   .card-header {
-    padding: 12px 14px;
+    padding: 10px 14px;
     min-height: 56px;
   }
 
@@ -439,8 +726,22 @@ footer.site-footer a {
     height: 40px;
   }
 
-  iframe {
+  .channel-head .name {
+    font-size: 1rem;
+  }
+
+  #playerFrame {
     min-height: 350px;
+  }
+
+  .chat-card {
+    min-height: 400px;
+    max-height: 500px;
+    height: auto;
+  }
+  
+  #twitchChat {
+    height: 400px;
   }
 
   .customize-panel {
@@ -450,10 +751,16 @@ footer.site-footer a {
   
   .options-bar {
     justify-content: center;
+    padding: 10px 4%;
+    gap: 10px;
   }
   
   .customize-btn {
     margin-left: 0;
+  }
+  
+  .spiral-galaxy {
+    width: clamp(300px, 80vw, 600px);
   }
 }
 
@@ -468,6 +775,9 @@ footer.site-footer a {
   select,
   .btn {
     width: 100%;
+    font-size: 14px;
+    padding: 8px 12px;
+    min-height: 40px;
   }
 
   .customize-btn {
@@ -475,13 +785,18 @@ footer.site-footer a {
   }
 
   .container {
-    padding: 1rem 0.5rem;
-    gap: 12px;
+    padding: 0.75rem 1%;
+    gap: 10px;
+  }
+
+  .player-card,
+  .chat-card {
+    height: auto;
   }
 
   .card-header {
     min-height: 50px;
-    padding: 10px 12px;
+    padding: 8px 12px;
   }
 
   .channel-head img {
@@ -489,8 +804,22 @@ footer.site-footer a {
     height: 36px;
   }
 
-  iframe {
-    min-height: 280px;
+  .channel-head .name {
+    font-size: 0.9rem;
+  }
+
+  #playerFrame {
+    min-height: 250px;
+  }
+
+  .chat-card {
+    min-height: 350px;
+    max-height: 450px;
+    height: auto;
+  }
+  
+  #twitchChat {
+    height: 350px;
   }
   
   .customize-panel {
@@ -500,6 +829,56 @@ footer.site-footer a {
   .panel-header h2 {
     font-size: 1.3rem;
   }
+  
+  .control-group h3 {
+    font-size: 0.95rem;
+  }
+  
+  .spiral-galaxy {
+    display: none;
+  }
+}
+
+/* ==================== Ajustes específicos para Android ==================== */
+@media (max-width: 768px) and (orientation: portrait) {
+  .options-bar select,
+  .options-bar .btn {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    min-height: 40px !important;
+    border-radius: 6px !important;
+  }
+
+  .options-bar .btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  #playerFrame {
+    min-height: 280px;
+  }
+}
+
+/* Landscape en móviles */
+@media (max-width: 896px) and (orientation: landscape) {
+  .container {
+    grid-template-columns: 1fr 300px;
+    gap: 10px;
+  }
+  
+  #playerFrame {
+    min-height: calc(100vh - 180px);
+  }
+  
+  .chat-card {
+    min-height: calc(100vh - 180px);
+    max-height: calc(100vh - 180px);
+    height: calc(100vh - 180px);
+  }
+  
+  #twitchChat {
+    height: 100%;
+  }
 }
 
 /* ==================== Accesibilidad ==================== */
@@ -507,14 +886,7 @@ a:focus-visible,
 button:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-/* ==================== Optimización Móvil ==================== */
-@media (max-width: 768px) {
-  .spiral-galaxy {
-    display: none;
-  }
+  outline-offset: 3px;
 }
 
 /* ==================== Scrollbar Personalizado ==================== */
@@ -535,98 +907,40 @@ select:focus-visible {
   background: var(--accent-purple);
 }
 
-/* ==================== Ajustes de Tamaño para Android ==================== */
-.options-bar select,
-.options-bar .btn {
-  font-size: 14px !important;
-  padding: 6px 10px !important;
-  min-height: 36px !important;
-  border-radius: 6px !important;
-}
-
-/* Ícono de recarga dentro del botón */
-.options-bar .btn img,
-.options-bar .btn svg {
-  width: 18px !important;
-  height: 18px !important;
-}
-
-/* Texto del botón de recargar */
-.options-bar .btn span,
-.options-bar .btn-text {
-  font-size: 13px !important;
-}
-
-/* ==================== FIX MARCOS Y CHAT ==================== */
-.container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem;
-  display: grid;
-  grid-template-columns: 3fr 1.1fr; /* proporción equilibrada */
-  gap: 16px;
-  position: relative;
-  z-index: 1;
-  align-items: stretch; /* asegura altura igual */
-}
-
-.card,
-.player-card,
-.chat-card {
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Evita que se mueva el contenedor al ocultar el chat */
-.chat-card {
-  transition: all 0.3s ease;
-}
-
-.chat-card.hidden {
-  width: 0 !important;
-  opacity: 0;
-  pointer-events: none;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-/* Alinea bien el iframe del player y chat */
-iframe,
-#playerFrame,
-#chatFrame {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-  border: none;
-  background: rgba(0, 0, 0, 0.7);
-  overflow: hidden;
-}
-
-.card-header {
-  flex-shrink: 0;
-  height: 64px;
-  background: rgba(40, 40, 70, 0.85);
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border-color);
-}
-
-/* Ajuste cuando el chat está oculto */
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
+/* ==================== Optimización de rendimiento ==================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .star {
+    animation: none !important;
   }
 }
 
+/* ==================== Utilidades ==================== */
+.aurora {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  filter: blur(40px);
+  animation: aurora 8s ease-in-out infinite;
+}
 
+.aurora-1 {
+  background: linear-gradient(45deg, var(--accent), transparent);
+  animation-delay: 0s;
+}
 
+.aurora-2 {
+  background: linear-gradient(-45deg, var(--accent-purple), transparent);
+  animation-delay: 4s;
+}
 
+@keyframes aurora {
+  0%, 100% { opacity: 0.1; transform: translateY(0); }
+  50% { opacity: 0.15; transform: translateY(-20px); }
+}
