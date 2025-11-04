@@ -209,7 +209,7 @@ select:hover {
 }
 
 /* ==================== Header canal MÁS COMPACTO ==================== */
-/* .card-header {
+ .card-header {
   background: rgba(40, 40, 70, 0.9);
   padding: 8px 12px;
   border-bottom: 1px solid var(--border-color);
@@ -220,7 +220,7 @@ select:hover {
   min-height: 48px;
   z-index: 2;
   flex-shrink: 0;
-} */
+} 
 
 .channel-head {
   display: flex;
@@ -960,4 +960,5 @@ select:focus-visible {
   0%, 100% { opacity: 0.1; transform: translateY(0); }
   50% { opacity: 0.15; transform: translateY(-20px); }
 }
+
 
