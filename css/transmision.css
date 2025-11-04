@@ -7,6 +7,7 @@
   --accent: #72d6ff;
   --accent-purple: #ff7fff;
   --border-color: rgba(255, 255, 255, 0.1);
+  --border-width: 1px;
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
   --radius: 12px;
   --transition: 0.3s ease;
@@ -35,7 +36,7 @@ body {
   flex-direction: column;
 }
 
-/* ==================== Fondo Base MEJORADO ==================== */
+/* ==================== Fondo Base ==================== */
 body::before {
   content: '';
   position: fixed;
@@ -45,7 +46,7 @@ body::before {
   z-index: -2;
 }
 
-/* ==================== Starfield OPTIMIZADO ==================== */
+/* ==================== Starfield ==================== */
 #starfield {
   position: fixed;
   inset: 0;
@@ -68,53 +69,47 @@ body::before {
   z-index: -1;
 }
 
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  z-index: -1;
-}
-
-/* ==================== Options Bar MEJORADO ==================== */
+/* ==================== Options Bar ==================== */
 .options-bar {
-  padding: 12px clamp(1%, 2vw, 2%);
-  background: rgba(30, 30, 60, 0.9);
+  padding: 8px clamp(1%, 1.5vw, 2%);
+  background: rgba(30, 30, 60, 0.95);
   border-bottom: 1px solid var(--border-color);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   z-index: 10;
   position: relative;
+  min-height: 50px;
 }
 
 .options-bar label {
   font-weight: 600;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  margin-right: -4px;
 }
 
 select,
 .btn {
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
   border: 1px solid var(--border-color);
   background: var(--bg-card);
   color: var(--text-primary);
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  font-size: 1rem;
-  min-height: 44px;
+  font-size: 0.9rem;
+  min-height: 38px;
   line-height: 1.2;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .btn:hover,
@@ -135,150 +130,23 @@ select:hover {
   transform: translateY(-2px);
 }
 
-/* ==================== Container & Layout OPTIMIZADO ==================== */
+/* ==================== Container & Layout ==================== */
 .container {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 0.75rem clamp(1%, 1.5vw, 2%);
+  padding: 0.5rem clamp(1%, 1vw, 1.5%);
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 12px;
+  grid-template-columns: 1fr 340px;
+  gap: 8px;
   position: relative;
   z-index: 1;
   align-items: start;
   flex: 1;
+  min-height: calc(100vh - 140px);
 }
 
-/* Ajustes proporcionales automáticos */
-.player-card iframe,
-.chat-card iframe {
-  width: 100%;
-  height: 100%;
-}
-
-/* Pantallas extra grandes */
-@media (min-width: 1920px) {
-  .container {
-    grid-template-columns: 1fr 420px;
-    padding: 1rem 2%;
-  }
-  
-  .chat-card {
-    min-height: calc(100vh - 180px);
-    max-height: calc(100vh - 180px);
-    height: calc(100vh - 180px);
-  }
-  
-  #playerFrame {
-    min-height: calc(100vh - 180px);
-  }
-}
-
-/* Pantallas ultra anchas */
-@media (min-width: 2560px) {
-  .container {
-    grid-template-columns: 1fr 480px;
-    padding: 1rem 3%;
-  }
-  
-  .chat-card {
-    min-height: calc(100vh - 180px);
-    max-height: calc(100vh - 180px);
-    height: calc(100vh - 180px);
-  }
-  
-  #playerFrame {
-    min-height: calc(100vh - 180px);
-  }
-}
-
-.card {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border-color);
-  position: relative;
-  z-index: 1;
-}
-
-/* ==================== Header canal MEJORADO ==================== */
-.card-header {
-  background: rgba(40, 40, 70, 0.85);
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 60px;
-  z-index: 2;
-  flex-shrink: 0;
-}
-
-.channel-head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-}
-
-.channel-head img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  object-fit: cover;
-}
-
-.channel-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.channel-head .name {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--accent);
-}
-
-.channel-status {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* ==================== Player Card OPTIMIZADO ==================== */
-.player-card {
-  grid-column: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-md);
-}
-
+/* ==================== Player ==================== */
 #playerFrame {
   width: 100%;
   height: auto;
@@ -290,7 +158,7 @@ select:hover {
   scrolling: no;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 180px);
 }
 
 /* Oculta scrollbars en WebKit */
@@ -300,26 +168,7 @@ select:hover {
   height: 0 !important;
 }
 
-.player-card iframe {
-  min-height: 0 !important;
-  flex-grow: 1 !important;
-  overflow: hidden !important;
-}
-
-/* ==================== Chat Card OPTIMIZADO - CORREGIDO ==================== */
-.chat-card {
-  grid-column: 2;
-  display: flex;
-  flex-direction: column;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  min-height: 0;
-  height: 100%
-}
-
+/* ==================== Chat ==================== */
 #twitchChat {
   width: 100%;
   height: 100%;
@@ -338,66 +187,18 @@ select:hover {
   height: 0 !important;
 }
 
-/* Asegurar que el contenido del chat se ajuste correctamente */
-.chat-card > iframe {
-  flex: 1 1 auto;
-  min-height: 0;
-  height: 100%;
-}
-
-.chat-toggle {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  cursor: pointer;
-  padding: 8px;
-  transition: var(--transition);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-}
-
-.chat-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(180deg);
-}
-
-/* ==================== Loading & Animations ==================== */
-.loading {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.spinning {
-  animation: spin 1s linear infinite;
-}
-
-.icon-reload,
-.icon-settings {
-  width: 20px;
-  height: 20px;
-}
-
 /* ==================== Customization Panel ==================== */
 .customize-panel {
   position: fixed;
   top: 0;
   right: -100%;
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   height: 100vh;
   background: rgba(10, 10, 30, 0.98);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  padding: 2rem;
+  padding: 1.5rem;
   overflow-y: auto;
   transition: right 0.4s ease;
   border-left: 1px solid var(--border-color);
@@ -408,35 +209,17 @@ select:hover {
   right: 0;
 }
 
-.panel-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.panel-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
 .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .panel-header h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   background: linear-gradient(135deg, var(--accent), var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -449,8 +232,8 @@ select:hover {
   color: var(--text-secondary);
   font-size: 1.5rem;
   cursor: pointer;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 40px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -464,19 +247,19 @@ select:hover {
 }
 
 .control-group {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .control-group h3 {
   color: var(--accent);
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .control-item {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .control-item label {
@@ -484,14 +267,17 @@ select:hover {
   justify-content: space-between;
   align-items: center;
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
   font-weight: 500;
 }
 
 .value-display {
   color: var(--accent);
   font-weight: 700;
+  font-size: 0.8rem;
+  min-width: 30px;
+  text-align: right;
 }
 
 .control-item input[type="range"] {
@@ -505,8 +291,8 @@ select:hover {
 
 .control-item input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
@@ -518,33 +304,20 @@ select:hover {
 }
 
 .control-item input[type="range"]::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--accent);
   cursor: pointer;
   border: none;
 }
 
-.control-item input[type="color"] {
-  width: 100%;
-  height: 40px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  background: transparent;
-  cursor: pointer;
-}
-
-.control-item select {
-  width: 100%;
-}
-
 /* Toggle Switch */
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 26px;
+  width: 44px;
+  height: 24px;
 }
 
 .toggle-switch input {
@@ -562,14 +335,14 @@ select:hover {
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.2);
   transition: var(--transition);
-  border-radius: 26px;
+  border-radius: 24px;
 }
 
 .toggle-slider:before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   left: 3px;
   bottom: 3px;
   background-color: white;
@@ -582,55 +355,27 @@ input:checked + .toggle-slider {
 }
 
 input:checked + .toggle-slider:before {
-  transform: translateX(24px);
+  transform: translateX(20px);
 }
 
-/* Color Picker Grid */
-.color-picker-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.color-option {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: var(--transition);
-  min-height: 44px;
-}
-
-.color-option:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.color-option.active {
-  border-color: white;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-}
-
-/* ==================== Footer MEJORADO ==================== */
+/* ==================== Footer ==================== */
 footer.site-footer {
   background: rgba(10, 10, 30, 0.95);
   text-align: center;
-  padding: 1rem clamp(1%, 2vw, 2%);
+  padding: 0.75rem clamp(1%, 2vw, 2%);
   border-top: 1px solid var(--border-color);
   position: relative;
   z-index: 2;
   margin-top: auto;
   flex-shrink: 0;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 footer.site-footer small {
   display: block;
-  margin: 0.5rem 0;
-  font-size: 0.85rem;
+  margin: 0.25rem 0;
+  font-size: 0.8rem;
 }
 
 footer.site-footer a {
@@ -644,115 +389,69 @@ footer.site-footer a:hover {
   text-decoration: underline;
 }
 
-/* ==================== Responsive Design PERFECCIONADO ==================== */
+/* ==================== Responsive Design ==================== */
 
 /* Tablets y pantallas medianas */
 @media (max-width: 1440px) {
   .container {
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 320px;
+    gap: 8px;
   }
 }
 
 @media (max-width: 1280px) {
   .container {
-    grid-template-columns: 1fr 340px;
-    padding: 0.75rem 1.5%;
+    grid-template-columns: 1fr 300px;
+    padding: 0.5rem 1.5%;
+    gap: 8px;
   }
   
   #playerFrame {
-    min-height: calc(100vh - 220px);
-  }
-  
-  .chat-card {
-    min-height: calc(100vh - 180px);
-    max-height: calc(100vh - 180px);
-    height: calc(100vh - 180px);
+    min-height: calc(100vh - 160px);
   }
 }
 
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
-    padding: 1rem 2%;
-    gap: 15px;
-  }
-
-  .player-card,
-  .chat-card {
-    grid-column: 1;
-    height: auto;
-  }
-
-  .chat-card {
-    order: 2;
-    min-height: 450px;
-    max-height: 550px;
-    height: auto;
-  }
-
-  .player-card {
-    order: 1;
+    padding: 0.75rem 2%;
+    gap: 10px;
   }
 
   #playerFrame {
-    min-height: 500px;
+    min-height: 450px;
     aspect-ratio: 16 / 9;
   }
 
   #twitchChat {
-    min-height: 350px;
-    height: 450px;
+    min-height: 300px;
+    height: 400px;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 1rem 1%;
-    gap: 12px;
-  }
-
-  .player-card,
-  .chat-card {
-    height: auto;
-  }
-
-  .card-header {
-    padding: 10px 14px;
-    min-height: 56px;
-  }
-
-  .channel-head img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .channel-head .name {
-    font-size: 1rem;
+    padding: 0.5rem 1%;
+    gap: 8px;
   }
 
   #playerFrame {
     min-height: 350px;
   }
 
-  .chat-card {
-    min-height: 400px;
-    max-height: 500px;
-    height: auto;
-  }
-  
   #twitchChat {
-    height: 400px;
+    height: 350px;
   }
 
   .customize-panel {
     max-width: 100%;
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
   
   .options-bar {
     justify-content: center;
-    padding: 10px 4%;
-    gap: 10px;
+    padding: 6px 3%;
+    gap: 6px;
   }
   
   .customize-btn {
@@ -768,16 +467,16 @@ footer.site-footer a:hover {
   .options-bar {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    padding: 12px 4%;
+    gap: 6px;
+    padding: 6px 3%;
   }
 
   select,
   .btn {
     width: 100%;
-    font-size: 14px;
-    padding: 8px 12px;
-    min-height: 40px;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    min-height: 36px;
   }
 
   .customize-btn {
@@ -785,41 +484,16 @@ footer.site-footer a:hover {
   }
 
   .container {
-    padding: 0.75rem 1%;
-    gap: 10px;
-  }
-
-  .player-card,
-  .chat-card {
-    height: auto;
-  }
-
-  .card-header {
-    min-height: 50px;
-    padding: 8px 12px;
-  }
-
-  .channel-head img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .channel-head .name {
-    font-size: 0.9rem;
+    padding: 0.5rem 1%;
+    gap: 6px;
   }
 
   #playerFrame {
     min-height: 250px;
   }
 
-  .chat-card {
-    min-height: 350px;
-    max-height: 450px;
-    height: auto;
-  }
-  
   #twitchChat {
-    height: 350px;
+    height: 300px;
   }
   
   .customize-panel {
@@ -827,57 +501,15 @@ footer.site-footer a:hover {
   }
   
   .panel-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   
   .control-group h3 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   
   .spiral-galaxy {
     display: none;
-  }
-}
-
-/* ==================== Ajustes específicos para Android ==================== */
-@media (max-width: 768px) and (orientation: portrait) {
-  .options-bar select,
-  .options-bar .btn {
-    font-size: 14px !important;
-    padding: 8px 12px !important;
-    min-height: 40px !important;
-    border-radius: 6px !important;
-  }
-
-  .options-bar .btn svg {
-    width: 18px !important;
-    height: 18px !important;
-  }
-  
-  #playerFrame {
-    min-height: 280px;
-  }
-}
-
-/* Landscape en móviles */
-@media (max-width: 896px) and (orientation: landscape) {
-  .container {
-    grid-template-columns: 1fr 300px;
-    gap: 10px;
-  }
-  
-  #playerFrame {
-    min-height: calc(100vh - 180px);
-  }
-  
-  .chat-card {
-    min-height: calc(100vh - 180px);
-    max-height: calc(100vh - 180px);
-    height: calc(100vh - 180px);
-  }
-  
-  #twitchChat {
-    height: 100%;
   }
 }
 
@@ -886,7 +518,7 @@ a:focus-visible,
 button:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 /* ==================== Scrollbar Personalizado ==================== */
@@ -905,19 +537,6 @@ select:focus-visible {
 
 .customize-panel::-webkit-scrollbar-thumb:hover {
   background: var(--accent-purple);
-}
-
-/* ==================== Optimización de rendimiento ==================== */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .star {
-    animation: none !important;
-  }
 }
 
 /* ==================== Utilidades ==================== */
@@ -943,4 +562,21 @@ select:focus-visible {
 @keyframes aurora {
   0%, 100% { opacity: 0.1; transform: translateY(0); }
   50% { opacity: 0.15; transform: translateY(-20px); }
+}
+
+/* Clases de utilidad */
+.hidden {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
