@@ -145,7 +145,7 @@ select:hover {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 0.5rem clamp(1%, 1vw, 1.5%);
+  padding: 0.2rem;
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 8px;
@@ -208,7 +208,6 @@ select:hover {
   position: relative;
   z-index: 1;
 }
-
 
 /* ==================== Header canal MÁS COMPACTO ==================== */
 .card-header {
@@ -312,6 +311,7 @@ select:hover {
   overflow: hidden !important;
 }
 
+
 /* ==================== Chat Card MÁS COMPACTO ==================== */
 .chat-card {
   grid-column: 2;
@@ -324,6 +324,18 @@ select:hover {
   box-shadow: var(--shadow-md);
   min-height: 0;
   height: 100%;
+  position: relative;
+}
+
+/* Cuando el chat está colapsado */
+.chat-card.collapsed {
+  min-height: 60px;
+  max-height: 60px;
+  height: 60px;
+}
+
+.chat-card.collapsed #twitchChat {
+  display: none;
 }
 
 #twitchChat {
@@ -622,29 +634,9 @@ input:checked + .toggle-slider:before {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
 }
 
-/* ==================== Footer MÁS COMPACTO ==================== */
+/* ==================== RESPONSIVE DESIGN MEJORADO ==================== */
 
-
-footer.site-footer small {
-  display: block;
-  margin: 0.25rem 0;
-  font-size: 0.8rem;
-}
-
-footer.site-footer a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-footer.site-footer a:hover {
-  color: var(--accent-purple);
-  text-decoration: underline;
-}
-
-/* ==================== Responsive Design PERFECCIONADO ==================== */
-
-/* Tablets y pantallas medianas */
+/* Laptops medianos (1440px - 1281px) */
 @media (max-width: 1440px) {
   .container {
     grid-template-columns: 1fr 320px;
@@ -652,6 +644,7 @@ footer.site-footer a:hover {
   }
 }
 
+/* Laptops pequeños (1280px - 1025px) */
 @media (max-width: 1280px) {
   .container {
     grid-template-columns: 1fr 300px;
@@ -668,8 +661,14 @@ footer.site-footer a:hover {
     max-height: calc(100vh - 160px);
     height: calc(100vh - 160px);
   }
+  
+  .options-bar {
+    padding: 6px 2%;
+    gap: 6px;
+  }
 }
 
+/* Tablets grandes (1024px - 901px) */
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
@@ -703,11 +702,21 @@ footer.site-footer a:hover {
     min-height: 300px;
     height: 400px;
   }
+  
+  .options-bar {
+    justify-content: center;
+    padding: 8px 2%;
+  }
+  
+  .customize-btn {
+    margin-left: 0;
+  }
 }
 
-@media (max-width: 768px) {
+/* Tablets medianos (900px - 769px) */
+@media (max-width: 900px) {
   .container {
-    padding: 0.5rem 1%;
+    padding: 0.5rem 1.5%;
     gap: 8px;
   }
 
@@ -731,6 +740,28 @@ footer.site-footer a:hover {
   }
 
   #playerFrame {
+    min-height: 400px;
+  }
+
+  .chat-card {
+    min-height: 380px;
+    max-height: 420px;
+    height: auto;
+  }
+  
+  #twitchChat {
+    height: 380px;
+  }
+}
+
+/* Tablets pequeños (768px - 601px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem 1%;
+    gap: 8px;
+  }
+
+  #playerFrame {
     min-height: 350px;
   }
 
@@ -750,13 +781,15 @@ footer.site-footer a:hover {
   }
   
   .options-bar {
-    justify-content: center;
     padding: 6px 3%;
     gap: 6px;
   }
   
-  .customize-btn {
-    margin-left: 0;
+  select,
+  .btn {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+    min-height: 36px;
   }
   
   .spiral-galaxy {
@@ -764,7 +797,8 @@ footer.site-footer a:hover {
   }
 }
 
-@media (max-width: 480px) {
+/* Móviles grandes (600px - 481px) */
+@media (max-width: 600px) {
   .options-bar {
     flex-direction: column;
     align-items: stretch;
@@ -789,11 +823,20 @@ footer.site-footer a:hover {
     gap: 6px;
   }
 
-  .player-card,
-  .chat-card {
-    height: auto;
+  #playerFrame {
+    min-height: 300px;
   }
 
+  .chat-card {
+    min-height: 320px;
+    max-height: 380px;
+    height: auto;
+  }
+  
+  #twitchChat {
+    height: 320px;
+  }
+  
   .card-header {
     min-height: 42px;
     padding: 5px 8px;
@@ -807,19 +850,27 @@ footer.site-footer a:hover {
   .channel-head .name {
     font-size: 0.9rem;
   }
+}
+
+/* Móviles medianos (480px - 376px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.4rem 1%;
+    gap: 5px;
+  }
 
   #playerFrame {
     min-height: 250px;
   }
 
   .chat-card {
-    min-height: 300px;
-    max-height: 350px;
+    min-height: 280px;
+    max-height: 320px;
     height: auto;
   }
   
   #twitchChat {
-    height: 300px;
+    height: 280px;
   }
   
   .customize-panel {
@@ -834,8 +885,61 @@ footer.site-footer a:hover {
     font-size: 0.9rem;
   }
   
+  .control-item {
+    margin-bottom: 0.8rem;
+  }
+  
   .spiral-galaxy {
     display: none;
+  }
+  
+  .options-bar {
+    padding: 5px 2%;
+    gap: 5px;
+  }
+}
+
+/* Móviles pequeños (375px y menos) */
+@media (max-width: 375px) {
+  .container {
+    padding: 0.3rem 1%;
+    gap: 4px;
+  }
+
+  #playerFrame {
+    min-height: 220px;
+  }
+
+  .chat-card {
+    min-height: 250px;
+    max-height: 300px;
+    height: auto;
+  }
+  
+  #twitchChat {
+    height: 250px;
+  }
+  
+  .card-header {
+    min-height: 40px;
+    padding: 4px 6px;
+  }
+
+  .channel-head img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .channel-head .name {
+    font-size: 0.85rem;
+  }
+  
+  .channel-status {
+    font-size: 0.7rem;
+  }
+  
+  .customize-panel {
+    padding: 0.8rem;
   }
 }
 
@@ -864,6 +968,7 @@ footer.site-footer a:hover {
   .container {
     grid-template-columns: 1fr 280px;
     gap: 6px;
+    padding: 0.4rem 1%;
   }
   
   #playerFrame {
@@ -883,6 +988,37 @@ footer.site-footer a:hover {
   .options-bar {
     padding: 4px 3%;
     min-height: 44px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .options-bar label,
+  .options-bar select,
+  .options-bar .btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+/* Landscape en móviles pequeños */
+@media (max-width: 667px) and (orientation: landscape) {
+  .container {
+    grid-template-columns: 1fr 240px;
+  }
+  
+  #playerFrame {
+    min-height: calc(100vh - 120px);
+  }
+  
+  .chat-card {
+    min-height: calc(100vh - 120px);
+    max-height: calc(100vh - 120px);
+    height: calc(100vh - 120px);
+  }
+  
+  .options-bar {
+    min-height: 40px;
+    padding: 3px 2%;
   }
 }
 
@@ -950,4 +1086,33 @@ select:focus-visible {
   50% { opacity: 0.15; transform: translateY(-20px); }
 }
 
+/* ==================== Mejoras para dispositivos táctiles ==================== */
+@media (pointer: coarse) {
+  .btn,
+  select,
+  .chat-toggle,
+  .close-panel {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .options-bar .btn,
+  .options-bar select {
+    padding: 10px 12px;
+  }
+  
+  .color-option {
+    min-height: 44px;
+  }
+}
 
+/* ==================== Soporte para dispositivos de alta densidad ==================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .card {
+    border-width: 0.5px;
+  }
+  
+  .options-bar {
+    border-bottom-width: 0.5px;
+  }
+}
