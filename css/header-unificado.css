@@ -117,11 +117,11 @@
 }
 
 .site-header nav a {
-  padding: 10px 14px;
+  padding: 8px 12px;
   font-weight: 600;
   font-size: 0.9rem;
   border-radius: 8px;
-  background: rgba(50, 50, 80, 0.5);
+  background: color(transparent);
   transition: var(--header-transition);
   min-height: 44px;
   display: flex;
@@ -320,5 +320,4 @@
   .site-header .customize-gear {
     transition: none;
   }
-
 }

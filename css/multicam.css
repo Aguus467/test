@@ -1,5 +1,3 @@
-optimizame esto sin romper la estructura en android y pc
-
 /* ==================== Variables CSS Multicámara Adaptativas ==================== */
 :root {
   --multicam-blur: 12px;
@@ -23,58 +21,6 @@ optimizame esto sin romper la estructura en android y pc
     --multicam-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     --multicam-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   }
-}
-
-/* ==================== CORRECCIÓN DE BARRAS DE SCROLL EN IFRAMES ==================== */
-.stream-item {
-  background: var(--bg-card);
-  backdrop-filter: blur(var(--multicam-blur));
-  -webkit-backdrop-filter: blur(var(--multicam-blur));
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--multicam-shadow);
-  border: 2px solid transparent;
-  transition: var(--multicam-transition);
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  transform: translateZ(0);
-}
-
-/* Contenedor del iframe con relación de aspecto fija */
-.stream-iframe-container {
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  position: relative;
-  background: #000;
-  flex: 1;
-  overflow: hidden;
-}
-
-/* Iframe que ocupa todo el contenedor SIN BARRAS */
-.stream-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: #000;
-  min-height: 0 !important;
-  max-height: none !important;
-  overflow: hidden !important;
-}
-
-/* Eliminar cualquier scroll interno */
-.stream-iframe::-webkit-scrollbar {
-  display: none;
-}
-
-.stream-iframe {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 /* ==================== Corrección de Header y Body ==================== */
@@ -730,6 +676,22 @@ header,
 }
 
 /* ==================== Stream Items (Optimizados) ==================== */
+.stream-item {
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--multicam-blur));
+  -webkit-backdrop-filter: blur(var(--multicam-blur));
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--multicam-shadow);
+  border: 2px solid transparent;
+  transition: var(--multicam-transition);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  transform: translateZ(0);
+}
+
 .stream-item::before {
   content: '';
   position: absolute;
@@ -878,6 +840,25 @@ header,
   }
 }
 
+/* ==================== Stream Iframe ==================== */
+.stream-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border: none;
+  background: #000;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  transform: translateZ(0);
+}
+
+.layout-2 .stream-iframe,
+.layout-3 .stream-iframe,
+.layout-4 .stream-iframe {
+  min-height: 400px;
+}
+
 /* ==================== Modo Pantalla Completa ==================== */
 body.fullscreen-mode {
   overflow: hidden;
@@ -915,37 +896,42 @@ body.fullscreen-mode .exit-fullscreen-btn {
   display: flex;
 }
 
-/* Ajustes específicos para fullscreen con la nueva estructura */
-body.fullscreen-mode .stream-iframe-container {
+body.fullscreen-mode .stream-iframe {
+  min-height: unset;
   height: 100%;
-  padding-bottom: 0;
 }
 
-body.fullscreen-mode .layout-1 .stream-iframe-container { 
+body.fullscreen-mode .layout-1 .stream-iframe { 
   height: calc(100vh - 100px); 
 }
 
-body.fullscreen-mode .layout-2 .stream-iframe-container,
-body.fullscreen-mode .layout-3 .stream-iframe-container,
-body.fullscreen-mode .layout-4 .stream-iframe-container { 
+body.fullscreen-mode .layout-2 .stream-iframe,
+body.fullscreen-mode .layout-3 .stream-iframe,
+body.fullscreen-mode .layout-4 .stream-iframe { 
   height: calc(50vh - 60px); 
 }
 
 /* ==================== Footer Compacto ==================== */
-footer.site-footer,
-.site-footer {
-  padding: 1rem 0 !important;
-  margin-top: 2rem !important;
+footer.site-footer {
+  background: rgba(10, 10, 30, 0.95);
+  backdrop-filter: blur(var(--base-blur));
+  -webkit-backdrop-filter: blur(var(--base-blur));
+  text-align: center;
+  padding: 0rem 0;
+  border-top: 1px solid rgba(114, 214, 255, 0.2);
+  margin-top: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 footer.site-footer .container,
 .site-footer .container {
-  padding: 0.5rem 1rem !important;
+  padding: 0.2rem 1rem !important;
 }
 
 footer.site-footer small,
 .site-footer small {
-  margin: 0.25rem 0 !important;
+  margin: 0.2rem 0 !important;
   font-size: 0.8rem !important;
 }
 
@@ -995,6 +981,10 @@ footer.site-footer small,
   .stream-selector {
     grid-template-columns: 1fr;
   }
+  
+  .stream-iframe {
+    min-height: 300px;
+  }
 
   .stream-placeholder {
     min-height: 300px;
@@ -1004,13 +994,13 @@ footer.site-footer small,
     padding: 0.5rem;
   }
   
-  body.fullscreen-mode .layout-1 .stream-iframe-container { 
+  body.fullscreen-mode .layout-1 .stream-iframe { 
     height: calc(100vh - 80px); 
   }
   
-  body.fullscreen-mode .layout-2 .stream-iframe-container,
-  body.fullscreen-mode .layout-3 .stream-iframe-container,
-  body.fullscreen-mode .layout-4 .stream-iframe-container { 
+  body.fullscreen-mode .layout-2 .stream-iframe,
+  body.fullscreen-mode .layout-3 .stream-iframe,
+  body.fullscreen-mode .layout-4 .stream-iframe { 
     height: calc(33vh - 50px); 
   }
 }
@@ -1025,6 +1015,10 @@ footer.site-footer small,
     right: 10px;
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
+  }
+
+  .stream-iframe {
+    min-height: 250px;
   }
 
   .stream-placeholder {
@@ -1226,6 +1220,10 @@ footer.site-footer small,
 
 /* ==================== Optimización Landscape en Móviles ==================== */
 @media (max-width: 768px) and (orientation: landscape) {
+  .stream-iframe {
+    min-height: 250px;
+  }
+
   .stream-placeholder {
     min-height: 250px;
   }
@@ -1239,13 +1237,13 @@ footer.site-footer small,
     gap: 0.5rem;
   }
 
-  body.fullscreen-mode .layout-1 .stream-iframe-container { 
+  body.fullscreen-mode .layout-1 .stream-iframe { 
     height: calc(100vh - 60px); 
   }
 
-  body.fullscreen-mode .layout-2 .stream-iframe-container,
-  body.fullscreen-mode .layout-3 .stream-iframe-container,
-  body.fullscreen-mode .layout-4 .stream-iframe-container { 
+  body.fullscreen-mode .layout-2 .stream-iframe,
+  body.fullscreen-mode .layout-3 .stream-iframe,
+  body.fullscreen-mode .layout-4 .stream-iframe { 
     height: calc(50vh - 40px); 
   }
 }
@@ -1343,6 +1341,16 @@ html {
     max-width: 1600px;
   }
 
+  .stream-iframe {
+    min-height: 600px;
+  }
+
+  .layout-2 .stream-iframe,
+  .layout-3 .stream-iframe,
+  .layout-4 .stream-iframe {
+    min-height: 500px;
+  }
+
   .stream-placeholder {
     min-height: 600px;
     font-size: 1.5rem;
@@ -1427,5 +1435,4 @@ body.debug-mode .stream-item.active {
 /* Priorizar carga de iframes visibles */
 .stream-iframe[loading="lazy"] {
   content-visibility: auto;
-
 }

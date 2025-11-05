@@ -79,7 +79,7 @@ body::before {
 
 /* ==================== Options Bar MÁS COMPACTO ==================== */
 .options-bar {
-  padding: 2px clamp(1%, 1.5vw, 2%);
+  padding: 3px clamp(1%, 1.5vw, 2%);
   background: 
     radial-gradient(circle at 30% 50%, rgba(114, 214, 255, 0.2), transparent 30%),
     radial-gradient(circle at 70% 50%, rgba(255, 127, 255, 0.2), transparent 30%);
@@ -624,18 +624,7 @@ input:checked + .toggle-slider:before {
 }
 
 /* ==================== Footer MÁS COMPACTO ==================== */
-footer.site-footer {
-  background: rgba(10, 10, 30, 0.95);
-  text-align: center;
-  padding: 0.75rem clamp(1%, 2vw, 2%);
-  border-top: 1px solid var(--border-color);
-  position: relative;
-  z-index: 2;
-  margin-top: auto;
-  flex-shrink: 0;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-}
+
 
 footer.site-footer small {
   display: block;
@@ -961,5 +950,4 @@ select:focus-visible {
   0%, 100% { opacity: 0.1; transform: translateY(0); }
   50% { opacity: 0.15; transform: translateY(-20px); }
 }
-
 
