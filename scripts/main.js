@@ -332,13 +332,13 @@ function buildMatchCard(groupedEvent) {
   // Badge con cantidad de opciones disponibles
   const optionsCount = Math.max(groupedEvent.allNetworks.length, groupedEvent.allCanales.length);
   const sourcesBadge = createEl('span', 'sources-badge', `${optionsCount} opciones`);
-  meta.appendChild(sourcesBadge);
+  //meta.appendChild(sourcesBadge);
   
   // Info de fuentes combinadas
   const sourcesInfo = createEl('span', 'sources-info', `[${groupedEvent.sources.length} fuentes]`);
-  meta.appendChild(sourcesInfo);
+  //meta.appendChild(sourcesInfo);
   
-  main.appendChild(meta);
+  //main.appendChild(meta);
   
   header.appendChild(timeCol);
   header.appendChild(main);
