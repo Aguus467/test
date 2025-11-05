@@ -22,6 +22,49 @@
 <link rel="stylesheet" href="css/espacial-base.css">
 <link rel="stylesheet" href="css/header-unificado.css">
 <link rel="stylesheet" href="css/transmision.css">
+<style>
+  /* Reproductor flexible que se adapta al contenido embebido */
+  .player-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  #playerFrame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+    background: #000;
+    flex: 1;
+    overflow: hidden !important;
+  }
+  
+  .player-card iframe {
+    min-height: 0 !important;
+    flex-grow: 1 !important;
+    overflow: hidden !important;
+  }
+  
+  @media (max-width: 768px) {
+    #playerFrame { min-height: 300px; }
+  }
+  
+  @media (max-width: 480px) {
+    #playerFrame { min-height: 250px; }
+  }
+
+  /* Loading state */
+  .loading { opacity: 0.5; pointer-events: none; }
+
+  /* Spin animation */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .spinning { animation: spin 1s linear infinite; }
+</style>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
@@ -61,7 +104,14 @@
 
 <!-- Options Bar -->
 <section class="options-bar">
-  <label for="optionSelect">Transmisión:</label>
+    <div class="card-header">
+      <div class="channel-head" id="channel-info">
+        <img id="channel-logo" src="assets/logo2.png" alt="Logo del canal">
+        <div class="channel-info">
+          <span class="name" id="channel-name">Canal en Vivo</span>
+        </div>
+      </div>
+    </div>
   <select id="optionSelect" aria-label="Seleccionar transmisión">
     <option value="">Cargando opciones...</option>
   </select>
@@ -71,20 +121,13 @@
     </svg>
     Recargar
   </button>
-  <button class="btn customize-btn" id="customizeBtn" aria-label="Personalizar interfaz">
-    <svg class="icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="3"/>
-      <path d="M12 1v6m0 6v6m6-12h-6m6 6h-6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24m-4.24-13.56l-4.24 4.24m-5.08 5.08l-4.24 4.24"/>
-    </svg>
-    Personalizar
-  </button>
 </section>
 
 <!-- Main Content -->
 <main class="container">
-  
   <!-- Player Card -->
-    <section class="card player-card">
+  <section class="card player-card">
+
     <iframe 
       id="playerFrame"
       scrolling="no"
@@ -94,12 +137,18 @@
       title="Reproductor de transmisión en vivo"
       loading="lazy">
     </iframe>
-    </section>
+  </section>
 
   <!-- Chat Card -->
   <aside class="card chat-card">
     <div class="card-header">
+        <button class="chat-toggle" id="chatToggle" aria-label="Minimizar chat">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+  </button>
     </div>
+
     <iframe 
       id="twitchChat" 
       src="" 
@@ -110,74 +159,6 @@
   </aside>
 </main>
 
-<!-- Customization Panel -->
-<div class="customize-panel" id="customizePanel">
-  <div class="panel-header">
-    <h2>Personalización</h2>
-    <button class="close-panel" id="closePanel" aria-label="Cerrar panel">✕</button>
-  </div>
-
-  <div class="control-group">
-    <h3>🎨 Apariencia</h3>
-
-    <div class="control-item">
-      <label>
-        Estrellas animadas
-        <label class="toggle-switch">
-          <input type="checkbox" id="starsToggle" checked>
-          <span class="toggle-slider"></span>
-        </label>
-      </label>
-    </div>
-
-    <div class="control-item">
-      <label for="starsIntensity">
-        Intensidad de estrellas
-        <span class="value-display" id="starsValue">70</span>
-      </label>
-      <input type="range" id="starsIntensity" min="20" max="120" value="70" step="10">
-    </div>
-
-    <div class="control-item">
-      <label for="bgOpacity">
-        Opacidad del fondo
-        <span class="value-display" id="opacityValue">70%</span>
-      </label>
-      <input type="range" id="bgOpacity" min="30" max="100" value="70" step="5">
-    </div>
-  </div>
-
-  <div class="control-group">
-    <h3>📺 Reproductor</h3>
-    
-    <div class="control-item">
-      <label>
-        Chat automático
-        <label class="toggle-switch">
-          <input type="checkbox" id="autoChatToggle" checked>
-          <span class="toggle-slider"></span>
-        </label>
-      </label>
-    </div>
-
-    <div class="control-item">
-      <label>
-        Recarga automática (si falla)
-        <label class="toggle-switch">
-          <input type="checkbox" id="autoReloadToggle">
-          <span class="toggle-slider"></span>
-        </label>
-      </label>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <h3>⚙️ Configuración</h3>
-    <button class="btn" id="resetSettings" style="width: 100%;">
-      Restaurar valores por defecto
-    </button>
-  </div>
-</div>
 
 <!-- Footer -->
 <footer class="site-footer">
@@ -195,11 +176,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
