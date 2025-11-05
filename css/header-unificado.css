@@ -18,7 +18,7 @@
     var(--header-bg);
   backdrop-filter: var(--header-blur);
   -webkit-backdrop-filter: var(--header-blur);
-  padding: 12px 5%;
+  padding: 1px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -320,4 +320,5 @@
   .site-header .customize-gear {
     transition: none;
   }
+
 }
