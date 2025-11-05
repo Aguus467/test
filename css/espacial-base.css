@@ -568,9 +568,7 @@ footer.site-footer {
   backdrop-filter: blur(var(--base-blur));
   -webkit-backdrop-filter: blur(var(--base-blur));
   text-align: center;
-  padding: 0.7rem 0;
   border-top: 1px solid rgba(114, 214, 255, 0.2);
-  margin-top: 3rem;
   position: relative;
   z-index: 2;
 }
