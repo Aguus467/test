@@ -153,7 +153,6 @@ select:hover {
   z-index: 1;
   align-items: start;
   flex: 1;
-  min-height: calc(100vh - 140px);
 }
 
 /* Ajustes proporcionales automáticos */
@@ -950,4 +949,5 @@ select:focus-visible {
   0%, 100% { opacity: 0.1; transform: translateY(0); }
   50% { opacity: 0.15; transform: translateY(-20px); }
 }
+
 
