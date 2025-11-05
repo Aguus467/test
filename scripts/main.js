@@ -1,3 +1,6 @@
+//MAIN.JS
+
+
 const API_URL = 'https://api.infutbol.site/matches/today';
 const CHANNELS_JSON = 'https://json.angulismotv.workers.dev/channels';
 let CHANNEL_LOGOS = {};
@@ -32,6 +35,7 @@ function createEl(tag, cls, text) {
 }
 
 function pad(n) { return n.toString().padStart(2, '0'); }
+
 function formatTime(str) {
   if (!str) {
     console.log('formatTime: string vacío o nulo');
@@ -60,6 +64,7 @@ function formatTime(str) {
   console.log('formatTime: formato no reconocido:', str);
   return '--:--';
 }
+
 function formatDayBanner(dateStr) {
   const now = new Date();
   const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
@@ -71,10 +76,24 @@ function formatDayBanner(dateStr) {
   return `Agenda - ${dia} ${pad(d)} de ${mes} de ${year}`;
 }
 
+// MEJORA la función parseStartTime:
 function parseStartTime(str) {
   try {
-    if (!str || typeof str !== 'string') return new Date(8640000000000000);
-    const [date, time] = str.split(' ');
+    if (!str || typeof str !== 'string') return new Date(8640000000000000); // Fecha muy futura
+    
+    // Limpiar y estandarizar el formato de fecha
+    let cleanStr = str.trim();
+    
+    // Si es solo hora, agregar fecha de hoy
+    if (cleanStr.includes(':') && !cleanStr.includes('-')) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = pad(today.getMonth() + 1);
+      const dd = pad(today.getDate());
+      cleanStr = `${yyyy}-${mm}-${dd} ${cleanStr}`;
+    }
+    
+    const [date, time] = cleanStr.split(' ');
     if (!date || !time) return new Date(8640000000000000);
     
     let yyyy, mm, dd;
@@ -86,6 +105,11 @@ function parseStartTime(str) {
         [yyyy, mm, dd] = parts;
       } else { // Es formato DD-MM-YYYY
         [dd, mm, yyyy] = parts;
+        
+        // Corregir año si es necesario (formato 2025-20-08 es inválido)
+        if (yyyy < 1000) {
+          yyyy += 2000; // Asumir siglo 21
+        }
       }
     } else {
       return new Date(8640000000000000);
@@ -106,125 +130,313 @@ function parseStartTime(str) {
   }
 }
 
-function buildMatchCard(match) {
-  const card = createEl('div', 'match-card');
+// Función para agrupar eventos duplicados
+// REEMPLAZA la función groupDuplicateEvents con esta versión mejorada:
+// REEMPLAZA completamente la función groupDuplicateEvents con esta versión:
+function groupDuplicateEvents(events) {
+  const grouped = {};
+  
+  events.forEach(event => {
+    // Verificar si el evento tiene datos válidos
+    if (!event || (!event.teams && !event.evento)) {
+      console.log('Evento inválido omitido:', event);
+      return;
+    }
+    
+    // Extraer nombres de equipos de diferentes maneras
+    let teamNames = [];
+    let originalEventName = '';
+    
+    if (event.teams && Array.isArray(event.teams) && event.teams.length > 0) {
+      // Si ya tiene teams definidos
+      teamNames = event.teams.map(t => t.name?.toLowerCase().trim() || '').filter(name => name);
+      originalEventName = event.teams.map(t => t.name).join(' vs ');
+    } else if (event.evento) {
+      // Intentar extraer equipos del título del evento
+      originalEventName = event.evento;
+      const eventoStr = event.evento.toLowerCase();
+      
+      // Limpiar el nombre del evento (remover prefijos como "NHL:", etc.)
+      let cleanEventName = eventoStr;
+      if (eventoStr.includes(':')) {
+        cleanEventName = eventoStr.split(':').slice(1).join(':').trim();
+      }
+      
+      if (cleanEventName.includes(' vs ')) {
+        teamNames = cleanEventName.split(' vs ').map(name => name.trim());
+      } else if (cleanEventName.includes(' - ')) {
+        teamNames = cleanEventName.split(' - ').map(name => name.trim());
+      } else {
+        // Si no se pueden extraer equipos, usar el título completo limpio
+        teamNames = [cleanEventName.trim()];
+      }
+    } else {
+      console.log('Evento sin datos de equipos:', event);
+      return;
+    }
+    
+    if (teamNames.length === 0) {
+      console.log('Evento sin nombres de equipos válidos:', event);
+      return;
+    }
+    
+    // Normalizar nombres de equipos (remover detalles extra)
+    const normalizedTeamNames = teamNames.map(name => {
+      // Remover "en español", "nhl:", etc.
+      return name
+        .replace(/nhl:\s*/gi, '')
+        .replace(/en español\s*/gi, '')
+        .replace(/\s*-\s*.+$/, '') // Remover todo después del último guión
+        .trim();
+    });
+    
+    // Crear clave única basada SOLO en los equipos (ignorar hora)
+    const sortedTeamNames = normalizedTeamNames.sort().join('|');
+    const key = sortedTeamNames; // Solo equipos, sin hora
+    
+    console.log(`Procesando evento: "${originalEventName}"`);
+    console.log(`  Equipos normalizados: ${normalizedTeamNames.join(' vs ')}`);
+    console.log(`  Clave de agrupación: ${key}`);
+    console.log(`  Hora original: ${event.start_time}`);
+    
+    if (!grouped[key]) {
+      console.log(`  → NUEVO GRUPO creado`);
+      grouped[key] = {
+        id: `group-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        start_time: event.start_time, // Usar la primera hora que encontremos
+        teams: normalizedTeamNames.map(name => ({ name: name.toUpperCase() })),
+        evento: originalEventName,
+        description: event.description || '',
+        competition_name: event.competition_name || '',
+        competencia: event.competencia || '',
+        status: event.status || { name: '' },
+        slug: event.slug || `group-${key}`,
+        sources: [event],
+        allNetworks: [...(event.tv_networks || [])],
+        allCanales: [...(event.canales || [])]
+      };
+    } else {
+      console.log(`  → AGREGANDO a grupo existente`);
+      
+      // Evento duplicado - combinar opciones
+      grouped[key].sources.push(event);
+      
+      // Mejorar la información si esta fuente tiene datos más completos
+      if (event.description && !grouped[key].description) {
+        grouped[key].description = event.description;
+      }
+      if (event.competition_name && !grouped[key].competition_name) {
+        grouped[key].competition_name = event.competition_name;
+      }
+      
+      // Usar la hora más temprana
+      const currentTime = parseStartTime(grouped[key].start_time);
+      const newTime = parseStartTime(event.start_time);
+      if (newTime < currentTime) {
+        grouped[key].start_time = event.start_time;
+      }
+      
+      // Combinar networks evitando duplicados exactos
+      const newNetworks = event.tv_networks || [];
+      newNetworks.forEach(network => {
+        const exists = grouped[key].allNetworks.some(existing => 
+          existing.name === network.name && existing.link === network.link
+        );
+        if (!exists) {
+          console.log(`    Agregando nueva opción: ${network.name}`);
+          grouped[key].allNetworks.push(network);
+        }
+      });
+      
+      // Combinar canales evitando duplicados exactos
+      const newCanales = event.canales || [];
+      newCanales.forEach(canal => {
+        const exists = grouped[key].allCanales.some(existing => 
+          existing.name === canal.name && existing.link === canal.link
+        );
+        if (!exists) {
+          grouped[key].allCanales.push(canal);
+        }
+      });
+    }
+    
+    console.log(''); // Línea en blanco para separar eventos
+  });
+  
+  const result = Object.values(grouped);
+  console.log(`🎯 AGRUPACIÓN FINAL: ${events.length} eventos → ${result.length} grupos`);
+  result.forEach((group, index) => {
+    console.log(`   Grupo ${index + 1}: ${group.teams.map(t => t.name).join(' vs ')}`);
+    console.log(`     Horas combinadas: ${group.sources.map(s => formatTime(s.start_time)).join(', ')}`);
+    console.log(`     Opciones: ${group.allNetworks.length}`);
+    console.log(`     Fuentes: ${group.sources.length}`);
+  });
+  
+  return result;
+}
 
+function buildMatchCard(groupedEvent) {
+  console.log(`Construyendo card para grupo:`, groupedEvent);
+  
+  const card = createEl('div', 'match-card');
+  
+  // Header (siempre visible)
+  const header = createEl('div', 'match-header');
+  
   const timeCol = createEl('div', 'time-col');
-  const formattedTime = formatTime(match.start_time);
-  console.log('Tiempo formateado:', match.start_time, '->', formattedTime);
-  const timeBadge = createEl('div', 'time-badge', formattedTime || '--:--');
+  const timeBadge = createEl('div', 'time-badge', formatTime(groupedEvent.start_time));
   timeCol.appendChild(timeBadge);
   
   const main = createEl('div', 'match-main');
   
-  // Extraer nombre del evento y descripción del título
+  // Título del evento - USAR EL NOMBRE ORIGINAL MÁS DESCRIPTIVO
   let eventName = '';
-  let eventDescription = '';
-  const teamsText = match.teams?.map(t => t.name).join(' vs ') || match.evento || 'Evento sin título';
-  console.log('Texto de equipos:', teamsText);
   
-  if (teamsText.includes(':')) {
-    const parts = teamsText.split(':');
-    eventDescription = parts[0].trim();
-    eventName = parts.slice(1).join(':').trim();
-  } else {
-    eventName = teamsText;
+  // Prioridad 1: Usar el evento original más descriptivo de todas las fuentes
+  const allEventNames = groupedEvent.sources.map(source => source.evento).filter(name => name);
+  if (allEventNames.length > 0) {
+    // Encontrar el nombre más descriptivo (más largo)
+    eventName = allEventNames.reduce((longest, current) => 
+      current.length > longest.length ? current : longest, allEventNames[0]
+    );
+  } 
+  // Prioridad 2: Usar los equipos si no hay nombre de evento
+  else if (groupedEvent.teams && groupedEvent.teams.length > 0) {
+    eventName = groupedEvent.teams.map(t => t.name).join(' vs ');
+  }
+  // Prioridad 3: Usar el primer evento disponible
+  else if (groupedEvent.sources.length > 0 && groupedEvent.sources[0].evento) {
+    eventName = groupedEvent.sources[0].evento;
+  }
+  // Último recurso
+  else {
+    eventName = 'Evento Deportivo';
   }
   
-  // Crear el título sin clase de competencia (para quitar el logo)
   const title = createEl('div', 'teams', eventName);
   main.appendChild(title);
-
+  
   const meta = createEl('div', 'meta');
-  // Usar la descripción extraída del título si existe
-  if (eventDescription) {
-    meta.appendChild(createEl('span', '', eventDescription));
-  } else if (match.description) {
-    meta.appendChild(createEl('span', '', match.description));
+  
+  // Descripción (usar la más descriptiva disponible)
+  if (groupedEvent.description) {
+    meta.appendChild(createEl('span', '', groupedEvent.description));
+  } else {
+    // Buscar descripción en las fuentes
+    const allDescriptions = groupedEvent.sources.map(source => source.description).filter(desc => desc);
+    if (allDescriptions.length > 0) {
+      meta.appendChild(createEl('span', '', allDescriptions[0]));
+    }
   }
-
+  
+  // Badge con cantidad de opciones disponibles
+  const optionsCount = Math.max(groupedEvent.allNetworks.length, groupedEvent.allCanales.length);
+  const sourcesBadge = createEl('span', 'sources-badge', `${optionsCount} opciones`);
+  meta.appendChild(sourcesBadge);
+  
+  // Info de fuentes combinadas
+  const sourcesInfo = createEl('span', 'sources-info', `[${groupedEvent.sources.length} fuentes]`);
+  meta.appendChild(sourcesInfo);
+  
   main.appendChild(meta);
   
-  // Asegurarse de que meta tenga al menos un elemento
-  if (!eventDescription && !match.description) {
-    meta.appendChild(createEl('span', '', 'Sin detalles adicionales'));
-  }
-
-  const networks = Array.isArray(match.tv_networks) ? match.tv_networks : 
-                  (Array.isArray(match.canales) ? match.canales : []);
+  header.appendChild(timeCol);
+  header.appendChild(main);
   
-  card.appendChild(timeCol);
-  card.appendChild(main);
-  const dropdown = createEl('div', 'dropdown');
+  // Icono de expansión
+  const expandIcon = createEl('div', 'expand-icon');
+  expandIcon.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+  header.appendChild(expandIcon);
+  
+  card.appendChild(header);
+  
+  // Dropdown con opciones (oculto inicialmente)
+  const dropdown = createEl('div', 'dropdown hidden');
   const menu = createEl('ul', 'channel-menu');
-  dropdown.appendChild(menu);
-  card.appendChild(dropdown);
-
-  card.addEventListener('click', (e) => {
-    if (e.target.closest('.channel-menu')) return;
-    
-    // En lugar de abrir el menú desplegable, redirigir directamente a la transmisión
-    if (networks.length > 0) {
-      const firstNetwork = networks[0];
-      const link = firstNetwork.link || '';
-      if (link) {
-        window.top.location.href = `transmision.html?event=${link}`;
-      } else {
-        const params = new URLSearchParams();
-        params.set('channel', firstNetwork.name);
-        if (match.slug) params.set('match', match.slug);
-        window.top.location.href = `transmision.html?${params.toString()}`;
-      }
-    }
-  });
   
-  // Añadir evento para abrir la transmisión al hacer clic en el card
-  if (networks.length > 0) {
-    card.addEventListener('dblclick', () => {
-      const firstNetwork = networks[0];
-      const link = firstNetwork.link || '';
-      if (link) {
-        window.top.location.href = `transmision.html?event=${link}`;
-      } else {
-        const params = new URLSearchParams();
-        params.set('channel', firstNetwork.name);
-        if (match.slug) params.set('match', match.slug);
-        window.top.location.href = `transmision.html?${params.toString()}`;
-      }
-    });
-  }
-
-  if (networks.length === 0) {
+  // Usar allNetworks si está disponible, sino allCanales
+  const options = groupedEvent.allNetworks.length > 0 ? groupedEvent.allNetworks : groupedEvent.allCanales;
+  
+  console.log(`Opciones para "${eventName}":`, options);
+  
+  if (options.length === 0) {
     const li = createEl('li', 'channel-item');
-    li.textContent = 'Sin canales reportados';
+    li.textContent = 'Sin opciones disponibles';
     li.style.opacity = '0.6';
     menu.appendChild(li);
   } else {
-    for (const net of networks) {
-      const li = createEl('li', 'channel-item');
-      const left = createEl('div', 'left');
-      const play = createEl('span', 'play-icon');
-      const name = createEl('span', '', net.name);
-      left.appendChild(play);
-      left.appendChild(name);
-      li.appendChild(left);
-      li.addEventListener('click', (event) => {
-        event.stopPropagation();
-        // Si el canal tiene un enlace codificado en base64, lo usamos
-        if (net.link) {
-          window.top.location.href = `transmision.html?event=${net.link}`;
-        } else {
-          // Si no, usamos el método tradicional
-          const params = new URLSearchParams();
-          params.set('channel', net.name);
-          if (match.slug) params.set('match', match.slug);
-          window.top.location.href = `transmision.html?${params.toString()}`;
-        }
-      });
-      menu.appendChild(li);
-    }
+options.forEach((option, index) => {
+  const li = createEl('li', 'channel-item');
+  const left = createEl('div', 'left');
+  const play = createEl('span', 'play-icon');
+  
+  // Mostrar el nombre del canal/opción
+  let optionName = option.name || `Opción ${index + 1}`;
+  
+  // Si es YouTube, mostrar ícono especial
+  if (optionName.toLowerCase().includes('youtube')) {
+    optionName = `📺 ${optionName}`;
   }
-
+  
+  const name = createEl('span', '', optionName);
+  
+  left.appendChild(play);
+  left.appendChild(name);
+  li.appendChild(left);
+  
+  li.addEventListener('click', (event) => {
+    event.stopPropagation();
+    
+    console.log(`Clic en opción: ${option.name} para evento: ${eventName}`);
+    console.log('Estructura de la opción:', option);
+    
+    let encodedUrl = '';
+    
+    // 🔥 PRIORIDAD 1: Si tiene 'link' (ya viene en base64 de StreamTP/LA14HD)
+    if (option.link) {
+      encodedUrl = option.link;
+      console.log('✅ Usando link codificado:', atob(encodedUrl));
+    }
+    // 🔥 PRIORIDAD 2: Si tiene 'iframe' (de eventos manuales)
+    else if (option.iframe) {
+      encodedUrl = btoa(option.iframe);
+      console.log('✅ Codificando iframe:', option.iframe);
+    }
+    // ❌ Sin URL válida
+    else {
+      console.error('❌ Opción sin enlace válido:', option);
+      alert('Esta opción no tiene un enlace disponible');
+      return;
+    }
+    
+    // Redirigir con el parámetro 'event' (transmision.js ya lo maneja)
+    const params = new URLSearchParams();
+    params.set('event', encodedUrl);
+    
+    console.log('🚀 Redirigiendo a:', `transmision.html?${params.toString()}`);
+    
+    window.top.location.href = `transmision.html?${params.toString()}`;
+  });
+  
+  menu.appendChild(li);
+});
+  }
+  
+  dropdown.appendChild(menu);
+  card.appendChild(dropdown);
+  
+  // Toggle del acordeón
+  header.addEventListener('click', (e) => {
+    if (e.target.closest('.channel-item')) return;
+    
+    const isExpanding = dropdown.classList.contains('hidden');
+    console.log(`${isExpanding ? 'Expandiendo' : 'Contrayendo'} acordeón para: ${eventName}`);
+    
+    dropdown.classList.toggle('hidden');
+    card.classList.toggle('expanded');
+    expandIcon.classList.toggle('expanded');
+  });
+  
   return card;
 }
 
@@ -236,7 +448,40 @@ async function adaptManualEvents(events) {
     } else {
       teams = [{ name: ev.evento.trim() }];
     }
-    let canales = Array.isArray(ev.canales) ? ev.canales : (ev.canal ? [ev.canal] : []);
+    
+    // 🔥 CORREGIDO: Extraer las opciones de cada canal
+    let canales = [];
+    
+    if (Array.isArray(ev.canales)) {
+      ev.canales.forEach(canal => {
+        // Si el canal tiene options (estructura de canales manuales)
+        if (canal.options && Array.isArray(canal.options)) {
+          canal.options.forEach((opt, idx) => {
+            canales.push({
+              name: `${canal.name} - ${opt.name}`,
+              iframe: opt.iframe,
+              logo: canal.logo
+            });
+          });
+        }
+        // Si es solo un string (compatibilidad antigua)
+        else if (typeof canal === 'string') {
+          canales.push({ name: canal });
+        }
+        // Si es un objeto simple sin options
+        else if (canal.name) {
+          canales.push({
+            name: canal.name,
+            iframe: canal.iframe,
+            logo: canal.logo
+          });
+        }
+      });
+    } else if (ev.canal) {
+      // Compatibilidad con formato antiguo
+      canales = [ev.canal];
+    }
+    
     return {
       start_time: ev.fecha,
       teams: teams,
@@ -244,14 +489,7 @@ async function adaptManualEvents(events) {
       description: ev.descripcion || '',
       competition_name: ev.competencia || '',
       competencia: ev.competencia || '',
-      tv_networks: canales.map(c => {
-        // Si el canal es un objeto con estructura completa, lo usamos tal como está
-        if (typeof c === 'object' && c.name) {
-          return c;
-        }
-        // Si es solo un string, lo convertimos al formato anterior
-        return { name: c };
-      }),
+      tv_networks: canales,
       canales: canales,
       status: { name: ev.estado || '' },
       slug: `manual-${ev.id}`
@@ -270,45 +508,33 @@ function formatManualDate(dateStr) {
   return `${dd}-${mm}-${yyyy} ${HH}:${MM}`;
 }
 
+// Modificar renderAgendaUnified para usar eventos agrupados
 async function renderAgendaUnified(apiData, manualEvents) {
   const agenda = document.getElementById('agenda');
   if (!agenda) return;
   agenda.textContent = '';
-  const allMatches = [];
-  if (Array.isArray(manualEvents)) {
-    console.log('Eventos manuales a renderizar:', manualEvents.length);
-    // Filtrar eventos sin fecha o sin título
-    const validEvents = manualEvents.filter(ev => {
-      const hasTime = ev.start_time && ev.start_time.trim() !== '';
-      const hasTitle = (ev.teams && ev.teams.length > 0) || (ev.evento && ev.evento.trim() !== '');
-      if (!hasTime || !hasTitle) {
-        console.log('Evento inválido descartado:', ev);
-      }
-      return hasTime && hasTitle;
-    });
-    console.log('Eventos válidos a renderizar:', validEvents.length);
-    allMatches.push(...validEvents);
-  }
-
-  if (allMatches.length === 0) {
+  
+  if (!Array.isArray(manualEvents) || manualEvents.length === 0) {
     agenda.textContent = 'No hay partidos programados.';
     return;
   }
 
-  // Ordenar todos los eventos por hora
-  allMatches.sort((a, b) => {
+  // Agrupar eventos duplicados
+  const groupedEvents = groupDuplicateEvents(manualEvents);
+  console.log(`Eventos agrupados: ${manualEvents.length} → ${groupedEvents.length}`);
+  
+  // Ordenar por hora
+  groupedEvents.sort((a, b) => {
     const timeA = formatTime(a.start_time);
     const timeB = formatTime(b.start_time);
     return timeA.localeCompare(timeB);
   });
-  console.log('Eventos ordenados por hora:', allMatches.length);
 
   const listEl = createEl('div', 'matches');
   
-  // Crear tabla de eventos
-  allMatches.forEach(m => {
-    console.log('Renderizando evento:', m.evento || (m.teams ? m.teams.map(t => t.name).join(' vs ') : 'Sin título'));
-    listEl.appendChild(buildMatchCard(m));
+  groupedEvents.forEach(event => {
+    console.log(`Evento: ${event.teams.map(t => t.name).join(' vs ')} - ${event.allNetworks.length} opciones`);
+    listEl.appendChild(buildMatchCard(event)); // ← Esto recibe el evento AGRUPADO
   });
   
   agenda.appendChild(listEl);
@@ -600,17 +826,15 @@ async function adaptGitHubEvents(events) {
 async function init() {
   const agenda = document.getElementById('agenda');
   const banner = document.getElementById('dayBanner');
+  
   if (banner) banner.textContent = formatDayBanner();
   if (agenda) agenda.textContent = 'Cargando agenda...';
+  
   try {
     console.log('Iniciando carga de eventos...');
     
     // Cargar datos de múltiples fuentes
-    const [data, channelData, manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw, gitHubEventsRaw] = await Promise.all([
-      fetchJSON(API_URL).catch(err => {
-        console.error('Error al cargar API_URL:', err);
-        return { matches: [] };
-      }),
+    const [channelData, manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw, gitHubEventsRaw] = await Promise.all([
       fetchJSON(CHANNELS_JSON).catch(err => {
         console.error('Error al cargar CHANNELS_JSON:', err);
         return { channels: [] };
@@ -640,16 +864,9 @@ async function init() {
       gitHubEvents: Array.isArray(gitHubEventsRaw) ? gitHubEventsRaw.length : 'no es un array'
     });
     
-    if (channelData && Array.isArray(channelData.channels)) {
-      CHANNEL_LOGOS = Object.fromEntries(
-        channelData.channels.map(c => [String(c.name || '').toLowerCase(), c.logo])
-      );
-    }
-    
     // Adaptar eventos de todas las fuentes
     console.log('Adaptando eventos...');
     const manualEvents = await adaptManualEvents(Array.isArray(manualEventsRaw) ? manualEventsRaw : []);
-    console.log('Eventos manuales adaptados:', manualEvents.length);
     
     // Verificar la estructura de streamTPEventsRaw
     let streamTPArray = [];
@@ -658,7 +875,6 @@ async function init() {
         streamTPArray = streamTPEventsRaw;
       } else if (streamTPEventsRaw.Events && Array.isArray(streamTPEventsRaw.Events)) {
         streamTPArray = streamTPEventsRaw.Events;
-        console.log('Usando streamTPEventsRaw.Events:', streamTPArray.length);
       }
     }
     
@@ -669,7 +885,6 @@ async function init() {
         la14HDArray = la14HDEventsRaw;
       } else if (la14HDEventsRaw.Events && Array.isArray(la14HDEventsRaw.Events)) {
         la14HDArray = la14HDEventsRaw.Events;
-        console.log('Usando la14HDEventsRaw.Events:', la14HDArray.length);
       }
     }
     
@@ -680,30 +895,26 @@ async function init() {
         gitHubArray = gitHubEventsRaw;
       } else if (gitHubEventsRaw.Events && Array.isArray(gitHubEventsRaw.Events)) {
         gitHubArray = gitHubEventsRaw.Events;
-        console.log('Usando gitHubEventsRaw.Events:', gitHubArray.length);
       }
     }
     
     const streamTPEvents = await adaptStreamTPEvents(streamTPArray);
-    console.log('Eventos StreamTP adaptados:', streamTPEvents.length);
-    
     const la14HDEvents = await adaptLA14HDEvents(la14HDArray);
-    console.log('Eventos LA14HD adaptados:', la14HDEvents.length);
-    
     const gitHubEvents = await adaptGitHubEvents(gitHubArray);
-    console.log('Eventos GitHub adaptados:', gitHubEvents.length);
     
     // Combinar todos los eventos
     const allEvents = [...manualEvents, ...streamTPEvents, ...la14HDEvents, ...gitHubEvents];
     console.log('Total de eventos combinados:', allEvents.length);
     
     if (agenda) {
-      console.log('Renderizando agenda unificada...');
+      console.log('Renderizando agenda unificada con acordeón...');
+      // ✅ CORREGIDO: Pasar todos los eventos combinados para agrupar
       await renderAgendaUnified(null, allEvents);
     }
     
     await renderChannels(channelData);
     console.log('Inicialización completada');
+    
   } catch (err) {
     console.error('Error en la inicialización:', err);
     if (agenda) agenda.textContent = 'No se pudo cargar la agenda. Intenta nuevamente más tarde.';
@@ -711,3 +922,12 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Función para mostrar/ocultar elementos
+function toggleElement(element, show) {
+  if (show) {
+    element.classList.remove('hidden');
+  } else {
+    element.classList.add('hidden');
+  }
+}
