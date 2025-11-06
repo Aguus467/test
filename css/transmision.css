@@ -313,7 +313,19 @@ select:hover {
 
 
 /* ==================== Chat Card MÁS COMPACTO ==================== */
-
+.chat-card {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: var(--border-width) solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  min-height: 0;
+  height: 100%;
+  position: relative;
+}
 
 /* Cuando el chat está colapsado */
 .chat-card.collapsed {
@@ -1104,4 +1116,5 @@ select:focus-visible {
     border-bottom-width: 0.5px;
   }
 }
+
 
