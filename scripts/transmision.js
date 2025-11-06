@@ -100,26 +100,35 @@
       this.playerFrame.addEventListener('load', () => this.handleLoad());
     }
 
-    setSource(url, optionIndex = 0) {
-      if (!url) {
-        console.warn('No URL provided to player');
-        return;
-      }
-      
-      this.currentSource = url;
-      this.currentOptionIndex = optionIndex;
-      
-      // Usar la URL directamente del JSON sin modificaciones
-      // Ya que en el JSON la opción 4 ya tiene la URL de la extensión
-      let finalUrl = url;
-      
-      console.log('🎬 Loading stream:', finalUrl);
-      console.log('📊 Option index:', optionIndex);
-      
-      this.playerFrame.src = finalUrl;
-      this.reloadAttempts = 0;
-    }
-
+setSource(url, optionIndex = 0) {
+  if (!url) {
+    console.warn('No URL provided to player');
+    return;
+  }
+  
+  this.currentSource = url;
+  this.currentOptionIndex = optionIndex;
+  
+  let finalUrl = url;
+  
+  // 🔥 DETECTAR M3U8 AUTOMÁTICAMENTE
+  const isM3U8 = url.toLowerCase().includes('.m3u8') || 
+                 url.toLowerCase().includes('m3u8');
+  
+  if (isM3U8) {
+    console.log('🎬 M3U8 detectado, usando reproductor HLS mejorado');
+    const encodedUrl = encodeURIComponent(url);
+    finalUrl = `player-m3u8.html?url=${encodedUrl}&autoplay=1`;
+  } else {
+    console.log('🎬 URL normal detectada, usando iframe directo');
+  }
+  
+  console.log('📊 Option index:', optionIndex);
+  console.log('🔗 Final URL:', finalUrl);
+  
+  this.playerFrame.src = finalUrl;
+  this.reloadAttempts = 0;
+}
     reload() {
       if (!this.currentSource) return;
       
