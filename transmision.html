@@ -46,6 +46,28 @@
     overflow: hidden !important;
   }
   
+  /* ESTILOS PARA FULLSCREEN DEL IFRAME */
+  #playerFrame:-webkit-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+  
+  #playerFrame:-moz-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+  
+  #playerFrame:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+  }
+  
   @media (max-width: 768px) {
     #playerFrame { min-height: 300px; }
   }
@@ -127,11 +149,13 @@
 <main class="container">
   <!-- Player Card -->
   <section class="card player-card">
-
     <iframe 
       id="playerFrame"
       scrolling="no"
-      allowfullscreen 
+      allowfullscreen
+      webkitallowfullscreen
+      mozallowfullscreen
+      msallowfullscreen
       referrerpolicy="no-referrer" 
       allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
       title="Reproductor de transmisión en vivo"
@@ -173,6 +197,27 @@
 <script defer src="scripts/transmision.js"></script>
 <script defer src="scripts/transmision-ui.js"></script>
 
-</body>
+<!-- Script para manejar mensajes de fullscreen desde el iframe -->
+<script>
+  // Escuchar mensajes del iframe para activar fullscreen
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.action === 'requestFullscreen') {
+      const iframe = document.getElementById('playerFrame');
+      
+      if (iframe) {
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+          iframe.mozRequestFullScreen();
+        } else if (iframe.msRequestFullscreen) {
+          iframe.msRequestFullscreen();
+        }
+      }
+    }
+  });
+</script>
 
+</body>
 </html>
