@@ -1117,4 +1117,79 @@ select:focus-visible {
   }
 }
 
+/* ==================== FIX Z-INDEX PARA CHAT DE TWITCH ==================== */
+
+/* Reducir el z-index del header para que no bloquee el chat */
+.site-header {
+  z-index: 5 !important; /* Reducido de un valor alto a 5 */
+}
+
+/* Asegurar que el options-bar esté debajo del header pero sobre el contenido */
+.options-bar {
+  z-index: 4 !important; /* Mantenerlo por debajo del header */
+}
+
+/* Asegurar que el contenedor principal y las cards tengan z-index apropiado */
+.container {
+  z-index: 1 !important;
+}
+
+.card {
+  z-index: 2 !important; /* Las cards deben estar sobre el container */
+}
+
+/* Asegurar que el chat card tenga interacción completa */
+.chat-card {
+  z-index: 2 !important;
+  position: relative !important;
+}
+
+#twitchChat {
+  z-index: 3 !important; /* El iframe del chat debe estar sobre la card */
+  position: relative !important;
+}
+
+/* El starfield debe estar en el fondo */
+#starfield {
+  z-index: -1 !important;
+}
+
+/* Panel de customización debe estar sobre todo cuando esté activo */
+.customize-panel {
+  z-index: 1000 !important;
+}
+
+.panel-overlay {
+  z-index: 999 !important;
+}
+
+/* Footer en el fondo */
+.site-footer {
+  z-index: 1 !important;
+}
+
+/* ==================== VERIFICACIÓN ADICIONAL ==================== */
+
+/* Asegurar que no hay elementos bloqueando pointer-events */
+.site-header {
+  pointer-events: auto !important;
+}
+
+.site-header * {
+  pointer-events: auto !important;
+}
+
+.chat-card {
+  pointer-events: auto !important;
+}
+
+#twitchChat {
+  pointer-events: auto !important;
+}
+
+/* Prevenir overlay accidental del header sobre el contenido */
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+}
 
