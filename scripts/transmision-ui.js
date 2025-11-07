@@ -3,6 +3,8 @@
  * Maneja starfield, personalización y efectos visuales
  */
 
+//TRANSMISION-UI.JS
+
 (function() {
   'use strict';
 
@@ -447,38 +449,53 @@
     }
   }
 
-  // ==================== Chat Controller ====================
-  class ChatController {
+  // ==================== Chat Controller CON COLAPSO COMPLETO ====================
+class ChatController {
     constructor() {
       this.toggle = document.getElementById('chatToggle');
       this.card = document.querySelector('.chat-card');
+      this.container = document.querySelector('.container');
       this.iframe = document.getElementById('twitchChat');
-      this.isMinimized = false;
+      this.isHidden = false;
       this.init();
     }
 
     init() {
-      if (!this.toggle || !this.card || !this.iframe) return;
+      if (!this.toggle || !this.card || !this.iframe || !this.container) return;
 
       this.toggle.addEventListener('click', () => this.toggleChat());
     }
 
     toggleChat() {
-      this.isMinimized = !this.isMinimized;
+      this.isHidden = !this.isHidden;
       
-      if (this.isMinimized) {
-        this.iframe.style.display = 'none';
-        this.card.style.minHeight = 'auto';
-        this.toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>';
-        this.toggle.setAttribute('aria-label', 'Expandir chat');
+      if (this.isHidden) {
+        // Ocultar chat completamente
+        this.card.classList.add('hidden');
+        this.container.classList.add('chat-hidden');
+        this.toggle.classList.add('rotated');
+        this.toggle.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            <path d="M8 11h8M8 15h6"/>
+            <path d="M12 5v14"/>
+          </svg>`;
+        this.toggle.setAttribute('aria-label', 'Mostrar chat');
       } else {
-        this.iframe.style.display = 'block';
-        this.card.style.minHeight = '';
-        this.toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
-        this.toggle.setAttribute('aria-label', 'Minimizar chat');
+        // Mostrar chat
+        this.card.classList.remove('hidden');
+        this.container.classList.remove('chat-hidden');
+        this.toggle.classList.remove('rotated');
+        this.toggle.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            <path d="M8 11h8M8 15h6"/>
+            <path d="M12 19V5"/>
+          </svg>`;
+        this.toggle.setAttribute('aria-label', 'Ocultar chat');
       }
     }
-  }
+}
 
   // ==================== Keyboard Shortcuts ====================
   class KeyboardShortcuts {
@@ -535,59 +552,6 @@
   }
 
   // ==================== Easter Egg: Mini Constellation ====================
-  class EasterEgg {
-    constructor() {
-      this.clickCount = 0;
-      this.init();
-    }
-
-    init() {
-      document.addEventListener('click', (e) => {
-        this.clickCount++;
-        if (this.clickCount === 7) {
-          this.showConstellation(e.clientX, e.clientY);
-          this.clickCount = 0;
-        }
-      });
-    }
-
-    showConstellation(x, y) {
-      const container = document.createElement('div');
-      Object.assign(container.style, {
-        position: 'fixed',
-        left: (x - 50) + 'px',
-        top: (y - 50) + 'px',
-        width: '100px',
-        height: '100px',
-        pointerEvents: 'none',
-        zIndex: '9999'
-      });
-      
-      for (let i = 0; i < 5; i++) {
-        const star = document.createElement('div');
-        Object.assign(star.style, {
-          position: 'absolute',
-          width: '4px',
-          height: '4px',
-          background: 'rgba(114, 214, 255, 0.9)',
-          borderRadius: '50%',
-          boxShadow: '0 0 10px rgba(114, 214, 255, 0.9)',
-          left: Math.random() * 80 + 10 + 'px',
-          top: Math.random() * 80 + 10 + 'px',
-          animation: 'twinkle 1s ease-in-out infinite'
-        });
-        container.appendChild(star);
-      }
-      
-      document.body.appendChild(container);
-      
-      setTimeout(() => {
-        container.style.transition = 'opacity 1s';
-        container.style.opacity = '0';
-        setTimeout(() => container.remove(), 1000);
-      }, 3000);
-    }
-  }
 
   // ==================== Visibility API for Battery Saving ====================
   class VisibilityController {
@@ -685,6 +649,5 @@
       autoReload: settings.get('autoReload')
     };
   };
-
 
 })();
