@@ -3,7 +3,7 @@
  * Maneja reproductor, canales, eventos y transmisiones
  */
 
-//TRANSMISION.JS
+//TRANSsMISION.JS
 
 (function() {
   'use strict';
@@ -538,6 +538,7 @@ setSource(url, optionIndex = 0) {
   window.AngulismoTV.version = '2.0.0';
 
   console.log('📺 AngulismoTV Player v2.0.0 loaded');
+
 
 
 })();
