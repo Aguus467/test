@@ -3,12 +3,11 @@
  * Maneja reproductor, canales, eventos y transmisiones
  */
 
-//TRANSsMISION.JS
+//TRANSMISION.JS - CON SOPORTE PARA CANALES VIRTUALES
 
 (function() {
   'use strict';
 
-  // ==================== Configuration ====================
   const CONFIG = {
     json: {
       channels: 'https://json.angulismotv.workers.dev/channels',
@@ -22,12 +21,11 @@
       parents: ['localhost', '127.0.0.1', 'angulismotv.pages.dev']
     },
     defaults: {
-      logo: './assets/logo2.png',
+      logo: './assets/logo.png',
       channelName: 'Transmisión'
     }
   };
 
-  // ==================== Utility Functions ====================
   class Utils {
     static getSearchParam(name) {
       return new URLSearchParams(location.search).get(name);
@@ -72,7 +70,6 @@
     }
   }
 
-  // ==================== Player Controller ====================
   class PlayerController {
     constructor() {
       this.playerFrame = document.getElementById('playerFrame');
@@ -89,66 +86,49 @@
         console.error('Player frame not found');
         return;
       }
-
-      // Reload button
       if (this.reloadBtn) {
         this.reloadBtn.addEventListener('click', () => this.reload());
       }
-
-      // Error handling
       this.playerFrame.addEventListener('error', () => this.handleError());
       this.playerFrame.addEventListener('load', () => this.handleLoad());
     }
 
-setSource(url, optionIndex = 0) {
-  if (!url) {
-    console.warn('No URL provided to player');
-    return;
-  }
-  
-  this.currentSource = url;
-  this.currentOptionIndex = optionIndex;
-  
-  let finalUrl = url;
-  
-  // 🔥 DETECTAR M3U8 AUTOMÁTICAMENTE
-  const isM3U8 = url.toLowerCase().includes('.m3u8') || 
-                 url.toLowerCase().includes('m3u8');
-  
-  if (isM3U8) {
-    console.log('🎬 M3U8 detectado, usando reproductor HLS mejorado');
-    const encodedUrl = encodeURIComponent(url);
-    finalUrl = `player-m3u8.html?url=${encodedUrl}&autoplay=1`;
-  } else {
-    console.log('🎬 URL normal detectada, usando iframe directo');
-  }
-  
-  console.log('📊 Option index:', optionIndex);
-  console.log('🔗 Final URL:', finalUrl);
-  
-  this.playerFrame.src = finalUrl;
-  this.reloadAttempts = 0;
-}
+    setSource(url, optionIndex = 0) {
+      if (!url) {
+        console.warn('No URL provided to player');
+        return;
+      }
+      this.currentSource = url;
+      this.currentOptionIndex = optionIndex;
+      let finalUrl = url;
+      const isM3U8 = url.toLowerCase().includes('.m3u8') || url.toLowerCase().includes('m3u8');
+      if (isM3U8) {
+        console.log('🎬 M3U8 detectado, usando reproductor HLS mejorado');
+        const encodedUrl = encodeURIComponent(url);
+        finalUrl = `player-m3u8.html?url=${encodedUrl}&autoplay=1`;
+      } else {
+        console.log('🎬 URL normal detectada, usando iframe directo');
+      }
+      console.log('📊 Option index:', optionIndex);
+      console.log('🔗 Final URL:', finalUrl);
+      this.playerFrame.src = finalUrl;
+      this.reloadAttempts = 0;
+    }
+
     reload() {
       if (!this.currentSource) return;
-      
       this.playerFrame.classList.add('loading');
-      
       if (this.reloadBtn) {
         this.reloadBtn.disabled = true;
         const originalHTML = this.reloadBtn.innerHTML;
         this.reloadBtn.innerHTML = '<svg class="icon-reload spinning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg> Recargando...';
-        
         setTimeout(() => {
           this.reloadBtn.disabled = false;
           this.reloadBtn.innerHTML = originalHTML;
         }, 1000);
       }
-      
       this.playerFrame.src = '';
-      
       setTimeout(() => {
-        // Recargar la URL original sin modificaciones
         this.playerFrame.src = this.currentSource;
         this.playerFrame.classList.remove('loading');
       }, 500);
@@ -156,11 +136,9 @@ setSource(url, optionIndex = 0) {
 
     handleError() {
       const settings = this.getSettings();
-      
       if (settings.autoReload && this.reloadAttempts < this.maxReloadAttempts) {
         this.reloadAttempts++;
         console.log(`🔄 Auto-reload attempt ${this.reloadAttempts}/${this.maxReloadAttempts}`);
-        
         setTimeout(() => {
           if (this.currentSource) {
             this.playerFrame.src = '';
@@ -188,7 +166,6 @@ setSource(url, optionIndex = 0) {
     }
   }
 
-  // ==================== Chat Controller ====================
   class ChatController {
     constructor() {
       this.chatFrame = document.getElementById('twitchChat');
@@ -205,13 +182,10 @@ setSource(url, optionIndex = 0) {
         ...CONFIG.twitch.parents,
         location.hostname
       ].filter(Boolean);
-      
       const params = new URLSearchParams();
       parents.forEach(p => params.append('parent', p));
       params.set('darkpopout', '');
-      
       this.chatFrame.src = `https://www.twitch.tv/embed/${CONFIG.twitch.channel}/chat?${params.toString()}`;
-      
       console.log('💬 Twitch chat initialized');
     }
 
@@ -228,7 +202,6 @@ setSource(url, optionIndex = 0) {
     }
   }
 
-  // ==================== Event Manager ====================
   class EventManager {
     constructor() {
       this.events = [];
@@ -236,13 +209,11 @@ setSource(url, optionIndex = 0) {
 
     async loadAllEvents() {
       console.log('📅 Loading events from all sources...');
-      
       const sources = [
         { name: 'eventos', url: CONFIG.json.events, prefix: 'manual' },
         { name: 'streamTP', url: CONFIG.json.streamTP, prefix: 'streamtp' },
         { name: 'la14HD', url: CONFIG.json.la14HD, prefix: 'la14hd' }
       ];
-
       const results = await Promise.allSettled(
         sources.map(async ({ name, url, prefix }) => {
           try {
@@ -254,11 +225,9 @@ setSource(url, optionIndex = 0) {
           }
         })
       );
-
       this.events = results
         .filter(r => r.status === 'fulfilled')
         .map(r => r.value);
-
       console.log('✅ Events loaded:', this.events.length, 'sources');
     }
 
@@ -275,7 +244,6 @@ setSource(url, optionIndex = 0) {
     }
   }
 
-  // ==================== Channel Manager ====================
   class ChannelManager {
     constructor(player) {
       this.player = player;
@@ -297,12 +265,10 @@ setSource(url, optionIndex = 0) {
         const channel = data.channels.find(
           c => (c.name || '').toLowerCase() === channelName.toLowerCase()
         );
-        
         if (channel) {
           this.availableChannels = data.channels;
           console.log('✅ Channel loaded from general list:', channel.name);
         }
-        
         return channel;
       } catch (error) {
         console.error('Error loading channels:', error);
@@ -312,20 +278,18 @@ setSource(url, optionIndex = 0) {
 
     setChannel(channel, selectedIndex = 0) {
       this.currentChannel = channel;
-      
-      // Update header
+      console.log('🎯 Setting channel:', channel.name);
+      console.log('📊 Available options:', channel.options);
+      console.log('🔢 Selected index:', selectedIndex);
       this.updateHeader(channel);
-      
-      // Populate options
       const idx = Math.min(Math.max(selectedIndex, 0), Math.max(channel.options.length - 1, 0));
       this.populateOptions(channel, idx);
-      
-      // Load stream - PASAR EL ÍNDICE AL PLAYER
       if (channel.options[idx] && channel.options[idx].iframe) {
+        console.log('▶️  Loading iframe:', channel.options[idx].iframe);
         this.player.setSource(channel.options[idx].iframe, idx);
+      } else {
+        console.error('❌ No iframe found for option', idx);
       }
-      
-      // Sync URL
       Utils.syncURL({ opt: idx });
     }
 
@@ -333,7 +297,6 @@ setSource(url, optionIndex = 0) {
       if (this.elements.channelName) {
         this.elements.channelName.textContent = channel.name;
       }
-      
       if (this.elements.channelLogo) {
         this.elements.channelLogo.src = channel.logo || CONFIG.defaults.logo;
         this.elements.channelLogo.alt = channel.name;
@@ -344,40 +307,44 @@ setSource(url, optionIndex = 0) {
       if (this.elements.channelInfo) {
         this.elements.channelInfo.style.display = 'none';
       }
-      
       if (this.elements.optionControls) {
         this.elements.optionControls.style.display = 'none';
       }
     }
 
     populateOptions(channel, selectedIndex) {
-      if (!this.elements.optionSelect) return;
-      
+      if (!this.elements.optionSelect) {
+        console.warn('⚠️  Option select element not found');
+        return;
+      }
+      console.log('🎛️  Populating options dropdown...');
       this.elements.optionSelect.innerHTML = '';
-      
       channel.options.forEach((opt, idx) => {
         const option = document.createElement('option');
         option.value = String(idx);
         option.textContent = opt.name || `Opción ${idx + 1}`;
         option.selected = idx === selectedIndex;
+        console.log(`   ${idx === selectedIndex ? '✓' : ' '} Option ${idx}: ${opt.name}`);
         this.elements.optionSelect.appendChild(option);
       });
-
-      // Add change listener - PASAR EL ÍNDICE AL PLAYER
+      const newSelect = this.elements.optionSelect.cloneNode(true);
+      this.elements.optionSelect.parentNode.replaceChild(newSelect, this.elements.optionSelect);
+      this.elements.optionSelect = newSelect;
       this.elements.optionSelect.addEventListener('change', (e) => {
         const i = Number(e.target.value);
+        console.log('🔄 Option changed to:', i);
         if (this.currentChannel.options[i]) {
+          console.log('▶️  Loading new iframe:', this.currentChannel.options[i].iframe);
           this.player.setSource(this.currentChannel.options[i].iframe, i);
           Utils.syncURL({ opt: i });
         }
       });
+      console.log('✅ Options populated successfully');
     }
 
     populateChannelSelector() {
       if (!this.elements.channelSelector) return;
-      
       this.elements.channelSelector.innerHTML = '';
-      
       this.availableChannels.forEach(ch => {
         const option = document.createElement('option');
         option.value = ch.name;
@@ -385,27 +352,20 @@ setSource(url, optionIndex = 0) {
         option.selected = ch.name === this.currentChannel?.name;
         this.elements.channelSelector.appendChild(option);
       });
-
-      // Add change listener
       this.elements.channelSelector.addEventListener('change', (e) => {
         Utils.redirect({ channel: e.target.value });
       });
     }
   }
 
-  // ==================== Direct Link Handler ====================
   class DirectLinkHandler {
     static async handle(eventParam, player, channelManager) {
       const decodedUrl = Utils.decodeBase64(eventParam);
-      
       if (!decodedUrl) {
         console.error('❌ Failed to decode event parameter');
         return false;
       }
-
       console.log('🔗 Using direct link:', decodedUrl);
-      
-      // Create virtual channel
       const virtualChannel = {
         name: CONFIG.defaults.channelName,
         logo: CONFIG.defaults.logo,
@@ -414,18 +374,33 @@ setSource(url, optionIndex = 0) {
           iframe: decodedUrl
         }]
       };
-      
-      // Hide UI elements
       channelManager.hideHeader();
-      
-      // Load stream
       player.setSource(decodedUrl, 0);
-      
       return true;
     }
   }
 
-  // ==================== Main Application ====================
+  // 🔥 NUEVO: Manejador de Canales Virtuales
+  class VirtualChannelHandler {
+    static async handle(virtualChannelParam, optParam, player, channelManager) {
+      try {
+        const decodedChannel = Utils.decodeBase64(virtualChannelParam);
+        if (!decodedChannel) {
+          console.error('❌ Failed to decode virtual channel');
+          return false;
+        }
+        const channel = JSON.parse(decodedChannel);
+        console.log('📺 Virtual channel loaded:', channel);
+        const selectedIndex = Number.isInteger(Number(optParam)) ? Number(optParam) : 0;
+        channelManager.setChannel(channel, selectedIndex);
+        return true;
+      } catch (error) {
+        console.error('❌ Error handling virtual channel:', error);
+        return false;
+      }
+    }
+  }
+
   class TransmisionApp {
     constructor() {
       this.player = new PlayerController();
@@ -436,24 +411,33 @@ setSource(url, optionIndex = 0) {
 
     async init() {
       console.log('🚀 AngulismoTV - Initializing...');
-      
-      // Get URL parameters
       const params = {
+        virtualChannel: Utils.getSearchParam('virtualChannel'),
         event: Utils.getSearchParam('event'),
         match: Utils.getSearchParam('match'),
         channel: Utils.getSearchParam('channel'),
         opt: Utils.getSearchParam('opt')
       };
-
       const selectedIndex = Number.isInteger(Number(params.opt)) ? Number(params.opt) : 0;
 
-      // Handle direct link
+      // 🔥 PRIORIDAD 1: Manejar canal virtual (desde agenda)
+      if (params.virtualChannel) {
+        const handled = await VirtualChannelHandler.handle(
+          params.virtualChannel,
+          params.opt,
+          this.player,
+          this.channelManager
+        );
+        if (handled) return;
+      }
+
+      // PRIORIDAD 2: Manejar enlace directo
       if (params.event) {
         const handled = await DirectLinkHandler.handle(params.event, this.player, this.channelManager);
         if (handled) return;
       }
 
-      // Handle match-based channels
+      // PRIORIDAD 3: Manejar match-based channels
       if (params.match) {
         const channel = await this.handleMatchChannel(params.match, params.channel);
         if (channel) {
@@ -463,7 +447,7 @@ setSource(url, optionIndex = 0) {
         }
       }
 
-      // Handle general channel
+      // PRIORIDAD 4: Manejar canal general
       if (params.channel) {
         try {
           const channel = await this.channelManager.loadFromGeneralList(params.channel);
@@ -478,46 +462,36 @@ setSource(url, optionIndex = 0) {
         }
       }
 
-      // No valid parameters
       console.warn('⚠️  No valid channel or event parameters found');
       alert('Falta el parámetro "channel" o "event" en la URL');
     }
 
     async handleMatchChannel(matchId, channelName) {
       console.log('🎯 Loading match channels for:', matchId);
-      
       await this.eventManager.loadAllEvents();
       const event = this.eventManager.findEventById(matchId);
-      
       if (!event || !Array.isArray(event.canales) || event.canales.length === 0) {
         console.warn('⚠️  No custom channels found for match');
         return null;
       }
-
       console.log(`✅ Found ${event.canales.length} custom channels for match`);
       this.channelManager.availableChannels = event.canales;
-
-      // Find requested channel
       let channel = null;
       if (channelName) {
         channel = event.canales.find(
           c => (c.name || '').toLowerCase() === channelName.toLowerCase()
         );
       }
-
-      // Redirect to first channel if not found or not specified
       if (!channel) {
         const firstChannel = event.canales[0];
         console.log('🔄 Redirecting to first available channel:', firstChannel.name);
         Utils.redirect({ channel: firstChannel.name });
         return null;
       }
-
       return channel;
     }
   }
 
-  // ==================== Initialize Application ====================
   function init() {
     const app = new TransmisionApp();
     app.init().catch(error => {
@@ -526,19 +500,15 @@ setSource(url, optionIndex = 0) {
     });
   }
 
-  // Start when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 
-  // Expose app for debugging
   window.AngulismoTV = window.AngulismoTV || {};
   window.AngulismoTV.version = '2.0.0';
 
   console.log('📺 AngulismoTV Player v2.0.0 loaded');
-
-
 
 })();
