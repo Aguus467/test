@@ -140,7 +140,34 @@ select:hover {
   transform: translateY(-2px);
 }
 
-/* ==================== Container & Layout OPTIMIZADO ==================== */
+.chat-toggle {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  transition: var(--transition);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.chat-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.chat-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+.chat-toggle.rotated svg {
+  transform: rotate(180deg);
+}
+
+/* ==================== Container & Layout OPTIMIZADO CON CHAT COLAPSABLE ==================== */
 .container {
   width: 100%;
   max-width: 100%;
@@ -153,6 +180,12 @@ select:hover {
   z-index: 1;
   align-items: start;
   flex: 1;
+  transition: grid-template-columns 0.3s ease;
+}
+
+/* Cuando el chat está oculto, el video ocupa todo el ancho */
+.container.chat-hidden {
+  grid-template-columns: 1fr;
 }
 
 /* Ajustes proporcionales automáticos */
@@ -167,6 +200,10 @@ select:hover {
   .container {
     grid-template-columns: 1fr 380px;
     padding: 0.75rem 2%;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
   }
   
   .chat-card {
@@ -185,6 +222,10 @@ select:hover {
   .container {
     grid-template-columns: 1fr 420px;
     padding: 0.75rem 3%;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
   }
   
   .chat-card {
@@ -249,22 +290,6 @@ select:hover {
   color: var(--accent);
 }
 
-.channel-status {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4ade80;
-  animation: pulse 2s infinite;
-}
-
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
@@ -289,7 +314,7 @@ select:hover {
   height: auto;
   aspect-ratio: 16 / 9;
   border: none;
-  background: #000;
+  background: color(transparent);
   flex: 1;
   overflow: hidden !important;
   scrolling: no;
@@ -311,8 +336,7 @@ select:hover {
   overflow: hidden !important;
 }
 
-
-/* ==================== Chat Card MÁS COMPACTO ==================== */
+/* ==================== Chat Card CON TRANSICIÓN SUAVE ==================== */
 .chat-card {
   grid-column: 2;
   display: flex;
@@ -325,16 +349,11 @@ select:hover {
   min-height: 0;
   height: 100%;
   position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Cuando el chat está colapsado */
-.chat-card.collapsed {
-  min-height: 60px;
-  max-height: 60px;
-  height: 60px;
-}
-
-.chat-card.collapsed #twitchChat {
+/* Cuando el chat está oculto */
+.chat-card.hidden {
   display: none;
 }
 
@@ -361,26 +380,6 @@ select:hover {
   flex: 1 1 auto;
   min-height: 0;
   height: 100%;
-}
-
-.chat-toggle {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  cursor: pointer;
-  padding: 6px;
-  transition: var(--transition);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
-}
-
-.chat-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(180deg);
 }
 
 /* ==================== Loading & Animations ==================== */
@@ -642,6 +641,10 @@ input:checked + .toggle-slider:before {
     grid-template-columns: 1fr 320px;
     gap: 8px;
   }
+  
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Laptops pequeños (1280px - 1025px) */
@@ -650,6 +653,10 @@ input:checked + .toggle-slider:before {
     grid-template-columns: 1fr 300px;
     padding: 0.5rem 1.5%;
     gap: 8px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
   }
   
   #playerFrame {
@@ -674,6 +681,10 @@ input:checked + .toggle-slider:before {
     grid-template-columns: 1fr;
     padding: 0.75rem 2%;
     gap: 10px;
+  }
+
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
   }
 
   .player-card,
@@ -963,12 +974,16 @@ input:checked + .toggle-slider:before {
   }
 }
 
-/* Landscape en móviles COMPACTO */
+/* Landscape en móviles COMPACTO CON CHAT COLAPSABLE */
 @media (max-width: 896px) and (orientation: landscape) {
   .container {
     grid-template-columns: 1fr 280px;
     gap: 6px;
     padding: 0.4rem 1%;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
   }
   
   #playerFrame {
@@ -1004,6 +1019,10 @@ input:checked + .toggle-slider:before {
 @media (max-width: 667px) and (orientation: landscape) {
   .container {
     grid-template-columns: 1fr 240px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 1fr;
   }
   
   #playerFrame {

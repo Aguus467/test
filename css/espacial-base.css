@@ -585,9 +585,7 @@ footer.site-footer::before {
 }
 
 footer.site-footer .container {
-  display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
 }
 

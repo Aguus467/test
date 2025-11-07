@@ -184,9 +184,6 @@ header,
 @media (min-width: 1024px) and (hover: hover) {
   .layout-dropdown-content {
     animation: dropdownSlide 0.2s ease;
-  }
-
-  .layout-dropdown-content {
     box-shadow: var(--multicam-shadow), 0 0 30px rgba(114, 214, 255, 0.2);
   }
 
@@ -354,10 +351,7 @@ header,
   .fullscreen-btn {
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
-}
 
-/* Efecto ripple solo en PC */
-@media (min-width: 1024px) and (hover: hover) {
   .fullscreen-btn::before {
     content: '';
     position: absolute;
@@ -442,6 +436,13 @@ header,
 
 .stream-dropdown {
   position: relative;
+}
+
+/* Ocultar dropdowns de pantalla por defecto */
+#dropdown-container-2,
+#dropdown-container-3,
+#dropdown-container-4 {
+  display: none;
 }
 
 .dropdown-btn {
@@ -532,9 +533,6 @@ header,
 @media (min-width: 1024px) and (hover: hover) {
   .dropdown-content {
     animation: dropdownSlide 0.2s ease;
-  }
-
-  .dropdown-content {
     box-shadow: var(--multicam-shadow), 0 0 30px rgba(114, 214, 255, 0.2);
   }
 }
@@ -651,6 +649,8 @@ header,
   min-height: 500px;
   position: relative;
   z-index: 5;
+  flex: 1;
+  min-height: 0;
 }
 
 .layout-1 { 
@@ -675,13 +675,13 @@ header,
   grid-template-rows: repeat(2, 1fr);
 }
 
-/* ==================== Stream Items (Optimizados) ==================== */
+/* ==================== Stream Items (Optimizados) - SIN BORDES NEGROS ==================== */
 .stream-item {
-  background: var(--bg-card);
+  background: transparent;
   backdrop-filter: blur(var(--multicam-blur));
   -webkit-backdrop-filter: blur(var(--multicam-blur));
   border-radius: var(--radius);
-  overflow: hidden;
+  overflow: hidden !important;
   box-shadow: var(--multicam-shadow);
   border: 2px solid transparent;
   transition: var(--multicam-transition);
@@ -690,6 +690,7 @@ header,
   display: flex;
   flex-direction: column;
   transform: translateZ(0);
+  min-height: 0;
 }
 
 .stream-item::before {
@@ -719,6 +720,10 @@ header,
 
 .stream-item.active {
   border-color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+  background: transparent;
 }
 
 /* Sombras adaptativas para stream activo */
@@ -840,23 +845,36 @@ header,
   }
 }
 
-/* ==================== Stream Iframe ==================== */
+/* ====================  Stream Iframe ==================== */
 .stream-iframe {
   width: 100%;
-  height: 100%;
-  min-height: 500px;
+  height: auto;
+  aspect-ratio: 16 / 9; /* 
   border: none;
-  background: #000;
+  background: #000; /* Solo como fallback durante carga */
+  flex: 1; /* Ocupa todo el espacio disponible */
+  display: block;
   position: relative;
   z-index: 1;
-  flex: 1;
   transform: translateZ(0);
+  
+  /* 🔥 Eliminar scroll del iframe */
+  overflow: hidden !important;
+  scrolling: no;
 }
 
+/* Ocultar scrollbar en todos los navegadores */
+.stream-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Ajustes por layout */
 .layout-2 .stream-iframe,
 .layout-3 .stream-iframe,
 .layout-4 .stream-iframe {
-  min-height: 400px;
+  min-height: 0; /* Permite que aspect-ratio funcione */
 }
 
 /* ==================== Modo Pantalla Completa ==================== */
@@ -919,19 +937,19 @@ footer.site-footer {
   text-align: center;
   padding: 0rem 0;
   border-top: 1px solid rgba(114, 214, 255, 0.2);
-  margin-top: 1rem;
+  margin-top: 0rem;
   position: relative;
   z-index: 2;
 }
 
 footer.site-footer .container,
 .site-footer .container {
-  padding: 0.2rem 1rem !important;
+  padding: 0rem 0rem !important;
 }
 
 footer.site-footer small,
 .site-footer small {
-  margin: 0.2rem 0 !important;
+  margin: 0rem 0 !important;
   font-size: 0.8rem !important;
 }
 
@@ -984,6 +1002,7 @@ footer.site-footer small,
   
   .stream-iframe {
     min-height: 300px;
+    aspect-ratio: 16 / 9;
   }
 
   .stream-placeholder {
@@ -1019,6 +1038,7 @@ footer.site-footer small,
 
   .stream-iframe {
     min-height: 250px;
+    aspect-ratio: 16 / 9;
   }
 
   .stream-placeholder {
@@ -1222,6 +1242,7 @@ footer.site-footer small,
 @media (max-width: 768px) and (orientation: landscape) {
   .stream-iframe {
     min-height: 250px;
+    aspect-ratio: 16 / 9;
   }
 
   .stream-placeholder {
@@ -1436,3 +1457,107 @@ body.debug-mode .stream-item.active {
 .stream-iframe[loading="lazy"] {
   content-visibility: auto;
 }
+
+/* ==================== 🔥 FIX CRÍTICO: Asegurar aspect-ratio en todos los casos ==================== */
+.streams-grid .stream-item {
+  contain: layout style paint;
+}
+
+.stream-item > .stream-iframe {
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Asegurar que el grid permita flexibilidad */
+.streams-grid {
+  align-content: start;
+  align-items: stretch;
+}
+
+/* Forzar aspect-ratio incluso si el contenido es diferente */
+.stream-iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* ==================== Optimización Final para Pantalla Completa ==================== */
+body.fullscreen-mode .stream-item {
+  background: transparent;
+}
+
+body.fullscreen-mode .stream-iframe {
+  aspect-ratio: 16 / 9;
+}
+
+/* ==================== Soporte para navegadores antiguos (Fallback) ==================== */
+@supports not (aspect-ratio: 16 / 9) {
+  .stream-iframe {
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    position: relative;
+  }
+
+  .stream-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* ==================== Optimización Scroll Mobile ==================== */
+@media (hover: none) and (pointer: coarse) {
+  .dropdown-content,
+  .layout-dropdown-content {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ==================== Fix para iPadOS ==================== */
+@supports (-webkit-touch-callout: none) and (orientation: landscape) {
+  body.fullscreen-mode .streams-grid {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+
+/* ==================== Prevenir selección accidental de texto ==================== */
+.stream-item,
+.dropdown-btn,
+.layout-dropdown-btn,
+.filter-btn,
+.action-btn {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* ==================== Cursor adaptativo ==================== */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown-btn,
+  .layout-dropdown-btn,
+  .filter-btn,
+  .fullscreen-btn,
+  .action-btn,
+  .stream-option,
+  .layout-option {
+    cursor: pointer;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .dropdown-btn,
+  .layout-dropdown-btn,
+  .filter-btn,
+  .fullscreen-btn,
+  .action-btn,
+  .stream-option,
+  .layout-option {
+    cursor: default;
+  }
+}
+
+/* ==================== FIN DEL CSS ==================== */

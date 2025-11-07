@@ -1,0 +1,387 @@
+.foro-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+    min-height: calc(100vh - 200px);
+    position: relative;
+    z-index: 2;
+}
+
+.foro-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.foro-title {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.foro-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+/* Área de mensajes - compatible con tema espacial */
+.mensajes-container {
+    background: rgba(11, 13, 27, 0.6);
+    border-radius: 15px;
+    border: 1px solid rgba(114, 214, 255, 0.2);
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 400px;
+    max-height: 60vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.mensaje-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border-left: 3px solid #72d6ff;
+    transition: all 0.3s ease;
+}
+
+.mensaje-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
+}
+
+.mensaje-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.mensaje-nombre {
+    color: #72d6ff;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.mensaje-fecha {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8em;
+}
+
+.mensaje-texto {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* FORMULARIO INTEGRADO - NO FIJO */
+.formulario-integrado {
+    background: rgba(11, 13, 27, 0.8);
+    border-radius: 15px;
+    border: 1px solid rgba(114, 214, 255, 0.2);
+    padding: 20px;
+    margin: 30px 0;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    gap: 12px;
+    align-items: end;
+}
+
+.form-header {
+    color: #72d6ff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-header::before {
+    content: '✍️';
+    font-size: 1.2em;
+}
+
+.foro-input, .foro-textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.foro-input:focus, .foro-textarea:focus {
+    outline: none;
+    border-color: #72d6ff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 2px rgba(114, 214, 255, 0.2);
+}
+
+.foro-input::placeholder, .foro-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.foro-textarea {
+    resize: vertical;
+    min-height: 60px;
+    max-height: 120px;
+}
+
+.btn-foro {
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    color: #0b0d1b;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    height: fit-content;
+    transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+.btn-foro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.4);
+}
+
+.btn-foro:active {
+    transform: translateY(0);
+}
+
+/* Estados */
+.loading, .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-state::before {
+    content: '💬';
+    font-size: 2em;
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0.7;
+}
+
+/* Scrollbar personalizado que respeta el tema espacial */
+.mensajes-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.mensajes-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.mensajes-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    border-radius: 4px;
+}
+
+.mensajes-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #8adfff, #ff99ff);
+}
+
+/* ===== CONTROLES DE MÚSICA ===== */
+.music-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(11, 13, 27, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 8px 15px;
+    border: 1px solid rgba(114, 214, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-controls:hover {
+    background: rgba(11, 13, 27, 0.9);
+    border-color: rgba(114, 214, 255, 0.6);
+}
+
+.music-toggle {
+    background: none;
+    border: none;
+    color: #72d6ff;
+    cursor: pointer;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.music-toggle:hover {
+    background: rgba(114, 214, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.volume-control {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.volume-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #72d6ff;
+    border-radius: 2px;
+    width: 70%;
+}
+
+.volume-handle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: #72d6ff;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    box-shadow: 0 0 5px rgba(114, 214, 255, 0.8);
+    cursor: grab;
+}
+
+.volume-handle:active {
+    cursor: grabbing;
+}
+
+.music-info {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+/* ===== RESPONSIVE MÓVIL ===== */
+@media (max-width: 768px) {
+    .foro-container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+    
+    .foro-title {
+        font-size: 2rem;
+    }
+    
+    .mensajes-container {
+        padding: 15px;
+        max-height: 50vh;
+        margin-bottom: 15px;
+    }
+    
+    .formulario-integrado {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    .form-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .btn-foro {
+        padding: 14px 20px;
+        width: 100%;
+    }
+    
+    .mensaje-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .mensaje-fecha {
+        font-size: 0.75em;
+    }
+    
+    /* Música responsive */
+    .music-controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .music-info {
+        max-width: 80px;
+        font-size: 10px;
+    }
+    
+    .volume-control {
+        width: 60px;
+    }
+}
+
+/* ===== PC ===== */
+@media (min-width: 769px) {
+    .mensajes-container {
+        max-height: 65vh;
+    }
+}
+
+/* Asegurar que el contenido esté sobre el fondo espacial */
+.foro-container,
+.mensajes-container,
+.formulario-integrado {
+    position: relative;
+    z-index: 2;
+}
+
+/* Prevenir interferencias con elementos espaciales */
+#starfield,
+.spiral-galaxy,
+.aurora,
+.star,
+.shooting-star,
+.comet,
+.planet {
+    pointer-events: none;
+}
+
+/* Mejorar el footer existente */
+.site-footer {
+    margin-top: 40px !important;
+    position: relative;
+    z-index: 2;
+}

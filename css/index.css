@@ -179,7 +179,7 @@ iframe#agendaFrame {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 300px;
   height: 3px;
   background: linear-gradient(90deg, transparent, var(--accent), var(--accent-purple), transparent);
   border-radius: 2px;

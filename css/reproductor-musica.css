@@ -1,0 +1,145 @@
+.music-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(11, 13, 27, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 8px 15px;
+    border: 1px solid rgba(114, 214, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-controls:hover {
+    background: rgba(11, 13, 27, 0.9);
+    border-color: rgba(114, 214, 255, 0.6);
+}
+
+.music-toggle {
+    background: none;
+    border: none;
+    color: #72d6ff;
+    cursor: pointer;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.music-toggle:hover {
+    background: rgba(114, 214, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.volume-control {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.volume-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #72d6ff;
+    border-radius: 2px;
+    width: 70%;
+}
+
+.volume-handle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: #72d6ff;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+    box-shadow: 0 0 5px rgba(114, 214, 255, 0.8);
+    cursor: grab;
+}
+
+.volume-handle:active {
+    cursor: grabbing;
+}
+
+.music-info {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+/* ===== RESPONSIVE MÓVIL ===== */
+@media (max-width: 768px) {
+    .foro-container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+    
+    .foro-title {
+        font-size: 2rem;
+    }
+    
+    .mensajes-container {
+        padding: 15px;
+        max-height: 50vh;
+        margin-bottom: 15px;
+    }
+    
+    .formulario-integrado {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    .form-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .btn-foro {
+        padding: 14px 20px;
+        width: 100%;
+    }
+    
+    .mensaje-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .mensaje-fecha {
+        font-size: 0.75em;
+    }
+    
+    /* Música responsive */
+    .music-controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .music-info {
+        max-width: 80px;
+        font-size: 10px;
+    }
+    
+    .volume-control {
+        width: 60px;
+    }
+}
