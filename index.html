@@ -37,31 +37,43 @@
   <div class="aurora aurora-2"></div>
 </div>
 
-<!-- HEADER UNIFICADO -->
+<!-- HEADER UNIFICADO RESPONSIVE -->
 <header class="site-header">
-  <div class="logo-container">
-    <a href="index.html" aria-label="AngulismoTV - Inicio">
-      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
-    </a>
+  <div class="header-container">
+    <div class="logo-container">
+      <a href="index.html" aria-label="AngulismoTV - Inicio">
+        <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+      </a>
+    </div>
+    
+    <!-- Botón hamburguesa para móvil -->
+    <button class="menu-toggle" aria-label="Abrir menú de navegación">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Navegación desktop (visible en pantallas grandes) -->
+    <nav role="navigation" aria-label="Navegación principal">
+      <a href="#channelsSection">Canales</a>
+      <a href="#agendaFrame">Agenda</a>
+      <a href="multicam.html">Pantalla Dividida</a>
+      <a href="https://nowevents.xyz">Entretenimiento</a>
+      <a href="https://nowstats.netlify.app">Estadísticas</a>
+      <a href="foro.html">Foro</a>
+    </nav>
+
+    <!-- Botón de personalización como tuerca -->
+    <button class="customize-gear" id="customizeGear" aria-label="Personalizar interfaz">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
   </div>
-  
-  <nav role="navigation" aria-label="Navegación principal">
-    <a href="#channelsSection">Canales</a>
-    <a href="#agendaFrame">Agenda</a>
-    <a href="multicam.html">Pantalla Dividida</a>
-    <a href="https://nowevents.xyz">Entretenimiento</a>
-    <a href="https://nowstats.netlify.app">Estadísticas</a>
-    <a href="foro.html">Foro</a>
-  </nav>
-  
-  <!-- Botón de personalización como tuerca -->
-  <button class="customize-gear" id="customizeGear" aria-label="Personalizar interfaz">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="3"/>
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-    </svg>
-  </button>
 </header>
+
+<!-- La navegación móvil y overlay se crean automáticamente con JavaScript -->
 
 <main class="container">
   <div class="info-banner" role="note">
@@ -371,6 +383,7 @@
 
 <script defer src="scripts/main.js"></script>
 <script defer src="scripts/customization.js"></script>
+<script defer src="scripts/header-mobile.js"></script>
 
 <script>
 (function() {
@@ -572,45 +585,7 @@
   }
 
   // ==================== Easter Egg ====================
-  let clickCount = 0;
-  document.addEventListener('click', function(e) {
-    clickCount++;
-    if (clickCount === 7) {
-      const miniConstellation = document.createElement('div');
-      miniConstellation.style.position = 'fixed';
-      miniConstellation.style.left = e.clientX - 50 + 'px';
-      miniConstellation.style.top = e.clientY - 50 + 'px';
-      miniConstellation.style.width = '100px';
-      miniConstellation.style.height = '100px';
-      miniConstellation.style.pointerEvents = 'none';
-      miniConstellation.style.zIndex = '9999';
-      
-      for (let i = 0; i < 5; i++) {
-        const star = document.createElement('div');
-        star.style.position = 'absolute';
-        star.style.width = '4px';
-        star.style.height = '4px';
-        star.style.background = 'rgba(114, 214, 255, 0.9)';
-        star.style.borderRadius = '50%';
-        star.style.boxShadow = '0 0 10px rgba(114, 214, 255, 0.9)';
-        star.style.left = Math.random() * 80 + 10 + 'px';
-        star.style.top = Math.random() * 80 + 10 + 'px';
-        star.style.animation = 'twinkle 1s ease-in-out infinite';
-        miniConstellation.appendChild(star);
-      }
-      
-      document.body.appendChild(miniConstellation);
-      
-      setTimeout(() => {
-        miniConstellation.style.transition = 'opacity 1s';
-        miniConstellation.style.opacity = '0';
-        setTimeout(() => miniConstellation.remove(), 1000);
-      }, 3000);
-      
-      clickCount = 0;
-    }
-  });
-
+ 
   console.log('AngulismoTV - Inicio espacial optimizado 🚀');
   console.log('Atajo: Ctrl+K (personalizar) | Easter Egg: 7 clicks 🌟');
 })();

@@ -15,82 +15,8 @@
   <link rel="stylesheet" href="css/multicam.css">
   <link rel="stylesheet" href="css/customization-panel.css">
   
-  <style>
-    /* 🔥 Ajuste de reproductores multicámara SIN SCROLL */
-    .stream-iframe {
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 16 / 9;
-      border: none;
-      background: #000;
-      
-      /* Eliminar scroll del iframe */
-      overflow: hidden !important;
-      scrollbar-width: none !important;
-      -ms-overflow-style: none !important;
-    }
-    
-    /* Ocultar scrollbar en WebKit */
-    .stream-iframe::-webkit-scrollbar {
-      display: none !important;
-      width: 0 !important;
-      height: 0 !important;
-    }
-    
-    .stream-item {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden !important;
-    }
-    
-    .stream-item.active {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden !important;
-    }
-    
-    @media (max-width: 768px) {
-      .stream-iframe {
-        min-height: 250px;
-      }
-    }
-    
-    /* Botones de filtro */
-    .filter-selector {
-      display: flex;
-      gap: 8px;
-      background: rgba(30, 30, 60, 0.8);
-      padding: 4px;
-      border-radius: 8px;
-      border: 1px solid rgba(114, 214, 255, 0.2);
-    }
-    
-    .filter-btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 6px;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .filter-btn:hover {
-      background: rgba(114, 214, 255, 0.15);
-      color: rgba(255, 255, 255, 0.9);
-    }
-    
-    .filter-btn.active {
-      background: linear-gradient(135deg, rgba(114, 214, 255, 0.3), rgba(255, 127, 255, 0.3));
-      color: white;
-      box-shadow: 0 0 15px rgba(114, 214, 255, 0.3);
-    }
-  </style>
+<!-- Reemplaza el <style> existente después de los links CSS con este: -->
+
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
 <script>
@@ -109,24 +35,33 @@
 </div>
 
 <!-- HEADER UNIFICADO -->
+<!-- HEADER UNIFICADO RESPONSIVE -->
 <header class="site-header">
-  <div class="logo-container">
-    <a href="index.html" aria-label="AngulismoTV - Inicio">
-      <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
-    </a>
+  <div class="header-container">
+    <div class="logo-container">
+      <a href="index.html" aria-label="AngulismoTV - Inicio">
+        <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+      </a>
+    </div>
+    
+    <!-- Botón hamburguesa para móvil -->
+    <button class="menu-toggle" aria-label="Abrir menú de navegación">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Navegación desktop (visible en pantallas grandes) -->
+    <nav role="navigation" aria-label="Navegación principal">
+      <a href="#channelsSection">Canales</a>
+      <a href="#agendaFrame">Agenda</a>
+      <a href="multicam.html">Pantalla Dividida</a>
+      <a href="https://nowevents.xyz">Entretenimiento</a>
+      <a href="https://nowstats.netlify.app">Estadísticas</a>
+      <a href="foro.html">Foro</a>
+    </nav>
+
   </div>
-  
-  <nav role="navigation" aria-label="Navegación principal">
-    <a href="index.html#channelsSection">Canales</a>
-    <a href="index.html">Agenda</a>
-    <a href="multicam.html">Pantalla Dividida</a>
-    <a href="https://nowevents.xyz" target="_blank" rel="noopener">Entretenimiento</a>
-    <a href="https://nowstats.netlify.app" target="_blank" rel="noopener">Estadísticas</a>
-    <a href="foro.html">Foro</a>
-  </nav>
-  
-  <!-- Botón de personalización como tuerca -->
-  
 </header>
 
 <main class="container">
@@ -210,6 +145,7 @@
   </div>
 </footer>
 <script defer src="scripts/customization.js"></script>
+<script defer src="scripts/header-mobile.js"></script>
 <script>
   (function() {
     'use strict';
@@ -367,72 +303,144 @@
     }
 
     // ==================== Get Direct Player URL ====================
-    function getDirectPlayerUrl(streamData) {
-      console.log('Procesando stream:', streamData);
-      
-      // Para canales con la nueva estructura
-      if (streamData.url) {
-        return streamData.url;
-      }
-      
-      // Para eventos de agenda
-      if (streamData.tv_networks && streamData.tv_networks.length > 0) {
-        const network = streamData.tv_networks[0];
-        
-        if (network.link) {
-          try {
-            const decodedLink = atob(network.link);
-            return decodedLink;
-          } catch (e) {
-            console.error('Error decoding base64 link:', e);
-            return network.link;
-          }
-        }
-        
-        if (network.url) {
-          return network.url;
-        }
-      }
-      
-      // Fallbacks adicionales
-      if (streamData.iframe) {
-        return streamData.iframe;
-      }
-      
-      console.warn('No se encontró URL para:', streamData);
-      return null;
+// ==================== Get Direct Player URL ====================
+function getDirectPlayerUrl(streamData) {
+  console.log('🔍 Procesando stream:', streamData);
+  
+  // PRIORIDAD 1: URL directa (canales)
+  if (streamData.url) {
+    console.log('✅ Usando URL directa:', streamData.url);
+    return streamData.url;
+  }
+  
+  // PRIORIDAD 2: iframe directo (eventos manuales adaptados)
+  if (streamData.iframe) {
+    console.log('✅ Usando iframe:', streamData.iframe);
+    return streamData.iframe;
+  }
+  
+  // PRIORIDAD 3: tv_networks (eventos de agenda)
+  if (streamData.tv_networks && Array.isArray(streamData.tv_networks) && streamData.tv_networks.length > 0) {
+    const network = streamData.tv_networks[0];
+    console.log('📡 Network encontrado:', network);
+    
+    // Si tiene iframe directo
+    if (network.iframe) {
+      console.log('✅ Usando network.iframe:', network.iframe);
+      return network.iframe;
     }
+    
+    // Si tiene link en base64
+    if (network.link) {
+      try {
+        const decodedLink = atob(network.link);
+        console.log('✅ Link decodificado:', decodedLink);
+        return decodedLink;
+      } catch (e) {
+        console.error('❌ Error decoding base64 link:', e);
+        // Si falla la decodificación, intentar usar directamente
+        console.log('⚠️ Usando link sin decodificar:', network.link);
+        return network.link;
+      }
+    }
+    
+    // Si tiene url
+    if (network.url) {
+      console.log('✅ Usando network.url:', network.url);
+      return network.url;
+    }
+  }
+  
+  // PRIORIDAD 4: canales array (fallback)
+  if (streamData.canales && Array.isArray(streamData.canales) && streamData.canales.length > 0) {
+    const canal = streamData.canales[0];
+    console.log('📡 Canal encontrado:', canal);
+    
+    if (canal.iframe) {
+      console.log('✅ Usando canal.iframe:', canal.iframe);
+      return canal.iframe;
+    }
+    
+    if (canal.link) {
+      try {
+        const decodedLink = atob(canal.link);
+        console.log('✅ Canal link decodificado:', decodedLink);
+        return decodedLink;
+      } catch (e) {
+        console.error('❌ Error decoding canal link:', e);
+        return canal.link;
+      }
+    }
+    
+    if (canal.url) {
+      console.log('✅ Usando canal.url:', canal.url);
+      return canal.url;
+    }
+  }
+  
+  console.error('❌ No se encontró URL válida para:', streamData);
+  console.log('📋 Estructura completa del stream:', JSON.stringify(streamData, null, 2));
+  return null;
+}
 
     // ==================== Adapt Events ====================
-    async function adaptManualEvents(events) {
-      if (!Array.isArray(events)) return [];
-      
-      return events.map(ev => {
-        let teams = [];
-        if (ev.evento && ev.evento.includes(' vs ')) {
-          teams = ev.evento.split(' vs ').map(name => ({ name: name.trim() }));
-        } else if (ev.evento) {
-          teams = [{ name: ev.evento.trim() }];
-        }
-        
-        let canales = Array.isArray(ev.canales) ? ev.canales : (ev.canal ? [ev.canal] : []);
-        return {
-          id: ev.id || `manual-${Date.now()}-${Math.random()}`,
-          start_time: ev.fecha || '',
-          teams: teams,
-          evento: ev.evento || 'Sin título',
-          description: ev.descripcion || '',
-          competition_name: ev.competencia || '',
-          tv_networks: canales.map(c => {
-            if (typeof c === 'object' && c.name) {
-              return c;
-            }
-            return { name: c };
-          }),
-          status: { name: ev.estado || '' }
-        };
-      });
+// ==================== Adapt Events ====================
+async function adaptManualEvents(events) {
+  if (!Array.isArray(events)) return [];
+  
+  return events.map(ev => {
+    let teams = [];
+    if (ev.evento && ev.evento.includes(' vs ')) {
+      teams = ev.evento.split(' vs ').map(name => ({ name: name.trim() }));
+    } else if (ev.evento) {
+      teams = [{ name: ev.evento.trim() }];
     }
+    
+    // 🔥 CORREGIDO: Extraer las opciones de cada canal (igual que en main.js)
+    let canales = [];
+    
+    if (Array.isArray(ev.canales)) {
+      ev.canales.forEach(canal => {
+        // Si el canal tiene options (estructura de eventos manuales)
+        if (canal.options && Array.isArray(canal.options)) {
+          canal.options.forEach((opt, idx) => {
+            canales.push({
+              name: `${canal.name} - ${opt.name}`,
+              iframe: opt.iframe,
+              logo: canal.logo
+            });
+          });
+        }
+        // Si es solo un string (compatibilidad antigua)
+        else if (typeof canal === 'string') {
+          canales.push({ name: canal });
+        }
+        // Si es un objeto simple sin options
+        else if (canal.name) {
+          canales.push({
+            name: canal.name,
+            iframe: canal.iframe,
+            logo: canal.logo
+          });
+        }
+      });
+    } else if (ev.canal) {
+      // Compatibilidad con formato antiguo
+      canales = [ev.canal];
+    }
+    
+    return {
+      id: ev.id || `manual-${Date.now()}-${Math.random()}`,
+      start_time: ev.fecha || '',
+      teams: teams,
+      evento: ev.evento || 'Sin título',
+      description: ev.descripcion || '',
+      competition_name: ev.competencia || '',
+      tv_networks: canales,
+      status: { name: ev.estado || '' }
+    };
+  });
+}
 
     async function adaptStreamTPEvents(events) {
       if (!Array.isArray(events)) return [];
