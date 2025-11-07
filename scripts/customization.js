@@ -14,7 +14,7 @@
     
     // Efectos visuales
     starsEnabled: true,
-    starsCount: 70,
+    starsCount: 50,
     shootingStars: true,
     comets: true,
     planets: true,
@@ -102,7 +102,7 @@
       gpuAcceleration: true
     },
     low: {
-      starsCount: 40,
+      starsCount: 20,
       shootingStars: false,
       comets: false,
       planets: false,
@@ -116,9 +116,9 @@
       blurIntensity: 6,
       backdropFilter: false,
       bgOpacity: 80,
-      shadowIntensity: 50,
-      batterySaver: true,
-      gpuAcceleration: false
+      shadowIntensity: 10,
+      batterySaver: false,
+      gpuAcceleration: true
     }
   };
 
