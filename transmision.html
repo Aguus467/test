@@ -13,25 +13,60 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+<!-- Resource Hints para mejor performance -->
+<!-- DNS Prefetch -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+<!-- Preconnect para conexiones críticas -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload de recursos críticos -->
+<link rel="preload" href="assets/logo2.png" as="image" type="image/png">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style">
+
+<!-- Prefetch de páginas probables -->
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="multicam.html">
+<link rel="prefetch" href="foro.html">
+
 <link rel="icon" href="assets/logo2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- CSS separados - ORDEN CORRECTO -->
+<!-- CRÍTICO: Cargar con alta prioridad -->
 <link rel="stylesheet" href="css/espacial-base.css">
-<link rel="stylesheet" href="css/header-unificado.css">
 <link rel="stylesheet" href="css/transmision.css">
-<link rel="stylesheet" href="css/reproductor-musica.css">
+
+<!-- NO CRÍTICO: Cargar con baja prioridad (después de renderizado inicial) -->
+<link rel="stylesheet" href="css/header-unificado.css" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/reproductor-musica.css" media="print" onload="this.media='all'">
+
+<!-- Fallback para navegadores sin JS -->
+<noscript>
+  <link rel="stylesheet" href="css/header-unificado.css">
+  <link rel="stylesheet" href="css/reproductor-musica.css">
+</noscript>
 
 
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P2V7GWXLHJ');
+  // Cargar Google Analytics de forma no bloqueante
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ';
+      document.head.appendChild(gaScript);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P2V7GWXLHJ');
+    }, 1500);
+  });
 </script>
 </head>
 <body>
@@ -109,36 +144,52 @@
     
  
 
- 
+  <div class="music-controls">
+    <div class="music-info">Musica ambiental</div>
+    <div class="volume-control" id="volumeControl">
+        <div class="volume-slider" id="volumeSlider"></div>
+        <div class="volume-handle" id="volumeHandle"></div>
+    </div>
+    <button class="music-toggle" id="musicToggle" aria-label="Reproducir/Pausar música">
+        <span id="musicIcon">▶</span>
+    </button>
+</div>
 </section>
 
 <!-- Main Content -->
 <main class="container">
   <!-- Player Card -->
   <section class="card player-card">
-    <iframe 
-      id="playerFrame"
-      scrolling="no"
-      allowfullscreen
-      webkitallowfullscreen
-      mozallowfullscreen
-      msallowfullscreen
-      referrerpolicy="no-referrer" 
-      allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
-      title="Reproductor de transmisión en vivo"
-      loading="lazy">
-    </iframe>
+<iframe 
+  id="playerFrame"
+  scrolling="no"
+  allowfullscreen
+  webkitallowfullscreen
+  mozallowfullscreen
+  msallowfullscreen
+  referrerpolicy="no-referrer" 
+  allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
+  title="Reproductor de transmisión en vivo"
+  loading="lazy"
+  importance="high"
+  width="100%"
+  height="auto">
+</iframe>
   </section>
 
   <!-- Chat Card -->
   <aside class="card chat-card">
-    <iframe 
-      id="twitchChat" 
-      src="" 
-      title="Chat de Twitch" 
-      referrerpolicy="no-referrer"
-      loading="lazy">
-    </iframe>
+<iframe 
+  id="twitchChat" 
+  src="" 
+  title="Chat de Twitch" 
+  referrerpolicy="no-referrer"
+  loading="lazy"
+  importance="low"
+  width="100%"
+  height="100%"
+  sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+</iframe>
   </aside>
 </main>
 
@@ -152,8 +203,8 @@
   </small>
 </footer>
 
-<audio id="backgroundMusic" loop>
-    <!-- Reemplaza esta URL con la de tu archivo de música -->
+<audio id="backgroundMusic" loop preload="none">
+    <!-- Las fuentes se cargan bajo demanda cuando el usuario activa la música -->
     <source src="music/background-music.mp3" type="audio/mpeg">
     <source src="music/background-music.ogg" type="audio/ogg">
     Tu navegador no soporta el elemento de audio.
@@ -162,10 +213,185 @@
 
 
 <!-- Scripts -->
-<script defer src="scripts/musica-ambiental.js"></script>
+<script src="scripts/header-mobile.js"></script>
 <script defer src="scripts/transmision.js"></script>
 <script defer src="scripts/transmision-ui.js"></script>
-<script src="scripts/header-mobile.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var musicScript = document.createElement('script');
+      musicScript.src = 'scripts/musica-ambiental.js';
+      musicScript.defer = true;
+      document.body.appendChild(musicScript);
+    }, 1000);
+  });
+</script>
 
+<script>
+(function() {
+  'use strict';
+
+  // ==================== Configuración adaptativa ====================
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  // Reducir elementos en página de transmisión (prioridad al video)
+  const numStars = isMobile ? 20 : 40;
+  const numShootingStars = isMobile ? 0 : 1;
+  const numComets = 0; // Desactivado en transmisión
+  const numPlanets = isMobile ? 0 : 1;
+  const numStardust = isMobile ? 8 : 15;
+  
+  const BATCH_SIZE = 8;
+  const BATCH_DELAY = 40;
+
+  // ==================== Funciones de creación ====================
+  function createElement(className, styles = {}) {
+    const el = document.createElement('div');
+    el.className = className;
+    Object.keys(styles).forEach(prop => {
+      el.style[prop] = styles[prop];
+    });
+    return el;
+  }
+
+  const starfield = document.getElementById('starfield');
+  if (!starfield) return;
+
+  // ==================== Crear estrellas en lotes ====================
+  function createStarsBatch(startIdx, endIdx) {
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = startIdx; i < Math.min(endIdx, numStars); i++) {
+      const layer = Math.floor(Math.random() * 3) + 1;
+      const size = Math.random() * 2 + 0.5;
+      
+      const star = createElement(`star layer-${layer}`, {
+        width: size + 'px',
+        height: size + 'px',
+        top: Math.random() * 100 + '%',
+        left: Math.random() * 100 + '%',
+        animationDelay: Math.random() * 4 + 's',
+        animationDuration: (Math.random() * 3 + 3) + 's'
+      });
+      
+      star.setAttribute('data-speed', layer * 0.15);
+      fragment.appendChild(star);
+    }
+    
+    starfield.appendChild(fragment);
+    
+    if (endIdx < numStars) {
+      setTimeout(() => {
+        createStarsBatch(endIdx, endIdx + BATCH_SIZE);
+      }, BATCH_DELAY);
+    } else {
+      createOtherElements();
+    }
+  }
+
+  // ==================== Crear otros elementos ====================
+  function createOtherElements() {
+    const fragment = document.createDocumentFragment();
+    
+    // Shooting stars (solo PC, muy reducidos)
+    if (!isMobile) {
+      for (let i = 0; i < numShootingStars; i++) {
+        const shootingStar = createElement('shooting-star', {
+          top: Math.random() * 50 + '%',
+          left: (Math.random() * 50 + 50) + '%',
+          animationDelay: (Math.random() * 8 + 4) + 's',
+          animationDuration: (Math.random() * 3 + 3) + 's',
+          width: (Math.random() * 80 + 40) + 'px'
+        });
+        fragment.appendChild(shootingStar);
+      }
+    }
+
+    // Planeta (solo en PC)
+    if (!isMobile && numPlanets > 0) {
+      const planet = createElement('planet planet-1');
+      fragment.appendChild(planet);
+    }
+
+    // Polvo estelar (muy reducido)
+    for (let i = 0; i < numStardust; i++) {
+      const dust = createElement('stardust', {
+        left: Math.random() * 100 + '%',
+        bottom: '0',
+        animationDelay: Math.random() * 25 + 's',
+        animationDuration: (Math.random() * 12 + 18) + 's'
+      });
+      fragment.appendChild(dust);
+    }
+
+    starfield.appendChild(fragment);
+    setTimeout(cacheStars, 200);
+  }
+
+  // ==================== Iniciar creación ====================
+  // Delay inicial para priorizar carga del reproductor
+  setTimeout(() => {
+    createStarsBatch(0, BATCH_SIZE);
+  }, 500);
+
+  // ==================== Efecto Paralaje MINIMALISTA ====================
+  let scrollY = 0;
+  let ticking = false;
+  let stars = [];
+
+  function cacheStars() {
+    stars = Array.from(document.querySelectorAll('.star[data-speed]'));
+  }
+
+  function updateParallax() {
+    if (stars.length === 0) return;
+    
+    stars.forEach(star => {
+      const speed = parseFloat(star.getAttribute('data-speed')) || 0;
+      const yPos = scrollY * speed;
+      star.style.transform = `translateY(${yPos}px)`;
+    });
+    ticking = false;
+  }
+
+  function handleScroll() {
+    scrollY = window.pageYOffset;
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  // Intersection Observer para activar paralaje solo cuando es visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      } else {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    });
+  }, { rootMargin: '100px' });
+
+  observer.observe(starfield);
+
+  // ==================== Reducir animaciones si el usuario lo prefiere ====================
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const animatedElements = document.querySelectorAll('.star, .shooting-star, .planet, .stardust, .aurora, .spiral-galaxy');
+    animatedElements.forEach(el => {
+      el.style.animation = 'none';
+    });
+  }
+
+  // ==================== Cleanup ====================
+  window.addEventListener('beforeunload', function() {
+    window.removeEventListener('scroll', handleScroll);
+    observer.disconnect();
+  });
+
+  console.log('AngulismoTV Transmisión - Starfield minimalista optimizado 🎬');
+
+})();
+</script>
 </body>
 </html>
