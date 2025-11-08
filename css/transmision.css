@@ -6,7 +6,7 @@
   --text-secondary: #72d6ff;
   --accent: #72d6ff;
   --accent-purple: #ff7fff;
-  --border-color: rgba(245, 255, 255, 0.1);
+  --border-color: rgba(255, 255, 255, 0.1);
   --border-width: 1px;
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
   --radius: 12px;
@@ -1146,4 +1146,3 @@ select:focus-visible {
     border-bottom-width: 0.5px;
   }
 }
-
