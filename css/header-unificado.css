@@ -1,8 +1,7 @@
-/* css/header-unificado.css - VERSIÓN CORREGIDA CON Z-INDEX */
+/* css/header-unificado.css - VERSIÓN CORREGIDA SIN INTERFERENCIA CON TWITCH CHAT */
 /* ==================== VARIABLES GLOBALES HEADER ==================== */
 :root {
   --header-bg: rgba(10, 10, 30, 0.95);
-  --header-blur: blur(16px);
   --header-border: rgba(114, 214, 255, 0.2);
   --header-accent: #72d6ff;
   --header-accent-purple: #ff7fff;
@@ -10,21 +9,21 @@
   --header-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ==================== HEADER UNIFICADO ==================== */
+/* ==================== HEADER UNIFICADO (FIX TWITCH) ==================== */
 .site-header {
   background: 
     radial-gradient(ellipse at 20% 50%, rgba(114, 214, 255, 0.15), transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(255, 127, 255, 0.15), transparent 50%),
     var(--header-bg);
-  backdrop-filter: var(--header-blur);
-  -webkit-backdrop-filter: var(--header-blur);
+  /* backdrop-filter: REMOVIDO para evitar conflictos con Twitch */
+  /* -webkit-backdrop-filter: REMOVIDO para evitar conflictos con Twitch */
   padding: 1px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 1000; /* IMPORTANTE: Más alto que el options-bar */
+  z-index: 100; /* REDUCIDO de 1000 a 100 para evitar interferencia */
   box-shadow: 
     0 0 30px rgba(114, 214, 255, 0.3), 
     0 8px 40px rgba(0, 0, 0, 0.6),
@@ -33,7 +32,9 @@
   min-height: var(--header-height);
   gap: 1.5rem;
   position: relative;
-  overflow: hidden; /* Cambiado de hidden a visible */
+  overflow: hidden;
+  /* isolation: isolate para contexto de apilamiento limpio */
+  isolation: isolate;
 }
 
 /* Efectos de fondo del header */
@@ -122,13 +123,12 @@
   display: none;
   flex-direction: column;
   background: rgba(20, 20, 40, 0.8);
-  backdrop-filter: blur(12px);
   border: 1px solid rgba(114, 214, 255, 0.3);
   border-radius: 8px;
   padding: 0.75rem;
   cursor: pointer;
   gap: 4px;
-  z-index: 1002; /* Más alto que el header */
+  z-index: 102; /* AJUSTADO: Mayor que el header pero no excesivo */
   transition: var(--header-transition);
   touch-action: manipulation;
 }
@@ -208,7 +208,7 @@
   height: calc(100vh - var(--header-height));
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  z-index: 999; /* Debajo del menú pero encima de todo lo demás */
+  z-index: 99; /* AJUSTADO: Debajo del menú pero encima de contenido */
 }
 
 /* ==================== NAVEGACIÓN MÓVIL ==================== */
@@ -228,7 +228,7 @@
   padding: 2rem 1.5rem;
   margin: 0;
   gap: 0.5rem;
-  z-index: 1001; /* Encima del overlay */
+  z-index: 101; /* AJUSTADO: Encima del overlay */
   overflow-y: auto;
   border-top: 1px solid rgba(114, 214, 255, 0.2);
   transform: translateX(-100%);
@@ -266,8 +266,6 @@
 .site-header .customize-gear {
   position: relative;
   background: rgba(20, 20, 40, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(114, 214, 255, 0.3);
   border-radius: 50%;
   width: 44px;
@@ -473,5 +471,31 @@
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     min-height: 50px;
+  }
+}
+
+/* ==================== OPTIMIZACIÓN PARA TWITCH CHAT ==================== */
+/* Asegurar que el header no interfiera con iframes */
+.site-header {
+  /* No usar transform: translateZ(0) aquí */
+  /* No usar will-change: transform */
+}
+
+/* Prevenir problemas de contexto de apilamiento con iframes */
+.site-header * {
+  /* Evitar propiedades que creen nuevos contextos de apilamiento problemáticos */
+}
+
+/* ==================== FIX SAFARI iOS ==================== */
+@supports (-webkit-touch-callout: none) {
+  .site-header {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ==================== NOTCH EN MÓVILES ==================== */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .site-header {
+    padding-top: calc(env(safe-area-inset-top) + 1px);
   }
 }
