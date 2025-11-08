@@ -11,13 +11,25 @@
   <!-- CSS Espacial -->
   <link rel="stylesheet" href="css/espacial-base.css">
   <link rel="stylesheet" href="css/agenda.css">
+  
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P2V7GWXLHJ');
+  // Cargar Google Analytics de forma no bloqueante
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      // Crear script de forma dinámica
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ';
+      document.head.appendChild(gaScript);
+      
+      // Inicializar GA
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P2V7GWXLHJ');
+    }, 1500); // Espera 1.5 segundos después del load
+  });
 </script>
   
   <style>
@@ -462,3 +474,4 @@
 </body>
 
 </html>
+

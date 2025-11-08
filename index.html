@@ -8,6 +8,23 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Resource Hints para mejor performance -->
+<!-- DNS Prefetch: Resuelve DNS antes de que se necesiten -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+<!-- Preconnect: Establece conexión completa temprano (más potente que dns-prefetch) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<!-- Preload: Carga recursos críticos con alta prioridad -->
+<link rel="preload" href="assets/logo2.png" as="image" type="image/png">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style">
+
+<!-- Prefetch: Pre-carga páginas que el usuario probablemente visitará -->
+<link rel="prefetch" href="multicam.html">
+<link rel="prefetch" href="foro.html">
 <title>AngulismoTV - Streaming Deportivo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,12 +38,23 @@
 <link rel="stylesheet" href="css/customization-panel.css">
 
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P2V7GWXLHJ');
+  // Cargar Google Analytics de forma no bloqueante
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      // Crear script de forma dinámica
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ';
+      document.head.appendChild(gaScript);
+      
+      // Inicializar GA
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P2V7GWXLHJ');
+    }, 1500); // Espera 1.5 segundos después del load
+  });
 </script>
 </head>
 
@@ -84,12 +112,16 @@
     desde acá. :)
   </div>
 
-  <iframe 
-    src="agenda.html" 
-    id="agendaFrame" 
-    title="Agenda Deportiva en Vivo"
-    loading="lazy">
-  </iframe>
+<iframe 
+  src="agenda.html" 
+  id="agendaFrame" 
+  title="Agenda Deportiva en Vivo"
+  loading="lazy"
+  importance="low"
+  width="100%"
+  height="500"
+  style="border:0;border-radius:var(--radius)">
+</iframe>
 
   <section id="channelsSection" class="channels-section">
     <h3 class="section-title">Canales Disponibles</h3>
@@ -389,205 +421,424 @@
 (function() {
   'use strict';
 
-  // ==================== Configuración de optimización ====================
+  // Marcar body como cargado para evitar FOUC
+  document.body.classList.add('loaded');
+
+  // Detectar si es móvil para optimizar
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-  // ==================== Efecto Paralaje ====================
-  let scrollY = 0;
-  let parallaxEnabled = true;
+  // ==================== Starfield Generation OPTIMIZADO con Batching ====================
+  const starfield = document.getElementById('starfield');
+  const numStars = isMobile ? 30 : 60; // Reducido de 50/80
+  const numShootingStars = isMobile ? 1 : 2; // Reducido de 2/3
+  const numComets = isMobile ? 0 : 1; // Reducido de 1/2
+  const numPlanets = 2;
+  const numStardust = isMobile ? 15 : 30; // Reducido de 25/40
+  const numConstellations = isMobile ? 0 : 1; // Reducido de 1/2
   
-  window.addEventListener('scroll', function() {
-    if (!parallaxEnabled) return;
-    scrollY = window.pageYOffset;
-    requestAnimationFrame(updateParallax);
-  }, { passive: true });
+  const BATCH_SIZE = 10; // Crear en lotes de 10 elementos
+  const BATCH_DELAY = 30; // ms entre lotes
+
+  // Función optimizada para crear elementos
+  function createElement(className, styles = {}) {
+    const el = document.createElement('div');
+    el.className = className;
+    Object.keys(styles).forEach(prop => {
+      el.style[prop] = styles[prop];
+    });
+    return el;
+  }
+
+  // ==================== Crear Estrellas en Lotes ====================
+  function createStarsBatch(startIdx, endIdx) {
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = startIdx; i < Math.min(endIdx, numStars); i++) {
+      const layer = Math.floor(Math.random() * 3) + 1;
+      const size = Math.random() * 2.5 + 0.5;
+      
+      const star = createElement(`star layer-${layer}`, {
+        width: size + 'px',
+        height: size + 'px',
+        top: Math.random() * 100 + '%',
+        left: Math.random() * 100 + '%',
+        animationDelay: Math.random() * 4 + 's',
+        animationDuration: (Math.random() * 3 + 3) + 's'
+      });
+      
+      star.setAttribute('data-speed', layer * 0.2);
+      fragment.appendChild(star);
+    }
+    
+    starfield.appendChild(fragment);
+    
+    // Continuar con siguiente lote
+    if (endIdx < numStars) {
+      setTimeout(() => {
+        createStarsBatch(endIdx, endIdx + BATCH_SIZE);
+      }, BATCH_DELAY);
+    } else {
+      // Cuando terminamos estrellas, crear otros elementos
+      createOtherElements();
+    }
+  }
+
+  // ==================== Crear Otros Elementos (Shooting stars, cometas, etc) ====================
+  function createOtherElements() {
+    const fragment = document.createDocumentFragment();
+    
+    // Shooting stars
+    for (let i = 0; i < numShootingStars; i++) {
+      const shootingStar = createElement('shooting-star', {
+        top: Math.random() * 50 + '%',
+        left: (Math.random() * 50 + 50) + '%',
+        animationDelay: (Math.random() * 6 + 3) + 's',
+        animationDuration: (Math.random() * 3 + 3) + 's',
+        width: (Math.random() * 100 + 50) + 'px'
+      });
+      fragment.appendChild(shootingStar);
+    }
+
+    // Cometas (solo en PC)
+    if (!isMobile) {
+      for (let i = 0; i < numComets; i++) {
+        const comet = createElement('comet', {
+          top: Math.random() * 30 + '%',
+          left: (Math.random() * 30 + 70) + '%',
+          animationDelay: (Math.random() * 12 + 6) + 's'
+        });
+        fragment.appendChild(comet);
+      }
+    }
+
+    // Planetas
+    for (let i = 1; i <= numPlanets; i++) {
+      const planet = createElement(`planet planet-${i}`);
+      fragment.appendChild(planet);
+    }
+
+    // Polvo estelar
+    for (let i = 0; i < numStardust; i++) {
+      const dust = createElement('stardust', {
+        left: Math.random() * 100 + '%',
+        bottom: '0',
+        animationDelay: Math.random() * 20 + 's',
+        animationDuration: (Math.random() * 10 + 15) + 's'
+      });
+      fragment.appendChild(dust);
+    }
+
+    starfield.appendChild(fragment);
+    
+    // Crear constelaciones al final (solo PC)
+    if (!isMobile && numConstellations > 0) {
+      setTimeout(createConstellations, 100);
+    }
+    
+    // Cachear estrellas para paralaje
+    setTimeout(cacheStars, 200);
+  }
+
+  // ==================== Crear Constelaciones ====================
+  function createConstellations() {
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = 0; i < numConstellations; i++) {
+      const constellation = createElement('constellation', {
+        top: (Math.random() * 60 + 10) + '%',
+        left: (Math.random() * 60 + 10) + '%'
+      });
+      
+      const points = 4;
+      const positions = [];
+      const constellationFragment = document.createDocumentFragment();
+      
+      // Crear puntos
+      for (let j = 0; j < points; j++) {
+        const x = Math.random() * 120;
+        const y = Math.random() * 120;
+        const dot = createElement('constellation-dot', {
+          left: x + 'px',
+          top: y + 'px'
+        });
+        positions.push({x, y});
+        constellationFragment.appendChild(dot);
+      }
+      
+      // Crear líneas
+      for (let j = 0; j < points - 1; j++) {
+        const dx = positions[j + 1].x - positions[j].x;
+        const dy = positions[j + 1].y - positions[j].y;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        
+        const line = createElement('constellation-line', {
+          width: length + 'px',
+          left: positions[j].x + 'px',
+          top: positions[j].y + 'px',
+          transform: `rotate(${angle}deg)`
+        });
+        constellationFragment.appendChild(line);
+      }
+      
+      constellation.appendChild(constellationFragment);
+      fragment.appendChild(constellation);
+    }
+    
+    starfield.appendChild(fragment);
+  }
+
+  // Iniciar creación de estrellas en lotes
+  createStarsBatch(0, BATCH_SIZE);
+
+  // ==================== Efecto Paralaje OPTIMIZADO ====================
+  let scrollY = 0;
+  let ticking = false;
+  let stars = [];
+
+  function cacheStars() {
+    stars = Array.from(document.querySelectorAll('.star'));
+  }
 
   function updateParallax() {
-    const paralaxStars = document.querySelectorAll('.star[data-speed]');
-    paralaxStars.forEach(star => {
+    if (stars.length === 0) return;
+    
+    stars.forEach(star => {
       const speed = parseFloat(star.getAttribute('data-speed')) || 0;
       const yPos = scrollY * speed;
       star.style.transform = `translateY(${yPos}px)`;
     });
+    ticking = false;
   }
 
-  // Exponer control de paralaje
-  window.setParallaxEnabled = function(enabled) {
-    parallaxEnabled = enabled;
-  };
-
-  // ==================== Header Stars ====================
-  const header = document.querySelector('.site-header');
-  const headerStarsFragment = document.createDocumentFragment();
-  const numHeaderStars = isMobile ? 10 : 15;
-
-  for (let i = 0; i < numHeaderStars; i++) {
-    const star = document.createElement('div');
-    star.className = 'header-star';
-    
-    const size = Math.random() * 2 + 1;
-    star.style.width = size + 'px';
-    star.style.height = size + 'px';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 3 + 's';
-    star.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    
-    headerStarsFragment.appendChild(star);
-  }
-  
-  header.appendChild(headerStarsFragment);
-
-  // ==================== Smooth Scroll Navigation ====================
-  document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.site-header nav a[href*="#"]');
-    
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        
-        if (href.startsWith('#')) {
-          e.preventDefault();
-          const targetId = href;
-          const targetElement = document.querySelector(targetId);
-          
-          if (targetElement) {
-            const headerOffset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-            
-            targetElement.setAttribute('tabindex', '-1');
-            targetElement.focus();
-          }
-        }
-      });
-    });
-
-    // Prevenir zoom en double-tap (solo móviles)
-    if (isMobile) {
-      let lastTouchEnd = 0;
-      document.addEventListener('touchend', function(e) {
-        const now = Date.now();
-        if (now - lastTouchEnd <= 300) {
-          e.preventDefault();
-        }
-        lastTouchEnd = now;
-      }, { passive: false });
+  function handleScroll() {
+    scrollY = window.pageYOffset;
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
     }
-  });
+  }
 
-  // ==================== Polvo Estelar Interactivo ====================
-  let interactiveParticlesEnabled = true;
-  
-  if (window.matchMedia('(hover: hover)').matches) {
+  // Usar Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      } else {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    });
+  }, { rootMargin: '100px' });
+
+  observer.observe(starfield);
+
+  // ==================== Polvo Estelar Interactivo (Pool de partículas) ====================
+  if (!isMobile && window.matchMedia('(hover: hover)').matches) {
+    let lastMouseMove = 0;
+    const dustPool = [];
+    const MAX_DUST_PARTICLES = 8; // Reducido de 10
+    const MOUSE_THROTTLE = 150;
+    
+    // Pre-crear partículas
+    for (let i = 0; i < MAX_DUST_PARTICLES; i++) {
+      const dust = createElement('stardust interactive-dust', {
+        position: 'fixed',
+        zIndex: '999',
+        pointerEvents: 'none',
+        opacity: '0'
+      });
+      document.body.appendChild(dust);
+      dustPool.push(dust);
+    }
+
     document.addEventListener('mousemove', function(e) {
-      if (!interactiveParticlesEnabled) return;
-      if (Math.random() < 0.05) {
-        const dust = document.createElement('div');
-        dust.className = 'stardust';
+      const now = Date.now();
+      if (now - lastMouseMove < MOUSE_THROTTLE) return;
+      lastMouseMove = now;
+      
+      if (Math.random() < 0.05 && dustPool.length > 0) {
+        const dust = dustPool.pop();
+        
         dust.style.left = e.clientX + 'px';
         dust.style.top = e.clientY + 'px';
-        dust.style.position = 'fixed';
+        dust.style.opacity = '1';
         dust.style.animation = 'dustFloat 2s ease-out forwards';
-        dust.style.zIndex = '999';
-        document.body.appendChild(dust);
         
-        setTimeout(() => dust.remove(), 2000);
+        setTimeout(() => {
+          dust.style.opacity = '0';
+          dust.style.animation = 'none';
+          dustPool.push(dust);
+        }, 2000);
       }
     });
   }
 
-  window.setInteractiveParticles = function(enabled) {
-    interactiveParticlesEnabled = enabled;
-  };
+  // ==================== Easter Egg: Mini Constelación ====================
+  let clickCount = 0;
+  let lastClickTime = 0;
+  const CLICK_TIMEOUT = 2000;
 
-  // ==================== Efecto Gravitacional ====================
-  if (!isMobile && window.matchMedia('(hover: hover)').matches) {
-    document.addEventListener('mousemove', function(e) {
-      if (!interactiveParticlesEnabled) return;
-      const cards = document.querySelectorAll('.channel-card');
-      
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const cardX = rect.left + rect.width / 2;
-        const cardY = rect.top + rect.height / 2;
-        const distance = Math.sqrt(Math.pow(e.clientX - cardX, 2) + Math.pow(e.clientY - cardY, 2));
-        
-        if (distance < 200 && Math.random() < 0.05) {
-          const particle = document.createElement('div');
-          particle.className = 'gravity-particle';
-          particle.style.position = 'fixed';
-          particle.style.left = e.clientX + 'px';
-          particle.style.top = e.clientY + 'px';
-          document.body.appendChild(particle);
-          
-          setTimeout(() => {
-            particle.style.opacity = '1';
-            particle.style.transform = `translate(${cardX - e.clientX}px, ${cardY - e.clientY}px) scale(2)`;
-          }, 10);
-          
-          setTimeout(() => particle.remove(), 650);
-        }
-      });
+  document.addEventListener('click', function(e) {
+    const now = Date.now();
+    
+    if (now - lastClickTime > CLICK_TIMEOUT) {
+      clickCount = 0;
+    }
+    
+    lastClickTime = now;
+    clickCount++;
+    
+    if (clickCount === 5) {
+      createMiniConstellation(e.clientX, e.clientY);
+      clickCount = 0;
+    }
+  });
+
+  function createMiniConstellation(x, y) {
+    const miniConstellation = createElement('mini-constellation', {
+      position: 'fixed',
+      left: (x - 50) + 'px',
+      top: (y - 50) + 'px',
+      width: '100px',
+      height: '100px',
+      pointerEvents: 'none',
+      zIndex: '9999'
     });
+    
+    const starFragment = document.createDocumentFragment();
+    
+    for (let i = 0; i < 5; i++) {
+      const star = createElement('easter-egg-star', {
+        position: 'absolute',
+        width: '4px',
+        height: '4px',
+        background: 'rgba(114, 214, 255, 0.9)',
+        borderRadius: '50%',
+        boxShadow: '0 0 10px rgba(114, 214, 255, 0.9)',
+        left: Math.random() * 80 + 10 + 'px',
+        top: Math.random() * 80 + 10 + 'px',
+        animation: 'twinkle 1s ease-in-out infinite'
+      });
+      starFragment.appendChild(star);
+    }
+    
+    miniConstellation.appendChild(starFragment);
+    document.body.appendChild(miniConstellation);
+    
+    setTimeout(() => {
+      miniConstellation.style.transition = 'opacity 1s';
+      miniConstellation.style.opacity = '0';
+      setTimeout(() => {
+        if (miniConstellation.parentNode) {
+          miniConstellation.parentNode.removeChild(miniConstellation);
+        }
+      }, 1000);
+    }, 3000);
   }
 
-  // ==================== Warp Speed Effect ====================
-  function createWarpEffect() {
-    if (isMobile) return;
+  // ==================== Efecto de Brillo en Match Cards (Pool de partículas) ====================
+  if (!isMobile && window.matchMedia('(hover: hover)').matches) {
+    let hoverTimeout;
+    const particlePool = [];
+    const MAX_PARTICLES = 15; // Reducido de 20
     
-    const numLines = 15;
-    for (let i = 0; i < numLines; i++) {
-      setTimeout(() => {
-        const line = document.createElement('div');
-        line.className = 'warp-line';
-        line.style.top = Math.random() * 100 + '%';
-        line.style.animationDelay = (i * 0.02) + 's';
-        document.body.appendChild(line);
-        
-        setTimeout(() => line.remove(), 1000);
-      }, i * 30);
+    // Pre-crear partículas
+    for (let i = 0; i < MAX_PARTICLES; i++) {
+      const particle = createElement('hover-particle', {
+        position: 'absolute',
+        width: '3px',
+        height: '3px',
+        background: 'rgba(114, 214, 255, 0.8)',
+        borderRadius: '50%',
+        boxShadow: '0 0 6px rgba(114, 214, 255, 0.8)',
+        pointerEvents: 'none',
+        zIndex: '10',
+        opacity: '0'
+      });
+      particlePool.push(particle);
+    }
+
+    document.addEventListener('mouseover', function(e) {
+      const card = e.target.closest('.match-card');
+      if (!card) return;
+      
+      clearTimeout(hoverTimeout);
+      hoverTimeout = setTimeout(() => {
+        createHoverParticles(card);
+      }, 50);
+    }, true);
+
+    document.addEventListener('mouseout', function(e) {
+      clearTimeout(hoverTimeout);
+    }, true);
+
+    function createHoverParticles(card) {
+      const availableParticles = particlePool.filter(p => p.style.opacity === '0');
+      const numParticles = Math.min(4, availableParticles.length); // Reducido de 5
+      
+      for (let i = 0; i < numParticles; i++) {
+        setTimeout(() => {
+          const particle = availableParticles[i];
+          if (!particle) return;
+          
+          const rect = card.getBoundingClientRect();
+          const side = Math.floor(Math.random() * 4);
+          let left, top;
+          
+          switch(side) {
+            case 0: left = Math.random() * rect.width; top = 0; break;
+            case 1: left = rect.width; top = Math.random() * rect.height; break;
+            case 2: left = Math.random() * rect.width; top = rect.height; break;
+            case 3: left = 0; top = Math.random() * rect.height; break;
+          }
+          
+          particle.style.left = left + 'px';
+          particle.style.top = top + 'px';
+          particle.style.opacity = '1';
+          particle.style.transform = 'scale(1)';
+          particle.style.transition = 'none';
+          
+          if (!card.contains(particle)) {
+            card.appendChild(particle);
+          }
+          
+          requestAnimationFrame(() => {
+            particle.style.transition = 'all 0.8s ease-out';
+            particle.style.opacity = '0';
+            particle.style.transform = 'scale(2) translateY(-20px)';
+          });
+          
+          setTimeout(() => {
+            if (particle.parentNode) {
+              particle.parentNode.removeChild(particle);
+            }
+            particle.style.opacity = '0';
+            particle.style.transform = 'scale(1)';
+            particle.style.transition = 'none';
+          }, 800);
+          
+        }, i * 100);
+      }
     }
   }
 
-  if (!isMobile) {
-    document.querySelectorAll('a[href^="multicam"], a[href^="dmca"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        if (!e.ctrlKey && !e.metaKey) {
-          createWarpEffect();
-        }
-      });
+  // ==================== Reducir animaciones ====================
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const animatedElements = document.querySelectorAll('.star, .shooting-star, .comet, .planet, .stardust, .aurora, .spiral-galaxy');
+    animatedElements.forEach(el => {
+      el.style.animation = 'none';
     });
   }
 
-  // ==================== Performance Optimization ====================
-  const agendaFrame = document.getElementById('agendaFrame');
-  
-  if ('IntersectionObserver' in window) {
-    const frameObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !agendaFrame.hasAttribute('data-loaded')) {
-          agendaFrame.src = 'agenda.html';
-          agendaFrame.setAttribute('data-loaded', 'true');
-          frameObserver.unobserve(agendaFrame);
-        }
-      });
-    }, { rootMargin: '50px' });
-    
-    frameObserver.observe(agendaFrame);
-  } else {
-    agendaFrame.src = 'agenda.html';
-  }
+  // ==================== Cleanup ====================
+  window.addEventListener('beforeunload', function() {
+    window.removeEventListener('scroll', handleScroll);
+    observer.disconnect();
+  });
 
-  // ==================== Easter Egg ====================
- 
-  console.log('AngulismoTV - Inicio espacial optimizado 🚀');
-  console.log('Atajo: Ctrl+K (personalizar) | Easter Egg: 7 clicks 🌟');
+  console.log('AngulismoTV - Agenda espacial optimizada 🌌');
+  console.log('Easter Egg: Haz 5 clicks rápidos ✨');
+
 })();
 </script>
 </body>
