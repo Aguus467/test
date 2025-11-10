@@ -1,4 +1,4 @@
-//MAIN.JS - VERSIÓN CORREGIDA CON SOPORTE PARA MÚLTIPLES OPCIONES
+//MAIN.JS - CON URLs CORTAS
 
 const API_URL = 'https://api.infutbol.site/matches/today';
 const CHANNELS_JSON = 'https://json.angulismotv.workers.dev/channels';
@@ -7,6 +7,35 @@ const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
 const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
 const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
 const GITHUB_EVENTOS = 'https://raw.githubusercontent.com/Aguus467/test/refs/heads/main/json';
+
+// 🔥 NUEVO: Función para generar URLs cortas
+function buildShortURL(params) {
+  const urlParams = new URLSearchParams();
+  const paramMap = {
+    'virtualChannel': 'vc',
+    'event': 'e',
+    'match': 'm',
+    'channel': 'c',
+    'opt': 'o'
+  };
+  
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== null && value !== undefined) {
+      const shortKey = paramMap[key] || key;
+      urlParams.set(shortKey, String(value));
+    }
+  });
+  
+  return `transmision.html?${urlParams.toString()}`;
+}
+
+// 🔥 NUEVO: Comprime Base64 para URLs más cortas
+function encodeBase64Compact(str) {
+  return btoa(str)
+    .replace(/=/g, '')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_');
+}
 
 async function fetchJSON(url, options = {}) {
   console.log(`Fetching data from: ${url}`);
@@ -257,17 +286,17 @@ function buildMatchCard(groupedEvent) {
           })
         };
         
-        // Codificar el canal virtual completo
-        const encodedChannel = btoa(JSON.stringify(virtualChannel));
+        // 🔥 Usar Base64 compacto y parámetros cortos
+        const encodedChannel = encodeBase64Compact(JSON.stringify(virtualChannel));
         
-        const params = new URLSearchParams();
-        params.set('virtualChannel', encodedChannel);
-        params.set('opt', String(index)); // Opción seleccionada
+        const transmisionUrl = buildShortURL({
+          virtualChannel: encodedChannel,
+          opt: index
+        });
         
-        const transmisionUrl = `transmision.html?${params.toString()}`;
-        
-        console.log('🚀 Redirigiendo con canal virtual:', virtualChannel);
+        console.log('🚀 Redirigiendo con canal virtual (URL corta)');
         console.log('🔗 URL:', transmisionUrl);
+        console.log('📏 Tamaño URL:', transmisionUrl.length, 'caracteres');
         
         window.top.location.href = transmisionUrl;
       });
@@ -372,9 +401,9 @@ async function renderChannels(channelData) {
     card.appendChild(img);
     card.appendChild(name);
     card.addEventListener('click', () => {
-      const params = new URLSearchParams();
-      params.set('channel', ch.name);
-      window.top.location.href = `transmision.html?${params.toString()}`;
+      // 🔥 Usar URL corta
+      const url = buildShortURL({ channel: ch.name });
+      window.top.location.href = url;
     });
     if (ch.show == true) {
       channelsGrid.appendChild(card);

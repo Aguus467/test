@@ -26,7 +26,6 @@
 
   // 🔥 NUEVO: Mapeo de parámetros cortos
   const PARAM_MAP = {
-    // Parámetros cortos -> largos
     short: {
       'vc': 'virtualChannel',
       'e': 'event',
@@ -34,7 +33,6 @@
       'c': 'channel',
       'o': 'opt'
     },
-    // Parámetros largos -> cortos
     long: {
       'virtualChannel': 'vc',
       'event': 'e',
@@ -45,21 +43,19 @@
   };
 
   class Utils {
-    // 🔥 NUEVO: Lee parámetros usando nombres cortos O largos
+    // 🔥 Lee parámetros usando nombres cortos O largos
     static getSearchParam(name) {
       const urlParams = new URLSearchParams(location.search);
       
-      // Intenta primero con el nombre original
-      let value = urlParams.get(name);
-      if (value) return value;
-      
-      // Si no encuentra, busca el equivalente corto
+      // Intenta primero con el nombre corto (si existe mapeo)
       const shortName = PARAM_MAP.long[name];
       if (shortName) {
-        value = urlParams.get(shortName);
+        const value = urlParams.get(shortName);
+        if (value) return value;
       }
       
-      return value;
+      // Luego intenta con el nombre original (retrocompatibilidad)
+      return urlParams.get(name);
     }
 
     static async fetchJSON(url) {
@@ -73,16 +69,40 @@
       }
     }
 
-    // 🔥 MODIFICADO: Sincroniza URL usando parámetros CORTOS
+    // 🔥 Sincroniza URL limpiando duplicados y usando formato corto
     static syncURL(params) {
-      const newParams = new URLSearchParams(location.search);
+      const newParams = new URLSearchParams();
+      
+      // Copia parámetros existentes convertidos a formato corto
+      const currentParams = new URLSearchParams(location.search);
+      const processedKeys = new Set();
+      
+      for (const [key, value] of currentParams.entries()) {
+        const shortKey = PARAM_MAP.long[key] || key;
+        
+        // Evita duplicados
+        if (!processedKeys.has(shortKey)) {
+          // Solo agrega si no va a ser actualizado
+          const longEquivalent = PARAM_MAP.short[shortKey];
+          const willBeUpdated = params.hasOwnProperty(key) || 
+                               (longEquivalent && params.hasOwnProperty(longEquivalent));
+          
+          if (!willBeUpdated) {
+            newParams.set(shortKey, value);
+          }
+          processedKeys.add(shortKey);
+        }
+      }
+      
+      // Agrega/actualiza los nuevos parámetros
       Object.entries(params).forEach(([key, value]) => {
         if (value !== null && value !== undefined) {
-          // Usa el nombre corto si existe
           const shortKey = PARAM_MAP.long[key] || key;
           newParams.set(shortKey, String(value));
+          processedKeys.add(shortKey);
         }
       });
+      
       history.replaceState(null, '', `${location.pathname}?${newParams.toString()}`);
     }
 
@@ -95,34 +115,53 @@
       }
     }
 
-    // 🔥 MODIFICADO: Redirige usando parámetros CORTOS
+    // 🔥 Redirige usando formato corto
     static redirect(params) {
-      const newParams = new URLSearchParams(location.search);
+      const newParams = new URLSearchParams();
+      
+      // Mantiene parámetros existentes en formato corto
+      const currentParams = new URLSearchParams(location.search);
+      const processedKeys = new Set();
+      
+      for (const [key, value] of currentParams.entries()) {
+        const shortKey = PARAM_MAP.long[key] || key;
+        
+        if (!processedKeys.has(shortKey)) {
+          const longEquivalent = PARAM_MAP.short[shortKey];
+          const willBeUpdated = params.hasOwnProperty(key) || 
+                               (longEquivalent && params.hasOwnProperty(longEquivalent));
+          
+          if (!willBeUpdated) {
+            newParams.set(shortKey, value);
+          }
+          processedKeys.add(shortKey);
+        }
+      }
+      
+      // Agrega nuevos parámetros
       Object.entries(params).forEach(([key, value]) => {
-        // Usa el nombre corto si existe
         const shortKey = PARAM_MAP.long[key] || key;
         newParams.set(shortKey, String(value));
       });
+      
       window.location.href = `${location.pathname}?${newParams.toString()}`;
     }
 
-    // 🔥 NUEVO: Comprime Base64 eliminando padding y usando URL-safe
+    // 🔥 NUEVO: Comprime Base64 (URL-safe y sin padding)
     static encodeBase64Compact(str) {
       return btoa(str)
-        .replace(/=/g, '') // Elimina padding
-        .replace(/\+/g, '-') // URL-safe
-        .replace(/\//g, '_'); // URL-safe
+        .replace(/=/g, '')
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_');
     }
 
     // 🔥 NUEVO: Descomprime Base64 compacto
     static decodeBase64Compact(str) {
       try {
-        // Restaura formato estándar
         let base64 = str
           .replace(/-/g, '+')
           .replace(/_/g, '/');
         
-        // Agrega padding si es necesario
         const padding = base64.length % 4;
         if (padding) {
           base64 += '='.repeat(4 - padding);
@@ -187,7 +226,7 @@
       if (this.reloadBtn) {
         this.reloadBtn.disabled = true;
         const originalHTML = this.reloadBtn.innerHTML;
-        this.reloadBtn.innerHTML = '<svg class="icon-reload spinning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg> Recargando...';
+        this.reloadBtn.innerHTML = '<svg class="icon-reload spinning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 0 0 1-18.8 4.2"/></svg> Recargando...';
         setTimeout(() => {
           this.reloadBtn.disabled = false;
           this.reloadBtn.innerHTML = originalHTML;
@@ -426,7 +465,6 @@
 
   class DirectLinkHandler {
     static async handle(eventParam, player, channelManager) {
-      // 🔥 MODIFICADO: Usa decodificador compacto
       const decodedUrl = Utils.decodeBase64Compact(eventParam) || Utils.decodeBase64(eventParam);
       if (!decodedUrl) {
         console.error('❌ Failed to decode event parameter');
@@ -450,7 +488,6 @@
   class VirtualChannelHandler {
     static async handle(virtualChannelParam, optParam, player, channelManager) {
       try {
-        // 🔥 MODIFICADO: Usa decodificador compacto
         const decodedChannel = Utils.decodeBase64Compact(virtualChannelParam) || 
                               Utils.decodeBase64(virtualChannelParam);
         if (!decodedChannel) {
@@ -488,7 +525,7 @@
       };
       const selectedIndex = Number.isInteger(Number(params.opt)) ? Number(params.opt) : 0;
 
-      // PRIORIDAD 1: Manejar canal virtual (desde agenda)
+      // PRIORIDAD 1: Manejar canal virtual
       if (params.virtualChannel) {
         const handled = await VirtualChannelHandler.handle(
           params.virtualChannel,
@@ -576,10 +613,24 @@
 
   window.AngulismoTV = window.AngulismoTV || {};
   window.AngulismoTV.version = '2.1.0';
-  // 🔥 NUEVO: Exponer utilidades para generar URLs
-  window.AngulismoTV.Utils = {
-    encodeCompact: Utils.encodeBase64Compact,
-    decodeCompact: Utils.decodeBase64Compact
+  
+  // 🔥 Exponer utilidades para main.js
+  window.AngulismoTV.buildShortURL = function(params) {
+    const urlParams = new URLSearchParams();
+    const paramMap = {
+      'virtualChannel': 'vc',
+      'event': 'e',
+      'match': 'm',
+      'channel': 'c',
+      'opt': 'o'
+    };
+    
+    Object.entries(params).forEach(([key, value]) => {
+      const shortKey = paramMap[key] || key;
+      urlParams.set(shortKey, value);
+    });
+    
+    return `transmision.html?${urlParams.toString()}`;
   };
 
   console.log('📺 AngulismoTV Player v2.1.0 loaded (Short URLs)');
