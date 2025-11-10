@@ -399,6 +399,10 @@
       }
     }
 
+    // ==================== CONFIGURACIÓN DE PROXY ====================
+    const PROXY_URL = 'https://m3u8proxy.angulismotv.workers.dev'; // ← CAMBIA ESTO POR TU PROXY
+    const USE_PROXY = true; // ← Activar proxy para evitar Mixed Content
+
     // ==================== HLS SETUP ====================
     function setupHLS() {
       if (!streamUrl) {
@@ -407,8 +411,17 @@
       }
 
       console.log('🎬 Configurando HLS...');
-      console.log('🔗 Stream URL:', streamUrl);
-      console.log('📡 Modo: Carga directa (sin proxy)');
+      console.log('🔗 Stream original:', streamUrl);
+      
+      // 🔥 APLICAR PROXY SI ESTÁ ACTIVADO
+      let finalUrl = streamUrl;
+      if (USE_PROXY && streamUrl.startsWith('http://')) {
+        finalUrl = `${PROXY_URL}?url=${encodeURIComponent(streamUrl)}`;
+        console.log('🔒 Usando proxy para evitar Mixed Content');
+        console.log('🔗 Stream proxiado:', finalUrl);
+      } else {
+        console.log('📡 Carga directa (sin proxy)');
+      }
 
       if (Hls.isSupported()) {
         hls = new Hls({
@@ -432,13 +445,21 @@
         hls.attachMedia(video);
 
         hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-          console.log('✅ Manifest parsed');
-          console.log('📊 Levels:', data.levels);
+          console.log('✅ Master playlist parseado');
+          console.log('📊 Calidades disponibles:', data.levels.length);
+          data.levels.forEach((level, i) => {
+            console.log(`   Nivel ${i}: ${level.width}x${level.height} @ ${Math.round(level.bitrate/1000)}kbps`);
+          });
           attemptAutoplay();
         });
 
         hls.on(Hls.Events.LEVEL_LOADED, (event, data) => {
-          console.log('✅ Level loaded:', data.level);
+          console.log('✅ Playlist de nivel cargado');
+          console.log('📦 Segmentos:', data.details.fragments.length);
+        });
+
+        hls.on(Hls.Events.FRAG_LOADED, (event, data) => {
+          console.log('✅ Segmento cargado:', data.frag.sn, '-', Math.round(data.frag.duration) + 's');
         });
 
         hls.on(Hls.Events.ERROR, (event, data) => {
