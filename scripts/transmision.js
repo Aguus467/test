@@ -1,9 +1,7 @@
 /**
  * AngulismoTV - Player Controller
- * Maneja reproductor, canales, eventos y transmisiones
+ * Versión con URLs cortas
  */
-
-//TRANSMISION.JS - CON SOPORTE PARA CANALES VIRTUALES
 
 (function() {
   'use strict';
@@ -26,9 +24,42 @@
     }
   };
 
+  // 🔥 NUEVO: Mapeo de parámetros cortos
+  const PARAM_MAP = {
+    // Parámetros cortos -> largos
+    short: {
+      'vc': 'virtualChannel',
+      'e': 'event',
+      'm': 'match',
+      'c': 'channel',
+      'o': 'opt'
+    },
+    // Parámetros largos -> cortos
+    long: {
+      'virtualChannel': 'vc',
+      'event': 'e',
+      'match': 'm',
+      'channel': 'c',
+      'opt': 'o'
+    }
+  };
+
   class Utils {
+    // 🔥 NUEVO: Lee parámetros usando nombres cortos O largos
     static getSearchParam(name) {
-      return new URLSearchParams(location.search).get(name);
+      const urlParams = new URLSearchParams(location.search);
+      
+      // Intenta primero con el nombre original
+      let value = urlParams.get(name);
+      if (value) return value;
+      
+      // Si no encuentra, busca el equivalente corto
+      const shortName = PARAM_MAP.long[name];
+      if (shortName) {
+        value = urlParams.get(shortName);
+      }
+      
+      return value;
     }
 
     static async fetchJSON(url) {
@@ -42,11 +73,14 @@
       }
     }
 
+    // 🔥 MODIFICADO: Sincroniza URL usando parámetros CORTOS
     static syncURL(params) {
       const newParams = new URLSearchParams(location.search);
       Object.entries(params).forEach(([key, value]) => {
         if (value !== null && value !== undefined) {
-          newParams.set(key, String(value));
+          // Usa el nombre corto si existe
+          const shortKey = PARAM_MAP.long[key] || key;
+          newParams.set(shortKey, String(value));
         }
       });
       history.replaceState(null, '', `${location.pathname}?${newParams.toString()}`);
@@ -61,12 +95,44 @@
       }
     }
 
+    // 🔥 MODIFICADO: Redirige usando parámetros CORTOS
     static redirect(params) {
       const newParams = new URLSearchParams(location.search);
       Object.entries(params).forEach(([key, value]) => {
-        newParams.set(key, String(value));
+        // Usa el nombre corto si existe
+        const shortKey = PARAM_MAP.long[key] || key;
+        newParams.set(shortKey, String(value));
       });
       window.location.href = `${location.pathname}?${newParams.toString()}`;
+    }
+
+    // 🔥 NUEVO: Comprime Base64 eliminando padding y usando URL-safe
+    static encodeBase64Compact(str) {
+      return btoa(str)
+        .replace(/=/g, '') // Elimina padding
+        .replace(/\+/g, '-') // URL-safe
+        .replace(/\//g, '_'); // URL-safe
+    }
+
+    // 🔥 NUEVO: Descomprime Base64 compacto
+    static decodeBase64Compact(str) {
+      try {
+        // Restaura formato estándar
+        let base64 = str
+          .replace(/-/g, '+')
+          .replace(/_/g, '/');
+        
+        // Agrega padding si es necesario
+        const padding = base64.length % 4;
+        if (padding) {
+          base64 += '='.repeat(4 - padding);
+        }
+        
+        return atob(base64);
+      } catch (e) {
+        console.error('Error decoding compact base64:', e);
+        return null;
+      }
     }
   }
 
@@ -360,7 +426,8 @@
 
   class DirectLinkHandler {
     static async handle(eventParam, player, channelManager) {
-      const decodedUrl = Utils.decodeBase64(eventParam);
+      // 🔥 MODIFICADO: Usa decodificador compacto
+      const decodedUrl = Utils.decodeBase64Compact(eventParam) || Utils.decodeBase64(eventParam);
       if (!decodedUrl) {
         console.error('❌ Failed to decode event parameter');
         return false;
@@ -380,11 +447,12 @@
     }
   }
 
-  // 🔥 NUEVO: Manejador de Canales Virtuales
   class VirtualChannelHandler {
     static async handle(virtualChannelParam, optParam, player, channelManager) {
       try {
-        const decodedChannel = Utils.decodeBase64(virtualChannelParam);
+        // 🔥 MODIFICADO: Usa decodificador compacto
+        const decodedChannel = Utils.decodeBase64Compact(virtualChannelParam) || 
+                              Utils.decodeBase64(virtualChannelParam);
         if (!decodedChannel) {
           console.error('❌ Failed to decode virtual channel');
           return false;
@@ -420,7 +488,7 @@
       };
       const selectedIndex = Number.isInteger(Number(params.opt)) ? Number(params.opt) : 0;
 
-      // 🔥 PRIORIDAD 1: Manejar canal virtual (desde agenda)
+      // PRIORIDAD 1: Manejar canal virtual (desde agenda)
       if (params.virtualChannel) {
         const handled = await VirtualChannelHandler.handle(
           params.virtualChannel,
@@ -507,8 +575,13 @@
   }
 
   window.AngulismoTV = window.AngulismoTV || {};
-  window.AngulismoTV.version = '2.0.0';
+  window.AngulismoTV.version = '2.1.0';
+  // 🔥 NUEVO: Exponer utilidades para generar URLs
+  window.AngulismoTV.Utils = {
+    encodeCompact: Utils.encodeBase64Compact,
+    decodeCompact: Utils.decodeBase64Compact
+  };
 
-  console.log('📺 AngulismoTV Player v2.0.0 loaded');
+  console.log('📺 AngulismoTV Player v2.1.0 loaded (Short URLs)');
 
 })();
