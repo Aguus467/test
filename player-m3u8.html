@@ -407,20 +407,24 @@
       }
 
       console.log('🎬 Configurando HLS...');
+      console.log('🔗 Stream URL:', streamUrl);
       console.log('📡 Modo: Carga directa (sin proxy)');
 
       if (Hls.isSupported()) {
         hls = new Hls({
-          debug: false,
+          debug: true, // ← Activado para ver más logs
           enableWorker: true,
-          lowLatencyMode: true,
+          lowLatencyMode: false, // ← Desactivado para mejor compatibilidad
           backBufferLength: 90,
           maxBufferLength: 30,
           maxMaxBufferLength: 600,
+          manifestLoadingTimeOut: 20000,
+          manifestLoadingMaxRetry: 3,
+          levelLoadingTimeOut: 20000,
           xhrSetup: (xhr, url) => {
             xhr.withCredentials = false;
-            xhr.timeout = 15000;
-            console.log('📥 Loading:', url);
+            xhr.timeout = 20000;
+            console.log('📥 Cargando:', url);
           }
         });
 
