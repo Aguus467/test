@@ -1022,7 +1022,7 @@
         "nombre": "AngulismoTV",
         "imagenUrl": "https://angulismotv.pages.dev/assets/logo2.png",
         "urls": [
-          "https://angulismotv.pages.dev/"
+          "https://angulismotv.netlify.app"
         ]
       },
       {
@@ -1092,4 +1092,5 @@
     ]
   }
 ]
+
 
