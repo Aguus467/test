@@ -1,5 +1,4 @@
-/* css/header-unificado.css - VERSIÓN CORREGIDA SIN INTERFERENCIA CON TWITCH CHAT */
-/* ==================== VARIABLES GLOBALES HEADER ==================== */
+/* ==================== VARIABLES HEADER OPTIMIZADAS ==================== */
 :root {
   --header-bg: rgba(10, 10, 30, 0.95);
   --header-border: rgba(114, 214, 255, 0.2);
@@ -7,37 +6,35 @@
   --header-accent-purple: #ff7fff;
   --header-height: 70px;
   --header-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* ==================== HEADER UNIFICADO (FIX TWITCH) ==================== */
+/* ==================== HEADER PRINCIPAL (FIXED Z-INDEX) ==================== */
 .site-header {
   background: 
     radial-gradient(ellipse at 20% 50%, rgba(114, 214, 255, 0.15), transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(255, 127, 255, 0.15), transparent 50%),
     var(--header-bg);
-  /* backdrop-filter: REMOVIDO para evitar conflictos con Twitch */
-  /* -webkit-backdrop-filter: REMOVIDO para evitar conflictos con Twitch */
-  padding: 1px 5%;
+  padding: 12px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 100; /* REDUCIDO de 1000 a 100 para evitar interferencia */
+  z-index: 90; /* REDUCIDO para evitar conflictos con Twitch */
   box-shadow: 
     0 0 30px rgba(114, 214, 255, 0.3), 
-    0 8px 40px rgba(0, 0, 0, 0.6),
+    var(--header-shadow),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid var(--header-border);
   min-height: var(--header-height);
   gap: 1.5rem;
   position: relative;
   overflow: hidden;
-  /* isolation: isolate para contexto de apilamiento limpio */
   isolation: isolate;
 }
 
-/* Efectos de fondo del header */
+/* Efectos de nebulosa en header */
 .site-header::before {
   content: '';
   position: absolute;
@@ -95,7 +92,7 @@
   z-index: 2;
 }
 
-/* ==================== LOGO ==================== */
+/* ==================== LOGO CON MEJORES EFECTOS ==================== */
 .site-header .logo-container {
   flex-shrink: 0;
   display: flex;
@@ -115,10 +112,10 @@
 }
 
 .site-header .logo:active {
-  transform: scale(0.98);
+  transform: scale(0.95);
 }
 
-/* ==================== BOTÓN HAMBURGUESA (MOBILE) ==================== */
+/* ==================== BOTÓN HAMBURGUESA MEJORADO ==================== */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -128,9 +125,10 @@
   padding: 0.75rem;
   cursor: pointer;
   gap: 4px;
-  z-index: 102; /* AJUSTADO: Mayor que el header pero no excesivo */
+  z-index: 92; /* Encima del header */
   transition: var(--header-transition);
   touch-action: manipulation;
+  position: relative;
 }
 
 .hamburger-line {
@@ -139,6 +137,7 @@
   background: var(--header-accent);
   transition: all 0.3s ease;
   transform-origin: center;
+  border-radius: 2px;
 }
 
 .menu-toggle:active {
@@ -146,10 +145,10 @@
   background: rgba(114, 214, 255, 0.15);
 }
 
-/* ==================== NAVEGACIÓN DESKTOP ==================== */
+/* ==================== NAVEGACIÓN DESKTOP MEJORADA ==================== */
 .site-header nav {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   flex-wrap: wrap;
   align-items: center;
   position: relative;
@@ -160,16 +159,17 @@
 }
 
 .site-header nav a {
-  padding: 8px 12px;
+  padding: 10px 14px;
   font-weight: 600;
   font-size: 0.9rem;
   border-radius: 8px;
-  background: transparent;
+  background: rgba(20, 20, 40, 0.6);
   transition: var(--header-transition);
   min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   color: var(--header-accent);
   text-decoration: none;
   white-space: nowrap;
@@ -181,6 +181,15 @@
   user-select: none;
 }
 
+/* Iconos en navegación */
+.site-header nav a svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.5;
+  transition: transform var(--header-transition);
+}
+
+/* Efecto de brillo al pasar */
 .site-header nav a::before {
   content: '';
   position: absolute;
@@ -198,6 +207,13 @@
   color: var(--header-accent-purple);
 }
 
+/* Destacar botón de donar */
+.site-header nav a.nav-highlight {
+  background: linear-gradient(135deg, rgba(114, 214, 255, 0.2), rgba(255, 127, 255, 0.2));
+  border-color: var(--header-accent);
+  font-weight: 700;
+}
+
 /* ==================== OVERLAY MÓVIL ==================== */
 .nav-overlay {
   display: none;
@@ -208,10 +224,11 @@
   height: calc(100vh - var(--header-height));
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  z-index: 99; /* AJUSTADO: Debajo del menú pero encima de contenido */
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 89; /* Debajo del menú móvil */
 }
 
-/* ==================== NAVEGACIÓN MÓVIL ==================== */
+/* ==================== NAVEGACIÓN MÓVIL MEJORADA ==================== */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -227,12 +244,12 @@
   align-items: stretch;
   padding: 2rem 1.5rem;
   margin: 0;
-  gap: 0.5rem;
-  z-index: 101; /* AJUSTADO: Encima del overlay */
+  gap: 0.75rem;
+  z-index: 91; /* Encima del overlay */
   overflow-y: auto;
   border-top: 1px solid rgba(114, 214, 255, 0.2);
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-nav.active {
@@ -243,18 +260,38 @@
 .mobile-nav a {
   width: 100%;
   padding: 1.2rem 1.5rem;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   border-radius: 12px;
   border: 1px solid rgba(114, 214, 255, 0.3);
   background: rgba(20, 20, 40, 0.8);
-  text-align: center;
-  justify-content: center;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: var(--header-accent);
   text-decoration: none;
   transition: var(--header-transition);
   min-height: 60px;
-  display: flex;
-  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-nav a svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.mobile-nav a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--header-accent), var(--header-accent-purple));
+  transform: scaleY(0);
+  transition: transform var(--header-transition);
 }
 
 .mobile-nav a:active {
@@ -262,7 +299,11 @@
   transform: scale(0.98);
 }
 
-/* ==================== BOTÓN PERSONALIZACIÓN ==================== */
+.mobile-nav a:active::before {
+  transform: scaleY(1);
+}
+
+/* ==================== BOTÓN PERSONALIZACIÓN CON EFECTO PULSO ==================== */
 .site-header .customize-gear {
   position: relative;
   background: rgba(20, 20, 40, 0.8);
@@ -289,6 +330,37 @@
   height: 22px;
   transition: transform var(--header-transition);
   stroke: currentColor;
+  position: relative;
+  z-index: 1;
+}
+
+/* Efecto de pulso */
+.gear-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(114, 214, 255, 0.3);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.site-header .customize-gear:active .gear-pulse {
+  animation: gearPulse 0.6s ease-out;
+}
+
+@keyframes gearPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8);
+    opacity: 0;
+  }
 }
 
 .site-header .customize-gear:active {
@@ -304,7 +376,7 @@
 /* ==================== HOVER EFFECTS (Solo desktop) ==================== */
 @media (hover: hover) {
   .site-header .logo:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.05);
     filter: drop-shadow(0 0 16px var(--header-accent));
   }
 
@@ -317,8 +389,12 @@
     background: rgba(114, 214, 255, 0.2);
     color: var(--header-accent-purple);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.3);
+    box-shadow: 0 6px 16px rgba(114, 214, 255, 0.3);
     border-color: var(--header-accent);
+  }
+
+  .site-header nav a:hover svg {
+    transform: translateY(-2px);
   }
 
   .site-header .customize-gear:hover {
@@ -337,7 +413,7 @@
   }
 }
 
-/* ==================== RESPONSIVE: TABLET & MÓVIL (768px hacia abajo) ==================== */
+/* ==================== RESPONSIVE: TABLET & MÓVIL ==================== */
 @media (max-width: 768px) {
   :root {
     --header-height: 70px;
@@ -349,7 +425,6 @@
     padding: 12px 4%;
   }
   
-  /* Mostrar botón hamburguesa y ocultar navegación desktop */
   .menu-toggle {
     display: flex;
     order: 2;
@@ -357,7 +432,7 @@
   }
   
   .site-header nav {
-    display: none; /* Ocultar navegación desktop */
+    display: none;
   }
   
   .logo-container {
@@ -380,7 +455,6 @@
     height: 20px;
   }
   
-  /* Mostrar overlay cuando el menú está activo */
   .site-header.mobile-nav-active ~ .nav-overlay {
     display: block;
   }
@@ -399,7 +473,7 @@
   }
 }
 
-/* ==================== RESPONSIVE: MÓVIL PEQUEÑO ==================== */
+/* ==================== MÓVIL PEQUEÑO ==================== */
 @media (max-width: 480px) {
   .site-header {
     padding: 10px 4%;
@@ -430,12 +504,18 @@
   
   .mobile-nav {
     padding: 1.5rem 1rem;
+    gap: 0.6rem;
   }
   
   .mobile-nav a {
     padding: 1rem 1.2rem;
     font-size: 1rem;
     min-height: 55px;
+  }
+
+  .mobile-nav a svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -456,34 +536,25 @@
   .site-header .logo,
   .site-header nav a,
   .site-header .customize-gear,
-  .mobile-nav {
+  .mobile-nav,
+  .gear-pulse {
     transition: none;
+    animation: none;
   }
 }
 
-/* ==================== ORIENTACIÓN LANDSCAPE EN MÓVILES ==================== */
+/* ==================== LANDSCAPE EN MÓVILES ==================== */
 @media (max-width: 768px) and (orientation: landscape) {
   .mobile-nav {
     padding: 1rem 1.5rem;
+    gap: 0.5rem;
   }
   
   .mobile-nav a {
     padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     min-height: 50px;
   }
-}
-
-/* ==================== OPTIMIZACIÓN PARA TWITCH CHAT ==================== */
-/* Asegurar que el header no interfiera con iframes */
-.site-header {
-  /* No usar transform: translateZ(0) aquí */
-  /* No usar will-change: transform */
-}
-
-/* Prevenir problemas de contexto de apilamiento con iframes */
-.site-header * {
-  /* Evitar propiedades que creen nuevos contextos de apilamiento problemáticos */
 }
 
 /* ==================== FIX SAFARI iOS ==================== */
@@ -496,6 +567,69 @@
 /* ==================== NOTCH EN MÓVILES ==================== */
 @supports (padding-top: env(safe-area-inset-top)) {
   .site-header {
-    padding-top: calc(env(safe-area-inset-top) + 1px);
+    padding-top: calc(env(safe-area-inset-top) + 12px);
   }
+}
+
+/* ==================== MEJORAS VISUALES ADICIONALES ==================== */
+
+/* Estado de loading en navegación */
+.site-header nav a.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.site-header nav a.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--header-accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Indicador de página activa */
+.site-header nav a.active {
+  background: rgba(114, 214, 255, 0.25);
+  border-color: var(--header-accent);
+  color: white;
+}
+
+.site-header nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--header-accent), transparent);
+}
+
+/* Mejora de contraste en alto contraste */
+@media (prefers-contrast: high) {
+  .site-header {
+    border-bottom-width: 2px;
+  }
+
+  .site-header nav a {
+    border-width: 2px;
+  }
+}
+
+/* Optimización de performance */
+.site-header,
+.site-header * {
+  will-change: auto;
+}
+
+.site-header nav a:hover,
+.site-header .customize-gear:hover {
+  will-change: transform, background, border-color;
 }
