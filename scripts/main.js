@@ -287,7 +287,11 @@ function buildMatchCard(groupedEvent) {
         };
         
         // 🔥 Usar Base64 compacto y parámetros cortos
-        const encodedChannel = encodeBase64Compact(JSON.stringify(virtualChannel));
+        const channelJSON = JSON.stringify(virtualChannel);
+        const encodedChannel = encodeBase64Compact(channelJSON);
+        
+        console.log('📦 JSON original:', channelJSON.length, 'chars');
+        console.log('📦 Base64 comprimido:', encodedChannel.length, 'chars');
         
         const transmisionUrl = buildShortURL({
           virtualChannel: encodedChannel,
