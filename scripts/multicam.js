@@ -1,0 +1,861 @@
+  (function() {
+    'use strict';
+
+    // ==================== DETECCIÓN DE DISPOSITIVO ====================
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isLowPerfDevice = isMobile || /(Android|iPhone).*AppleWebKit/.test(navigator.userAgent);
+
+    // ==================== Starfield Generation Optimizado ====================
+    const starfield = document.getElementById('starfield');
+    
+    // Ajustar densidad según dispositivo
+    const numStars = isLowPerfDevice ? 50 : 80;
+    const numShootingStars = isLowPerfDevice ? 1 : 2;
+    const numComets = isLowPerfDevice ? 0 : 1;
+    
+    const fragment = document.createDocumentFragment();
+
+    // Galaxia espiral
+    const spiralGalaxy = document.createElement('div');
+    spiralGalaxy.className = 'spiral-galaxy';
+    fragment.appendChild(spiralGalaxy);
+
+    // Auroras
+    const aurora1 = document.createElement('div');
+    aurora1.className = 'aurora aurora-1';
+    fragment.appendChild(aurora1);
+
+    const aurora2 = document.createElement('div');
+    aurora2.className = 'aurora aurora-2';
+    fragment.appendChild(aurora2);
+
+    // Estrellas regulares
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const layer = Math.floor(Math.random() * 3) + 1;
+      star.classList.add(`layer-${layer}`);
+      star.setAttribute('data-speed', layer * 0.2);
+      
+      const size = Math.random() * 2.5 + 0.5;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 4 + 's';
+      star.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      fragment.appendChild(star);
+    }
+
+    // Shooting stars (reducidas en móviles)
+    for (let i = 0; i < numShootingStars; i++) {
+      const shootingStar = document.createElement('div');
+      shootingStar.className = 'shooting-star';
+      shootingStar.style.top = Math.random() * 50 + '%';
+      shootingStar.style.left = (Math.random() * 50 + 50) + '%';
+      shootingStar.style.animationDelay = (Math.random() * 6 + 3) + 's';
+      shootingStar.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      shootingStar.style.width = (Math.random() * 100 + 50) + 'px';
+      fragment.appendChild(shootingStar);
+    }
+
+    // Cometas (solo en PC)
+    if (!isLowPerfDevice) {
+      for (let i = 0; i < numComets; i++) {
+        const comet = document.createElement('div');
+        comet.className = 'comet';
+        comet.style.top = Math.random() * 30 + '%';
+        comet.style.left = (Math.random() * 30 + 70) + '%';
+        comet.style.animationDelay = (Math.random() * 12 + 6) + 's';
+        fragment.appendChild(comet);
+      }
+    }
+
+    // Planetas
+    for (let i = 1; i <= 2; i++) {
+      const planet = document.createElement('div');
+      planet.className = `planet planet-${i}`;
+      fragment.appendChild(planet);
+    }
+
+    starfield.appendChild(fragment);
+
+    // ==================== Efecto Paralaje Optimizado ====================
+    let scrollY = 0;
+    let ticking = false;
+    
+    function updateParallax() {
+      const stars = document.querySelectorAll('.star');
+      stars.forEach(star => {
+        const speed = parseFloat(star.getAttribute('data-speed')) || 0;
+        const yPos = scrollY * speed;
+        star.style.transform = `translateY(${yPos}px)`;
+      });
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      scrollY = window.pageYOffset;
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // ==================== Header Stars Generation Optimizada ====================
+    const header = document.querySelector('.site-header');
+    const headerStarsFragment = document.createDocumentFragment();
+    const numHeaderStars = isLowPerfDevice ? 8 : 12;
+
+    for (let i = 0; i < numHeaderStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'header-star';
+      
+      const size = Math.random() * 2 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      
+      headerStarsFragment.appendChild(star);
+    }
+    
+    header.appendChild(headerStarsFragment);
+
+    // ==================== Constants & Variables ====================
+    const EVENTOS_JSON = 'https://json.angulismotv.workers.dev/events';
+    const STREAMTP_EVENTOS = 'https://streamtp.angulismotv.workers.dev/eventos.json';
+    const LA14HD_EVENTOS = 'https://la14hd.angulismotv.workers.dev/eventos/json/agenda123.json';
+    const CANALES_JSON = 'https://json.angulismotv.workers.dev/channels';
+
+    let agendaStreams = [];
+    let channelsData = [];
+    let currentFilter = 'agenda';
+    let currentLayout = 1;
+    let activeStreams = {};
+    let isFullscreen = false;
+
+    // ==================== Fetch JSON ====================
+    async function fetchJSON(url, options = {}) {
+      try {
+        const response = await fetch(url, {
+          cache: 'no-store',
+          mode: 'cors',
+          ...options
+        });
+        if (!response.ok) throw new Error('Error al cargar ' + url);
+        return await response.json();
+      } catch (error) {
+        console.error(`Error fetching ${url}:`, error);
+        return null;
+      }
+    }
+
+    // ==================== Get Direct Player URL ====================
+// ==================== Get Direct Player URL ====================
+function getDirectPlayerUrl(streamData) {
+  console.log('🔍 Procesando stream:', streamData);
+  
+  // PRIORIDAD 1: URL directa (canales)
+  if (streamData.url) {
+    console.log('✅ Usando URL directa:', streamData.url);
+    return streamData.url;
+  }
+  
+  // PRIORIDAD 2: iframe directo (eventos manuales adaptados)
+  if (streamData.iframe) {
+    console.log('✅ Usando iframe:', streamData.iframe);
+    return streamData.iframe;
+  }
+  
+  // PRIORIDAD 3: tv_networks (eventos de agenda)
+  if (streamData.tv_networks && Array.isArray(streamData.tv_networks) && streamData.tv_networks.length > 0) {
+    const network = streamData.tv_networks[0];
+    console.log('📡 Network encontrado:', network);
+    
+    // Si tiene iframe directo
+    if (network.iframe) {
+      console.log('✅ Usando network.iframe:', network.iframe);
+      return network.iframe;
+    }
+    
+    // Si tiene link en base64
+    if (network.link) {
+      try {
+        const decodedLink = atob(network.link);
+        console.log('✅ Link decodificado:', decodedLink);
+        return decodedLink;
+      } catch (e) {
+        console.error('❌ Error decoding base64 link:', e);
+        // Si falla la decodificación, intentar usar directamente
+        console.log('⚠️ Usando link sin decodificar:', network.link);
+        return network.link;
+      }
+    }
+    
+    // Si tiene url
+    if (network.url) {
+      console.log('✅ Usando network.url:', network.url);
+      return network.url;
+    }
+  }
+  
+  // PRIORIDAD 4: canales array (fallback)
+  if (streamData.canales && Array.isArray(streamData.canales) && streamData.canales.length > 0) {
+    const canal = streamData.canales[0];
+    console.log('📡 Canal encontrado:', canal);
+    
+    if (canal.iframe) {
+      console.log('✅ Usando canal.iframe:', canal.iframe);
+      return canal.iframe;
+    }
+    
+    if (canal.link) {
+      try {
+        const decodedLink = atob(canal.link);
+        console.log('✅ Canal link decodificado:', decodedLink);
+        return decodedLink;
+      } catch (e) {
+        console.error('❌ Error decoding canal link:', e);
+        return canal.link;
+      }
+    }
+    
+    if (canal.url) {
+      console.log('✅ Usando canal.url:', canal.url);
+      return canal.url;
+    }
+  }
+  
+  console.error('❌ No se encontró URL válida para:', streamData);
+  console.log('📋 Estructura completa del stream:', JSON.stringify(streamData, null, 2));
+  return null;
+}
+
+    // ==================== Adapt Events ====================
+// ==================== Adapt Events ====================
+async function adaptManualEvents(events) {
+  if (!Array.isArray(events)) return [];
+  
+  return events.map(ev => {
+    let teams = [];
+    if (ev.evento && ev.evento.includes(' vs ')) {
+      teams = ev.evento.split(' vs ').map(name => ({ name: name.trim() }));
+    } else if (ev.evento) {
+      teams = [{ name: ev.evento.trim() }];
+    }
+    
+    // 🔥 CORREGIDO: Extraer las opciones de cada canal (igual que en main.js)
+    let canales = [];
+    
+    if (Array.isArray(ev.canales)) {
+      ev.canales.forEach(canal => {
+        // Si el canal tiene options (estructura de eventos manuales)
+        if (canal.options && Array.isArray(canal.options)) {
+          canal.options.forEach((opt, idx) => {
+            canales.push({
+              name: `${canal.name} - ${opt.name}`,
+              iframe: opt.iframe,
+              logo: canal.logo
+            });
+          });
+        }
+        // Si es solo un string (compatibilidad antigua)
+        else if (typeof canal === 'string') {
+          canales.push({ name: canal });
+        }
+        // Si es un objeto simple sin options
+        else if (canal.name) {
+          canales.push({
+            name: canal.name,
+            iframe: canal.iframe,
+            logo: canal.logo
+          });
+        }
+      });
+    } else if (ev.canal) {
+      // Compatibilidad con formato antiguo
+      canales = [ev.canal];
+    }
+    
+    return {
+      id: ev.id || `manual-${Date.now()}-${Math.random()}`,
+      start_time: ev.fecha || '',
+      teams: teams,
+      evento: ev.evento || 'Sin título',
+      description: ev.descripcion || '',
+      competition_name: ev.competencia || '',
+      tv_networks: canales,
+      status: { name: ev.estado || '' }
+    };
+  });
+}
+
+    async function adaptStreamTPEvents(events) {
+      if (!Array.isArray(events)) return [];
+      
+      return events.map((ev, idx) => {
+        let teams = [];
+        if (ev.title && ev.title.includes(' vs ')) {
+          teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
+        } else if (ev.title) {
+          teams = [{ name: ev.title.trim() }];
+        }
+        
+        const canales = [];
+        if (ev.link) {
+          canales.push({
+            name: ev.category || 'Canal',
+            link: btoa(ev.link)
+          });
+        }
+        
+        return {
+          id: `streamtp-${Date.now()}-${idx}`,
+          start_time: ev.time || '',
+          teams: teams,
+          evento: ev.title || 'Sin título',
+          description: ev.status || '',
+          competition_name: ev.category || '',
+          tv_networks: canales,
+          status: { name: ev.status || '' }
+        };
+      });
+    }
+
+    async function adaptLA14HDEvents(events) {
+      if (!Array.isArray(events)) return [];
+      
+      return events.map((ev, idx) => {
+        let teams = [];
+        if (ev.title && ev.title.includes(' vs ')) {
+          teams = ev.title.split(' vs ').map(name => ({ name: name.trim() }));
+        } else if (ev.title) {
+          teams = [{ name: ev.title.trim() }];
+        }
+        
+        const canales = [];
+        if (ev.link) {
+          canales.push({
+            name: ev.category || 'Canal',
+            link: btoa(ev.link)
+          });
+        }
+        
+        return {
+          id: `la14hd-${Date.now()}-${idx}`,
+          start_time: ev.time || '',
+          teams: teams,
+          evento: ev.title || 'Sin título',
+          description: ev.status || '',
+          competition_name: ev.category || '',
+          tv_networks: canales,
+          status: { name: ev.status || '' }
+        };
+      });
+    }
+
+    // ==================== Load Agenda Data ====================
+    async function loadAgendaData() {
+      try {
+        const [manualEventsRaw, streamTPEventsRaw, la14HDEventsRaw, canalesRaw] = await Promise.all([
+          fetchJSON(EVENTOS_JSON),
+          fetchJSON(STREAMTP_EVENTOS),
+          fetchJSON(LA14HD_EVENTOS),
+          fetchJSON(CANALES_JSON)
+        ]);
+
+        console.log('Canales cargados (raw):', canalesRaw);
+
+        const manualEvents = await adaptManualEvents(Array.isArray(manualEventsRaw) ? manualEventsRaw : []);
+        
+        let streamTPArray = [];
+        if (streamTPEventsRaw && Array.isArray(streamTPEventsRaw)) {
+          streamTPArray = streamTPEventsRaw;
+        } else if (streamTPEventsRaw && streamTPEventsRaw.Events) {
+          streamTPArray = streamTPEventsRaw.Events;
+        }
+        
+        let la14HDArray = [];
+        if (la14HDEventsRaw && Array.isArray(la14HDEventsRaw)) {
+          la14HDArray = la14HDEventsRaw;
+        } else if (la14HDEventsRaw && la14HDEventsRaw.Events) {
+          la14HDArray = la14HDEventsRaw.Events;
+        }
+
+        const streamTPEvents = await adaptStreamTPEvents(streamTPArray);
+        const la14HDEvents = await adaptLA14HDEvents(la14HDArray);
+
+        agendaStreams = [...manualEvents, ...streamTPEvents, ...la14HDEvents];
+        
+        // ADAPTACIÓN PARA LA ESTRUCTURA DE CANALES CON OPCIONES MÚLTIPLES
+        if (canalesRaw && canalesRaw.channels && Array.isArray(canalesRaw.channels)) {
+          channelsData = [];
+          canalesRaw.channels.forEach(channel => {
+            if (channel.show && channel.options && channel.options.length > 0) {
+              // Crear una entrada por cada opción del canal
+              channel.options.forEach((option, index) => {
+                channelsData.push({
+                  name: channel.name,
+                  logo: channel.logo,
+                  optionName: option.name,
+                  url: option.iframe,
+                  displayName: channel.options.length > 1 ? `${channel.name} - ${option.name}` : channel.name,
+                  categoria: 'Canal deportivo'
+                });
+              });
+            }
+          });
+        } else if (Array.isArray(canalesRaw)) {
+          channelsData = canalesRaw;
+        } else {
+          channelsData = [];
+        }
+        
+        console.log('✅ Eventos cargados:', agendaStreams.length);
+        console.log('✅ Canales procesados:', channelsData.length);
+        if (channelsData.length > 0) {
+          console.log('Estructura de primer canal:', channelsData[0]);
+        }
+        
+        loadStreamOptions();
+        
+      } catch (error) {
+        console.error('❌ Error cargando datos:', error);
+      }
+    }
+
+    // ==================== Load Stream Options ====================
+    function loadStreamOptions() {
+      // Limpiar todos los dropdowns
+      for (let i = 1; i <= 4; i++) {
+        const dropdown = document.getElementById(`dropdown-${i}`);
+        if (dropdown) dropdown.innerHTML = '';
+      }
+
+      const dataToShow = currentFilter === 'agenda' ? agendaStreams : channelsData;
+
+      console.log('Filtro actual:', currentFilter);
+      console.log('Datos a mostrar:', dataToShow.length, 'items');
+
+      if (!dataToShow || dataToShow.length === 0) {
+        // Mostrar mensaje si no hay datos
+        for (let i = 1; i <= 4; i++) {
+          const dropdown = document.getElementById(`dropdown-${i}`);
+          if (dropdown) {
+            const noDataMsg = document.createElement('div');
+            noDataMsg.className = 'stream-option';
+            noDataMsg.style.opacity = '0.6';
+            noDataMsg.innerHTML = `
+              <div class="stream-info">
+                <div class="stream-title">No hay ${currentFilter === 'agenda' ? 'eventos' : 'canales'} disponibles</div>
+              </div>
+            `;
+            dropdown.appendChild(noDataMsg);
+          }
+        }
+        return;
+      }
+
+      dataToShow.forEach((item, index) => {
+        for (let i = 1; i <= 4; i++) {
+          const dropdown = document.getElementById(`dropdown-${i}`);
+          if (dropdown) {
+            const option = document.createElement('div');
+            option.className = 'stream-option';
+            
+            if (currentFilter === 'agenda') {
+              // Formato para eventos de agenda
+              option.innerHTML = `
+                <div class="stream-info">
+                  <div class="stream-title">${item.evento || 'Evento sin título'}</div>
+                  <div class="stream-meta">${item.competition_name || 'Sin competencia'} • ${formatTime(item.start_time)}</div>
+                </div>
+              `;
+            } else {
+              // Formato para canales
+              const channelName = item.displayName || item.name || `Canal ${index + 1}`;
+              const channelCategory = item.categoria || item.optionName || 'Canal en vivo';
+              
+              option.innerHTML = `
+                <div class="stream-info">
+                  <div class="stream-title">${channelName}</div>
+                  <div class="stream-meta">${channelCategory}</div>
+                </div>
+              `;
+            }
+            
+            option.addEventListener('click', () => selectStream(i, item));
+            dropdown.appendChild(option);
+          }
+        }
+      });
+    }
+
+    // ==================== Format Time ====================
+    function formatTime(str) {
+      if (!str) return '--:--';
+      if (str.includes(' ')) {
+        const parts = str.split(' ');
+        return parts[1] || '--:--';
+      }
+      return str.includes(':') ? str : '--:--';
+    }
+
+    // ==================== Setup Event Listeners ====================
+    function setupEventListeners() {
+      const layoutDropdownBtn = document.getElementById('layoutDropdownBtn');
+      const layoutDropdown = document.getElementById('layoutDropdown');
+      
+      if (layoutDropdownBtn && layoutDropdown) {
+        layoutDropdownBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          layoutDropdown.classList.toggle('show');
+          this.classList.toggle('active');
+        });
+      }
+
+      // Filtros de eventos/canales
+      const filterAgenda = document.getElementById('filterAgenda');
+      const filterChannels = document.getElementById('filterChannels');
+      
+      if (filterAgenda) {
+        filterAgenda.addEventListener('click', () => {
+          if (currentFilter !== 'agenda') {
+            currentFilter = 'agenda';
+            filterAgenda.classList.add('active');
+            filterChannels.classList.remove('active');
+            loadStreamOptions();
+          }
+        });
+      }
+      
+      if (filterChannels) {
+        filterChannels.addEventListener('click', () => {
+          if (currentFilter !== 'channels') {
+            currentFilter = 'channels';
+            filterChannels.classList.add('active');
+            filterAgenda.classList.remove('active');
+            loadStreamOptions();
+          }
+        });
+      }
+
+      document.querySelectorAll('.layout-option').forEach(option => {
+        option.addEventListener('click', function() {
+          const layout = parseInt(this.dataset.layout);
+          changeLayout(layout);
+          if (layoutDropdownBtn) layoutDropdownBtn.textContent = this.textContent;
+          if (layoutDropdown) layoutDropdown.classList.remove('show');
+          if (layoutDropdownBtn) layoutDropdownBtn.classList.remove('active');
+        });
+      });
+
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const slot = this.dataset.slot;
+          toggleStreamDropdown(slot);
+        });
+      });
+
+      const globalFullscreenBtn = document.getElementById('globalFullscreen');
+      
+      if (globalFullscreenBtn) {
+        globalFullscreenBtn.addEventListener('click', toggleGlobalFullscreen);
+      }
+
+      document.addEventListener('click', function(e) {
+        // Cerrar dropdown de layout
+        if (layoutDropdown && layoutDropdownBtn && !e.target.closest('.layout-selector')) {
+          layoutDropdown.classList.remove('show');
+          layoutDropdownBtn.classList.remove('active');
+        }
+        
+        // Cerrar dropdowns de streams
+        if (!e.target.closest('.stream-dropdown') && !e.target.closest('.layout-selector')) {
+          document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+            dropdown.classList.remove('show');
+          });
+          document.querySelectorAll('.dropdown-btn').forEach(btn => {
+            btn.classList.remove('active');
+          });
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isFullscreen) {
+          toggleGlobalFullscreen();
+        }
+      });
+
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+    }
+
+    // ==================== Handle Fullscreen Change ====================
+    function handleFullscreenChange() {
+      const fullscreenElement = document.fullscreenElement || 
+                               document.webkitFullscreenElement || 
+                               document.mozFullScreenElement || 
+                               document.msFullscreenElement;
+      
+      if (!fullscreenElement && isFullscreen) {
+        toggleGlobalFullscreen();
+      }
+    }
+
+    // ==================== Close All Stream Dropdowns ====================
+    function closeAllStreamDropdowns() {
+      document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+      document.querySelectorAll('.dropdown-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // También cerrar el dropdown de layout
+      const layoutDropdown = document.getElementById('layoutDropdown');
+      const layoutDropdownBtn = document.getElementById('layoutDropdownBtn');
+      if (layoutDropdown) layoutDropdown.classList.remove('show');
+      if (layoutDropdownBtn) layoutDropdownBtn.classList.remove('active');
+    }
+
+    // ==================== Toggle Stream Dropdown ====================
+    function toggleStreamDropdown(slot) {
+      const dropdown = document.getElementById(`dropdown-${slot}`);
+      const btn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
+      
+      if (!dropdown || !btn) return;
+      
+      const wasOpen = dropdown.classList.contains('show');
+      closeAllStreamDropdowns();
+      
+      if (!wasOpen) {
+        dropdown.classList.add('show');
+        btn.classList.add('active');
+      }
+    }
+
+    // ==================== Change Layout ====================
+    function changeLayout(layout) {
+      currentLayout = layout;
+      
+      const grid = document.getElementById('streamsGrid');
+      if (grid) {
+        grid.className = `streams-grid layout-${layout}`;
+      }
+      
+      for (let i = 1; i <= 4; i++) {
+        const streamElement = document.getElementById(`stream-${i}`);
+        const dropdownContainer = document.getElementById(`dropdown-container-${i}`);
+        
+        if (i <= layout) {
+          if (!streamElement) {
+            createStreamElement(i);
+          }
+          if (dropdownContainer) {
+            dropdownContainer.style.display = 'block';
+          }
+        } else {
+          if (streamElement && i > layout) {
+            streamElement.remove();
+          }
+          if (dropdownContainer) {
+            dropdownContainer.style.display = 'none';
+          }
+          if (activeStreams[i]) {
+            delete activeStreams[i];
+            const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${i}"]`);
+            if (dropdownBtn) {
+              dropdownBtn.textContent = `Seleccionar evento para la pantalla ${i}`;
+            }
+          }
+        }
+      }
+    }
+
+    // ==================== Create Stream Element ====================
+    function createStreamElement(slot) {
+      const grid = document.getElementById('streamsGrid');
+      const existingElement = document.getElementById(`stream-${slot}`);
+      
+      if (existingElement || !grid) {
+        return;
+      }
+      
+      const streamElement = document.createElement('div');
+      streamElement.className = 'stream-item';
+      streamElement.id = `stream-${slot}`;
+      
+      const streamData = activeStreams[slot];
+      const playerUrl = streamData ? getDirectPlayerUrl(streamData) : null;
+      
+      if (streamData && playerUrl) {
+        streamElement.classList.add('active');
+        const streamTitle = streamData.displayName || streamData.evento || streamData.name || `Stream ${slot}`;
+        streamElement.innerHTML = `
+          <div class="stream-header">
+            <div class="stream-title-bar">
+              <strong>Pantalla ${slot}</strong>
+              <span> - ${streamTitle}</span>
+            </div>
+            <div class="stream-actions"></div>
+          </div>
+          <iframe class="stream-iframe" src="${playerUrl}" scrolling="no" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
+        `;
+      } else {
+        streamElement.innerHTML = `
+          <div class="stream-header">
+            <div class="stream-title-bar">
+              <strong>Pantalla ${slot}</strong>
+            </div>
+            <div class="stream-actions"></div>
+          </div>
+          <div class="stream-placeholder">
+            <span>📺</span>
+            <span>Selecciona un evento para comenzar</span>
+          </div>
+        `;
+      }
+      
+      grid.appendChild(streamElement);
+    }
+
+    // ==================== Select Stream ====================
+    function selectStream(slot, stream) {
+      console.log('Seleccionando stream para slot', slot, ':', stream);
+      
+      activeStreams[slot] = stream;
+      const playerUrl = getDirectPlayerUrl(stream);
+      
+      console.log('URL del reproductor:', playerUrl);
+      
+      const dropdownBtn = document.querySelector(`.dropdown-btn[data-slot="${slot}"]`);
+      if (dropdownBtn) {
+        // Obtener nombre para mostrar
+        const displayName = stream.displayName || stream.evento || stream.name || `Stream ${slot}`;
+        const displayText = displayName.length > 40 ? displayName.substring(0, 40) + '...' : displayName;
+        dropdownBtn.textContent = displayText;
+      }
+      
+      const existingElement = document.getElementById(`stream-${slot}`);
+      if (existingElement) {
+        if (playerUrl) {
+          existingElement.classList.add('active');
+          const streamTitle = stream.displayName || stream.evento || stream.name || `Stream ${slot}`;
+          existingElement.innerHTML = `
+            <div class="stream-header">
+              <div class="stream-title-bar">
+                <strong>Pantalla ${slot}</strong>
+                <span> - ${streamTitle}</span>
+              </div>
+              <div class="stream-actions"></div>
+            </div>
+            <iframe class="stream-iframe" src="${playerUrl}" scrolling="no" allowfullscreen allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope" referrerpolicy="no-referrer" title="${streamTitle}"></iframe>
+          `;
+        } else {
+          existingElement.classList.remove('active');
+          existingElement.innerHTML = `
+            <div class="stream-header">
+              <div class="stream-title-bar">
+                <strong>Pantalla ${slot}</strong>
+                <span> - ${stream.displayName || stream.evento || stream.name || 'Stream'}</span>
+              </div>
+              <div class="stream-actions"></div>
+            </div>
+            <div class="stream-placeholder">
+              <span>❌</span>
+              <span>No se pudo cargar el reproductor</span>
+              <small style="color: rgba(255,255,255,0.5); margin-top: 10px;">URL no disponible para este canal</small>
+            </div>
+          `;
+        }
+      } else {
+        createStreamElement(slot);
+      }
+      
+      closeAllStreamDropdowns();
+    }
+
+    // ==================== Toggle Global Fullscreen ====================
+    function toggleGlobalFullscreen() {
+      if (!isFullscreen) {
+        document.body.classList.add('fullscreen-mode');
+        
+        // Crear botón de salida de pantalla completa
+        const exitBtn = document.createElement('button');
+        exitBtn.className = 'exit-fullscreen-btn';
+        exitBtn.id = 'exitFullscreenBtn';
+        exitBtn.innerHTML = '<span>✕</span>';
+        exitBtn.addEventListener('click', toggleGlobalFullscreen);
+        document.body.appendChild(exitBtn);
+        
+        isFullscreen = true;
+        
+        const element = document.documentElement;
+        if (element.requestFullscreen) {
+          element.requestFullscreen().catch(err => console.log('Fullscreen error:', err));
+        } else if (element.webkitRequestFullscreen) {
+          element.webkitRequestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.msRequestFullscreen) {
+          element.msRequestFullscreen();
+        }
+      } else {
+        document.body.classList.remove('fullscreen-mode');
+        const exitBtn = document.getElementById('exitFullscreenBtn');
+        if (exitBtn) exitBtn.remove();
+        isFullscreen = false;
+        
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(err => console.log('Exit fullscreen error:', err));
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+    }
+
+    // ==================== Optimización para preferencia de movimiento reducido ====================
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Reducir animaciones intensivas
+      document.querySelectorAll('.star, .shooting-star, .comet, .planet, .header-star').forEach(el => {
+        el.style.animation = 'none';
+      });
+      
+      // Desactivar efectos de paralaje
+      window.removeEventListener('scroll', updateParallax);
+    }
+
+    // ==================== Prevenir zoom en double-tap (solo móviles) ====================
+    if (isMobile) {
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, { passive: false });
+    }
+
+    // ==================== Initialize ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAgendaData();
+      setupEventListeners();
+    });
+
+    console.log('🎬 AngulismoTV Multicámara - Optimizado para ' + (isMobile ? 'Android' : 'PC'));
+    console.log('Atajos: ESC (salir de pantalla completa)');
+  })();
