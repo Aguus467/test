@@ -86,36 +86,6 @@
       keyboardShortcut: 'l'
     },
 
-      Discord: {
-      url: 'https://discord.com/',
-      title: 'Discord',
-      label: 'Discord:',
-      buttonLabel: 'Discord',
-      enabled: true,
-      storageKey: 'angulismoPanelHidden_tennis',
-      keyboardShortcut: 'l'
-    },
-
-      Twitter: {
-      url: 'x.com',
-      title: 'Twitter',
-      label: 'Twitter:',
-      buttonLabel: 'Twitter',
-      enabled: true,
-      storageKey: 'angulismoPanelHidden_tennis',
-      keyboardShortcut: 'l'
-    },
-
-      Subway_Surf: {
-      url: 'https://www.youtube.com/watch?v=eRXE8Aebp7s',
-      title: 'Subway Surf',
-      label: 'Subway Surf:',
-      buttonLabel: 'Subway Surf Gameplay',
-      enabled: true,
-      storageKey: 'angulismoPanelHidden_tennis',
-      keyboardShortcut: 'l'
-    },
-
     // 🎮 Default - Panel por defecto
     default: {
       url: 'https://promiedos.com.ar',
