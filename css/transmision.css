@@ -1,4 +1,3 @@
-asi es el css con la telemetria
 
 /* ==================== Variables CSS ==================== */
 :root {
@@ -995,9 +994,9 @@ body {
 
 /* ==================== FINAL DEL ARCHIVO ==================== */
 
-/* ==================== TELEMETRY PANEL - Añadir al final de transmision.css ==================== */
+/* ==================== TELEMETRY PANEL - CONDICIONAL F1 ==================== */
 
-/* Botón de alternado de telemetría (igual al del chat) */
+/* Botón de alternado de telemetría (OCULTO POR DEFECTO) */
 .telemetry-toggle {
   background: none;
   border: none;
@@ -1006,11 +1005,16 @@ body {
   padding: 6px;
   transition: var(--transition);
   border-radius: 6px;
-  display: flex;
+  display: none; /* 🔥 Oculto por defecto */
   align-items: center;
   justify-content: center;
   min-width: 36px;
   min-height: 36px;
+}
+
+/* 🔥 MOSTRAR solo en modo F1 */
+body.f1-mode .telemetry-toggle {
+  display: flex;
 }
 
 .telemetry-toggle:hover {
@@ -1025,14 +1029,14 @@ body {
   transform: rotate(180deg);
 }
 
-/* ==================== Container con 3 paneles - OVERRIDE COMPLETO ==================== */
+/* ==================== Container - LAYOUT BASE (Sin F1) ==================== */
 .container {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0.2rem;
   display: grid;
-  grid-template-columns: 340px 1fr 340px; /* Telemetría | Video | Chat */
+  grid-template-columns: 1fr 340px; /* 🔥 DEFAULT: Video | Chat */
   gap: 8px;
   position: relative;
   z-index: 1;
@@ -1042,26 +1046,38 @@ body {
   isolation: isolate;
 }
 
-/* Solo telemetría oculta */
-.container.telemetry-hidden {
-  grid-template-columns: 1fr 340px; /* Video | Chat */
+/* 🔥 LAYOUT CON TELEMETRÍA (Solo cuando body.f1-mode está presente) */
+body.f1-mode .container {
+  grid-template-columns: 340px 1fr 340px; /* Telemetría | Video | Chat */
 }
 
-/* Solo chat oculto */
+/* ==================== Estados de Ocultamiento ==================== */
+
+/* Solo chat oculto (SIN F1) */
 .container.chat-hidden {
-  grid-template-columns: 340px 1fr; /* Telemetría | Video */
-}
-
-/* Ambos ocultos */
-.container.telemetry-hidden.chat-hidden {
   grid-template-columns: 1fr; /* Solo Video */
 }
 
-/* ==================== Telemetry Card - ALTURA IGUAL AL CHAT ==================== */
+/* Solo telemetría oculta (CON F1) */
+body.f1-mode .container.telemetry-hidden {
+  grid-template-columns: 1fr 340px; /* Video | Chat */
+}
+
+/* Solo chat oculto (CON F1) */
+body.f1-mode .container.chat-hidden {
+  grid-template-columns: 340px 1fr; /* Telemetría | Video */
+}
+
+/* Ambos ocultos (CON F1) */
+body.f1-mode .container.telemetry-hidden.chat-hidden {
+  grid-template-columns: 1fr; /* Solo Video */
+}
+
+/* ==================== Telemetry Card (OCULTO POR DEFECTO) ==================== */
 .telemetry-card {
   grid-column: 1;
   grid-row: 1;
-  display: flex;
+  display: none; /* 🔥 Oculto por defecto */
   flex-direction: column;
   background: var(--bg-card);
   border-radius: var(--radius);
@@ -1077,9 +1093,14 @@ body {
   contain: layout style;
 }
 
-/* Cuando la telemetría está oculta */
+/* 🔥 MOSTRAR solo en modo F1 */
+body.f1-mode .telemetry-card {
+  display: flex;
+}
+
+/* Cuando la telemetría está oculta manualmente */
 .telemetry-card.hidden {
-  display: none;
+  display: none !important;
 }
 
 #f1Telemetry {
@@ -1105,9 +1126,9 @@ body {
   height: 0 !important;
 }
 
-/* ==================== Ajuste del Player Card - COLUMNA CENTRAL - EXPANSIÓN COMPLETA ==================== */
+/* ==================== Player Card - POSICIÓN DINÁMICA ==================== */
 .player-card {
-  grid-column: 2;
+  grid-column: 1; /* 🔥 DEFAULT: Columna 1 (sin telemetría) */
   grid-row: 1;
   display: flex;
   flex-direction: column;
@@ -1124,19 +1145,24 @@ body {
   position: relative;
 }
 
-/* Cuando ambos paneles están ocultos, el player ocupa toda la columna */
-.container.telemetry-hidden.chat-hidden .player-card {
-  grid-column: 1;
-}
-
-/* Cuando solo telemetría está oculta */
-.container.telemetry-hidden .player-card {
-  grid-column: 1;
-}
-
-/* Cuando solo chat está oculto */
-.container.chat-hidden .player-card {
+/* 🔥 CON F1: Player en columna 2 (centro) */
+body.f1-mode .player-card {
   grid-column: 2;
+}
+
+/* CON F1 + Telemetría oculta: Player vuelve a columna 1 */
+body.f1-mode .container.telemetry-hidden .player-card {
+  grid-column: 1;
+}
+
+/* CON F1 + Chat oculto: Player se queda en columna 2 */
+body.f1-mode .container.chat-hidden .player-card {
+  grid-column: 2;
+}
+
+/* CON F1 + Ambos ocultos: Player en columna 1 */
+body.f1-mode .container.telemetry-hidden.chat-hidden .player-card {
+  grid-column: 1;
 }
 
 #playerFrame {
@@ -1155,16 +1181,15 @@ body {
   display: block;
 }
 
-/* Ocultar scrollbars del playerFrame */
 #playerFrame::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
 }
 
-/* ==================== Ajuste del Chat Card - COLUMNA DERECHA - POSICIÓN DINÁMICA ==================== */
+/* ==================== Chat Card - POSICIÓN DINÁMICA ==================== */
 .chat-card {
-  grid-column: 3;
+  grid-column: 2; /* 🔥 DEFAULT: Columna 2 (sin telemetría) */
   grid-row: 1;
   display: flex;
   flex-direction: column;
@@ -1182,12 +1207,17 @@ body {
   contain: layout style;
 }
 
-/* Cuando telemetría está oculta, chat pasa a columna 2 */
-.container.telemetry-hidden .chat-card {
+/* 🔥 CON F1: Chat en columna 3 (derecha) */
+body.f1-mode .chat-card {
+  grid-column: 3;
+}
+
+/* CON F1 + Telemetría oculta: Chat vuelve a columna 2 */
+body.f1-mode .container.telemetry-hidden .chat-card {
   grid-column: 2;
 }
 
-/* Cuando el chat está oculto */
+/* Cuando el chat está oculto manualmente */
 .chat-card.hidden {
   display: none;
 }
@@ -1209,23 +1239,33 @@ body {
   display: block;
 }
 
-/* ==================== RESPONSIVE DESIGN ACTUALIZADO ==================== */
+#twitchChat::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ==================== RESPONSIVE DESIGN - DESKTOP ==================== */
 
 /* Pantallas extra grandes */
 @media (min-width: 1920px) {
   .container {
-    grid-template-columns: 380px 1fr 380px;
-  }
-  
-  .container.telemetry-hidden {
     grid-template-columns: 1fr 380px;
   }
   
-  .container.chat-hidden {
+  body.f1-mode .container {
+    grid-template-columns: 380px 1fr 380px;
+  }
+  
+  body.f1-mode .container.telemetry-hidden {
+    grid-template-columns: 1fr 380px;
+  }
+  
+  body.f1-mode .container.chat-hidden {
     grid-template-columns: 380px 1fr;
   }
   
-  .container.telemetry-hidden.chat-hidden {
+  body.f1-mode .container.telemetry-hidden.chat-hidden {
     grid-template-columns: 1fr;
   }
 }
@@ -1233,18 +1273,22 @@ body {
 /* Pantallas ultra anchas */
 @media (min-width: 2560px) {
   .container {
-    grid-template-columns: 420px 1fr 420px;
-  }
-  
-  .container.telemetry-hidden {
     grid-template-columns: 1fr 420px;
   }
   
-  .container.chat-hidden {
+  body.f1-mode .container {
+    grid-template-columns: 420px 1fr 420px;
+  }
+  
+  body.f1-mode .container.telemetry-hidden {
+    grid-template-columns: 1fr 420px;
+  }
+  
+  body.f1-mode .container.chat-hidden {
     grid-template-columns: 420px 1fr;
   }
   
-  .container.telemetry-hidden.chat-hidden {
+  body.f1-mode .container.telemetry-hidden.chat-hidden {
     grid-template-columns: 1fr;
   }
 }
@@ -1252,18 +1296,22 @@ body {
 /* Laptops medianos */
 @media (max-width: 1440px) {
   .container {
-    grid-template-columns: 320px 1fr 320px;
-  }
-  
-  .container.telemetry-hidden {
     grid-template-columns: 1fr 320px;
   }
   
-  .container.chat-hidden {
+  body.f1-mode .container {
+    grid-template-columns: 320px 1fr 320px;
+  }
+  
+  body.f1-mode .container.telemetry-hidden {
+    grid-template-columns: 1fr 320px;
+  }
+  
+  body.f1-mode .container.chat-hidden {
     grid-template-columns: 320px 1fr;
   }
   
-  .container.telemetry-hidden.chat-hidden {
+  body.f1-mode .container.telemetry-hidden.chat-hidden {
     grid-template-columns: 1fr;
   }
 }
@@ -1271,165 +1319,245 @@ body {
 /* Laptops pequeños */
 @media (max-width: 1280px) {
   .container {
-    grid-template-columns: 300px 1fr 300px;
-  }
-  
-  .container.telemetry-hidden {
     grid-template-columns: 1fr 300px;
   }
   
-  .container.chat-hidden {
+  body.f1-mode .container {
+    grid-template-columns: 300px 1fr 300px;
+  }
+  
+  body.f1-mode .container.telemetry-hidden {
+    grid-template-columns: 1fr 300px;
+  }
+  
+  body.f1-mode .container.chat-hidden {
     grid-template-columns: 300px 1fr;
   }
   
-  .container.telemetry-hidden.chat-hidden {
+  body.f1-mode .container.telemetry-hidden.chat-hidden {
     grid-template-columns: 1fr;
   }
 }
 
-/* Tablets grandes - Layout vertical */
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-  }
+/* ==================== RESPONSIVE DESIGN - MOBILE & TABLET ==================== */
 
-  .telemetry-card {
-    grid-column: 1;
-    grid-row: 1;
-    min-height: 400px;
-    max-height: 450px;
-    height: auto;
+/* 🔥 Tablets grandes - Layout VERTICAL APILADO */
+@media (max-width: 1024px) {
+  /* Layout base: Video arriba, Chat abajo */
+  .container {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto;
   }
 
   .player-card {
-    grid-column: 1;
-    grid-row: 2;
+    grid-column: 1 !important;
+    grid-row: 1 !important;
   }
 
   .chat-card {
-    grid-column: 1;
-    grid-row: 3;
+    grid-column: 1 !important;
+    grid-row: 2 !important;
     min-height: 400px;
     max-height: 450px;
     height: auto;
   }
 
-  /* Ocultar paneles en modo móvil */
-  .container.telemetry-hidden .telemetry-card,
-  .container.chat-hidden .chat-card {
+  /* 🔥 CON F1: 3 paneles apilados */
+  body.f1-mode .container {
+    grid-template-rows: auto auto auto;
+  }
+
+  body.f1-mode .telemetry-card {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-height: 400px;
+    max-height: 450px;
+    height: auto;
+  }
+
+  body.f1-mode .player-card {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  body.f1-mode .chat-card {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+  }
+
+  /* Ocultar paneles en móvil */
+  .container.chat-hidden .chat-card,
+  body.f1-mode .container.telemetry-hidden .telemetry-card {
     display: none;
+  }
+
+  #playerFrame {
+    min-height: 450px;
   }
 }
 
 /* Tablets medianos */
 @media (max-width: 900px) {
-  .telemetry-card {
+  .chat-card {
     min-height: 380px;
     max-height: 420px;
   }
 
-  .chat-card {
+  body.f1-mode .telemetry-card {
     min-height: 380px;
     max-height: 420px;
+  }
+
+  #playerFrame {
+    min-height: 400px;
   }
 }
 
 /* Tablets pequeños */
 @media (max-width: 768px) {
-  .telemetry-card {
+  .chat-card {
     min-height: 350px;
     max-height: 400px;
   }
 
-  .chat-card {
+  body.f1-mode .telemetry-card {
     min-height: 350px;
     max-height: 400px;
+  }
+
+  #playerFrame {
+    min-height: 350px;
   }
 }
 
 /* Móviles grandes */
 @media (max-width: 600px) {
-  .telemetry-card {
+  .chat-card {
     min-height: 320px;
     max-height: 380px;
   }
 
-  .chat-card {
+  body.f1-mode .telemetry-card {
     min-height: 320px;
     max-height: 380px;
+  }
+
+  #playerFrame {
+    min-height: 300px;
   }
 }
 
 /* Móviles medianos */
 @media (max-width: 480px) {
-  .telemetry-card {
+  .chat-card {
     min-height: 280px;
     max-height: 320px;
   }
 
-  .chat-card {
+  body.f1-mode .telemetry-card {
     min-height: 280px;
     max-height: 320px;
+  }
+
+  #playerFrame {
+    min-height: 250px;
   }
 }
 
 /* Móviles pequeños */
 @media (max-width: 375px) {
-  .telemetry-card {
+  .chat-card {
     min-height: 250px;
     max-height: 300px;
   }
 
-  .chat-card {
+  body.f1-mode .telemetry-card {
     min-height: 250px;
     max-height: 300px;
+  }
+
+  #playerFrame {
+    min-height: 220px;
   }
 }
 
-/* Landscape en móviles - Mostrar telemetría al lado izquierdo */
+/* ==================== LANDSCAPE en MÓVILES - Layout Horizontal ==================== */
 @media (max-width: 896px) and (orientation: landscape) {
+  /* En landscape, usar layout horizontal si hay espacio */
   .container {
-    grid-template-columns: 280px 1fr 280px;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 280px !important;
+    grid-template-rows: 1fr !important;
   }
-  
-  .container.telemetry-hidden {
-    grid-template-columns: 1fr 280px;
+
+  .player-card {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-height: calc(100vh - 140px);
   }
-  
-  .container.chat-hidden {
-    grid-template-columns: 280px 1fr;
-  }
-  
-  .container.telemetry-hidden.chat-hidden {
-    grid-template-columns: 1fr;
-  }
-  
-  .telemetry-card,
+
   .chat-card {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
     min-height: calc(100vh - 140px);
     max-height: calc(100vh - 140px);
     height: calc(100vh - 140px);
+  }
+
+  /* 🔥 CON F1: 3 columnas compactas */
+  body.f1-mode .container {
+    grid-template-columns: 280px 1fr 280px !important;
+  }
+
+  body.f1-mode .telemetry-card {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-height: calc(100vh - 140px);
+    max-height: calc(100vh - 140px);
+    height: calc(100vh - 140px);
+  }
+
+  body.f1-mode .player-card {
+    grid-column: 2 !important;
+  }
+
+  body.f1-mode .chat-card {
+    grid-column: 3 !important;
+  }
+
+  /* Estados de ocultamiento en landscape */
+  body.f1-mode .container.telemetry-hidden {
+    grid-template-columns: 1fr 280px !important;
+  }
+
+  body.f1-mode .container.chat-hidden {
+    grid-template-columns: 280px 1fr !important;
+  }
+
+  body.f1-mode .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr !important;
   }
 }
 
 /* Landscape en móviles pequeños */
 @media (max-width: 667px) and (orientation: landscape) {
   .container {
-    grid-template-columns: 240px 1fr 240px;
+    grid-template-columns: 1fr 240px !important;
   }
-  
-  .container.telemetry-hidden {
-    grid-template-columns: 1fr 240px;
+
+  body.f1-mode .container {
+    grid-template-columns: 240px 1fr 240px !important;
   }
-  
-  .container.chat-hidden {
-    grid-template-columns: 240px 1fr;
+
+  body.f1-mode .container.telemetry-hidden {
+    grid-template-columns: 1fr 240px !important;
   }
-  
-  .container.telemetry-hidden.chat-hidden {
-    grid-template-columns: 1fr;
+
+  body.f1-mode .container.chat-hidden {
+    grid-template-columns: 240px 1fr !important;
+  }
+
+  body.f1-mode .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -1465,4 +1593,4 @@ body {
   -webkit-perspective: none !important;
 }
 
-
+/* ==================== FINAL TELEMETRY SECTION ==================== */
