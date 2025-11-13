@@ -110,74 +110,115 @@
 <!-- Options Bar -->
 <section class="options-bar">
 
-    <div class="card-header">
-      <div class="channel-head" id="channel-info">
-        <img id="channel-logo" src="assets/logo.png" alt="Logo del canal">
-        <div class="channel-info">
-          <span class="name" id="channel-name">Canal</span>
-        </div>
+  <!-- Info del canal -->
+  <div class="card-header">
+    <div class="channel-head" id="channel-info">
+      <img id="channel-logo" src="assets/logo.png" alt="Logo del canal">
+      <div class="channel-info">
+        <span class="name" id="channel-name">Canal</span>
       </div>
     </div>
+  </div>
 
-    
-    <select id="optionSelect" aria-label="Seleccionar transmisión">
+  <!-- Selector de transmisión -->
+  <select id="optionSelect" aria-label="Seleccionar transmisión">
     <option value="">Cargando</option>
-    </select>
+  </select>
 
-    <button class="btn" id="reloadBtn" aria-label="Recargar transmisión">
-      Recargar
+  <!-- Botón de recarga -->
+  <button class="btn" id="reloadBtn" aria-label="Recargar transmisión">
+    Recargar
     <svg class="icon-reload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
     </svg>
+  </button>
+
+
+      <!-- Botón Telemetría (NUEVO) -->
+  <label>Telemetria F1:</label>
+  <div class="card-header">
+    <button class="telemetry-toggle" id="telemetryToggle" aria-label="Minimizar telemetría">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
     </button>
-<label> Alternar chat:</label>
-    <div class="card-header">
-      <button class="chat-toggle" id="chatToggle" aria-label="Minimizar chat">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-            <path d="M8 11h8M8 15h6"/>
-            <path d="M12 5v14"/>
-          </svg>
-      </button>
-    </div>
+  </div>
+
+    <!-- Botón Chat (EXISTENTE) -->
+  <label>Chat</label>
+  <div class="card-header">
+    <button class="chat-toggle" id="chatToggle" aria-label="Minimizar chat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        <path d="M8 11h8M8 15h6"/>
+        <path d="M12 5v14"/>
+      </svg>
+    </button>
+  </div>
+
+
+
 
 </section>
 
+
+
 <!-- Main Content -->
 <main class="container">
-  <!-- Player Card -->
+
+  <!-- 1. Panel Telemetría F1 (NUEVO - Columna IZQUIERDA) -->
+  <aside class="card telemetry-card">
+    <iframe 
+      id="f1Telemetry" 
+      src="https://www.f1telemetry.com/es/live-timing" 
+      title="Telemetría F1 en Vivo" 
+      referrerpolicy="no-referrer"
+      loading="lazy"
+      importance="low"
+      width="100%"
+      height="100%"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+    </iframe>
+  </aside>
+
+  <!-- 2. Reproductor de Video (CENTRO) -->
   <section class="card player-card">
-<iframe 
-  id="playerFrame"
-  scrolling="no"
-  allowfullscreen
-  webkitallowfullscreen
-  mozallowfullscreen
-  msallowfullscreen
-  referrerpolicy="no-referrer" 
-  allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
-  title="Reproductor de transmisión en vivo"
-  loading="lazy"
-  importance="high"
-  width="100%"
-  height="auto">
-</iframe>
+    <iframe 
+      id="playerFrame"
+      scrolling="no"
+      allowfullscreen
+      webkitallowfullscreen
+      mozallowfullscreen
+      msallowfullscreen
+      referrerpolicy="no-referrer" 
+      allow="autoplay; fullscreen; encrypted-media; picture-in-picture; accelerometer; gyroscope"
+      title="Reproductor de transmisión en vivo"
+      loading="lazy"
+      importance="high"
+      width="100%"
+      height="auto">
+    </iframe>
   </section>
 
-  <!-- Chat Card -->
+  <!-- 3. Chat de Twitch (DERECHA) -->
   <aside class="card chat-card">
-<iframe 
-  id="twitchChat" 
-  src="" 
-  title="Chat de Twitch" 
-  referrerpolicy="no-referrer"
-  loading="lazy"
-  importance="low"
-  width="100%"
-  height="100%"
-  sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
-</iframe>
+    <iframe 
+      id="twitchChat" 
+      src="" 
+      title="Chat de Twitch" 
+      referrerpolicy="no-referrer"
+      loading="lazy"
+      importance="low"
+      width="100%"
+      height="100%"
+      sandbox="allow-same-origin allow-scripts allow-popups allow-forms">
+    </iframe>
   </aside>
+
 </main>
 
 
@@ -204,16 +245,7 @@
 <script defer src="scripts/transmision.js"></script>
 <script defer src="scripts/transmision-ui.js"></script>
 <script defer src="scripts/clear.js"></script>
-<script>
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      var musicScript = document.createElement('script');
-      musicScript.src = 'scripts/musica-ambiental.js';
-      musicScript.defer = true;
-      document.body.appendChild(musicScript);
-    }, 1000);
-  });
-</script>
+<script defer src="scripts/telemetry-controller.js"></script>
 
 <script>
 (function() {
@@ -381,7 +413,7 @@
 
 })();
 </script>
+
 </body>
 
 </html>
-
