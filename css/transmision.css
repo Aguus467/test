@@ -1,3 +1,5 @@
+asi es el css con la telemetria
+
 /* ==================== Variables CSS ==================== */
 :root {
   --bg-dark: #0b0d1b;
@@ -427,235 +429,6 @@ select:hover {
   height: 18px;
 }
 
-/* ==================== Customization Panel COMPACTO ==================== */
-.customize-panel {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  max-width: 380px;
-  height: 100vh;
-  background: rgba(10, 10, 30, 0.98);
-  /* REMOVIDO: backdrop-filter para evitar conflictos */
-  z-index: 200; /* REDUCIDO de 1000 a 200 */
-  padding: 1.5rem;
-  overflow-y: auto;
-  transition: right 0.4s ease;
-  border-left: 1px solid var(--border-color);
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
-}
-
-.customize-panel.active {
-  right: 0;
-}
-
-.panel-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 199; /* REDUCIDO de 999 a 199 */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.panel-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.panel-header h2 {
-  font-size: 1.3rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.close-panel {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 1.5rem;
-  cursor: pointer;
-  min-width: 40px;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: var(--transition);
-}
-
-.close-panel:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(90deg);
-}
-
-.control-group {
-  margin-bottom: 1.5rem;
-}
-
-.control-group h3 {
-  color: var(--accent);
-  font-size: 0.95rem;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.control-item {
-  margin-bottom: 1rem;
-}
-
-.control-item label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  margin-bottom: 0.4rem;
-  font-weight: 500;
-}
-
-.value-display {
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.8rem;
-  min-width: 30px;
-  text-align: right;
-}
-
-.control-item input[type="range"] {
-  width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  outline: none;
-  -webkit-appearance: none;
-}
-
-.control-item input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.control-item input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
-}
-
-.control-item input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--accent);
-  cursor: pointer;
-  border: none;
-}
-
-.control-item input[type="color"] {
-  width: 100%;
-  height: 36px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  background: transparent;
-  cursor: pointer;
-}
-
-.control-item select {
-  width: 100%;
-}
-
-/* Toggle Switch COMPACTO */
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 24px;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 0.2);
-  transition: var(--transition);
-  border-radius: 24px;
-}
-
-.toggle-slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: var(--transition);
-  border-radius: 50%;
-}
-
-input:checked + .toggle-slider {
-  background-color: var(--accent);
-}
-
-input:checked + .toggle-slider:before {
-  transform: translateX(20px);
-}
-
-/* Color Picker Grid */
-.color-picker-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-top: 8px;
-}
-
-.color-option {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 6px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: var(--transition);
-  min-height: 40px;
-}
-
-.color-option:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.color-option.active {
-  border-color: white;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-}
 
 /* ==================== RESPONSIVE DESIGN MEJORADO ==================== */
 
@@ -1221,3 +994,475 @@ body {
 }
 
 /* ==================== FINAL DEL ARCHIVO ==================== */
+
+/* ==================== TELEMETRY PANEL - Añadir al final de transmision.css ==================== */
+
+/* Botón de alternado de telemetría (igual al del chat) */
+.telemetry-toggle {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  transition: var(--transition);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.telemetry-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.telemetry-toggle svg {
+  transition: transform 0.3s ease;
+}
+
+.telemetry-toggle.rotated svg {
+  transform: rotate(180deg);
+}
+
+/* ==================== Container con 3 paneles - OVERRIDE COMPLETO ==================== */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.2rem;
+  display: grid;
+  grid-template-columns: 340px 1fr 340px; /* Telemetría | Video | Chat */
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  align-items: start;
+  flex: 1;
+  transition: grid-template-columns 0.3s ease;
+  isolation: isolate;
+}
+
+/* Solo telemetría oculta */
+.container.telemetry-hidden {
+  grid-template-columns: 1fr 340px; /* Video | Chat */
+}
+
+/* Solo chat oculto */
+.container.chat-hidden {
+  grid-template-columns: 340px 1fr; /* Telemetría | Video */
+}
+
+/* Ambos ocultos */
+.container.telemetry-hidden.chat-hidden {
+  grid-template-columns: 1fr; /* Solo Video */
+}
+
+/* ==================== Telemetry Card - ALTURA IGUAL AL CHAT ==================== */
+.telemetry-card {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: var(--border-width) solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  min-height: 0;
+  height: 100%;
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  isolation: isolate;
+  z-index: auto;
+  contain: layout style;
+}
+
+/* Cuando la telemetría está oculta */
+.telemetry-card.hidden {
+  display: none;
+}
+
+#f1Telemetry {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  min-height: 0;
+  position: relative;
+  z-index: auto;
+  transform: none !important;
+  will-change: auto !important;
+  display: block;
+}
+
+#f1Telemetry::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ==================== Ajuste del Player Card - COLUMNA CENTRAL - EXPANSIÓN COMPLETA ==================== */
+.player-card {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  background: #000;
+  border-radius: var(--radius);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  height: 100%;
+  isolation: isolate;
+  position: relative;
+}
+
+/* Cuando ambos paneles están ocultos, el player ocupa toda la columna */
+.container.telemetry-hidden.chat-hidden .player-card {
+  grid-column: 1;
+}
+
+/* Cuando solo telemetría está oculta */
+.container.telemetry-hidden .player-card {
+  grid-column: 1;
+}
+
+/* Cuando solo chat está oculto */
+.container.chat-hidden .player-card {
+  grid-column: 2;
+}
+
+#playerFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  flex: 1;
+  overflow: hidden !important;
+  scrolling: no;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  min-height: 0;
+  position: relative;
+  z-index: auto;
+  display: block;
+}
+
+/* Ocultar scrollbars del playerFrame */
+#playerFrame::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ==================== Ajuste del Chat Card - COLUMNA DERECHA - POSICIÓN DINÁMICA ==================== */
+.chat-card {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: var(--border-width) solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  min-height: 0;
+  height: 100%;
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  isolation: isolate;
+  z-index: auto;
+  contain: layout style;
+}
+
+/* Cuando telemetría está oculta, chat pasa a columna 2 */
+.container.telemetry-hidden .chat-card {
+  grid-column: 2;
+}
+
+/* Cuando el chat está oculto */
+.chat-card.hidden {
+  display: none;
+}
+
+#twitchChat {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  min-height: 0;
+  position: relative;
+  z-index: auto;
+  transform: none !important;
+  will-change: auto !important;
+  display: block;
+}
+
+/* ==================== RESPONSIVE DESIGN ACTUALIZADO ==================== */
+
+/* Pantallas extra grandes */
+@media (min-width: 1920px) {
+  .container {
+    grid-template-columns: 380px 1fr 380px;
+  }
+  
+  .container.telemetry-hidden {
+    grid-template-columns: 1fr 380px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 380px 1fr;
+  }
+  
+  .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pantallas ultra anchas */
+@media (min-width: 2560px) {
+  .container {
+    grid-template-columns: 420px 1fr 420px;
+  }
+  
+  .container.telemetry-hidden {
+    grid-template-columns: 1fr 420px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 420px 1fr;
+  }
+  
+  .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Laptops medianos */
+@media (max-width: 1440px) {
+  .container {
+    grid-template-columns: 320px 1fr 320px;
+  }
+  
+  .container.telemetry-hidden {
+    grid-template-columns: 1fr 320px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 320px 1fr;
+  }
+  
+  .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Laptops pequeños */
+@media (max-width: 1280px) {
+  .container {
+    grid-template-columns: 300px 1fr 300px;
+  }
+  
+  .container.telemetry-hidden {
+    grid-template-columns: 1fr 300px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 300px 1fr;
+  }
+  
+  .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablets grandes - Layout vertical */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .telemetry-card {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 400px;
+    max-height: 450px;
+    height: auto;
+  }
+
+  .player-card {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .chat-card {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 400px;
+    max-height: 450px;
+    height: auto;
+  }
+
+  /* Ocultar paneles en modo móvil */
+  .container.telemetry-hidden .telemetry-card,
+  .container.chat-hidden .chat-card {
+    display: none;
+  }
+}
+
+/* Tablets medianos */
+@media (max-width: 900px) {
+  .telemetry-card {
+    min-height: 380px;
+    max-height: 420px;
+  }
+
+  .chat-card {
+    min-height: 380px;
+    max-height: 420px;
+  }
+}
+
+/* Tablets pequeños */
+@media (max-width: 768px) {
+  .telemetry-card {
+    min-height: 350px;
+    max-height: 400px;
+  }
+
+  .chat-card {
+    min-height: 350px;
+    max-height: 400px;
+  }
+}
+
+/* Móviles grandes */
+@media (max-width: 600px) {
+  .telemetry-card {
+    min-height: 320px;
+    max-height: 380px;
+  }
+
+  .chat-card {
+    min-height: 320px;
+    max-height: 380px;
+  }
+}
+
+/* Móviles medianos */
+@media (max-width: 480px) {
+  .telemetry-card {
+    min-height: 280px;
+    max-height: 320px;
+  }
+
+  .chat-card {
+    min-height: 280px;
+    max-height: 320px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 375px) {
+  .telemetry-card {
+    min-height: 250px;
+    max-height: 300px;
+  }
+
+  .chat-card {
+    min-height: 250px;
+    max-height: 300px;
+  }
+}
+
+/* Landscape en móviles - Mostrar telemetría al lado izquierdo */
+@media (max-width: 896px) and (orientation: landscape) {
+  .container {
+    grid-template-columns: 280px 1fr 280px;
+    grid-template-rows: 1fr;
+  }
+  
+  .container.telemetry-hidden {
+    grid-template-columns: 1fr 280px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr;
+  }
+  
+  .telemetry-card,
+  .chat-card {
+    min-height: calc(100vh - 140px);
+    max-height: calc(100vh - 140px);
+    height: calc(100vh - 140px);
+  }
+}
+
+/* Landscape en móviles pequeños */
+@media (max-width: 667px) and (orientation: landscape) {
+  .container {
+    grid-template-columns: 240px 1fr 240px;
+  }
+  
+  .container.telemetry-hidden {
+    grid-template-columns: 1fr 240px;
+  }
+  
+  .container.chat-hidden {
+    grid-template-columns: 240px 1fr;
+  }
+  
+  .container.telemetry-hidden.chat-hidden {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==================== Mejoras para dispositivos táctiles ==================== */
+@media (pointer: coarse) {
+  .telemetry-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ==================== FIX para evitar conflictos con backdrop-filter ==================== */
+.telemetry-card,
+#f1Telemetry {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  will-change: auto !important;
+}
+
+.telemetry-card {
+  contain: layout style paint;
+  isolation: isolate;
+}
+
+#f1Telemetry {
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: visible !important;
+  -webkit-backface-visibility: visible !important;
+  perspective: none !important;
+  -webkit-perspective: none !important;
+}
+
+
