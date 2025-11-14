@@ -1,126 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="description" content="Foro de la comunidad AngulismoTV">
-<meta name="theme-color" content="#0b0d1b">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Foro - AngulismoTV</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio en Mantenimiento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- CSS Espacial - mismo que tu index -->
-<link rel="stylesheet" href="css/espacial-base.css">
-<link rel="stylesheet" href="css/header-unificado.css">
-<link rel="stylesheet" href="css/foro.css">
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
 
+        .maintenance-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P2V7GWXLHJ');
-</script>
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .countdown {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .maintenance-container {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-<div id="starfield">
-  <div class="spiral-galaxy"></div>
-  <div class="aurora aurora-1"></div>
-  <div class="aurora aurora-2"></div>
-</div>
-
-<!-- Controles de música -->
-<div class="music-controls">
-    <div class="music-info">Música de fondo</div>
-    <div class="volume-control" id="volumeControl">
-        <div class="volume-slider" id="volumeSlider"></div>
-        <div class="volume-handle" id="volumeHandle"></div>
-    </div>
-    <button class="music-toggle" id="musicToggle" aria-label="Reproducir/Pausar música">
-        <span id="musicIcon">▶</span>
-    </button>
-</div>
-
-<!-- HEADER UNIFICADO RESPONSIVE -->
-<header class="site-header">
-  <div class="header-container">
-    <div class="logo-container">
-      <a href="index.html" aria-label="AngulismoTV - Inicio">
-        <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
-      </a>
-    </div>
-    
-    <!-- Botón hamburguesa para móvil -->
-    <button class="menu-toggle" aria-label="Abrir menú de navegación">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-
-    <!-- Navegación desktop (visible en pantallas grandes) -->
-    <nav role="navigation" aria-label="Navegación principal">
-      <a href="#channelsSection">Canales</a>
-      <a href="#agendaFrame">Agenda</a>
-      <a href="multicam.html">Pantalla Dividida</a>
-      <a href="https://nowevents.xyz">Entretenimiento</a>
-      <a href="https://nowstats.netlify.app">Estadísticas</a>
-      <a href="foro.html">Foro</a>
-    </nav>
-
-  </div>
-</header>
-
-<main class="foro-container">
-    <div class="foro-header">
-        <h1 class="foro-title">💬 Foro de la Comunidad</h1>
-        <p class="foro-subtitle">No me saturen los servers che</p>
-    </div>
-
-    <!-- Área de mensajes -->
-    <div id="listaMensajes" class="mensajes-container">
-        <div class="loading">Cargando mensajes...</div>
-    </div>
-
-    <!-- FORMULARIO INTEGRADO EN EL FLUJO NORMAL -->
-    <div class="formulario-integrado">
-        <div class="form-header">Escribí tu mensaje</div>
-        <div class="form-container">
-            <input type="text" id="foroNombre" placeholder="Tu nombre" maxlength="30" class="foro-input">
-            <textarea id="foroMensaje" placeholder="¿Qué querés compartir con la comunidad?" rows="3" maxlength="500" class="foro-textarea"></textarea>
-            <button onclick="enviarMensaje()" class="btn-foro">Enviar</button>
+    <div class="maintenance-container">
+        <div class="icon">🔧</div>
+        <h1>Foro en Mantenimiento</h1>
+        <p>Estamos realizando tareas de mantenimiento para mejorar tu experiencia. El sitio estará disponible nuevamente pronto ah era re formal no.</p>
+        
+        <div class="countdown" id="countdown">
+            Volvemos en: <span id="timer">30:00</span>
         </div>
+        
+        
     </div>
-</main>
 
-<footer class="site-footer">
-  <div class="container">
-    <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
-    <small>
-      <a href="https://x.com/AngulismoTV">Twitter</a> | 
-      <a href="https://discord.gg/jEayDA7T">Discord</a>
-    </small>
-  </div>
-</footer>
+    <script>
+        // Contador regresivo de 30 minutos
+        let timeLeft = 60 * 60; // 30 minutos en segundos
+        const timerElement = document.getElementById('timer');
 
-<!-- Elemento de audio para la música de fondo -->
-<audio id="backgroundMusic" loop>
-    <!-- Reemplaza esta URL con la de tu archivo de música -->
-    <source src="music/background-music.mp3" type="audio/mpeg">
-    <source src="music/background-music.ogg" type="audio/ogg">
-    Tu navegador no soporta el elemento de audio.
-</audio>
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                timerElement.textContent = "¡Pronto!";
+            }
+        }
 
-
-<script defer src="scripts/foro.js"></script>
-<script defer src="scripts/musica-ambiental.js"></script>
-<script defer src="scripts/header-mobile.js"></script>
+        // Iniciar el contador
+        updateTimer();
+    </script>
 </body>
 </html>
