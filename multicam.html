@@ -1,223 +1,373 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="Visualiza múltiples eventos en simultáneo con la pantalla dividida de AngulismoTV">
-  <title>Multicámara - AngulismoTV</title>
-  
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/espacial-base.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Pantalla Dividida - AngulismoTV</title>
+<link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+<meta name="description" content="Visualiza múltiples eventos en simultáneo con la pantalla dividida de AngulismoTV">
+
+<!-- Meta tags optimizados -->
+<meta name="theme-color" content="#0b0d1b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Resource Hints para mejor performance -->
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+<!-- Preconnect para conexiones críticas -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload de recursos críticos -->
+<link rel="preload" href="assets/logo2.png" as="image" type="image/png">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style">
+
+<!-- Prefetch de páginas probables -->
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="transmision.html">
+<link rel="prefetch" href="foro.html">
+
+<link rel="icon" href="assets/logo2.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- CRÍTICO: Cargar con alta prioridad -->
+<link rel="stylesheet" href="css/espacial-base.css">
+<link rel="stylesheet" href="css/multicam.css">
+
+<!-- NO CRÍTICO: Cargar con baja prioridad -->
+<link rel="stylesheet" href="css/header-unificado.css" media="print" onload="this.media='all'">
+
+<!-- Fallback para navegadores sin JS -->
+<noscript>
   <link rel="stylesheet" href="css/header-unificado.css">
-  <link rel="stylesheet" href="css/multicam.css">
+</noscript>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-P2V7GWXLHJ');
-  </script>
-</head>
-
-<body>
-  <!-- Background Effect -->
-  <div id="starfield" aria-hidden="true">
-    <div class="spiral-galaxy"></div>
-    <div class="aurora aurora-1"></div>
-    <div class="aurora aurora-2"></div>
-  </div>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="logo-container">
-        <a href="index.html" aria-label="AngulismoTV - Volver al inicio">
-          <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
-        </a>
-      </div>
+<!-- Google Analytics -->
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ';
+      document.head.appendChild(gaScript);
       
-      <!-- Mobile Menu Toggle -->
-      <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P2V7GWXLHJ');
+    }, 1500);
+  });
+</script>
+</head>
+<body>
 
-      <!-- Main Navigation -->
-      <nav class="main-nav" role="navigation" aria-label="Navegación principal">
-        <a href="#channelsSection">Canales</a>
-        <a href="#agendaFrame">Agenda</a>
-        <a href="multicam.html" aria-current="page">Pantalla Dividida</a>
-        <a href="https://nowevents.xyz" target="_blank" rel="noopener">Entretenimiento</a>
-        <a href="https://nowstats.netlify.app" target="_blank" rel="noopener">Estadísticas</a>
-        <a href="foro.html">Foro</a>
-      </nav>
+<!-- Starfield Background -->
+<div id="starfield">
+  <div class="spiral-galaxy"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a href="index.html" aria-label="AngulismoTV - Inicio">
+        <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+      </a>
     </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="container">
-    <h1 class="visually-hidden">Visualizador Multicámara</h1>
     
-    <!-- Control Panel -->
-    <section class="multicam-controls" aria-label="Controles de visualización">
-      <div class="controls-header">
-        <!-- Primary Controls Row -->
-        <div class="controls-row">
-          <!-- Layout Selector -->
-          <div class="layout-selector">
-            <button 
-              class="layout-dropdown-btn" 
-              id="layoutDropdownBtn" 
-              aria-label="Seleccionar número de pantallas"
-              aria-haspopup="listbox"
-              aria-expanded="false">
-              <span class="layout-label">1 Pantalla</span>
-            </button>
-            <ul 
-              class="layout-dropdown-content" 
-              id="layoutDropdown" 
-              role="listbox"
-              aria-label="Opciones de distribución">
-              <li class="layout-option" data-layout="1" role="option" tabindex="0">1 Pantalla</li>
-              <li class="layout-option" data-layout="2" role="option" tabindex="0">2 Pantallas</li>
-              <li class="layout-option" data-layout="3" role="option" tabindex="0">3 Pantallas</li>
-              <li class="layout-option" data-layout="4" role="option" tabindex="0">4 Pantallas</li>
-            </ul>
-          </div>
-          
-          <!-- Content Filter -->
-          <div class="filter-selector" role="group" aria-label="Filtrar contenido">
-            <button 
-              class="filter-btn active" 
-              id="filterAgenda" 
-              aria-label="Mostrar eventos"
-              aria-pressed="true">
-              <span aria-hidden="true">📅</span> Eventos
-            </button>
-            <button 
-              class="filter-btn" 
-              id="filterChannels" 
-              aria-label="Mostrar canales"
-              aria-pressed="false">
-              <span aria-hidden="true">📺</span> Canales
-            </button>
-          </div>
-          
-          <!-- Fullscreen Button -->
-          <button 
-            class="fullscreen-btn" 
-            id="globalFullscreen" 
-            aria-label="Activar pantalla completa">
-            <span aria-hidden="true">⛶</span>
-            <span class="fullscreen-text">Pantalla Completa</span>
-          </button>
+    <button class="menu-toggle" aria-label="Abrir menú de navegación">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <nav role="navigation" aria-label="Navegación principal">
+      <a href="index.html#channelsSection">Canales</a>
+      <a href="index.html">Agenda</a>
+      <a href="multicam.html" aria-current="page">Pantalla Dividida</a>
+      <a href="https://nowevents.xyz">Entretenimiento</a>
+      <a href="https://nowstats.netlify.app">Estadísticas</a>
+      <a href="foro.html">Foro</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Options Bar -->
+<section class="options-bar">
+  
+  <!-- Layout Selector -->
+  <div class="card-header">
+    <label>Layout:</label>
+    <button class="layout-dropdown-btn" id="layoutDropdownBtn" aria-label="Seleccionar número de pantallas">
+      <span class="layout-label">1 Pantalla</span>
+    </button>
+    <ul class="layout-dropdown-content" id="layoutDropdown" role="listbox">
+      <li class="layout-option" data-layout="1" role="option">1 Pantalla</li>
+      <li class="layout-option" data-layout="2" role="option">2 Pantallas</li>
+      <li class="layout-option" data-layout="3" role="option">3 Pantallas</li>
+      <li class="layout-option" data-layout="4" role="option">4 Pantallas</li>
+    </ul>
+  </div>
+
+  <!-- Content Filter -->
+  <div class="card-header">
+    <label>Contenido:</label>
+    <button class="filter-btn active" id="filterAgenda" aria-label="Mostrar eventos">
+      📅 Eventos
+    </button>
+    <button class="filter-btn" id="filterChannels" aria-label="Mostrar canales">
+      📺 Canales
+    </button>
+  </div>
+
+  <!-- Fullscreen Button -->
+  <button class="btn fullscreen-btn" id="globalFullscreen" aria-label="Activar pantalla completa">
+    Pantalla Completa
+    <svg class="icon-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+    </svg>
+  </button>
+
+</section>
+
+<!-- Stream Selectors -->
+<section class="stream-selectors">
+  <!-- Slot 1 -->
+  <div class="stream-dropdown" id="dropdown-container-1">
+    <button class="dropdown-btn" data-slot="1" aria-label="Seleccionar para pantalla 1">
+      Seleccionar evento para pantalla 1
+    </button>
+    <ul class="dropdown-content" id="dropdown-1" role="listbox"></ul>
+  </div>
+  
+  <!-- Slot 2 -->
+  <div class="stream-dropdown" id="dropdown-container-2" style="display: none;">
+    <button class="dropdown-btn" data-slot="2" aria-label="Seleccionar para pantalla 2">
+      Seleccionar evento para pantalla 2
+    </button>
+    <ul class="dropdown-content" id="dropdown-2" role="listbox"></ul>
+  </div>
+  
+  <!-- Slot 3 -->
+  <div class="stream-dropdown" id="dropdown-container-3" style="display: none;">
+    <button class="dropdown-btn" data-slot="3" aria-label="Seleccionar para pantalla 3">
+      Seleccionar evento para pantalla 3
+    </button>
+    <ul class="dropdown-content" id="dropdown-3" role="listbox"></ul>
+  </div>
+  
+  <!-- Slot 4 -->
+  <div class="stream-dropdown" id="dropdown-container-4" style="display: none;">
+    <button class="dropdown-btn" data-slot="4" aria-label="Seleccionar para pantalla 4">
+      Seleccionar evento para pantalla 4
+    </button>
+    <ul class="dropdown-content" id="dropdown-4" role="listbox"></ul>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main class="container">
+  
+  <!-- Streams Grid -->
+  <section class="streams-grid layout-1" id="streamsGrid" aria-label="Visualización de eventos">
+    <article class="stream-item active" id="stream-1" data-slot="1">
+      <header class="stream-header">
+        <div class="stream-title-bar">
+          <strong class="stream-title">Pantalla 1</strong>
         </div>
-        
-        <!-- Stream Selectors Row -->
-        <div class="stream-selector" role="group" aria-label="Selectores de eventos">
-          <!-- Slot 1 -->
-          <div class="stream-dropdown">
-            <button 
-              class="dropdown-btn" 
-              data-slot="1" 
-              aria-label="Seleccionar evento para pantalla 1"
-              aria-haspopup="listbox"
-              aria-expanded="false">
-              Seleccionar evento para la pantalla 1
-            </button>
-            <ul class="dropdown-content" id="dropdown-1" role="listbox"></ul>
-          </div>
-          
-          <!-- Slot 2 -->
-          <div class="stream-dropdown" id="dropdown-container-2" hidden>
-            <button 
-              class="dropdown-btn" 
-              data-slot="2" 
-              aria-label="Seleccionar evento para pantalla 2"
-              aria-haspopup="listbox"
-              aria-expanded="false">
-              Seleccionar evento para la pantalla 2
-            </button>
-            <ul class="dropdown-content" id="dropdown-2" role="listbox"></ul>
-          </div>
-          
-          <!-- Slot 3 -->
-          <div class="stream-dropdown" id="dropdown-container-3" hidden>
-            <button 
-              class="dropdown-btn" 
-              data-slot="3" 
-              aria-label="Seleccionar evento para pantalla 3"
-              aria-haspopup="listbox"
-              aria-expanded="false">
-              Seleccionar evento para la pantalla 3
-            </button>
-            <ul class="dropdown-content" id="dropdown-3" role="listbox"></ul>
-          </div>
-          
-          <!-- Slot 4 -->
-          <div class="stream-dropdown" id="dropdown-container-4" hidden>
-            <button 
-              class="dropdown-btn" 
-              data-slot="4" 
-              aria-label="Seleccionar evento para pantalla 4"
-              aria-haspopup="listbox"
-              aria-expanded="false">
-              Seleccionar evento para la pantalla 4
-            </button>
-            <ul class="dropdown-content" id="dropdown-4" role="listbox"></ul>
-          </div>
+      </header>
+      <div class="stream-content">
+        <div class="stream-placeholder">
+          <span class="placeholder-icon">📺</span>
+          <span class="placeholder-text">Selecciona un evento para comenzar</span>
         </div>
       </div>
-    </section>
+    </article>
+  </section>
 
-    <!-- Streams Grid -->
-    <section class="streams-grid layout-1" id="streamsGrid" aria-label="Visualización de eventos">
-      <article class="stream-item active" id="stream-1" data-slot="1">
-        <header class="stream-header">
-          <div class="stream-title-bar">
-            <strong class="stream-title">Pantalla 1</strong>
-          </div>
-          <div class="stream-actions"></div>
-        </header>
-        <div class="stream-content">
-          <div class="stream-placeholder">
-            <span class="placeholder-icon" aria-hidden="true">📺</span>
-            <span class="placeholder-text">Selecciona un evento para comenzar</span>
-          </div>
-        </div>
-      </article>
-    </section>
-  </main>
+</main>
 
-  <!-- Footer -->
+<!-- Footer -->
 <footer class="site-footer">
-  <div class="container">
-    <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
-    <small>
-      <a href="https://x.com/AngulismoTV" target="_blank" rel="noopener">Twitter</a> | 
-      <a href="https://discord.gg/jEayDA7T" target="_blank" rel="noopener">Discord</a>
-    </small>
-  </div>
+  <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
+  <small>
+    <a href="https://x.com/AngulismoTV">Twitter</a> | 
+    <a href="https://discord.gg/jEayDA7T">Discord</a>
+  </small>
 </footer>
 
-  <!-- Scripts -->
-  <script defer src="scripts/customization.js"></script>
-  <script defer src="scripts/header-mobile.js"></script>
-  <script defer src="scripts/multicam.js"></script>
-  <script defer src="scripts/clear.js"></script>
-</body>
+<!-- Scripts -->
+<script src="scripts/header-mobile.js"></script>
+<script defer src="scripts/multicam.js"></script>
 
+<script>
+(function() {
+  'use strict';
+
+  // ==================== Configuración adaptativa ====================
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  const numStars = isMobile ? 30 : 50;
+  const numShootingStars = isMobile ? 0 : 1;
+  const numPlanets = isMobile ? 0 : 1;
+  const numStardust = isMobile ? 10 : 20;
+  
+  const BATCH_SIZE = 10;
+  const BATCH_DELAY = 50;
+
+  // ==================== Funciones de creación ====================
+  function createElement(className, styles = {}) {
+    const el = document.createElement('div');
+    el.className = className;
+    Object.keys(styles).forEach(prop => {
+      el.style[prop] = styles[prop];
+    });
+    return el;
+  }
+
+  const starfield = document.getElementById('starfield');
+  if (!starfield) return;
+
+  // ==================== Crear estrellas en lotes ====================
+  function createStarsBatch(startIdx, endIdx) {
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = startIdx; i < Math.min(endIdx, numStars); i++) {
+      const layer = Math.floor(Math.random() * 3) + 1;
+      const size = Math.random() * 2 + 0.5;
+      
+      const star = createElement(`star layer-${layer}`, {
+        width: size + 'px',
+        height: size + 'px',
+        top: Math.random() * 100 + '%',
+        left: Math.random() * 100 + '%',
+        animationDelay: Math.random() * 4 + 's',
+        animationDuration: (Math.random() * 3 + 3) + 's'
+      });
+      
+      star.setAttribute('data-speed', layer * 0.15);
+      fragment.appendChild(star);
+    }
+    
+    starfield.appendChild(fragment);
+    
+    if (endIdx < numStars) {
+      setTimeout(() => {
+        createStarsBatch(endIdx, endIdx + BATCH_SIZE);
+      }, BATCH_DELAY);
+    } else {
+      createOtherElements();
+    }
+  }
+
+  // ==================== Crear otros elementos ====================
+  function createOtherElements() {
+    const fragment = document.createDocumentFragment();
+    
+    // Shooting stars
+    if (!isMobile) {
+      for (let i = 0; i < numShootingStars; i++) {
+        const shootingStar = createElement('shooting-star', {
+          top: Math.random() * 50 + '%',
+          left: (Math.random() * 50 + 50) + '%',
+          animationDelay: (Math.random() * 8 + 4) + 's',
+          animationDuration: (Math.random() * 3 + 3) + 's',
+          width: (Math.random() * 80 + 40) + 'px'
+        });
+        fragment.appendChild(shootingStar);
+      }
+    }
+
+    // Planeta
+    if (!isMobile && numPlanets > 0) {
+      const planet = createElement('planet planet-1');
+      fragment.appendChild(planet);
+    }
+
+    // Polvo estelar
+    for (let i = 0; i < numStardust; i++) {
+      const dust = createElement('stardust', {
+        left: Math.random() * 100 + '%',
+        bottom: '0',
+        animationDelay: Math.random() * 25 + 's',
+        animationDuration: (Math.random() * 12 + 18) + 's'
+      });
+      fragment.appendChild(dust);
+    }
+
+    starfield.appendChild(fragment);
+    setTimeout(cacheStars, 200);
+  }
+
+  // ==================== Iniciar creación ====================
+  setTimeout(() => {
+    createStarsBatch(0, BATCH_SIZE);
+  }, 300);
+
+  // ==================== Efecto Paralaje MINIMALISTA ====================
+  let scrollY = 0;
+  let ticking = false;
+  let stars = [];
+
+  function cacheStars() {
+    stars = Array.from(document.querySelectorAll('.star[data-speed]'));
+  }
+
+  function updateParallax() {
+    if (stars.length === 0) return;
+    
+    stars.forEach(star => {
+      const speed = parseFloat(star.getAttribute('data-speed')) || 0;
+      const yPos = scrollY * speed;
+      star.style.transform = `translateY(${yPos}px)`;
+    });
+    ticking = false;
+  }
+
+  function handleScroll() {
+    scrollY = window.pageYOffset;
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  // Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+      } else {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    });
+  }, { rootMargin: '100px' });
+
+  observer.observe(starfield);
+
+  // ==================== Reducir animaciones si el usuario lo prefiere ====================
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const animatedElements = document.querySelectorAll('.star, .shooting-star, .planet, .stardust, .aurora, .spiral-galaxy');
+    animatedElements.forEach(el => {
+      el.style.animation = 'none';
+    });
+  }
+
+  // ==================== Cleanup ====================
+  window.addEventListener('beforeunload', function() {
+    window.removeEventListener('scroll', handleScroll);
+    observer.disconnect();
+  });
+
+  console.log('🎬 AngulismoTV Multicámara - Optimizado');
+
+})();
+</script>
+
+</body>
 </html>
