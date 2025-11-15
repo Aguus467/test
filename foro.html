@@ -1,137 +1,336 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio en Mantenimiento</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="Foro de la comunidad AngulismoTV - Conversa, reacciona y conecta">
+<meta name="theme-color" content="#0b0d1b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Foro Mejorado - AngulismoTV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
+<!-- CSS Espacial -->
+<link rel="stylesheet" href="css/espacial-base.css">
+<link rel="stylesheet" href="css/header-unificado.css">
+<link rel="stylesheet" href="css/foro.css">
 
-        .maintenance-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 90%;
-        }
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P2V7GWXLHJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P2V7GWXLHJ');
+</script>
 
-        .icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: bounce 2s infinite;
-        }
+<style>
+/* Estilos inline para garantizar compatibilidad */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0b0d1b;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
+/* Fondo espacial base */
+#starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: linear-gradient(180deg, #0b0d1b 0%, #1a1d3a 50%, #0b0d1b 100%);
+    overflow: hidden;
+}
 
-        .countdown {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+.spiral-galaxy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(ellipse at center, 
+        rgba(114, 214, 255, 0.1) 0%, 
+        rgba(255, 127, 255, 0.05) 50%, 
+        transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 60s linear infinite;
+}
 
-        .contact-info {
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-        }
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
-        .contact-info a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.aurora {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    opacity: 0.3;
+    filter: blur(40px);
+    animation: aurora 15s ease-in-out infinite;
+}
 
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
+.aurora-1 {
+    top: 20%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(114, 214, 255, 0.3) 50%, 
+        transparent 100%);
+}
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
+.aurora-2 {
+    top: 60%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 127, 255, 0.3) 50%, 
+        transparent 100%);
+    animation-delay: -7.5s;
+}
 
-        @media (max-width: 768px) {
-            .maintenance-container {
-                padding: 2rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+@keyframes aurora {
+    0%, 100% { transform: translateX(-50px) scaleX(1); }
+    50% { transform: translateX(50px) scaleX(1.1); }
+}
+
+/* Header simple para demo */
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: rgba(11, 13, 27, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(114, 214, 255, 0.2);
+    padding: 15px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #72d6ff;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    border-radius: 3px;
+}
+
+
+</style>
 </head>
+
 <body>
-    <div class="maintenance-container">
-        <div class="icon">🔧</div>
-        <h1>Foro en Mantenimiento</h1>
-        <p>Estamos realizando tareas de mantenimiento para mejorar tu experiencia. El sitio estará disponible nuevamente pronto ah era re formal no.</p>        
-        
+<div id="starfield">
+  <div class="spiral-galaxy"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+</div>
+
+<!-- Controles de música -->
+<div class="music-controls">
+    <div class="music-info">Música de fondo</div>
+    <div class="volume-control" id="volumeControl">
+        <div class="volume-slider" id="volumeSlider"></div>
+        <div class="volume-handle" id="volumeHandle"></div>
+    </div>
+    <button class="music-toggle" id="musicToggle" aria-label="Reproducir/Pausar música">
+        <span id="musicIcon">▶</span>
+    </button>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo-container">
+      <a href="index.html" aria-label="AngulismoTV - Inicio">
+        <img src="assets/logo2.png" alt="AngulismoTV" class="logo">
+      </a>
+    </div>
+    
+    <button class="menu-toggle" aria-label="Abrir menú">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <nav role="navigation" aria-label="Navegación principal">
+      <a href="#channelsSection">Canales</a>
+      <a href="#agendaFrame">Agenda</a>
+      <a href="multicam.html">Pantalla Dividida</a>
+      <a href="https://nowevents.xyz">Entretenimiento</a>
+      <a href="https://nowstats.netlify.app">Estadísticas</a>
+      <a href="foro.html">Foro</a>
+    </nav>
+  </div>
+</header>
+
+<main class="foro-container">
+    <!-- Header del foro -->
+    <div class="foro-header">
+        <h1 class="foro-title">💬 Foro de la Comunidad</h1>
+        <p class="foro-subtitle">Dudas, consultas, opiniones etc.</p>
     </div>
 
-    <script>
-        // Contador regresivo de 30 minutos
-        let timeLeft = 60 * 60; // 30 minutos en segundos
-        const timerElement = document.getElementById('timer');
 
-        function updateTimer() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            
-            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            if (timeLeft > 0) {
-                timeLeft--;
-                setTimeout(updateTimer, 1000);
+    <!-- Barra de búsqueda -->
+    <div class="search-container">
+        <input 
+            type="text" 
+            id="searchMessages" 
+            placeholder="🔍 Buscar mensajes..." 
+            class="search-input"
+            autocomplete="off"
+        >
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <!-- Área de mensajes -->
+    <div id="listaMensajes" class="mensajes-container">
+        <div class="loading">Cargando mensajes...</div>
+    </div>
+
+    <!-- FORMULARIO MEJORADO -->
+<div class="formulario-integrado">
+    <div class="form-header">Escribí tu mensaje</div>
+
+    <div class="form-container">
+
+        <div class="input-column">
+            <div class="input-wrapper">
+                <input 
+                    type="text" 
+                    id="foroNombre" 
+                    placeholder="Tu nombre" 
+                    maxlength="30" 
+                    class="foro-input"
+                    autocomplete="name"
+                >
+            </div>
+
+            <div class="input-wrapper">
+                <textarea 
+                    id="foroMensaje" 
+                    placeholder="Tu mensaje... Ej. angulismo hdp arregla la pagina" 
+                    rows="3" 
+                    maxlength="500" 
+                    class="foro-textarea"
+                ></textarea>
+            </div>
+        </div>
+
+        <button onclick="enviarMensaje()" class="btn-foro">
+            Enviar
+        </button>
+
+    </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>© 2025 AngulismoTV | <a href="dmca.html">DMCA</a></small>
+    <br>
+    <small>
+      <a href="https://x.com/AngulismoTV">Twitter</a> | 
+      <a href="https://discord.gg/jEayDA7T">Discord</a>
+    </small>
+  </div>
+</footer>
+
+<!-- Elemento de audio -->
+<audio id="backgroundMusic" loop>
+    <source src="music/background-music.mp3" type="audio/mpeg">
+    <source src="music/background-music.ogg" type="audio/ogg">
+</audio>
+
+<script>
+// Script inline para controles de música (simplificado)
+document.addEventListener('DOMContentLoaded', function() {
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    const audio = document.getElementById('backgroundMusic');
+    const volumeControl = document.getElementById('volumeControl');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volumeHandle = document.getElementById('volumeHandle');
+    
+    let isPlaying = false;
+    audio.volume = 0.3;
+    
+    if (musicToggle) {
+        musicToggle.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.textContent = '▶';
             } else {
-                timerElement.textContent = "¡Pronto!";
+                audio.play();
+                musicIcon.textContent = '⏸';
             }
-        }
+            isPlaying = !isPlaying;
+        });
+    }
+    
+    if (volumeControl) {
+        volumeControl.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percentage = x / rect.width;
+            audio.volume = Math.max(0, Math.min(1, percentage));
+            volumeSlider.style.width = (percentage * 100) + '%';
+        });
+    }
+});
+</script>
 
-        // Iniciar el contador
-        updateTimer();
-    </script>
+<!-- Scripts del foro mejorado -->
+<script src="scripts/foro.js"></script>
 </body>
 </html>
-
