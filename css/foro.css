@@ -1,5 +1,12 @@
+/* ========================================
+   FORO MEJORADO - ESTILOS (COMPLETO)
+   ======================================== */
+
+/* -------------------------
+   Contenedor principal
+   ------------------------- */
 .foro-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 20px auto;
     padding: 0 15px;
     min-height: calc(100vh - 200px);
@@ -7,6 +14,9 @@
     z-index: 2;
 }
 
+/* -------------------------
+   Header del foro
+   ------------------------- */
 .foro-header {
     text-align: center;
     margin-bottom: 30px;
@@ -30,34 +40,145 @@
     font-size: 1.1rem;
 }
 
-/* Área de mensajes - compatible con tema espacial */
-.mensajes-container {
+/* ========================================
+   ESTADÍSTICAS DEL FORO
+   ======================================== */
+.foro-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0 30px;
+    padding: 20px;
     background: rgba(11, 13, 27, 0.6);
     border-radius: 15px;
     border: 1px solid rgba(114, 214, 255, 0.2);
-    padding: 20px;
-    margin-bottom: 20px;
-    min-height: 400px;
-    max-height: 60vh;
-    overflow-y: auto;
-    position: relative;
-    z-index: 2;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   BARRA DE BÚSQUEDA
+   ======================================== */
+.search-container {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(114, 214, 255, 0.3);
+    border-radius: 25px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #72d6ff;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(114, 214, 255, 0.1);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+/* ========================================
+   ÁREA DE MENSAJES
+   ======================================== */
+.mensajes-container {
+    /* puedes poner padding o max-height si lo deseas */
+}
+
+/* ========================================
+   MENSAJE ITEM (MEJORADO CON AVATAR)
+   ======================================== */
 .mensaje-item {
+    display: flex;
+    gap: 12px;
     background: rgba(255, 255, 255, 0.05);
     padding: 15px;
     margin: 10px 0;
-    border-radius: 10px;
+    border-radius: 12px;
     border-left: 3px solid #72d6ff;
     transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .mensaje-item:hover {
     background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.2);
+}
+
+/* Avatar */
+.mensaje-avatar {
+    flex-shrink: 0;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #0b0d1b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenido del mensaje */
+.mensaje-content {
+    flex: 1;
+    min-width: 0;
 }
 
 .mensaje-header {
@@ -65,6 +186,8 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .mensaje-nombre {
@@ -73,140 +196,415 @@
     font-size: 1em;
 }
 
+.badge-editado {
+    font-size: 0.7em;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
 .mensaje-fecha {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.8em;
+    white-space: nowrap;
+    margin-left: auto;
 }
 
 .mensaje-texto {
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.5;
+    line-height: 1.6;
     word-wrap: break-word;
+    margin-bottom: 10px;
 }
 
-/* FORMULARIO INTEGRADO - NO FIJO */
+/* ========================================
+   MENCIONES Y HASHTAGS
+   ======================================== */
+.mencion {
+    color: #72d6ff;
+    font-weight: 600;
+    background: rgba(114, 214, 255, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.mencion:hover {
+    background: rgba(114, 214, 255, 0.25);
+}
+
+.hashtag {
+    color: #ff7fff;
+    font-weight: 600;
+    background: rgba(255, 127, 255, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.hashtag:hover {
+    background: rgba(255, 127, 255, 0.25);
+}
+
+.mensaje-link {
+    color: #7fffcc;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.mensaje-link:hover {
+    color: #9fffdd;
+}
+
+/* ========================================
+   SISTEMA DE REACCIONES
+   ======================================== */
+.mensaje-acciones {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.reacciones-container {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.reaccion-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.reaccion-badge:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.btn-reaccion {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-reaccion:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #72d6ff;
+    color: #72d6ff;
+    transform: translateY(-1px);
+}
+
+.reacciones-menu {
+    position: absolute;
+    display: flex;
+    gap: 8px;
+    background: rgba(11, 13, 27, 0.95);
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid rgba(114, 214, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    margin-top: -50px;
+    animation: popIn 0.2s ease;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.reacciones-menu button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.reacciones-menu button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.2);
+}
+
+/* ========================================
+   FORMULARIO MEJORADO (COMPLETO)
+   - Flexbox: nombre arriba, mensaje abajo, botón a la derecha
+   ======================================== */
 .formulario-integrado {
-    background: rgba(11, 13, 27, 0.8);
-    border-radius: 15px;
-    border: 1px solid rgba(114, 214, 255, 0.2);
-    padding: 20px;
-    margin: 30px 0;
-    position: relative;
-    z-index: 2;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.form-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr auto;
-    gap: 12px;
-    align-items: end;
+    border-radius: 20px;
+    border: 1px solid rgba(114, 214, 255, 0.25);
+    padding: 25px;
+    margin: 25px 0;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .form-header {
     color: #72d6ff;
-    font-weight: 600;
-    margin-bottom: 15px;
-    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 1.2em;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .form-header::before {
-    content: '✍️';
-    font-size: 1.2em;
+    content: '💬';
+    font-size: 1.3em;
 }
 
-.foro-input, .foro-textarea {
+.form-container {
+    display: flex;
+    align-items: flex-start; /* botón queda centrado respecto a la columna izquierda si tiene altura distinta */
+    gap: 20px;
     width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+}
+
+/* columna izquierda (nombre arriba, textarea abajo) */
+.input-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1; /* ocupa todo el espacio disponible */
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+/* estilos de inputs/textarea (unificados y pulidos) */
+.foro-input,
+.foro-textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
     color: white;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     transition: all 0.3s ease;
-}
-
-.foro-input:focus, .foro-textarea:focus {
-    outline: none;
-    border-color: #72d6ff;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 2px rgba(114, 214, 255, 0.2);
-}
-
-.foro-input::placeholder, .foro-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
 }
 
 .foro-textarea {
     resize: vertical;
-    min-height: 60px;
-    max-height: 120px;
+    min-height: 85px;
+    line-height: 1.4;
 }
 
+.foro-input:focus,
+.foro-textarea:focus {
+    outline: none;
+    border-color: #72d6ff;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 4px rgba(114, 214, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Botón principal del foro (estético + animación) */
 .btn-foro {
     background: linear-gradient(135deg, #72d6ff, #ff7fff);
     color: #0b0d1b;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 15px 32px;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     white-space: nowrap;
     height: fit-content;
     transition: all 0.3s ease;
-    min-height: 44px;
+    min-height: 52px;
+    box-shadow: 0 6px 20px rgba(114, 214, 255, 0.4);
+    position: relative;
+    overflow: hidden;
 }
 
-.btn-foro:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(114, 214, 255, 0.4);
+.btn-foro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
 }
 
-.btn-foro:active {
+.btn-foro:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(114, 214, 255, 0.6);
+}
+
+.btn-foro:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+/* Contador de caracteres (si lo usás) - posición relativa al wrapper */
+.char-counter {
+    position: absolute;
+    right: 8px;
+    bottom: -18px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+}
+
+/* ========================================
+   NOTIFICACIONES
+   ======================================== */
+.new-message-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #72d6ff, #ff7fff);
+    color: #0b0d1b;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.new-message-notification.show {
+    opacity: 1;
     transform: translateY(0);
 }
 
-/* Estados */
+.new-message-notification button {
+    background: rgba(11, 13, 27, 0.9);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.new-message-notification button:hover {
+    background: #0b0d1b;
+    transform: scale(1.05);
+}
+
+/* ========================================
+   SISTEMA DE ALERTAS
+   ======================================== */
+.alerta {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.alerta.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.alerta-success {
+    background: rgba(127, 255, 127, 0.9);
+    color: #0b0d1b;
+}
+
+.alerta-error {
+    background: rgba(255, 127, 127, 0.9);
+    color: #0b0d1b;
+}
+
+.alerta-warning {
+    background: rgba(255, 255, 127, 0.9);
+    color: #0b0d1b;
+}
+
+.alerta-info {
+    background: rgba(114, 214, 255, 0.9);
+    color: #0b0d1b;
+}
+
+/* ========================================
+   ESTADOS (loading / empty)
+   ======================================== */
 .loading, .empty-state {
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
     color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
 }
 
 .empty-state::before {
     content: '💬';
-    font-size: 2em;
+    font-size: 3em;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     opacity: 0.7;
+    animation: pulse 2s infinite;
 }
 
-/* Scrollbar personalizado que respeta el tema espacial */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ========================================
+   SCROLLBAR PERSONALIZADO (mensajes)
+   ======================================== */
 .mensajes-container::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .mensajes-container::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .mensajes-container::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #72d6ff, #ff7fff);
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .mensajes-container::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #8adfff, #ff99ff);
 }
 
-/* ===== CONTROLES DE MÚSICA ===== */
+/* ========================================
+   CONTROLES DE MÚSICA
+   ======================================== */
 .music-controls {
     position: fixed;
     bottom: 20px;
@@ -266,6 +664,7 @@
     background: #72d6ff;
     border-radius: 2px;
     width: 70%;
+    transition: width 0.1s ease;
 }
 
 .volume-handle {
@@ -294,76 +693,26 @@
     max-width: 120px;
 }
 
-/* ===== RESPONSIVE MÓVIL ===== */
-@media (max-width: 768px) {
-    .foro-container {
-        margin: 10px auto;
-        padding: 0 10px;
+/* ========================================
+   ANIMACIONES Y TRANSICIONES
+   ======================================== */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
     }
-    
-    .foro-title {
-        font-size: 2rem;
-    }
-    
-    .mensajes-container {
-        padding: 15px;
-        max-height: 50vh;
-        margin-bottom: 15px;
-    }
-    
-    .formulario-integrado {
-        padding: 15px;
-        margin: 20px 0;
-    }
-    
-    .form-container {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-    
-    .btn-foro {
-        padding: 14px 20px;
-        width: 100%;
-    }
-    
-    .mensaje-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    .mensaje-fecha {
-        font-size: 0.75em;
-    }
-    
-    /* Música responsive */
-    .music-controls {
-        bottom: 10px;
-        right: 10px;
-        padding: 6px 12px;
-    }
-    
-    .music-info {
-        max-width: 80px;
-        font-size: 10px;
-    }
-    
-    .volume-control {
-        width: 60px;
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
-/* ===== PC ===== */
-@media (min-width: 769px) {
-    .mensajes-container {
-        max-height: 65vh;
-    }
-}
-
-/* Asegurar que el contenido esté sobre el fondo espacial */
+/* Asegurar z-index correcto */
 .foro-container,
 .mensajes-container,
-.formulario-integrado {
+.formulario-integrado,
+.foro-stats,
+.search-container {
     position: relative;
     z-index: 2;
 }
@@ -379,9 +728,146 @@
     pointer-events: none;
 }
 
-/* Mejorar el footer existente */
-.site-footer {
-    margin-top: 40px !important;
-    position: relative;
-    z-index: 2;
+/* ========================================
+   RESPONSIVE MÓVIL
+   ======================================== */
+@media (max-width: 768px) {
+    .foro-container {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+    
+    .foro-title {
+        font-size: 2rem;
+    }
+    
+    .foro-stats {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .mensajes-container {
+        padding: 15px;
+        max-height: 50vh;
+        margin-bottom: 15px;
+    }
+    
+    .mensaje-item {
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    .avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+    
+    .mensaje-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+    
+    .mensaje-fecha {
+        font-size: 0.75em;
+    }
+    
+    .mensaje-acciones {
+        flex-wrap: wrap;
+    }
+    
+    .btn-reaccion {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+    }
+    
+    .formulario-integrado {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    /* En móvil el formulario pasa a columna (nombre, mensaje, botón) */
+    .form-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .btn-foro {
+        padding: 14px 20px;
+        width: 100%;
+    }
+    
+    .char-counter {
+        bottom: -18px;
+        font-size: 0.7rem;
+    }
+    
+    .music-controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 6px 12px;
+    }
+    
+    .music-info {
+        max-width: 70px;
+        font-size: 10px;
+    }
+    
+    .volume-control {
+        width: 50px;
+    }
+    
+    .reacciones-menu {
+        gap: 6px;
+        padding: 8px;
+    }
+    
+    .reacciones-menu button {
+        font-size: 1.3rem;
+        padding: 6px;
+    }
 }
+
+
+/* Contenedores de contadores */
+/* Contenedor vertical de cada campo */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+/* Contador abajo a la derecha con posicionamiento exacto */
+.counter {
+    position: absolute;
+    bottom: -18px;      /* baja ligeramente */
+    right: 10px;        /* separado del borde */
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Alineación correcta del botón según el textarea */
+.form-container {
+    display: flex;
+    align-items: flex-end;   /* alinea por el final de la columna */
+    gap: 20px;
+}
+
+/* Botón: sin margen raro, se alinea SOLO */
+.btn-foro {
+    height: fit-content;
+    margin-bottom: 2px; /* ajuste fino para centrar exacto */
+}
+
+
