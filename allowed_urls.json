@@ -1,6 +1,8 @@
 {
   "allowed_domains": [
-    "https://angulismotv.pages.dev/.*",
+    "https://angulismotv-dnh.pages.dev/.*",
+    "https://angulismotv-dnh.pages.dev/foro.*",
+    "https://angulismotv-dnh.pages.dev/agenda.*",
     "https://x.com/.*",
     "https://www.google.com/.*",
     "https://www.promiedos.com.ar/.*", 
