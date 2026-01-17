@@ -1022,7 +1022,7 @@
         "nombre": "AngulismoTV",
         "imagenUrl": "https://angulismotv.pages.dev/assets/logo2.png",
         "urls": [
-          "https://angulismotv.netlify.app"
+          "https://angulismotv-dnh.pages.dev"
         ]
       },
       {
@@ -1038,7 +1038,7 @@
         "nombre": "Television Libre",
         "imagenUrl": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAY1BMVEVHcEyB0uuB0uuB0uuB0uuB0uuB0uuB0uuB0uuB0uuB0uuC1O1zvtV5x94BRFMhansgaHkgX28AMj4xiJ4OYnZ+0etVk6WU2e7////n+PxTvNu34O0MtuYAm8am2Og0rtGP1+2QuyvqAAAAC3RSTlMAOYbI7/9k3yTSRqmugj4AAADhSURBVHgBdNEFEoMwEEDRjWyCu/v9T9ll02aQ6cP5OOAJqTSiVlLAk7HoWQNXQYg3YQBehC/RvcXetQbIEg9ZwDHk89IsL4oiL7OsSvncEIhBF8v61DRN5iIaivYam0u0AAIvsblGFCAvsblHCeoXqzJzql9UoNFpO1KW57xFR8M3kbKkc2nWEmTAqR8ees6gOY4Tm2e3HDlqUC4uy0q2bWUuKpDfuJ+2bWcuShD/7ykA7L9oAcBwHI+LkaMBElKkrYtzE0P/s2njou39z4YI8dZ4M/oMXwLDlzQJJ2q82QEAv7gfkNBsyZYAAAAASUVORK5CYII=",
         "urls": [
-          "https://tvlibre.cc/"
+          "https://tvlibre.org/"
         ]
       },
       {
@@ -1092,5 +1092,6 @@
     ]
   }
 ]
+
 
 
