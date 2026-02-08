@@ -3,6 +3,9 @@
     "https://angulismotv-dnh.pages.dev/.*",
     "https://angulismotv-dnh.pages.dev/foro.*",
     "https://angulismotv-dnh.pages.dev/agenda.*",
+    "https://angulismotv-dnh.pages.dev",
+    "https://angulismotv-dnh.pages.dev*",
+    "https://angulismotv-dnh.pages.dev/transmision*",
     "https://x.com/.*",
     "https://www.google.com/.*",
     "https://www.promiedos.com.ar/.*", 
@@ -29,6 +32,7 @@
   "external_domains": [
     "https://www.twitch.tv/.*",
     "https://cafecito.app/falsillo*",
-    "https://player.twitch.tv/.*"
+    "https://player.twitch.tv/.*",
+    "https://angulismotv-dnh.pages.dev/*"
   ]
 }
