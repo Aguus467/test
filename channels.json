@@ -1,7 +1,4 @@
-export default {
-  async fetch(request, env, ctx) {
-    const channels = {
-      channels: [
+channels: [
         // ==================== NOTICIAS ====================
         {
           name: "America TV",
@@ -2757,18 +2754,3 @@ export default {
         }
       ]
     };
-    
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    };
-    
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { headers });
-    }
-    
-    return new Response(JSON.stringify(channels), { headers });
-  }
-};
