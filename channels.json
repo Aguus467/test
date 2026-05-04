@@ -1,1 +1,2774 @@
-
+export default {
+  async fetch(request, env, ctx) {
+    const channels = {
+      channels: [
+        // ==================== NOTICIAS ====================
+        {
+          name: "America TV",
+          logo: "https://bestleague.world/img/america.webp",
+          streamUrl: "http://45.5.151.147:8000/play/a00c/index.m3u8",
+          streamType: "hls",
+          category: "noticias",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "TV Publica",
+          logo: "https://bestleague.world/img/tvpublica.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00h/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/tvpublica.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 3",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-11.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Telefe",
+          logo: "https://bestleague.world/img/telefe.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00g/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/telefe.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 3",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-10.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "El Trece",
+          logo: "https://bestleague.world/img/eltrece.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00f/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/eltrece.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "C5N",
+          logo: "https://bestleague.world/img/c5n.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a007/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/c5n.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TN",
+          logo: "https://bestleague.world/img/tn.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00b/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/tn.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Cronica TV",
+          logo: "https://bestleague.world/img/cronica.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a009/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/CronicaTv.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "A24",
+          logo: "https://bestleague.world/img/a24.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a006/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/a24.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "LN+",
+          logo: "https://bestleague.world/img/ln.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00a/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/lntv.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Canal 26",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CANAL26.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/c26.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "CNN Español",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CNN_ESPAÑOL.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/CNNesp.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Canal A",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CANAL_A.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-15.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "El Nueve",
+          logo: "https://bestleague.world/img/nueve.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-16.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://45.5.151.147:8000/play/a00e/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Nueve Litoral",
+          logo: "https://bestleague.world/img/nueve.webp",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-18.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/nuevelitoral.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Somos Santa Fe",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/SOMOS_STAFE.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-12.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Santa Fe Canal",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/RTS_STAFE.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-13.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Rural",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CANAL_RURAL.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/rural.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "DeportTV",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/DEPORTV.png",
+          category: "deportes",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/deportv.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "AR 12",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/AR12.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-21.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Rapido Y Furiosos: Reto Tokyo",
+          logo: "https://image.tmdb.org/t/p/w400/psOUuExCGCaPxZhmqtqIE6lVVr6.jpg",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "https://p3.vimeos.zip/hls2/03/00000/lfbbc12hjljj_,n,h,.urlset/master.m3u8?t=Edlya0HANam1075Jpn7XLN8eusowFc_a7iTUT81yA8Y&s=1777772189&e=43200&v=202938587&srv=s10&i=0.0&sp=0&r=e",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Volver Al Futuro 2",
+          logo: "https://image.tmdb.org/t/p/w400/c7vYpsBMKZ3AwhBlc7wwGGMPlRA.jpg",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "https://p3.vimeos.zip/hls2/03/00009/293w40w9oa7b_,n,h,.urlset/master.m3u8?t=LT8WYK0QqNA4G1lP4Hs7G1-vMVfhTFDJQJbQ7nGa6Vk&s=1777772286&e=43200&v=202942358&srv=s13&i=0.0&sp=0&fr=293w40w9oa7b&r=e",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "GarageTV",
+          logo: "https://bestleague.world/img/garagetv.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/garage.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-24.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Telemax",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TELEMAX.png",
+          category: "noticias",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/telemax.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TECtv",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TEC.png",
+          category: "educativos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/tectv.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Multivisión",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/MULTIVISION.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/Multivision.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Ciudad Magazine",
+          logo: "https://bestleague.world/img/ciudad.webp",
+          category: "musicales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/ciudadmagazine.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "CanalNet",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/NET_TV.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/CanalNet.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Encuentro",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/ENCUENTRO.png",
+          category: "educativos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-19.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Cine AR",
+          logo: "https://bestleague.world/img/cinear.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-20.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "RAI",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/RAI.png",
+          category: "internacionales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-22.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "RT",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/RT.png",
+          category: "internacionales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-98.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TVE",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TVE.png",
+          category: "internacionales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-23.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "El Gourmet",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EL_GOURMET.png",
+          category: "estilo-vida",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-25.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Lifetime",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/LIFESTIME.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/Lifetime.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Telemundo",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TELEMUNDO.png",
+          category: "internacionales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-26.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Las Estrellas",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/LAS_ESTRELLAS.png",
+          category: "internacionales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/lasestrellas.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "E!",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/E_ENTERTAINMENT.png",
+          category: "estilo-vida",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-14.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        
+        // ==================== DEPORTES ====================
+        {
+          name: "TIGO Sports",
+          logo: "",
+          streamUrl: "http://200.12.41.194:8000/play/a09o/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "ESPN Premium",
+          logo: "https://bestleague.world/img/espnpr.webp",
+          streamUrl: "http://45.5.151.147:8000/play/a00m/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "TNT Sports",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TNT_SPORTS_PREMIUM.png",
+          category: "deportes",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00r/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "https://tyg2mnl9.fubohd.com/tntsports/mono.m3u8?token=787fda1a9596315a07fb7a89732e96fca08259c9-21-1777769794-1777751794",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TyC Sports",
+          logo: "https://bestleague.world/img/tyc.webp",
+          category: "deportes",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-90.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://45.5.151.147:8000/play/a00s/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 3 (WebView)",
+              iframe: "https://angulismotv-dnh.pages.dev/mpdk/tyc-n-ext",
+              streamType: "iframe",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "ESPN 1",
+          logo: "https://bestleague.world/img/espn.webp",
+          category: "deportes",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00i/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://217.26.190.76:8888/play/a0ee/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "ESPN 2",
+          logo: "https://bestleague.world/img/espn2.webp",
+          streamUrl: "http://45.5.151.147:8000/play/a00j/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "ESPN 3",
+          logo: "https://bestleague.world/img/espn3.webp",
+          streamUrl: "http://45.5.151.147:8000/play/a00k/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "ESPN 4",
+          logo: "https://bestleague.world/img/espn4.webp",
+          streamUrl: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-95.playlist.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "ESPN 5",
+          logo: "https://bestleague.world/img/espn5.webp",
+          streamUrl: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-104_1080.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "ESPN 6",
+          logo: "https://bestleague.world/img/espn6.webp",
+          streamUrl: "https://anvtcax.fubohd.com/espn6/mono.m3u8?token=93fe923d9b60a44697d5c4703c5e11d3abef81ab-6d-1777491858-1777473858",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "ESPN 7",
+          logo: "https://bestleague.world/img/espn7.webp",
+          category: "deportes",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-106_720.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://217.26.190.76:8888/play/a0g2/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 3",
+              iframe: "https://dw5pdgvk.fubohd.com/espn7/mono.m3u8?token=aa54a1f3f26bf6452c5210953fdfc78ece4a7aa0-dc-1777436575-1777418575",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "DSports",
+          logo: "https://bestleague.world/img/dsports.webp",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://190.61.41.181:8000/play/a0r5/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://217.26.190.76:8888/play/a0co/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 3",
+              iframe: "https://rm8zcvk3.fubohd.com/dsports/mono.m3u8?token=36da971dc89827000d4c74cb248302c5efddcfb8-32-1777436439-1777418439",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "DSports 2",
+          logo: "https://bestleague.world/img/dsports2.webp",
+          streamUrl: "http://190.61.41.181:8000/play/a0r4/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "DSports+",
+          logo: "https://bestleague.world/img/dsportsplus.webp",
+          streamUrl: "http://190.61.41.181:8000/play/a0r3/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "Fox Sports",
+          logo: "https://bestleague.world/img/foxnew.png",
+          streamUrl: "http://45.5.151.147:8000/play/a00n/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "Fox Sports 2",
+          logo: "https://bestleague.world/img/foxnew2.png",
+          streamUrl: "http://45.5.151.147:8000/play/a00o/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "Fox Sports 3",
+          logo: "https://bestleague.world/img/foxnew3.png",
+          streamUrl: "http://45.5.151.147:8000/play/a00p/index.m3u8",
+          streamType: "hls",
+          category: "deportes",
+          show: true,
+          options: [],
+          sources: [],
+          headers: null,
+          drmKeyId: null,
+          drmKey: null
+        },
+        {
+          name: "Win Sports",
+          logo: "https://bestleague.world/img/win.webp",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://217.26.190.76:8888/play/a06a/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Win Sports+",
+          logo: "https://bestleague.world/img/winsports.webp",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "https://cgxheq.fubohd.com/winsportsplus/mono.m3u8?token=9bd76a7c1f17dfb1ab8a4160d134d5369322a5ff-e8-1777494976-1777476976",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        
+        // ==================== PELÍCULAS Y SERIES ====================
+        {
+          name: "HBO",
+          logo: "https://bestleague.world/img/hbo.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00z/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-102.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO PLUS",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HBO+.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-109.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO Family",
+          logo: "https://bestleague.world/img/HBOFamily.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-101.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO Signature",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HBO_SIGNATURE.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-107.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO XTREME",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HBO_XTREME.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-103.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO MUNDI",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HBO_MUNDI.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-110.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO POP",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HBO_POP.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-108.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "HBO 2",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HBO2.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-105.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "AMC",
+          logo: "https://bestleague.world/img/amc.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a01e/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-76.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "AXN",
+          logo: "https://bestleague.world/img/axn.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a01f/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-77.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Sony",
+          logo: "https://bestleague.world/img/sony.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a016/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-70.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Space",
+          logo: "https://bestleague.world/img/space.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a017/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-69.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TNT",
+          logo: "https://bestleague.world/img/tnt.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a019/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-66.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TNT Series",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TNT_SERIES.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-64.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TNT Novelas",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TNT_NOVELAS.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-65.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Star Channel",
+          logo: "https://bestleague.world/img/star.webp",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a018/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-68.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Studio Universal",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/STUDIO_UNIVERSAL.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-67.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Universal Channel",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/UNsIVERSAL_TV.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-75.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Cinemax",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CINEMAX.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-61.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Cinecanal",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CINECANAL.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-62.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Film & Arts",
+          logo: "https://bestleague.world/img/FilmyArts.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-FilmyArt.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Paramount",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/PARAMOUNT.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-72.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Warner Channel",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/WARNER.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-73.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Volver",
+          logo: "https://bestleague.world/img/VOLVER.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-74.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "FX",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/FX.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-78.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TCM",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TCM.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-79.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Bravo",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/BRAVO.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-80.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "A&E",
+          logo: "https://bestleague.world/img/AyE.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-71.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Comedy Central",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/COMEDY%20CENTRAL.png",
+          category: "peliculas",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-60.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "TLC",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/TLC.png",
+          category: "estilo-vida",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/tlc.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        
+        // ==================== MUSICALES ====================
+        {
+          name: "MTV",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/MTV.png",
+          category: "musicales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-50.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Quiero Música",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/QUIERO_MUSICA.png",
+          category: "musicales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-51.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Stingray Concerts",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/STINGRAY_CONCERTS.png",
+          category: "musicales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-111.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Metro",
+          logo: "https://bestleague.world/img/metro.png",
+          category: "musicales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-53.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "KZO",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/KZO.png",
+          category: "musicales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-52.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        
+        // ==================== INFANTILES ====================
+        {
+          name: "Disney Channel",
+          logo: "https://bestleague.world/img/disney.webp",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00u/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-32.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Cartoon Network",
+          logo: "https://bestleague.world/img/cn.webp",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-31.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://45.5.151.147:8000/play/a005/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Nickelodeon",
+          logo: "https://bestleague.world/img/nick.png",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00x/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-33.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Paka Paka",
+          logo: "https://bestleague.world/img/pakapaka.png",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://138.59.227.20:8000/play/a05t/index.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-36.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Discovery Kids",
+          logo: "https://bestleague.world/img/diskids.webp",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://45.5.151.147:8000/play/a00t/index.m3u",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            },
+            {
+              name: "Reproductor 2",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-34.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Disney Jr",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/DISNEY_JR.png",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-35.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Cartoonito",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/CARTOONITO.png",
+          category: "infantiles",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-30.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        
+        // ==================== DOCUMENTALES ====================
+        {
+          name: "History",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HISTORY.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-40.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "History 2",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/HISTORY_2.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-41.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Discovery ID",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/DISCOVERY_ID.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-42.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "H&H",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/H&H.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-43.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Discovery",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/DISCOVERY.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-44.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Discovery Turbo",
+          logo: "https://bestleague.world/img/DiscoveryTurbo.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-99.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Animal Planet",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/ANIMAL_PLANET.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-45.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "National Geographic",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/NATGEO.png",
+          category: "documentales",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-46.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        
+        // ==================== EVENTOS ====================
+        {
+          name: "Evento 1",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS1.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-01.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 2",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS2.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-02.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 3",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS3.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-03.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 4",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS4.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-04.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 5",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS5.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-05.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 6",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS6.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-06.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 7",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS7.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-e07.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 8",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS8.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-e08.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 9",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS9.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-e09.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 10",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS10.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-e10.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 11",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS11.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-e11.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        },
+        {
+          name: "Evento 12",
+          logo: "https://angulismotv-dnh.pages.dev/assets/logos/app/EVENTOS12.png",
+          category: "eventos",
+          show: true,
+          streamUrl: null,
+          streamType: "hls",
+          headers: null,
+          drmKeyId: null,
+          drmKey: null,
+          sources: [],
+          options: [
+            {
+              name: "Reproductor 1",
+              iframe: "http://201.217.246.42:44310/Live/e35048d37817ddfa725d9d32ceb8c7f3/local-e12.playlist.m3u8",
+              streamType: "hls",
+              headers: null,
+              drmKeyId: null,
+              drmKey: null
+            }
+          ]
+        }
+      ]
+    };
+    
+    const headers = {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    };
+    
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { headers });
+    }
+    
+    return new Response(JSON.stringify(channels), { headers });
+  }
+};
