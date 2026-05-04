@@ -1,7 +1,7 @@
 {
   "versionCode": 4,
   "versionName": "1.3",
-  "apkUrl": "https://download2338.mediafire.com/jfqq8bq7z4d28q2/AngulismoTV+-+BETA.apk",
-  "releaseNotes": "Optimizacion en la experiencia general del usuario.",
+  "apkUrl": "https://download2445.mediafire.com/dxb4cm1adkqgEvkfvpYPOR9w8e-KILO61r8CHzWD6PYIics9FFRzTEdf6XhB-MDdMukn77Nv46Wo5XNmvbLYm1mfk6hNS_HcVdIWWBBTK3UgE1geoKM2MxsoEfsnM7gVXv1Sm4FzBYLMTEldPSxN5_BPCR8LqptmFPuZIeFitWNliog/jfqq8bq7z4d28q2/AngulismoTV+-+BETA.apk",
+  "releaseNotes": "Fallback en caso de que falle el servidor principal. Mejoras generales en el reproductor.",
   "forceUpdate": false
 }
