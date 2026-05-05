@@ -925,6 +925,7 @@
     {
       "name": "ESPN Premium",
       "logo": "https://bestleague.world/img/espnpr.webp",
+      "streamType": "hls",
       "category": "deportes",
       "show": true,
       "options": [
@@ -939,7 +940,7 @@
         {
           "name": "Reproductor 2",
           "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espnp-n-ext",
-          "streamType": "iframe",
+          "streamType": "hls",
           "headers": null,
           "drmKeyId": null,
           "drmKey": null
