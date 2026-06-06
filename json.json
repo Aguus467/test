@@ -1852,7 +1852,7 @@
             "iframe": "https://cdn.cvattv.com.ar/live/c7eds/Fox_Sports_Premiun_HD/sa_dash_full_e_7CF9BB041AD89713AD8CF4CF/Fox_Sports_Premiun_HD.mpd"
           }
         ],
-        "show": false,
+        "show": true,
         "featured": false
       },
       {
