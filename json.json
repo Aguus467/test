@@ -1,5 +1,27 @@
 {
-  "events": [],
+  "events": [
+    {
+      "id": 1,
+      "evento": "sadadas",
+      "fecha": "2026-06-06 15:55:00",
+      "competencia": "libertadores",
+      "canales": [
+        {
+          "name": "Copa Sudamericana",
+          "options": [
+            {
+              "name": "Pack ESPN + DIRECTV (SIN EXTENSION)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana-n-ext"
+            },
+            {
+              "name": "Pack ESPN + DIRECTV (EXTENSION PC)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "channels": {
     "channels": [
       {
