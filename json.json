@@ -2086,18 +2086,6 @@
         }
       ],
       "show": true
-    },
-    {
-      "name": "TEST",
-      "logo": "",
-      "options": [
-        {
-          "name": "Opción 1",
-          "iframe": "HTTPS://GOOGLE.COM"
-        }
-      ],
-      "show": true,
-      "featured": false
     }
   ]
 }
