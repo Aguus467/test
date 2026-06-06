@@ -2086,6 +2086,18 @@
         }
       ],
       "show": true
+    },
+    {
+      "name": "TEST",
+      "logo": "",
+      "options": [
+        {
+          "name": "Opción 1",
+          "iframe": "sdaads"
+        }
+      ],
+      "show": true,
+      "featured": false
     }
   ]
 }
