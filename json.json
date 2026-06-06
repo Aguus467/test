@@ -3,22 +3,6 @@
   "channels": {
     "channels": [
       {
-        "name": "Copa Libertadores",
-        "logo": "https://cdn.conmebol.com/wp-content/uploads/2015/05/logo_bridgestone_libertadores_0.jpg",
-        "options": [
-          {
-            "name": "Pack Libertadores",
-            "iframe": "https://angulismotv-dnh.pages.dev/mpdk/libertadores-n-ext"
-          },
-          {
-            "name": "Pack Libertadores (EXTENSION PC)",
-            "iframe": "https://angulismotv-dnh.pages.dev/mpdk/libertadores"
-          }
-        ],
-        "show": true,
-        "featured": true
-      },
-      {
         "name": "Champions League",
         "logo": "https://th.bing.com/th/id/OIP.3R_r3xVNkhdUgSkMYNDw5QHaHa?w=159&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
         "options": [
@@ -49,6 +33,22 @@
           {
             "name": "Multicam - ESPN (EXTENSION PC 2)",
             "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam"
+          }
+        ],
+        "show": true,
+        "featured": true
+      },
+      {
+        "name": "Copa Libertadores",
+        "logo": "https://cdn.conmebol.com/wp-content/uploads/2015/05/logo_bridgestone_libertadores_0.jpg",
+        "options": [
+          {
+            "name": "Pack Libertadores",
+            "iframe": "https://angulismotv-dnh.pages.dev/mpdk/libertadores-n-ext"
+          },
+          {
+            "name": "Pack Libertadores (EXTENSION PC)",
+            "iframe": "https://angulismotv-dnh.pages.dev/mpdk/libertadores"
           }
         ],
         "show": true,
