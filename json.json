@@ -1,5 +1,60 @@
 {
-  "events": [],
+  "events": [
+    {
+      "id": 1,
+      "evento": "sadasd",
+      "fecha": "2026-06-06 16:41:00",
+      "competencia": "premier",
+      "canales": [
+        {
+          "name": "Champions League",
+          "options": [
+            {
+              "name": "ESPN",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-espn-n-ext.html"
+            },
+            {
+              "name": "ESPN (EXTENSION PC)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-espn.html"
+            },
+            {
+              "name": "Fox Sports",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-fox-n-ext.html"
+            },
+            {
+              "name": "Fox Sports (EXTENSION PC)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-fox.html"
+            },
+            {
+              "name": "Multicam - ESPN",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam-n-ext"
+            },
+            {
+              "name": "Multicam - ESPN (EXTENSION PC)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam-alt"
+            },
+            {
+              "name": "Multicam - ESPN (EXTENSION PC 2)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam"
+            }
+          ]
+        },
+        {
+          "name": "Copa Sudamericana",
+          "options": [
+            {
+              "name": "Pack ESPN + DIRECTV (SIN EXTENSION)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana-n-ext"
+            },
+            {
+              "name": "Pack ESPN + DIRECTV (EXTENSION PC)",
+              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "channels": {
     "channels": [
       {
