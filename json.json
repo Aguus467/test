@@ -1,13 +1,5 @@
 {
-  "events": [
-    {
-      "id": 1,
-      "evento": "asdas",
-      "fecha": "2026-06-06 16:35:00",
-      "competencia": "laliga",
-      "canales": []
-    }
-  ],
+  "events": [],
   "channels": {
     "channels": [
       {
