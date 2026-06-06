@@ -1844,7 +1844,7 @@
         "show": false
       },
       {
-        "name": "AATEST",
+        "name": "test",
         "logo": "https://bestleague.world/img/telemundo.png",
         "options": [
           {
@@ -1852,8 +1852,7 @@
             "iframe": "https://cdn.cvattv.com.ar/live/c7eds/Fox_Sports_Premiun_HD/sa_dash_full_e_7CF9BB041AD89713AD8CF4CF/Fox_Sports_Premiun_HD.mpd"
           }
         ],
-        "show": true,
-        "featured": false
+        "show": false
       },
       {
         "name": "test espn",
@@ -2099,18 +2098,6 @@
           }
         ],
         "show": true
-      },
-      {
-        "name": "testsda",
-        "logo": "",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "ss"
-          }
-        ],
-        "show": true,
-        "featured": false
       }
     ]
   }
