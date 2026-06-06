@@ -1,13 +1,5 @@
 {
-  "events": [
-    {
-      "id": 1,
-      "evento": "sdada",
-      "fecha": "2026-06-06 16:47:00",
-      "competencia": "sdadssad",
-      "canales": []
-    }
-  ],
+  "events": [],
   "channels": {
     "channels": [
       {
@@ -1852,7 +1844,7 @@
         "show": false
       },
       {
-        "name": "test",
+        "name": "AATEST",
         "logo": "https://bestleague.world/img/telemundo.png",
         "options": [
           {
@@ -1860,7 +1852,8 @@
             "iframe": "https://cdn.cvattv.com.ar/live/c7eds/Fox_Sports_Premiun_HD/sa_dash_full_e_7CF9BB041AD89713AD8CF4CF/Fox_Sports_Premiun_HD.mpd"
           }
         ],
-        "show": false
+        "show": false,
+        "featured": false
       },
       {
         "name": "test espn",
@@ -2106,6 +2099,18 @@
           }
         ],
         "show": true
+      },
+      {
+        "name": "testsda",
+        "logo": "",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "ss"
+          }
+        ],
+        "show": true,
+        "featured": false
       }
     ]
   }
