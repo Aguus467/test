@@ -2,8 +2,8 @@
   "events": [
     {
       "id": 1,
-      "evento": "sadasd",
-      "fecha": "2026-06-06 16:41:00",
+      "evento": "sda",
+      "fecha": "2026-06-06 16:44:00",
       "competencia": "premier",
       "canales": [
         {
@@ -36,19 +36,6 @@
             {
               "name": "Multicam - ESPN (EXTENSION PC 2)",
               "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam"
-            }
-          ]
-        },
-        {
-          "name": "Copa Sudamericana",
-          "options": [
-            {
-              "name": "Pack ESPN + DIRECTV (SIN EXTENSION)",
-              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana-n-ext"
-            },
-            {
-              "name": "Pack ESPN + DIRECTV (EXTENSION PC)",
-              "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana"
             }
           ]
         }
