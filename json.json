@@ -3,10 +3,10 @@
   "channels": [
     {
       "name": "Mundial 2026",
-      "logo": "https://images.seeklogo.com/logo-png/39/1/fifa-united-2026-logo-png_seeklogo-398253.png",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
       "options": [
         {
-          "name": "",
+          "name": "Opcion 1",
           "iframe": "chrome://dino"
         }
       ],
