@@ -2,6 +2,18 @@
   "events": [],
   "channels": [
     {
+      "name": "Mundial 2026",
+      "logo": "https://images.seeklogo.com/logo-png/39/1/fifa-united-2026-logo-png_seeklogo-398253.png",
+      "options": [
+        {
+          "name": "",
+          "iframe": "chrome://dino"
+        }
+      ],
+      "show": true,
+      "featured": true
+    },
+    {
       "name": "Champions League",
       "logo": "https://th.bing.com/th/id/OIP.3R_r3xVNkhdUgSkMYNDw5QHaHa?w=159&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
       "options": [
@@ -776,18 +788,6 @@
         {
           "name": "ESPN 1 + ESPN 2 (3 EXTENSION PC)",
           "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam"
-        }
-      ],
-      "show": true,
-      "featured": true
-    },
-    {
-      "name": "Mundial 2026",
-      "logo": "https://images.seeklogo.com/logo-png/39/1/fifa-united-2026-logo-png_seeklogo-398253.png",
-      "options": [
-        {
-          "name": "",
-          "iframe": "chrome://dino"
         }
       ],
       "show": true,
