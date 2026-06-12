@@ -87,7 +87,7 @@
     },
     {
       "name": "Disney+",
-      "logo": "https://images.infutbol.site/tvnetworks/kkje",
+      "logo": "https://images.seeklogo.com/logo-png/39/1/disney-logo-png_seeklogo-392241.png",
       "options": [
         {
           "name": "Disney 1 - Opción 1",
@@ -359,7 +359,7 @@
     },
     {
       "name": "ESPN 1",
-      "logo": "https://images.infutbol.site/tvnetworks/flfm",
+      "logo": "https://images.seeklogo.com/logo-png/28/1/espn-logo-png_seeklogo-283139.png",
       "options": [
         {
           "name": "Opción 1",
@@ -399,7 +399,7 @@
     },
     {
       "name": "ESPN 2",
-      "logo": "https://images.infutbol.site/tvnetworks/gime",
+      "logo": "https://images.seeklogo.com/logo-png/4/1/espn-2-logo-png_seeklogo-49202.png",
       "options": [
         {
           "name": "Opción 1",
@@ -431,7 +431,7 @@
     },
     {
       "name": "ESPN 3",
-      "logo": "https://images.infutbol.site/tvnetworks/fkee",
+      "logo": "https://espnpressroom.com/us/files/2011/10/ESPN3_Logo_Resize2.jpg",
       "options": [
         {
           "name": "Opción 1",
@@ -455,7 +455,7 @@
     },
     {
       "name": "ESPN 4",
-      "logo": "https://images.infutbol.site/tvnetworks/kegk",
+      "logo": "https://www.cotelcam.com.ar/wp-content/uploads/2025/08/espn.png",
       "options": [
         {
           "name": "Opción 1",
@@ -1129,29 +1129,6 @@
         }
       ],
       "show": false
-    },
-    {
-      "name": "ESPN+",
-      "logo": "https://images.seeklogo.com/logo-png/36/2/espn-logo-png_seeklogo-368956.png",
-      "options": [
-        {
-          "name": "Opción 1",
-          "iframe": "https://streamtpday1.xyz/global1.php?stream=espnplus1"
-        },
-        {
-          "name": "Opción 2",
-          "iframe": "https://streamtpday1.xyz/global1.php?stream=espnplus2"
-        },
-        {
-          "name": "Opción 3",
-          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney5"
-        },
-        {
-          "name": "Opción 4",
-          "iframe": "https://streamtpday1.xyz/global1.php?stream=universo_usa"
-        }
-      ],
-      "show": true
     },
     {
       "name": "Europa League",
