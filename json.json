@@ -1,5 +1,13 @@
 {
-  "events": [],
+  "events": [
+    {
+      "id": 1,
+      "evento": "test, si no aparece en agenda verificar en canales o chat de twitch",
+      "fecha": "2026-06-12 16:05:00",
+      "competencia": "aviso",
+      "canales": []
+    }
+  ],
   "channels": [
     {
       "name": "Mundial 2026",
