@@ -5,7 +5,71 @@
       "evento": "test, si no aparece en agenda verificar en canales o chat de twitch",
       "fecha": "2026-06-12 16:05:00",
       "competencia": "aviso",
-      "canales": []
+      "canales": [
+        {
+          "name": "DSports 2",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global1.php?stream=dsports2"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://la18hd.com/vivo/canal.php?stream=dsports2"
+            }
+          ]
+        },
+        {
+          "name": "DSports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://embed.ksdjugfsddeports.com/embed/directvsports.html"
+            },
+            {
+              "name": "Opción 3",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+            },
+            {
+              "name": "Opción 4",
+              "iframe": "https://bolaloca.my/player/2/94"
+            },
+            {
+              "name": "Opción 5",
+              "iframe": "https://tucanaldeportivo.org/directvsports.php"
+            },
+            {
+              "name": "Opción 6",
+              "iframe": "https://streamtpday1.xyz/global1.php?stream=dsports"
+            },
+            {
+              "name": "Opción 7",
+              "iframe": "https://streamhdx.com/hls.php?stream=dsports"
+            }
+          ]
+        },
+        {
+          "name": "DSports Plus",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global1.php?stream=dsportsplus"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://bolaloca.my/player/2/96"
+            },
+            {
+              "name": "Opción 3",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=dsportsplus"
+            }
+          ]
+        }
+      ]
     }
   ],
   "channels": [
