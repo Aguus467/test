@@ -1,171 +1,49 @@
 {
-  "events": [
-    {
-      "id": 5,
-      "evento": "Copa Libertadores: Lanús vs LDU Quito",
-      "fecha": "2026-04-28 19:00:00",
-      "competencia": "Fútbol",
-      "canales": [
-        {
-          "name": "Streamtpnew",
-          "options": [
-            {
-              "name": "Opción 1",
-              "iframe": "https://streamtpnew.com/global1.php?stream=disney2"
-            },
-            {
-              "name": "Opción 1",
-              "iframe": "https://streamtpnew.com/global1.php?stream=fanatiz2"
-            },
-            {
-              "name": "Opción 1",
-              "iframe": "https://streamtpnew.com/global1.php?stream=espn2"
-            }
-          ]
-        },
-        {
-          "name": "La14hd",
-          "options": [
-            {
-              "name": "Opción 1",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2"
-            },
-            {
-              "name": "Opción 1",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=disney2"
-            },
-            {
-              "name": "Opción 1",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports"
-            },
-            {
-              "name": "Opción 1",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2mx"
-            },
-            {
-              "name": "Opción 1",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=beinsportes"
-            }
-          ]
-        }
-      ],
-      "sourceType": "manual",
-      "sourceName": "📝 Manual",
-      "editable": true
-    },
-    {
-      "id": 6,
-      "evento": "UEFA Champions League: Atlético Madrid vs Arsenal",
-      "fecha": "2026-04-29 16:00:00",
-      "competencia": "Fútbol",
-      "canales": [
-        {
-          "name": "ESPN 1",
-          "options": [
-            {
-              "name": "Opción 1",
-              "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTl9VWQ==&lang=1"
-            },
-            {
-              "name": "Opción 2",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=espn"
-            },
-            {
-              "name": "Opción 3",
-              "iframe": "https://streamtpcloud.com/global1.php?stream=espn"
-            },
-            {
-              "name": "Opción 4",
-              "iframe": "https://bolaloca.my/player/2/87"
-            },
-            {
-              "name": "Opción 5 (EXTENSION PC)",
-              "iframe": "https://nebunexa.life/tok.html?get=RVNQTl9VWQ=="
-            },
-            {
-              "name": "Opción 6 (EXTENSION PC)",
-              "iframe": "https://can05-2025vaariscandeteexteeop1.github.io/cantodsgiaaareextee.html?id=eeespee1-giaaaa"
-            },
-            {
-              "name": "Opción 7 (EXTENSION PC)",
-              "iframe": "https://www.nebunexa.life/tok.html?get=RVNQTjJIRA&start=true"
-            },
-            {
-              "name": "Opción 8 (EXTENSION PC)",
-              "iframe": "https://angulismotv-dnh.pages.dev/nebunexa/espn1"
-            }
-          ]
-        }
-      ],
-      "sourceType": "manual",
-      "sourceName": "📝 Manual",
-      "editable": true
-    },
-    {
-      "id": 7,
-      "evento": "Copa Libertadores: Estudiantes LP vs Flamengo",
-      "fecha": "2026-04-29 21:30:00",
-      "competencia": "Fútbol",
-      "canales": [
-        {
-          "name": "ESPN 7",
-          "options": [
-            {
-              "name": "Opción 1",
-              "iframe": "https://pcn.nebunexa.life/cvatt.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1"
-            },
-            {
-              "name": "Opción 2",
-              "iframe": "https://streamtpcloud.com/global1.php?stream=espn7"
-            },
-            {
-              "name": "Opción 3",
-              "iframe": "https://la14hd.com/vivo/canales.php?stream=espn7"
-            },
-            {
-              "name": "Opción 4 (EXTENSION PC)",
-              "iframe": "https://dots.bestleague.world/tok.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1"
-            }
-          ]
-        }
-      ],
-      "sourceType": "manual",
-      "sourceName": "📝 Manual",
-      "editable": true
-    }
-  ],
+  "events": [],
   "channels": [
+    {
+      "name": "Mundial 2026",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
+      "options": [
+        {
+          "name": "Opcion 1",
+          "iframe": "chrome://dino"
+        }
+      ],
+      "show": true,
+      "featured": true
+    },
     {
       "name": "Champions League",
       "logo": "https://th.bing.com/th/id/OIP.3R_r3xVNkhdUgSkMYNDw5QHaHa?w=159&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
       "options": [
         {
           "name": "ESPN",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-espn-n-ext.html"
+          "iframe": "https://angulismotv.pages.dev/mpdk/champions-espn-n-ext.html"
         },
         {
           "name": "ESPN (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-espn.html"
+          "iframe": "https://angulismotv.pages.dev/mpdk/champions-espn.html"
         },
         {
           "name": "Fox Sports",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-fox-n-ext.html"
+          "iframe": "https://angulismotv.pages.dev/mpdk/champions-fox-n-ext.html"
         },
         {
           "name": "Fox Sports (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/champions-fox.html"
+          "iframe": "https://angulismotv.pages.dev/mpdk/champions-fox.html"
         },
         {
           "name": "Multicam - ESPN",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/multicam-n-ext"
         },
         {
           "name": "Multicam - ESPN (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam-alt"
+          "iframe": "https://angulismotv.pages.dev/mpdk/multicam-alt"
         },
         {
           "name": "Multicam - ESPN (EXTENSION PC 2)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam"
+          "iframe": "https://angulismotv.pages.dev/mpdk/multicam"
         }
       ],
       "show": true,
@@ -177,11 +55,11 @@
       "options": [
         {
           "name": "Pack Libertadores",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/libertadores-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/libertadores-n-ext"
         },
         {
           "name": "Pack Libertadores (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/libertadores"
+          "iframe": "https://angulismotv.pages.dev/mpdk/libertadores"
         }
       ],
       "show": true,
@@ -193,11 +71,11 @@
       "options": [
         {
           "name": "Pack ESPN + DIRECTV (SIN EXTENSION)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/sudamericana-n-ext"
         },
         {
           "name": "Pack ESPN + DIRECTV (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/sudamericana"
+          "iframe": "https://angulismotv.pages.dev/mpdk/sudamericana"
         }
       ],
       "show": true,
@@ -209,171 +87,171 @@
       "options": [
         {
           "name": "Disney 1 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney1"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney1"
         },
         {
           "name": "Disney 1 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney1"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney1"
         },
         {
           "name": "Disney 2 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney2"
         },
         {
           "name": "Disney 2 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney2"
         },
         {
           "name": "Disney 3 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney3"
         },
         {
           "name": "Disney 3 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney3"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney3"
         },
         {
           "name": "Disney 4 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney4"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney4"
         },
         {
           "name": "Disney 4 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney4"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney4"
         },
         {
           "name": "Disney 5 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney5"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney5"
         },
         {
           "name": "Disney 5 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney5"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney5"
         },
         {
           "name": "Disney 6 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney6"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney6"
         },
         {
           "name": "Disney 6 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney6"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney6"
         },
         {
           "name": "Disney 7 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney7"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney7"
         },
         {
           "name": "Disney 7 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney7"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney7"
         },
         {
           "name": "Disney 8 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney8"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney8"
         },
         {
           "name": "Disney 8 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney8"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney8"
         },
         {
           "name": "Disney 9 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney9"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney9"
         },
         {
           "name": "Disney 9 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney9"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney9"
         },
         {
           "name": "Disney 10 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney10"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney10"
         },
         {
           "name": "Disney 10 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney10"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney10"
         },
         {
           "name": "Disney 11 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney11"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney11"
         },
         {
           "name": "Disney 11 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney11"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney11"
         },
         {
           "name": "Disney 12 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney12"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney12"
         },
         {
           "name": "Disney 12 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney12"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney12"
         },
         {
           "name": "Disney 13 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney13"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney13"
         },
         {
           "name": "Disney 13 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney13"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney13"
         },
         {
           "name": "Disney 14 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney14"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney14"
         },
         {
           "name": "Disney 14 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney14"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney14"
         },
         {
           "name": "Disney 15 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney15"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney15"
         },
         {
           "name": "Disney 15 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney15"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney15"
         },
         {
           "name": "Disney 16 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney16"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney16"
         },
         {
           "name": "Disney 16 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney16"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney16"
         },
         {
           "name": "Disney 17 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney17"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney17"
         },
         {
           "name": "Disney 17 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney17"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney17"
         },
         {
           "name": "Disney 18 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney18"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney18"
         },
         {
           "name": "Disney 18 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney18"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney18"
         },
         {
           "name": "Disney 19 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney19"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney19"
         },
         {
           "name": "Disney 19 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney19"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney19"
         },
         {
           "name": "Disney 20 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney20"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney20"
         },
         {
           "name": "Disney 20 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney20"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney20"
         },
         {
           "name": "Disney 21 - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney21"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney21"
         },
         {
           "name": "Disney 21 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=disney21"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=disney21"
         },
         {
           "name": "Disney+ (extra)",
@@ -393,30 +271,26 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+          "iframe": "https://embed.ksdjugfsddeports.com/embed2/directvsports.html"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://embed.ksdjugfsddeports.com/embed/directvsports.html"
-        },
-        {
-          "name": "Opción 3",
           "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
         },
         {
-          "name": "Opción 4",
+          "name": "Opción 3",
           "iframe": "https://bolaloca.my/player/2/94"
         },
         {
-          "name": "Opción 5",
+          "name": "Opción 4",
           "iframe": "https://tucanaldeportivo.org/directvsports.php"
         },
         {
-          "name": "Opción 6",
-          "iframe": "https://streamtpday1.xyz/global1.php?stream=dsports"
+          "name": "Opción 5",
+          "iframe": "https://streamtpnew.com/global1.php?stream=dsports"
         },
         {
-          "name": "Opción 7",
+          "name": "Opción 6",
           "iframe": "https://streamhdx.com/hls.php?stream=dsports"
         }
       ],
@@ -429,11 +303,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=dsports2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=dsports2"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la14hd.com/vivo/canal.php?stream=dsports2"
+          "iframe": "https://la18hd.com/vivo/canal.php?stream=dsports2"
         }
       ],
       "show": true,
@@ -445,7 +319,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=dsportsplus"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=dsportsplus"
         },
         {
           "name": "Opción 2",
@@ -453,7 +327,7 @@
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=dsportsplus"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=dsportsplus"
         }
       ],
       "show": true,
@@ -481,15 +355,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTl9VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTl9VWQ=="
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn"
         },
         {
           "name": "Opción 4",
@@ -497,7 +371,7 @@
         },
         {
           "name": "Opción 5 (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=RVNQTl9VWQ=="
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTl9VWQ=="
         },
         {
           "name": "Opción 6 (EXTENSION PC)",
@@ -505,11 +379,11 @@
         },
         {
           "name": "Opción 7 (EXTENSION PC)",
-          "iframe": "https://www.nebunexa.life/tok.html?get=RVNQTjJIRA&start=true"
+          "iframe": "https://www.bestleague.top/tok.html?get=RVNQTjJIRA&start=true"
         },
         {
           "name": "Opción 8 SIN DELAY (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/nebunexa/espn1"
+          "iframe": "https://angulismotv.pages.dev/nebunexa/espn1"
         }
       ],
       "show": true,
@@ -521,27 +395,27 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTjJfQXJn&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJfQXJn"
         },
         {
           "name": "Opción 2 (SIN EXT)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espn2"
+          "iframe": "https://angulismotv.pages.dev/mpdk/espn2"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn2"
         },
         {
           "name": "Opción 4",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn2"
         },
         {
           "name": "Opción 5 (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espn2-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/espn2-ext"
         },
         {
           "name": "Opción 6 (EXTENSION PC)",
-          "iframe": "https://dots.bestleague.world/tok.html?get=RVNQTjJfQXJn"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJfQXJn"
         }
       ],
       "show": true,
@@ -553,19 +427,19 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTjM=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjM="
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn3"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn3"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn3"
         },
         {
           "name": "Opción 4 (EXTENSION PC)",
-          "iframe": "https://dots.bestleague.world/tok.html?get=RVNQTjM"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjM"
         }
       ],
       "show": true,
@@ -577,19 +451,19 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTkhE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTkhE"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn4"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn4"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn4"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn4"
         },
         {
           "name": "Opción 4 (EXTENSION PC)",
-          "iframe": "https://dots.bestleague.world/tok.html?get=RVNQTkhE"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTkhE"
         }
       ],
       "show": true,
@@ -601,15 +475,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTjQ=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjQ="
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn5"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn5"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn5"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn5"
         },
         {
           "name": "Opción 4",
@@ -617,7 +491,7 @@
         },
         {
           "name": "Opción 5 (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=RVNQTjQ="
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjQ="
         }
       ],
       "show": true,
@@ -629,19 +503,19 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=Rm94U3BvcnRzM19VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzM19VWQ=="
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn6"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn6"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn6"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn6"
         },
         {
           "name": "Opción 4 (EXTENSION PC)",
-          "iframe": "https://dots.bestleague.world/tok.html?get=Rm94U3BvcnRzM19VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzM19VWQ=="
         }
       ],
       "show": true,
@@ -653,19 +527,19 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzMl9VWQ=="
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn7"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn7"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn7"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn7"
         },
         {
           "name": "Opción 4 (EXTENSION PC)",
-          "iframe": "https://dots.bestleague.world/tok.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzMl9VWQ=="
         }
       ],
       "show": true,
@@ -677,7 +551,7 @@
       "options": [
         {
           "name": "(1)",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
         },
         {
           "name": "(2)",
@@ -685,15 +559,15 @@
         },
         {
           "name": "(3)",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espnpremium"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espnpremium"
         },
         {
           "name": "(4 HD - PC/CEL)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espn-premium"
+          "iframe": "https://angulismotv.pages.dev/mpdk/espn-premium"
         },
         {
           "name": "(5 PC 60FPS/HD)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espnp-60fps-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/espnp-60fps-n-ext"
         },
         {
           "name": "(6)",
@@ -709,15 +583,15 @@
         },
         {
           "name": "(9 EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espnp-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/espnp-ext"
         },
         {
           "name": "(10 EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94X1Nwb3J0c19QcmVtaXVuX0hE"
         },
         {
           "name": "(11 EXTENSION PC 60 FPS/HD)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/espnp-60fps"
+          "iframe": "https://angulismotv.pages.dev/mpdk/espnp-60fps"
         },
         {
           "name": "(12 EXTENSION PC)",
@@ -737,7 +611,7 @@
       "options": [
         {
           "name": "FOX Sports - Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=Rm94U3BvcnRz&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRz"
         },
         {
           "name": "FOX Sports - Opción 2",
@@ -745,7 +619,7 @@
         },
         {
           "name": "FOX Sports - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports"
         },
         {
           "name": "FOX Sports - Opción 4",
@@ -773,11 +647,11 @@
         },
         {
           "name": "ESPN 5 - Opcion 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn5"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn5"
         },
         {
           "name": "ESPN 5 - Opcion 4 (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=RVNQTjQ="
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjQ="
         },
         {
           "name": "ESPN 5 - Opcion 5 (EXTENSION PC)",
@@ -905,27 +779,15 @@
       "options": [
         {
           "name": "ESPN 1 + ESPN 2",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/multicam-n-ext"
         },
         {
           "name": "ESPN 1 + ESPN 2 (2 EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam-alt"
+          "iframe": "https://angulismotv.pages.dev/mpdk/multicam-alt"
         },
         {
           "name": "ESPN 1 + ESPN 2 (3 EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/multicam"
-        }
-      ],
-      "show": true,
-      "featured": true
-    },
-    {
-      "name": "Mundial 2026",
-      "logo": "https://images.seeklogo.com/logo-png/39/1/fifa-united-2026-logo-png_seeklogo-398253.png",
-      "options": [
-        {
-          "name": "",
-          "iframe": "chrome://dino"
+          "iframe": "https://angulismotv.pages.dev/mpdk/multicam"
         }
       ],
       "show": true,
@@ -937,15 +799,15 @@
       "options": [
         {
           "name": "Tututurutu Max Verstappen",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney16"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney16"
         },
         {
           "name": "Franco Colapinto",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney17"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney17"
         },
         {
           "name": "Onboard",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney18"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney18"
         }
       ],
       "show": true,
@@ -957,15 +819,15 @@
       "options": [
         {
           "name": "Pack Futbol (HD)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/pack-futbol-proxy"
+          "iframe": "https://angulismotv.pages.dev/mpdk/pack-futbol-proxy"
         },
         {
           "name": "Pack Futbol (HD) (2)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/pack-futbol"
+          "iframe": "https://angulismotv.pages.dev/mpdk/pack-futbol"
         },
         {
           "name": "Pack Futbol (EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/pack-futbol-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/pack-futbol-ext"
         }
       ],
       "show": true,
@@ -977,15 +839,15 @@
       "options": [
         {
           "name": "ESPN 1 - (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTjJIRA&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJIRA"
         },
         {
           "name": "ESPN 1 - Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn"
         },
         {
           "name": "ESPN 1 - Opción 3",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn"
         },
         {
           "name": "ESPN 1 - Opción 4",
@@ -997,31 +859,31 @@
         },
         {
           "name": "ESPN 2 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTjJfQXJn&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJfQXJn"
         },
         {
           "name": "ESPN 2 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn2"
         },
         {
           "name": "ESPN 2 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn2"
         },
         {
           "name": "MAX",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=max2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=max2"
         },
         {
           "name": "USA",
-          "iframe": "https://streamtpcloud.com/usa.html"
+          "iframe": "https://streamtpday1.xyz/usa.html"
         },
         {
           "name": "Universo",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbCh1bml2ZXJzby1lYXN0KS9tYXN0ZXIubXBk&key=MzUwMWJkMzIzYTZhMzVjMjhlYjc2NTRiZjI5OGI5YWE=&key2=MmRiNGM4MDg5ZDYyN2UxYjJjNDgwYzU3YmFhODZhN2I="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbCh1bml2ZXJzby1lYXN0KS9tYXN0ZXIubXBk&key=MzUwMWJkMzIzYTZhMzVjMjhlYjc2NTRiZjI5OGI5YWE=&key2=MmRiNGM4MDg5ZDYyN2UxYjJjNDgwYzU3YmFhODZhN2I="
         },
         {
           "name": "Disney+ 3",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=disney3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney3"
         }
       ],
       "show": true,
@@ -1033,7 +895,7 @@
       "options": [
         {
           "name": "(1)",
-          "iframe": "https://nebunexa.life/cvatt.html?get=VE5UX1Nwb3J0c19IRA&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VE5UX1Nwb3J0c19IRA"
         },
         {
           "name": "(2)",
@@ -1041,19 +903,19 @@
         },
         {
           "name": "(3 1080P - PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/tntfhd-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/tntfhd-n-ext"
         },
         {
           "name": "(4 HD - CEL/PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/tnt-sports"
+          "iframe": "https://angulismotv.pages.dev/mpdk/tnt-sports"
         },
         {
           "name": "(5)",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=tntsports"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=tntsports"
         },
         {
           "name": "(6)",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=tntsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsports"
         },
         {
           "name": "(8)",
@@ -1065,11 +927,11 @@
         },
         {
           "name": "(10 EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=VE5UX1Nwb3J0c19IRA"
+          "iframe": "https://bestleague.top/tok.html?get=VE5UX1Nwb3J0c19IRA"
         },
         {
           "name": "(11- FULL HD EXTENSION PC)",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/tntfhd"
+          "iframe": "https://angulismotv.pages.dev/mpdk/tntfhd"
         },
         {
           "name": "(12 SIN EXTENSION)",
@@ -1089,7 +951,7 @@
       "options": [
         {
           "name": "TV Argentina",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/noticias"
+          "iframe": "https://angulismotv.pages.dev/mpdk/noticias"
         }
       ],
       "show": true,
@@ -1112,63 +974,63 @@
       "options": [
         {
           "name": "Premiere 1 - Opcion 1",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtaHB1aTd3bG5tZnFnaC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy9uZWxmeXVjdzlhL291dC92MS82ZmZiMmMzNjVhZDE0Zjg4YjE1NDU5MWJlYjQzZDFmNi9jZW5jLm1wZA==&key=NTZiNzljMTc4MmIzMGU2YjZmYzk3M2IwZThmZDQxMDQ=&key2=ZmEzOGFhYTg2NWE1N2VkYTdjNzc0NDQ2OTdiYThlZDM="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtaHB1aTd3bG5tZnFnaC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy9uZWxmeXVjdzlhL291dC92MS82ZmZiMmMzNjVhZDE0Zjg4YjE1NDU5MWJlYjQzZDFmNi9jZW5jLm1wZA==&key=NTZiNzljMTc4MmIzMGU2YjZmYzk3M2IwZThmZDQxMDQ=&key2=ZmEzOGFhYTg2NWE1N2VkYTdjNzc0NDQ2OTdiYThlZDM="
         },
         {
           "name": "Premiere 1 - Opcion 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=premiere1"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=premiere1"
         },
         {
           "name": "Premiere 1 - Opcion 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=premiere1"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=premiere1"
         },
         {
           "name": "Premiere 2 - Opcion 1",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtZTY1NTVoM2I2YWY0NC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy9veTZycDBqd21mL291dC92MS81ODBlY2YxMmJhZDI0OTc5YmFmOGRkOTkzZGNlMDUzZS9jZW5jLm1wZA==&key=OWRjNDA0NjBjOTMwODdhZWE4NGQ2MzE1ZjA4ZWNiNjQ=&key2=ZjY5YzhkNDYyNGZkZGZmNGNhODliZDBiMzFiZGM0YTc="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtZTY1NTVoM2I2YWY0NC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy9veTZycDBqd21mL291dC92MS81ODBlY2YxMmJhZDI0OTc5YmFmOGRkOTkzZGNlMDUzZS9jZW5jLm1wZA==&key=OWRjNDA0NjBjOTMwODdhZWE4NGQ2MzE1ZjA4ZWNiNjQ=&key2=ZjY5YzhkNDYyNGZkZGZmNGNhODliZDBiMzFiZGM0YTc="
         },
         {
           "name": "Premiere 2 - Opcion 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=premiere2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=premiere2"
         },
         {
           "name": "Premiere 3 - Opcion 1",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtaHB1aTd3bG5tZnFnaC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy82b25yZm5peXJ5L291dC92MS9mMjMwNjljNjFkYmY0ZTAwODkwYTQwYjcwNWE4NDA3OS9jZW5jLm1wZA==&key=ZDIzZjc0MzM3OThhNjUyYTdkNGY2NzkxZDllMTAzNmM=&key2=NDk0MmVlYmQ1OThiNTcyN2M1Y2M0ODRjYzYyYjUyZTg="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtaHB1aTd3bG5tZnFnaC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy82b25yZm5peXJ5L291dC92MS9mMjMwNjljNjFkYmY0ZTAwODkwYTQwYjcwNWE4NDA3OS9jZW5jLm1wZA==&key=ZDIzZjc0MzM3OThhNjUyYTdkNGY2NzkxZDllMTAzNmM=&key2=NDk0MmVlYmQ1OThiNTcyN2M1Y2M0ODRjYzYyYjUyZTg="
         },
         {
           "name": "Premiere 3 - Opcion 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=premiere3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=premiere3"
         },
         {
           "name": "Premiere 3 - Opcion 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=premiere3"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=premiere3"
         },
         {
           "name": "Premiere 4 - Opcion 1",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtYWdpZDdkcTZubDdsMy5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy90aXJqb3I2NGtoL291dC92MS9mZDJlZDk5MTZkOTk0ZjA5YTNiZDYyYjY0MTQxYjljYi9jZW5jLm1wZA==&key=ZTIzMzY1YzJhZDk3ODcwYzg3MTcxMmI3M2YwZDYxOTU=&key2=NTg3MDljNzE0MzIwYmI4NjJkYmQwNzI3MGRmODFjOTQ="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtYWdpZDdkcTZubDdsMy5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy90aXJqb3I2NGtoL291dC92MS9mZDJlZDk5MTZkOTk0ZjA5YTNiZDYyYjY0MTQxYjljYi9jZW5jLm1wZA==&key=ZTIzMzY1YzJhZDk3ODcwYzg3MTcxMmI3M2YwZDYxOTU=&key2=NTg3MDljNzE0MzIwYmI4NjJkYmQwNzI3MGRmODFjOTQ="
         },
         {
           "name": "Premiere 4 - Opcion 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=premiere4"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=premiere4"
         },
         {
           "name": "Premiere 4 - Opcion 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=premiere4"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=premiere4"
         },
         {
           "name": "Premiere 5 - Opcion 1",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtaHB1aTd3bG5tZnFnaC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy8xb2JrdHJ5Ymh0L291dC92MS8wODI2NTQ1M2M4ZjY0ZDlmYmViM2NmNDM3NjQ0MDNhOC9jZW5jLm1wZA==&key=MzMyZjYyZWIzY2FlODI0ZTk4YTQxMjRkYTI5YTdkMzE=&key2=ZDE2OThjZGEzZDA0MGY5MDUxMTI1YTYxNzQ1YjU5NmI="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtaHB1aTd3bG5tZnFnaC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoL2VuYy8xb2JrdHJ5Ymh0L291dC92MS8wODI2NTQ1M2M4ZjY0ZDlmYmViM2NmNDM3NjQ0MDNhOC9jZW5jLm1wZA==&key=MzMyZjYyZWIzY2FlODI0ZTk4YTQxMjRkYTI5YTdkMzE=&key2=ZDE2OThjZGEzZDA0MGY5MDUxMTI1YTYxNzQ1YjU5NmI="
         },
         {
           "name": "Premiere 5 - Opcion 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=premiere5"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=premiere5"
         },
         {
           "name": "Premiere 5 - Opcion 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=premiere5"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=premiere5"
         },
         {
           "name": "Premiere 7 - Opcion 1",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtcGg1ZWE3dWt0YXYzZC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoLXNkL2VuYy9rcWZ0d3N2ZGd6L291dC92MS85Zjg2NmJjMzI2ZDI0MWFhOWQ0NzBjNTI2NTRhN2JmOS9jZW5jLXNkLm1wZA==&key=OWVlMzUyYWFjN2VkOGVlMWNiNDJjZmRmMzIyYjFjYjA=&key2=MDUzZDYzNWZjOTBlMTc1ODgxYmVmMjZjZDI5ZjM3MWU="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9hYmMzb3J3YWFhYWFhYWFtcGg1ZWE3dWt0YXYzZC5vdHRiLmxpdmUuY2Yud3cuYWl2LWNkbi5uZXQvZ3J1LW5pdHJvL2xpdmUvY2xpZW50cy9kYXNoLXNkL2VuYy9rcWZ0d3N2ZGd6L291dC92MS85Zjg2NmJjMzI2ZDI0MWFhOWQ0NzBjNTI2NTRhN2JmOS9jZW5jLXNkLm1wZA==&key=OWVlMzUyYWFjN2VkOGVlMWNiNDJjZmRmMzIyYjFjYjA=&key2=MDUzZDYzNWZjOTBlMTc1ODgxYmVmMjZjZDI5ZjM3MWU="
         }
       ],
       "show": true,
@@ -1180,7 +1042,7 @@
       "options": [
         {
           "name": "para usar en multicam",
-          "iframe": "https://www.twitch.tv/embed/AngulismoTV/chat?parent=localhost&parent=127.0.0.1&parent=angulismotv.pages.dev&parent=angulismotv-dnh.pages.dev&darkpopout="
+          "iframe": "https://www.twitch.tv/embed/AngulismoTV/chat?parent=localhost&parent=127.0.0.1&parent=angulismotv.pages.dev&parent=angulismotv.pages.dev&darkpopout="
         }
       ],
       "show": false
@@ -1205,15 +1067,15 @@
       "options": [
         {
           "name": "DAZN 1 (1)",
-          "iframe": "https://nebunexa.life/cvatt.html?get=REFaTjE=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=REFaTjE="
         },
         {
           "name": "DAZN 1 (2)",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=dazntv1"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=dazntv1"
         },
         {
           "name": "DAZN 1 (3)",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=dazn1"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=dazn1"
         },
         {
           "name": "DAZN 1 (4)",
@@ -1225,15 +1087,15 @@
         },
         {
           "name": "DAZN LaLiga (1)",
-          "iframe": "https://nebunexa.life/cvatt.html?get=REFaTkxBTElHQT0=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=REFaTkxBTElHQT0="
         },
         {
           "name": "DAZN LaLiga (2)",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=daznlaliga"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=daznlaliga"
         },
         {
           "name": "DAZN LaLiga (3)",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=daznlaliga"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=daznlaliga"
         }
       ],
       "show": true
@@ -1244,7 +1106,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://www.nebunexa.life/cvatt.html?get=Q2FuYWw5&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Q2FuYWw5"
         }
       ],
       "show": true
@@ -1266,11 +1128,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espnplus1"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espnplus1"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espnplus2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espnplus2"
         },
         {
           "name": "Opción 3",
@@ -1289,123 +1151,123 @@
       "options": [
         {
           "name": "ESPN 1 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTl9VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTl9VWQ=="
         },
         {
           "name": "ESPN 1 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn"
         },
         {
           "name": "ESPN 1 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn"
         },
         {
           "name": "ESPN 2 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTjJfQXJn&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJfQXJn"
         },
         {
           "name": "ESPN 2 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn2"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn2"
         },
         {
           "name": "ESPN 2 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn2"
         },
         {
           "name": "ESPN 3 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTjM=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjM="
         },
         {
           "name": "ESPN 3 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn3"
         },
         {
           "name": "ESPN 3 - Opción 3 ",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn3"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn3"
         },
         {
           "name": "ESPN 4 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTkhE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTkhE"
         },
         {
           "name": "ESPN 4 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn4"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn4"
         },
         {
           "name": "ESPN 4 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn4"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn4"
         },
         {
           "name": "ESPN 5 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTjQ=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjQ="
         },
         {
           "name": "ESPN 5 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn5"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn5"
         },
         {
           "name": "ESPN 5 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn5"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn5"
         },
         {
           "name": "ESPN 6 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRzM19VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzM19VWQ=="
         },
         {
           "name": "ESPN 6 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn6"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn6"
         },
         {
           "name": "ESPN 6 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn6"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn6"
         },
         {
           "name": "ESPN 7 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRzMl9VWQ==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzMl9VWQ=="
         },
         {
           "name": "ESPN 7 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn7"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn7"
         },
         {
           "name": "ESPN 7 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn7"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn7"
         },
         {
           "name": "FOX Sports 1 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRz&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRz"
         },
         {
           "name": "FOX Sports 1- Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=fox1ar"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=fox1ar"
         },
         {
           "name": "FOX Sports 1- Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports"
         },
         {
           "name": "FOX Sports 2 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRzMkhE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzMkhE"
         },
         {
           "name": "FOX Sports 2 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=fox2ar"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=fox2ar"
         },
         {
           "name": "FOX Sports 2 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports2"
         },
         {
           "name": "FOX Sports 3 - Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRzM0hE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzM0hE"
         },
         {
           "name": "FOX Sports 3 - Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=fox3ar"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=fox3ar"
         },
         {
           "name": "FOX Sports 3 - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports3"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports3"
         }
       ],
       "show": true
@@ -1416,19 +1278,19 @@
       "options": [
         {
           "name": "Canal 605",
-          "iframe": "https://www.nebunexa.life/cvatt.html?get=Rmxvd19NdXNpY19YUA==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rmxvd19NdXNpY19YUA=="
         },
         {
           "name": "Canal 606",
-          "iframe": "https://www.nebunexa.life/cvatt.html?get=Rmxvd19NdXNpY18x&start=true"
+          "iframe": "https://bestleague.top/tok.html?get=Rmxvd19NdXNpY18x&start=true"
         },
         {
           "name": "Canal 607",
-          "iframe": "https://www.nebunexa.life/cvatt.html?get=Rmxvd19NdXNpY18y&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rmxvd19NdXNpY18y"
         },
         {
           "name": "Canal 608",
-          "iframe": "https://www.nebunexa.life/tok.html?get=Rmxvd19NdXNpY18z&start=true"
+          "iframe": "https://www.bestleague.top/tok.html?get=Rmxvd19NdXNpY18z&start=true"
         }
       ],
       "show": true
@@ -1450,15 +1312,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRz&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRz"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=fox1ar"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=fox1ar"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports"
         },
         {
           "name": "Opción 4",
@@ -1466,7 +1328,7 @@
         },
         {
           "name": "Opción 5 (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=Rm94U3BvcnRz"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRz"
         },
         {
           "name": "Opción 6 (EXTENSION PC)",
@@ -1481,15 +1343,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRzMkhE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzMkhE"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=fox2ar"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=fox2ar"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports2"
         }
       ],
       "show": true
@@ -1500,15 +1362,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Rm94U3BvcnRzM0hE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rm94U3BvcnRzM0hE"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=fox3ar"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=fox3ar"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsports3"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports3"
         }
       ],
       "show": true
@@ -1523,11 +1385,11 @@
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=foxsportspremium"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=foxsportspremium"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=foxsportspremium"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsportspremium"
         }
       ],
       "show": true
@@ -1538,11 +1400,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=golperu"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=golperu"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=golperu"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=golperu"
         }
       ],
       "show": true
@@ -1553,11 +1415,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=goltv"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=goltv"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=goltv"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=goltv"
         },
         {
           "name": "Opción 3",
@@ -1631,15 +1493,15 @@
       "options": [
         {
           "name": "ESPN Deportes - 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espndeportes"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espndeportes"
         },
         {
           "name": "ESPN Deportes - 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espndeportes"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espndeportes"
         },
         {
           "name": "TSN 2 CA",
-          "iframe": "https://nebunexa.life/mpdk/?get=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L3BkeC1uaXRyby9saXZlL2NsaWVudHMvZGFzaC9lbmMvdjV2OXlmbjYyaS9vdXQvdjEvMDk5MWUzM2QwOWRhNDZiMjg1N2ZjYzg0NWRiOTVjNDAvY2VuYy5tcGQ=&key=MzYyMjAyZWVmYzVkOWU0MmVlYzY0NTA5OThjY2U5ZTg=&key2=OTc4ZGZkZDUzMTg2ZWM1ODdkOTQwZTBiZDFlMmVjNDI="
+          "iframe": "https://bestleague.top/mpdk/?get=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L3BkeC1uaXRyby9saXZlL2NsaWVudHMvZGFzaC9lbmMvdjV2OXlmbjYyaS9vdXQvdjEvMDk5MWUzM2QwOWRhNDZiMjg1N2ZjYzg0NWRiOTVjNDAvY2VuYy5tcGQ=&key=MzYyMjAyZWVmYzVkOWU0MmVlYzY0NTA5OThjY2U5ZTg=&key2=OTc4ZGZkZDUzMTg2ZWM1ODdkOTQwZTBiZDFlMmVjNDI="
         },
         {
           "name": "LaLiga TV",
@@ -1670,7 +1532,7 @@
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=mlb1"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=mlb1"
         }
       ],
       "show": true
@@ -1681,7 +1543,7 @@
       "options": [
         {
           "name": "Opcion 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=mls1es"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=mls1es"
         },
         {
           "name": "Opcion 2",
@@ -1720,15 +1582,15 @@
         },
         {
           "name": "Opción 5-  ESPN 4 - 1",
-          "iframe": "https://hopelife.bestleague.world/cvatt.html?get=RVNQTkhE=&lang=1"
+          "iframe": "https://hopelife.bestleague.world/cvatt.html?get=RVNQTkhE="
         },
         {
           "name": "Opción 6 - ESPN 4 - 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=espn4"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn4"
         },
         {
           "name": "Opción 7 - ESPN 4 - 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn4"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn4"
         }
       ],
       "show": true
@@ -1739,7 +1601,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=movistar"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=movistar"
         },
         {
           "name": "Movistar - Opción 2",
@@ -1758,7 +1620,7 @@
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=nba1"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=nba1"
         },
         {
           "name": "Opción 3",
@@ -1766,7 +1628,7 @@
         },
         {
           "name": "Opción 4",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=nba01"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=nba01"
         },
         {
           "name": "Fox One",
@@ -1774,7 +1636,7 @@
         },
         {
           "name": "NBA TV",
-          "iframe": "https://nebunexa.life/tok.html?get=TkJBX1RW"
+          "iframe": "https://bestleague.top/tok.html?get=TkJBX1RW"
         },
         {
           "name": "NBA TV 2",
@@ -1802,11 +1664,11 @@
       "options": [
         {
           "name": "Atlanta vs Quilmes",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/atlanta-quilmes"
+          "iframe": "https://angulismotv.pages.dev/mpdk/atlanta-quilmes"
         },
         {
           "name": "Gimnasia de Jujuy vs Midlandd",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/gimnasia-midland"
+          "iframe": "https://angulismotv.pages.dev/mpdk/gimnasia-midland"
         }
       ],
       "show": false
@@ -1817,19 +1679,19 @@
       "options": [
         {
           "name": "ESPN (1)",
-          "iframe": "https://nebunexa.life/cvatt.html?get=RVNQTjJfQXJn&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJfQXJn"
         },
         {
           "name": "ESPN (2)",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=espn2"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=espn2"
         },
         {
           "name": "ESPN (EXTENSION PC)",
-          "iframe": "https://dots.bestleague.world/tok.html?get=RVNQTjJfQXJn"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJfQXJn"
         },
         {
           "name": "ESPN (4)",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=RVNQTjJIRA&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=RVNQTjJIRA"
         },
         {
           "name": "ESPN (5)",
@@ -1891,7 +1753,7 @@
         },
         {
           "name": "DSports - Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=dsports"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=dsports"
         },
         {
           "name": "DSports - Opción 2",
@@ -1899,7 +1761,7 @@
         },
         {
           "name": "DSports - Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=dsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
         },
         {
           "name": "DSports - Opción 4",
@@ -1918,7 +1780,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://www.nebunexa.life/cvatt.html?get=Rk9YSEQ=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Rk9YSEQ="
         }
       ],
       "show": true
@@ -1929,27 +1791,23 @@
       "options": [
         {
           "name": "Opcion 1",
-          "iframe": "https://streamtpnew.com/global1.php?stream=telefe"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=telefe"
         },
         {
           "name": "Opcion 2 (EXTENSIÓN PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=VGVsZWZlSEQ="
+          "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
         },
         {
           "name": "Opción 3 (TRANSMISION A TV)",
-          "iframe": "https://nebunexa.life/telefe.html"
+          "iframe": "https://bestleague.top/telefe.html"
         },
         {
           "name": "Opción 4 (PC)",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=VGVsZWZlSEQ=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
         },
         {
           "name": "Opción 5",
-          "iframe": "https://cableparatodoscan-varisscanop3-fl.blogspot.com/p/cantodosemboppp33-flo.html?get=VGVsZWZlSEQ=&lang=1"
-        },
-        {
-          "name": "Opción 6",
-          "iframe": "https://nebunexa.life/telefe.html"
+          "iframe": "https://cableparatodoscan-varisscanop3-fl.blogspot.com/p/cantodosemboppp33-flo.html?get=VGVsZWZlSEQ="
         }
       ],
       "show": true
@@ -1960,7 +1818,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://pcn.nebunexa.life/cvatt.html?get=VGVsZW11bmRvX0hE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VGVsZW11bmRvX0hE"
         }
       ],
       "show": true
@@ -1993,7 +1851,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/?get=aHR0cHM6Ly9lbDRsaXZlMi5ib2xkbXNzLmNvbS9FU1BOL0VTUE5fRUw0LmlzbWwvRVNQTi5tcGQ=&key=NDdhNmU5YjU5MDk3NDkwYmJkMmE0MmFkMTg0ZjBiNTQ=&key2=MTQ3MWE3ZGY3MDQxNzI5MDRhYTYxMjZhMmIzNTM0MWU=&start=true"
+          "iframe": "https://angulismotv.pages.dev/mpdk/?get=aHR0cHM6Ly9lbDRsaXZlMi5ib2xkbXNzLmNvbS9FU1BOL0VTUE5fRUw0LmlzbWwvRVNQTi5tcGQ=&key=NDdhNmU5YjU5MDk3NDkwYmJkMmE0MmFkMTg0ZjBiNTQ=&key2=MTQ3MWE3ZGY3MDQxNzI5MDRhYTYxMjZhMmIzNTM0MWU=&start=true"
         }
       ],
       "show": false
@@ -2030,7 +1888,7 @@
         },
         {
           "name": "Opción 2 (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=VE5UX0hEX0FyZw==&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VE5UX0hEX0FyZw=="
         }
       ],
       "show": true
@@ -2041,7 +1899,7 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=VEJT&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VEJT"
         }
       ],
       "show": true
@@ -2067,15 +1925,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=Q2FuYWw3&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=Q2FuYWw3"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=tv_publica"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=tv_publica"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=tvpublica"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=tvpublica"
         }
       ],
       "show": true
@@ -2086,11 +1944,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://www.nebunexa.life/cvatt.html?get=VHlDU3BvcnQ&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VHlDU3BvcnQ"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/tyc-n-ext"
+          "iframe": "https://angulismotv.pages.dev/mpdk/tyc-n-ext"
         },
         {
           "name": "Opción 3",
@@ -2098,15 +1956,15 @@
         },
         {
           "name": "Opción 4",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=tycsports"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=tycsports"
         },
         {
           "name": "Opción 5",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=tycsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
         },
         {
           "name": "Opcion 6 (EXTENSION PC)",
-          "iframe": "https://nebunexa.life/tok.html?get=VHlDU3BvcnQ"
+          "iframe": "https://bestleague.top/tok.html?get=VHlDU3BvcnQ"
         },
         {
           "name": "Opción 7",
@@ -2118,7 +1976,7 @@
         },
         {
           "name": "Opción 9",
-          "iframe": "https://angulismotv-dnh.pages.dev/mpdk/tyc"
+          "iframe": "https://angulismotv.pages.dev/mpdk/tyc"
         },
         {
           "name": "Opción 10",
@@ -2136,7 +1994,7 @@
         },
         {
           "name": "Paramount (2)",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=paramount3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=paramount3"
         }
       ],
       "show": true
@@ -2147,15 +2005,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=VlRWX0hE&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VlRWX0hE"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=vtv"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=vtv"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=vtv"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=vtv"
         },
         {
           "name": "Opción 4",
@@ -2170,15 +2028,15 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://nebunexa.life/cvatt.html?get=VlRWX1BMVVM=&lang=1"
+          "iframe": "https://bestleague.top/tok.html?get=VlRWX1BMVVM="
         },
         {
           "name": "Opción 2",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=vtvplus"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=vtvplus"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=vtvplus"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
         }
       ],
       "show": true
@@ -2189,11 +2047,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=winsports"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=winsports"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=winsports"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=winsports"
         }
       ],
       "show": true
@@ -2204,11 +2062,11 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://streamtpcloud.com/global1.php?stream=winplus"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=winplus"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la14hd.com/vivo/canales.php?stream=winsportsplus"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=winsportsplus"
         }
       ],
       "show": true
