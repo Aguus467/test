@@ -271,26 +271,30 @@
       "options": [
         {
           "name": "Opción 1",
-          "iframe": "https://embed.ksdjugfsddeports.com/embed2/directvsports.html"
+          "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
         },
         {
           "name": "Opción 2",
-          "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+          "iframe": "https://embed.ksdjugfsddeports.com/embed/directvsports.html"
         },
         {
           "name": "Opción 3",
-          "iframe": "https://bolaloca.my/player/2/94"
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
         },
         {
           "name": "Opción 4",
-          "iframe": "https://tucanaldeportivo.org/directvsports.php"
+          "iframe": "https://bolaloca.my/player/2/94"
         },
         {
           "name": "Opción 5",
-          "iframe": "https://streamtpnew.com/global1.php?stream=dsports"
+          "iframe": "https://tucanaldeportivo.org/directvsports.php"
         },
         {
           "name": "Opción 6",
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=dsports"
+        },
+        {
+          "name": "Opción 7",
           "iframe": "https://streamhdx.com/hls.php?stream=dsports"
         }
       ],
@@ -555,7 +559,7 @@
         },
         {
           "name": "(2)",
-          "iframe": "https://streamtpnew.com/global1.php?stream=espnpremium"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espnpremium"
         },
         {
           "name": "(3)",
@@ -639,7 +643,7 @@
         },
         {
           "name": "ESPN  - Opcion 1",
-          "iframe": "https://streamtpnew.com/global1.php?stream=espn"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=espn"
         },
         {
           "name": "ESPN 5 - Opcion 2",
@@ -659,11 +663,11 @@
         },
         {
           "name": "ESPN Disney 3",
-          "iframe": "https://streamtpnew.com/global1.php?stream=disney3"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney3"
         },
         {
           "name": "ESPN 3 - Opcion 1",
-          "iframe": "https://streamtpnew.com/global1.php?stream=disney7"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney7"
         }
       ],
       "show": true,
@@ -1136,11 +1140,11 @@
         },
         {
           "name": "Opción 3",
-          "iframe": "https://streamtpnew.com/global1.php?stream=disney5"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=disney5"
         },
         {
           "name": "Opción 4",
-          "iframe": "https://streamtpnew.com/global1.php?stream=universo_usa"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=universo_usa"
         }
       ],
       "show": true
@@ -1605,7 +1609,7 @@
         },
         {
           "name": "Movistar - Opción 2",
-          "iframe": "https://streamtpnew.com/global1.php?stream=movistar_deportes_peru"
+          "iframe": "https://streamtpday1.xyz/global1.php?stream=movistar_deportes_peru"
         }
       ],
       "show": true
