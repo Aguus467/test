@@ -14,7 +14,7 @@
             "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
           },
           {
-            "name": "Opción 2 (1080p no ads)",
+            "name": "Opción 2 (1080p)",
             "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
           },
           {
@@ -603,13 +603,21 @@
       "name": "Mundial 2026",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
       "options": [
+       {
+          "name": "DSports 1080p",
+          "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
+        },
         {
           "name": "DSports (EXTENSION PC)",
           "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19VWQ=="
         },
         {
-          "name": "Telemundo 1080p",
-          "iframe": "https://bestleague.world/mpdk/?get=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChLREVOKS9tYXN0ZXIubXBk&key=MmExOTVjOTU4ODBlMzc2ODgyODZlMGE2MTE3YTMzNmY=&key2=ZTZjYmExYzUyZWJlZTE2Mjg5Nzc1ZjUxNjRkYWVjZTc="
+          "name": "Disney+ 720p",
+          "iframe": "https://stream-xhd.com/live1.php?stream=disney9"
+        }
+        {
+          "name": "Telefe 720p",
+          "iframe": "https://stream-xhd.com/live1.php?stream=telefe"
         }
       ],
       "show": true,
