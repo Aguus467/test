@@ -1223,7 +1223,7 @@
       "options": [
         {
           "name": "Reproductor 1",
-          "iframe": "http://190.61.41.181:8000/play/a0r5/index.m3u8",
+          "iframe": "http://147.135.114.221:8001/play/a00m/index.m3u8",
           "streamType": "hls",
           "headers": null,
           "drmKeyId": null,
