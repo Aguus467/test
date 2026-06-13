@@ -1,35 +1,5 @@
 {
   "channels": [
-        {
-      "name": "Disney+",
-      "logo": "",
-      "category": "deportess",
-      "show": true,
-      "streamUrl": null,
-      "streamType": "hls",
-      "headers": null,
-      "drmKeyId": null,
-      "drmKey": null,
-      "sources": [],
-      "options": [
-        {
-          "name": "Reproductor 1",
-          "iframe": "https://khala.skylivehd.com/disney9/tracks-v1a1/mono.m3u8?ip=104.28.164.237&token=5210dee253d1a5807bf40522654acf0851dc8e4a-89-1781411247-1781357247",
-          "streamType": "HLS",
-          "headers": null,
-          "drmKeyId": null,
-          "drmKey": null
-        },
-        {
-          "name": "Reproductor 2 (webview)",
-          "iframe": "https://stream-xhd.com/live1.php?stream=disney9",
-          "streamType": "iframe",
-          "headers": null,
-          "drmKeyId": null,
-          "drmKey": null
-        },
-      ]
-    },
     {
       "name": "America TV",
       "logo": "https://bestleague.world/img/america.webp",
