@@ -1,693 +1,684 @@
 {
   "events": [
-  {
-    "id": 22,
-    "evento": "F1: GP de Barcelona - Clasificación",
-    "fecha": "2026-06-13 11:00:00",
-    "competencia": "f1",
-    "canales": [
-      {
-        "name": "Disney",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
-          }
-        ]
-      },
-      {
-        "name": "Fox Sports 1",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=fox1ar"
-          }
-        ]
-      },
-      {
-        "name": "Camara on Board | Colapinto",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney2"
-          }
-        ]
-      },
-      {
-        "name": "Camara on Board | Piastri",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney3"
-          }
-        ]
-      },
-      {
-        "name": "Camara on Board",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney4"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 41,
-    "evento": "Primera División de Chile: Coquimbo Unido vs O'Higgins",
-    "fecha": "2026-06-13 13:30:00",
-    "competencia": "Primera División de Chile",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max1"
-          }
-        ]
-      },
-      {
-        "name": "TNT Sports Chile",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 421,
-    "evento": "Primera División de Chile: Everton vs Palestino",
-    "fecha": "2026-06-13 16:00:00",
-    "competencia": "Primera División de Chile",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max2"
-          }
-        ]
-      },
-      {
-        "name": "TNT Sports Chile",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "evento": "Copa del Mundo: Qatar vs Suiza",
-    "fecha": "2026-06-13 16:00:00",
-    "competencia": "Copa del Mundo 2026",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
-          },
-          {
-            "name": "Opción 3 (1080p)",
-            "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
-          },
-          {
-            "name": "Opción 4 (1080p)",
-            "iframe": "https://la18hd.com/mpd/drm.php?url=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L2dydS1uaXRyby9saXZlL2NsaWVudHMvZGFzaC1zZC9lbmMvdHdydWxkamcyby9vdXQvdjEvMjlhNDM2MDM4MTU5NDYzMTgzZjYyNGNlODZkNmVkNGEvY2VuYy1zZC5tcGQ=&k=OWRkMzRhZTk3Y2YxNDdiYThmNTU2OTdmMzcyMTI4ODc6YzZlYTk1ZmZkNTdmYjc0NTMxZDVjYzIwNDZiOTc2MzY="
-          }
-        ]
-      },
-      {
-        "name": "Win Sports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_41/45wsprts.php"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=winsports"
-          },
-          {
-            "name": "Opción 3",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=winsports"
-          }
-        ]
-      },
-      {
-        "name": "VTV Plus",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      },
-      {
-        "name": "ITV 1",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4251,
-    "evento": "Primera División de Chile: Colo-Colo vs Cobresal",
-    "fecha": "2026-06-13 18:30:00",
-    "competencia": "Primera División de Chile",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max3"
-          }
-        ]
-      },
-      {
-        "name": "TNT Sports Chile",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "evento": "Copa del Mundo: Brasil vs Marruecos",
-    "fecha": "2026-06-13 19:00:00",
-    "competencia": "Copa del Mundo 2026",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          },
-          {
-            "name": "Opción 2 (1080p)",
-            "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
-          },
-          {
-            "name": "Opción 3 (1080p)",
-            "iframe": "https://la18hd.com/mpd/drm.php?url=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L2dydS1uaXRyby9saXZlL2NsaWVudHMvZGFzaC1zZC9lbmMvdHdydWxkamcyby9vdXQvdjEvMjlhNDM2MDM4MTU5NDYzMTgzZjYyNGNlODZkNmVkNGEvY2VuYy1zZC5tcGQ=&k=OWRkMzRhZTk3Y2YxNDdiYThmNTU2OTdmMzcyMTI4ODc6YzZlYTk1ZmZkNTdmYjc0NTMxZDVjYzIwNDZiOTc2MzY="
-          }
-        ]
-      },
-      {
-        "name": "Disney",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://la14hd.com/vivo/canales.php?stream=disney6"
-          }
-        ]
-      },
-      {
-        "name": "Sport TV 1 BR",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/sportv1.html"
-          },
-          {
-            "name": "Opción 2 (Portugués)",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
-          }
-        ]
-      },
-      {
-        "name": "TUDN",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/tudnmx.html"
-          }
-        ]
-      },
-      {
-        "name": "TUDN MX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tudnmx"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "VTV Plus",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
-          }
-        ]
-      },
-      {
-        "name": "América TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=americatv"
-          }
-        ]
-      },
-      {
-        "name": "Caracol TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=caracol"
-          }
-        ]
-      },
-      {
-        "name": "Telefe",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_41/solo_en_argentina_telefe.php"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=telefe"
-          }
-        ]
-      },
-      {
-        "name": "TV LA 1 ES",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/tvla1es.html"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tvla1es"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      },
-      {
-        "name": "ZDF",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/zdf.html"
-          }
-        ]
-      },
-      {
-        "name": "Caracol TV FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_41/caracoltv.php"
-          }
-        ]
-      },
-      {
-        "name": "Caracol TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=caracoltv"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4252,
-    "evento": "Primera División de Chile: Ñublense vs Huachipato",
-    "fecha": "2026-06-13 21:00:00",
-    "competencia": "Primera División de Chile",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max4"
-          }
-        ]
-      },
-      {
-        "name": "TNT Sports Chile",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 251,
-    "evento": "NBA: Knicks vs Spurs",
-    "fecha": "2026-06-13 21:30:00",
-    "competencia": "NBA | Final",
-    "canales": [
-      {
-        "name": "ESPN Deportes",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=espndeportes"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=espndeportes"
-          }
-        ]
-      },
-      {
-        "name": "ABC US",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global1.php?stream=abcusa"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "evento": "Copa del Mundo: Haití vs Escocia",
-    "fecha": "2026-06-13 22:00:00",
-    "competencia": "Copa del Mundo 2026",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          },
-          {
-            "name": "Opción 2 (1080p)",
-            "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
-          },
-          {
-            "name": "Opción 3 (1080p)",
-            "iframe": "https://la18hd.com/mpd/drm.php?url=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L2dydS1uaXRyby9saXZlL2NsaWVudHMvZGFzaC1zZC9lbmMvdHdydWxkamcyby9vdXQvdjEvMjlhNDM2MDM4MTU5NDYzMTgzZjYyNGNlODZkNmVkNGEvY2VuYy1zZC5tcGQ=&k=OWRkMzRhZTk3Y2YxNDdiYThmNTU2OTdmMzcyMTI4ODc6YzZlYTk1ZmZkNTdmYjc0NTMxZDVjYzIwNDZiOTc2MzY="
-          }
-        ]
-      },
-      {
-        "name": "TyC Sports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
-          },
-          {
-            "name": "Opción 3",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
-          }
-        ]
-      },
-      {
-        "name": "VTV Plus",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "evento": "Copa del Mundo: Australia vs Turquía",
-    "fecha": "2026-06-14 01:00:00",
-    "competencia": "Copa del Mundo 2026",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          },
-          {
-            "name": "Opción 2 (1080p)",
-            "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
-          }
-        ]
-      },
-      {
-        "name": "TyC Sports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
-          },
-          {
-            "name": "Opción 3",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
-          }
-        ]
-      },
-      {
-        "name": "VTV Plus",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
-          }
-        ]
-      },
-      {
-        "name": "Sport TV",
-        "options": [
-          {
-            "name": "Portugués - Opción 1",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      },
-      {
-        "name": "ITV 1",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      }
-    ]
-  }
-],
+    {
+      "id": 22,
+      "evento": "F1: GP de Barcelona - Clasificación",
+      "fecha": "2026-06-13 11:00:00",
+      "competencia": "f1",
+      "canales": [
+        {
+          "name": "Disney",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
+            }
+          ]
+        },
+        {
+          "name": "Fox Sports 1",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=fox1ar"
+            }
+          ]
+        },
+        {
+          "name": "Camara on Board | Colapinto",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney2"
+            }
+          ]
+        },
+        {
+          "name": "Camara on Board | Piastri",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney3"
+            }
+          ]
+        },
+        {
+          "name": "Camara on Board",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "evento": "Primera División de Chile: Coquimbo Unido vs O'Higgins",
+      "fecha": "2026-06-13 13:30:00",
+      "competencia": "Primera División de Chile",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max1"
+            }
+          ]
+        },
+        {
+          "name": "TNT Sports Chile",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 421,
+      "evento": "Primera División de Chile: Everton vs Palestino",
+      "fecha": "2026-06-13 16:00:00",
+      "competencia": "Primera División de Chile",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max2"
+            }
+          ]
+        },
+        {
+          "name": "TNT Sports Chile",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "evento": "Copa del Mundo: Qatar vs Suiza",
+      "fecha": "2026-06-13 16:00:00",
+      "competencia": "Copa del Mundo 2026",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+            },
+            {
+              "name": "Opción 3 (1080p)",
+              "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
+            },
+            {
+              "name": "Opción 4 (1080p)",
+              "iframe": "https://la18hd.com/mpd/drm.php?url=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L2dydS1uaXRyby9saXZlL2NsaWVudHMvZGFzaC1zZC9lbmMvdHdydWxkamcyby9vdXQvdjEvMjlhNDM2MDM4MTU5NDYzMTgzZjYyNGNlODZkNmVkNGEvY2VuYy1zZC5tcGQ=&k=OWRkMzRhZTk3Y2YxNDdiYThmNTU2OTdmMzcyMTI4ODc6YzZlYTk1ZmZkNTdmYjc0NTMxZDVjYzIwNDZiOTc2MzY="
+            }
+          ]
+        },
+        {
+          "name": "Win Sports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_41/45wsprts.php"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=winsports"
+            },
+            {
+              "name": "Opción 3",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=winsports"
+            }
+          ]
+        },
+        {
+          "name": "VTV Plus",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        },
+        {
+          "name": "ITV 1",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4251,
+      "evento": "Primera División de Chile: Colo-Colo vs Cobresal",
+      "fecha": "2026-06-13 18:30:00",
+      "competencia": "Primera División de Chile",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max3"
+            }
+          ]
+        },
+        {
+          "name": "TNT Sports Chile",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "evento": "Copa del Mundo: Brasil vs Marruecos",
+      "fecha": "2026-06-13 19:00:00",
+      "competencia": "Copa del Mundo 2026",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            },
+            {
+              "name": "Opción 2 (1080p)",
+              "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
+            },
+            {
+              "name": "Opción 3 (1080p)",
+              "iframe": "https://la18hd.com/mpd/drm.php?url=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L2dydS1uaXRyby9saXZlL2NsaWVudHMvZGFzaC1zZC9lbmMvdHdydWxkamcyby9vdXQvdjEvMjlhNDM2MDM4MTU5NDYzMTgzZjYyNGNlODZkNmVkNGEvY2VuYy1zZC5tcGQ=&k=OWRkMzRhZTk3Y2YxNDdiYThmNTU2OTdmMzcyMTI4ODc6YzZlYTk1ZmZkNTdmYjc0NTMxZDVjYzIwNDZiOTc2MzY="
+            }
+          ]
+        },
+        {
+          "name": "Disney",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://la14hd.com/vivo/canales.php?stream=disney6"
+            }
+          ]
+        },
+        {
+          "name": "Sport TV 1 BR",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/sportv1.html"
+            },
+            {
+              "name": "Opción 2 (Portugués)",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
+            }
+          ]
+        },
+        {
+          "name": "TUDN",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/tudnmx.html"
+            }
+          ]
+        },
+        {
+          "name": "TUDN MX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tudnmx"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+            }
+          ]
+        },
+        {
+          "name": "VTV Plus",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
+            }
+          ]
+        },
+        {
+          "name": "América TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=americatv"
+            }
+          ]
+        },
+        {
+          "name": "Caracol TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=caracol"
+            }
+          ]
+        },
+        {
+          "name": "Telefe",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_41/solo_en_argentina_telefe.php"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=telefe"
+            }
+          ]
+        },
+        {
+          "name": "TV LA 1 ES",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/tvla1es.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tvla1es"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        },
+        {
+          "name": "ZDF",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/zdf.html"
+            }
+          ]
+        },
+        {
+          "name": "Caracol TV FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_41/caracoltv.php"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4252,
+      "evento": "Primera División de Chile: Ñublense vs Huachipato",
+      "fecha": "2026-06-13 21:00:00",
+      "competencia": "Primera División de Chile",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max4"
+            }
+          ]
+        },
+        {
+          "name": "TNT Sports Chile",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=tntsportschile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 251,
+      "evento": "NBA: Knicks vs Spurs",
+      "fecha": "2026-06-13 21:30:00",
+      "competencia": "NBA | Final",
+      "canales": [
+        {
+          "name": "ESPN Deportes",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=espndeportes"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=espndeportes"
+            }
+          ]
+        },
+        {
+          "name": "ABC US",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global1.php?stream=abcusa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "evento": "Copa del Mundo: Haití vs Escocia",
+      "fecha": "2026-06-13 22:00:00",
+      "competencia": "Copa del Mundo 2026",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            },
+            {
+              "name": "Opción 2 (1080p)",
+              "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
+            },
+            {
+              "name": "Opción 3 (1080p)",
+              "iframe": "https://la18hd.com/mpd/drm.php?url=aHR0cHM6Ly9vdHRlLmxpdmUuZmx5Lnd3LmFpdi1jZG4ubmV0L2dydS1uaXRyby9saXZlL2NsaWVudHMvZGFzaC1zZC9lbmMvdHdydWxkamcyby9vdXQvdjEvMjlhNDM2MDM4MTU5NDYzMTgzZjYyNGNlODZkNmVkNGEvY2VuYy1zZC5tcGQ=&k=OWRkMzRhZTk3Y2YxNDdiYThmNTU2OTdmMzcyMTI4ODc6YzZlYTk1ZmZkNTdmYjc0NTMxZDVjYzIwNDZiOTc2MzY="
+            }
+          ]
+        },
+        {
+          "name": "TyC Sports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
+            },
+            {
+              "name": "Opción 3",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
+            }
+          ]
+        },
+        {
+          "name": "VTV Plus",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "evento": "Copa del Mundo: Australia vs Turquía",
+      "fecha": "2026-06-14 01:00:00",
+      "competencia": "Copa del Mundo 2026",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            },
+            {
+              "name": "Opción 2 (1080p)",
+              "iframe": "https://mpd.r2img-stock709.workers.dev/mpd/drm?url=aHR0cHM6Ly9saXZlLW9uZWFwcC1wcmQtbmV3cy5ha2FtYWl6ZWQubmV0L0NvbnRlbnQvQ01BRl9PTDItQ1RSLTRzL0xpdmUvY2hhbm5lbChXTkpVKS9tYXN0ZXIubXBk&k=YzcxZmU3YmM4MmYwMzdjNmFmMjFmZDI5OWQ2MzQxYjA6MTMyMjNjOTg4ODZmZjQzZDNjNWYyNzFlZWI0NTdjYzY="
+            }
+          ]
+        },
+        {
+          "name": "TyC Sports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
+            },
+            {
+              "name": "Opción 3",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
+            }
+          ]
+        },
+        {
+          "name": "VTV Plus",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
+            }
+          ]
+        },
+        {
+          "name": "Sport TV",
+          "options": [
+            {
+              "name": "Portugués - Opción 1",
+              "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        },
+        {
+          "name": "ITV 1",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "channels": [
     {
       "name": "Mundial 2026",
