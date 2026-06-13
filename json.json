@@ -685,6 +685,28 @@
         }
       ],
       "logoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s"
+    },
+    {
+      "id": 4253,
+      "evento": "test",
+      "fecha": "2026-06-13 17:40:00",
+      "competencia": "f1",
+      "canales": [
+        {
+          "name": "Copa Sudamericana",
+          "options": [
+            {
+              "name": "Pack ESPN + DIRECTV (SIN EXTENSION)",
+              "iframe": "https://angulismotv.pages.dev/mpdk/sudamericana-n-ext"
+            },
+            {
+              "name": "Pack ESPN + DIRECTV (EXTENSION PC)",
+              "iframe": "https://angulismotv.pages.dev/mpdk/sudamericana"
+            }
+          ]
+        }
+      ],
+      "logoUrl": "https://bestleague.world/jr/35.png"
     }
   ],
   "channels": [
