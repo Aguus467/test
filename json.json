@@ -1,554 +1,543 @@
 {
-"events": [
-  {
-    "id": 22,
-    "evento": "F1: GP de Barcelona - Clasificación",
-    "fecha": "2026-06-13 09:00:00",
-    "competencia": "F1",
-    "canales": [
-      {
-        "name": "Disney",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
-          }
-        ]
-      },
-      {
-        "name": "Fox Sports 1",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=fox1ar"
-          }
-        ]
-      },
-      {
-        "name": "Camara on Board | Colapinto",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney2"
-          }
-        ]
-      },
-      {
-        "name": "Camara on Board | Piastri",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney3"
-          }
-        ]
-      },
-      {
-        "name": "Camara on Board",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney4"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 41,
-    "evento": "Coquimbo Unido vs O'Higgins",
-    "fecha": "2026-06-13 11:30:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max1"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 421,
-    "evento": "Everton vs Palestino",
-    "fecha": "2026-06-13 14:00:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max2"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "evento": "Catar vs Suiza",
-    "fecha": "2026-06-13 16:00:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          }
-        ]
-      },
-      {
-        "name": "Win Sports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_41/45wsprts.php"
-          }
-        ]
-      },
-      {
-        "name": "Win Sports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=winsports"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      },
-      {
-        "name": "ITV 1",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4251,
-    "evento": "Colo-Colo vs Cobresal",
-    "fecha": "2026-06-13 16:30:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max3"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "evento": "Brasil vs Marruecos",
-    "fecha": "2026-06-13 19:00:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          }
-        ]
-      },
-      {
-        "name": "Disney",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
-          }
-        ]
-      },
-      {
-        "name": "Sport TV 1 BR",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/sportv1.html"
-          }
-        ]
-      },
-      {
-        "name": "TUDN",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/tudnmx.html"
-          }
-        ]
-      },
-      {
-        "name": "TUDN MX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tudnmx"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "TV LA 1 ES",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/tvla1es.html"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tvla1es"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      },
-      {
-        "name": "Telefe",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_41/solo_en_argentina_telefe.php"
-          }
-        ]
-      },
-      {
-        "name": "ZDF",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/zdf.html"
-          }
-        ]
-      },
-      {
-        "name": "Caracol TV FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_41/caracoltv.php"
-          }
-        ]
-      },
-      {
-        "name": "Caracol TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=caracoltv"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4251,
-    "evento": "Ñublense vs Huachipato",
-    "fecha": "2026-06-13 19:00:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "MAX",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=max4"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 251,
-    "evento": "Knicks vs Spurs",
-    "fecha": "2026-06-13 21:30:00",
-    "competencia": "NBA | Final",
-    "canales": [
-      {
-        "name": "ESPN Deportes",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=espndeportes"
-          }
-        ]
-      },
-      {
-        "name": "ABC US",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global1.php?stream=abcusa"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "evento": "Haití vs Escocia",
-    "fecha": "2026-06-13 22:00:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          }
-        ]
-      },
-      {
-        "name": "TyC Sports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "evento": "Australia vs Turquia",
-    "fecha": "2026-06-14 01:00:00",
-    "competencia": "Fútbol",
-    "canales": [
-      {
-        "name": "Dsports FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "Dsports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
-          }
-        ]
-      },
-      {
-        "name": "TyC Sports",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo FHD",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
-          }
-        ]
-      },
-      {
-        "name": "Fox ONE",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
-          }
-        ]
-      },
-      {
-        "name": "ITV 1",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
-          }
-        ]
-      },
-      {
-        "name": "Caze TV",
-        "options": [
-          {
-            "name": "Opción 1",
-            "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
-          }
-        ]
-      }
-    ]
-  }
-],
+  "events": [
+    {
+      "id": 22,
+      "evento": "F1: GP de Barcelona - Clasificación",
+      "fecha": "2026-06-13 09:00:00",
+      "competencia": "f1",
+      "canales": [
+        {
+          "name": "Disney",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
+            }
+          ]
+        },
+        {
+          "name": "Fox Sports 1",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=fox1ar"
+            }
+          ]
+        },
+        {
+          "name": "Camara on Board | Colapinto",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney2"
+            }
+          ]
+        },
+        {
+          "name": "Camara on Board | Piastri",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney3"
+            }
+          ]
+        },
+        {
+          "name": "Camara on Board",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "evento": "Coquimbo Unido vs O'Higgins",
+      "fecha": "2026-06-13 11:30:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 421,
+      "evento": "Everton vs Palestino",
+      "fecha": "2026-06-13 14:00:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "evento": "Catar vs Suiza",
+      "fecha": "2026-06-13 16:00:00",
+      "competencia": "Futbol",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            }
+          ]
+        },
+        {
+          "name": "Win Sports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_41/45wsprts.php"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        },
+        {
+          "name": "ITV 1",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4251,
+      "evento": "Colo-Colo vs Cobresal",
+      "fecha": "2026-06-13 16:30:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "evento": "Brasil vs Marruecos",
+      "fecha": "2026-06-13 19:00:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            }
+          ]
+        },
+        {
+          "name": "Disney",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=disney1"
+            }
+          ]
+        },
+        {
+          "name": "Sport TV 1 BR",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/sportv1.html"
+            }
+          ]
+        },
+        {
+          "name": "TUDN",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/tudnmx.html"
+            }
+          ]
+        },
+        {
+          "name": "TUDN MX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tudnmx"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+            }
+          ]
+        },
+        {
+          "name": "TV LA 1 ES",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/tvla1es.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tvla1es"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        },
+        {
+          "name": "Telefe",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_41/solo_en_argentina_telefe.php"
+            }
+          ]
+        },
+        {
+          "name": "ZDF",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/zdf.html"
+            }
+          ]
+        },
+        {
+          "name": "Caracol TV FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_41/caracoltv.php"
+            }
+          ]
+        },
+        {
+          "name": "Caracol TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=caracoltv"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4251,
+      "evento": "Ñublense vs Huachipato",
+      "fecha": "2026-06-13 19:00:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "MAX",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=max4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 251,
+      "evento": "Knicks vs Spurs",
+      "fecha": "2026-06-13 21:30:00",
+      "competencia": "NBA | Final",
+      "canales": [
+        {
+          "name": "ESPN Deportes",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=espndeportes"
+            }
+          ]
+        },
+        {
+          "name": "ABC US",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global1.php?stream=abcusa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "evento": "Haití vs Escocia",
+      "fecha": "2026-06-13 22:00:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            }
+          ]
+        },
+        {
+          "name": "TyC Sports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "evento": "Australia vs Turquia",
+      "fecha": "2026-06-14 01:00:00",
+      "competencia": "Fútbol",
+      "canales": [
+        {
+          "name": "Dsports FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+            }
+          ]
+        },
+        {
+          "name": "Dsports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+            }
+          ]
+        },
+        {
+          "name": "TyC Sports",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
+            },
+            {
+              "name": "Opción 2",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=tycsports"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+            }
+          ]
+        },
+        {
+          "name": "Telemundo FHD",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+            }
+          ]
+        },
+        {
+          "name": "Fox ONE",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://streamtpday1.xyz/global2.php?stream=foxone"
+            }
+          ]
+        },
+        {
+          "name": "ITV 1",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/itv1gb.html"
+            }
+          ]
+        },
+        {
+          "name": "Caze TV",
+          "options": [
+            {
+              "name": "Opción 1",
+              "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4252,
+      "evento": "test",
+      "fecha": "2026-06-13 13:13:00",
+      "competencia": "Mundial",
+      "canales": []
+    }
+  ],
   "channels": [
     {
       "name": "Mundial 2026",
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
       "options": [
-       {
+        {
           "name": "DSports 1080p",
           "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
         },
