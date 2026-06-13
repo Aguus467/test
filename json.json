@@ -1,9 +1,9 @@
 {
- "events": [
+ [
   {
     "id": 22,
     "evento": "F1: GP de Barcelona - Clasificación",
-    "fecha": "2026-06-13 09:00:00",
+    "fecha": "2026-06-13 11:00:00",
     "competencia": "f1",
     "canales": [
       {
@@ -56,7 +56,7 @@
   {
     "id": 41,
     "evento": "Primera División de Chile: Coquimbo Unido vs O'Higgins",
-    "fecha": "2026-06-13 11:30:00",
+    "fecha": "2026-06-13 13:30:00",
     "competencia": "Primera División de Chile",
     "canales": [
       {
@@ -82,7 +82,7 @@
   {
     "id": 421,
     "evento": "Primera División de Chile: Everton vs Palestino",
-    "fecha": "2026-06-13 14:00:00",
+    "fecha": "2026-06-13 16:00:00",
     "competencia": "Primera División de Chile",
     "canales": [
       {
@@ -108,7 +108,7 @@
   {
     "id": 1,
     "evento": "Copa del Mundo: Qatar vs Suiza",
-    "fecha": "2026-06-13 14:00:00",
+    "fecha": "2026-06-13 16:00:00",
     "competencia": "Copa del Mundo 2026",
     "canales": [
       {
@@ -208,7 +208,7 @@
   {
     "id": 4251,
     "evento": "Primera División de Chile: Colo-Colo vs Cobresal",
-    "fecha": "2026-06-13 16:30:00",
+    "fecha": "2026-06-13 18:30:00",
     "competencia": "Primera División de Chile",
     "canales": [
       {
@@ -234,7 +234,7 @@
   {
     "id": 2,
     "evento": "Copa del Mundo: Brasil vs Marruecos",
-    "fecha": "2026-06-13 17:00:00",
+    "fecha": "2026-06-13 19:00:00",
     "competencia": "Copa del Mundo 2026",
     "canales": [
       {
@@ -428,7 +428,7 @@
   {
     "id": 4252,
     "evento": "Primera División de Chile: Ñublense vs Huachipato",
-    "fecha": "2026-06-13 19:00:00",
+    "fecha": "2026-06-13 21:00:00",
     "competencia": "Primera División de Chile",
     "canales": [
       {
@@ -454,7 +454,7 @@
   {
     "id": 251,
     "evento": "NBA: Knicks vs Spurs",
-    "fecha": "2026-06-13 19:30:00",
+    "fecha": "2026-06-13 21:30:00",
     "competencia": "NBA | Final",
     "canales": [
       {
@@ -484,7 +484,7 @@
   {
     "id": 3,
     "evento": "Copa del Mundo: Haití vs Escocia",
-    "fecha": "2026-06-13 20:00:00",
+    "fecha": "2026-06-13 22:00:00",
     "competencia": "Copa del Mundo 2026",
     "canales": [
       {
@@ -580,7 +580,7 @@
   {
     "id": 4,
     "evento": "Copa del Mundo: Australia vs Turquía",
-    "fecha": "2026-06-13 23:00:00",
+    "fecha": "2026-06-14 01:00:00",
     "competencia": "Copa del Mundo 2026",
     "canales": [
       {
