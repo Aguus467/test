@@ -60,7 +60,8 @@
             }
           ]
         }
-      ]
+      ],
+      "logoUrl": "https://tvlibre-online.com/agenda/mund.png"
     },
     {
       "id": 2,
@@ -203,7 +204,8 @@
             }
           ]
         }
-      ]
+      ],
+      "logoUrl": "https://tvlibre-online.com/agenda/mund.png"
     },
     {
       "id": 4,
@@ -265,7 +267,8 @@
             }
           ]
         }
-      ]
+      ],
+      "logoUrl": "https://tvlibre-online.com/agenda/mund.png"
     }
   ],
   "channels": [
