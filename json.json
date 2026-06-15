@@ -60,8 +60,7 @@
             }
           ]
         }
-      ],
-      "logoUrl": "https://tvlibre-online.com/agenda/mund.png"
+      ]
     },
     {
       "id": 2,
@@ -204,8 +203,7 @@
             }
           ]
         }
-      ],
-      "logoUrl": "https://tvlibre-online.com/agenda/mund.png"
+      ]
     },
     {
       "id": 4,
@@ -267,8 +265,7 @@
             }
           ]
         }
-      ],
-      "logoUrl": "https://tvlibre-online.com/agenda/mund.png"
+      ]
     }
   ],
   "channels": [
@@ -295,6 +292,10 @@
         {
           "name": "TyC Sports 720p",
           "iframe": "https://streamtpday1.xyz/global1.php?stream=tycsports"
+        },
+        {
+          "name": "Telemundo 1080p",
+          "iframe": "https://junkieembeds.pages.dev/embed/telemundo-usa"
         }
       ],
       "show": true,
