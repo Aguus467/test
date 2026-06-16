@@ -2713,26 +2713,23 @@
       "options": [
         {
           "name": "Opcion 1",
-          "iframe": "https://la18hd.com/vivo/canales.php?stream=telefe"
+          "iframe": "https://sudamericaplay2.com/canal_41/telefe_soloargetntina_ios.php"
         },
         {
           "name": "Opcion 2 (EXTENSIÓN PC)",
           "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
         },
         {
-          "name": "Opción 3 (TRANSMISION A TV)",
-          "iframe": "https://bestleague.top/telefe.html"
+          "name": "Opción 3",
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=telefe"
         },
         {
-          "name": "Opción 4 (PC)",
-          "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
-        },
-        {
-          "name": "Opción 5",
+          "name": "Opción 4",
           "iframe": "https://cableparatodoscan-varisscanop3-fl.blogspot.com/p/cantodosemboppp33-flo.html?get=VGVsZWZlSEQ="
         }
       ],
-      "show": true
+      "show": true,
+      "featured": false
     },
     {
       "name": "Telemundo Internacional",
