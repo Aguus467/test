@@ -1270,59 +1270,287 @@
     ]
   }
 ],
-  "channels": [
-    {
-      "name": "Mundial 2026",
-      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
-      "options": [
-        {
-          "name": "DSports 1080p (Opcion 1)",
-          "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
-        },
-        {
-          "name": "DSports 1080p (Opcion 2)",
-          "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-        },
-        {
-          "name": "DSports (Opcion 3) (EXTENSION PC)",
-          "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19VWQ=="
-        },
-        {
-          "name": "Telefe 720p (Opcion 1) (Solo Argentina)",
-          "iframe": "https://sudamericaplay2.com/canal_41/telefe_soloargetntina_ios.php"
-        },
-        {
-          "name": "Telefe 720p (Opcion 2)",
-          "iframe": "https://stream-xhd.com/live1.php?stream=telefe"
-        },
-        {
-          "name": "Telefe (Opcion 3) (EXTENSION PC)",
-          "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
-        },
-        {
-          "name": "TyC Sports (Opcion 1) (EXTENSION PC)",
-          "iframe": "https://bestleague.top/tok.html?get=VHlDU3BvcnQ"
-        },
-        {
-          "name": "TyC Sports (Opcion 2)",
-          "iframe": "https://streamtpday1.xyz/global1.php?stream=tycsports"
-        },
-        {
-          "name": "DSports+1080p (Opcion 1)",
-          "iframe": "https://sudamericaplay2.com/canal_8112/1dzportsplus.html"
-        },
-        {
-          "name": "DSports+1080p (Opcion 2) (EXTENSION PC)",
-          "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19QbHVzX1VZ"
-        },
-        {
-          "name": "Telemundo 1080p",
-          "iframe": "https://junkieembeds.pages.dev/embed/telemundo-usa"
-        }
-      ],
-      "show": true,
-      "featured": true
-    },
+"channels": [
+  {
+    "name": "Mundial 2026",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
+    "options": [
+      {
+        "name": "America TV",
+        "iframe": "https://stream-xhd.com/live1.php?stream=americatv"
+      },
+      {
+        "name": "America TV GO",
+        "iframe": "https://stream-xhd.com/live1.php?stream=americatv"
+      },
+      {
+        "name": "Azteca 7",
+        "iframe": "https://stream-xhd.com/live1.php?stream=azteca7"
+      },
+      {
+        "name": "BBC iPlayer (4K HEVC)",
+        "iframe": "https://junkieembeds.pages.dev/embed/bbc-4k"
+      },
+      {
+        "name": "BBC One UK",
+        "iframe": "https://junkieembeds.pages.dev/embed/bbcone-uk"
+      },
+      {
+        "name": "beIN Sports 1 France",
+        "iframe": "https://junkieembeds.pages.dev/embed/beinsports1-fr"
+      },
+      {
+        "name": "beIN Sports MAX Arabia",
+        "iframe": "https://junkieembeds.pages.dev/embed/beinsportsmax-sa"
+      },
+      {
+        "name": "beIN Sports MAX 3 Arabia",
+        "iframe": "https://junkieembeds.pages.dev/embed/beinsportsmax3-sa"
+      },
+      {
+        "name": "Canal 4 SV",
+        "iframe": "https://stream-xhd.com/channel3/?id=canal4sv"
+      },
+      {
+        "name": "Canal 5 (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/21canalfive.html"
+      },
+      {
+        "name": "Canal 5 MX",
+        "iframe": "https://stream-xhd.com/live1.php?stream=canal5mx"
+      },
+      {
+        "name": "Caracol TV",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=caracol"
+      },
+      {
+        "name": "Caracol TV FHD (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_41/caracoltv.php"
+      },
+      {
+        "name": "CazéTV Brasil (Portugués)",
+        "iframe": "https://junkieembeds.pages.dev/embed/cazetv-br"
+      },
+      {
+        "name": "CazéTV BR (Portugués)",
+        "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+      },
+      {
+        "name": "CazéTV BR (Portugués - DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/cazetv.html"
+      },
+      {
+        "name": "Chilevision",
+        "iframe": "https://stream-xhd.com/live1.php?stream=chilevision"
+      },
+      {
+        "name": "Cignal Philippines",
+        "iframe": "https://junkieembeds.pages.dev/embed/cignal-ph"
+      },
+      {
+        "name": "Disney+",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=disney1"
+      },
+      {
+        "name": "Disney+",
+        "iframe": "https://stream-xhd.com/live1.php?stream=disney1"
+      },
+      {
+        "name": "DSports",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+      },
+      {
+        "name": "DSports (HD)",
+        "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+      },
+      {
+        "name": "DSports 1080p (Opcion 1)",
+        "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
+      },
+      {
+        "name": "DSports 1080p (Opcion 2) (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+      },
+      {
+        "name": "DSports (Opcion 3) (EXTENSION PC)",
+        "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19VWQ=="
+      },
+      {
+        "name": "DSports+1080p (Opcion 1) (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/1dzportsplus.html"
+      },
+      {
+        "name": "DSports+1080p (Opcion 2) (EXTENSION PC)",
+        "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19QbHVzX1VZ"
+      },
+      {
+        "name": "DSports Plus",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=dsportsplus"
+      },
+      {
+        "name": "DSports Argentina",
+        "iframe": "https://junkieembeds.pages.dev/embed/dsports-ar"
+      },
+      {
+        "name": "Eventos 15",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=eventos15"
+      },
+      {
+        "name": "Fox",
+        "iframe": "https://junkieembeds.pages.dev/embed/fox-usa"
+      },
+      {
+        "name": "Fox (4K HEVC)",
+        "iframe": "https://junkieembeds.pages.dev/embed/fox4k-usa"
+      },
+      {
+        "name": "Fox One USA (Inglés)",
+        "iframe": "https://stream-xhd.com/channel3/?id=foxoneusa"
+      },
+      {
+        "name": "Fox One USA (Inglés - DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/1foxone.html"
+      },
+      {
+        "name": "Fox Sports 1 USA (Inglés)",
+        "iframe": "https://stream-xhd.com/channel3/?id=fs1usa"
+      },
+      {
+        "name": "Fusball TV 1 Germany (4K HEVC)",
+        "iframe": "https://junkieembeds.pages.dev/embed/fusballtv1uhd-de"
+      },
+      {
+        "name": "Fusball TV 1 Germany (4K HEVC - Sin Comentarios)",
+        "iframe": "https://junkieembeds.pages.dev/embed/fusballtvuhd-de"
+      },
+      {
+        "name": "Fusball TV 2 Germany (4K HEVC - Cámara Táctica)",
+        "iframe": "https://junkieembeds.pages.dev/embed/fusballtv2uhd-de"
+      },
+      {
+        "name": "Gen PY",
+        "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+      },
+      {
+        "name": "La 1 ES",
+        "iframe": "https://stream-xhd.com/channel/?id=la1es"
+      },
+      {
+        "name": "La 1 ES (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/tvla1es.html"
+      },
+      {
+        "name": "RCN (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/rcn51.html"
+      },
+      {
+        "name": "Sport TV 1 Portugal (Portugués)",
+        "iframe": "https://junkieembeds.pages.dev/embed/sporttv1-pt"
+      },
+      {
+        "name": "Sport TV 1 BR (Portugués - DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/sportv1.html"
+      },
+      {
+        "name": "Sportv BR (Portugués)",
+        "iframe": "https://stream-xhd.com/channel3/?id=sportv"
+      },
+      {
+        "name": "Sportv BR (Portugués)",
+        "iframe": "https://stream-xhd.com/live1.php?stream=sporttvbr1"
+      },
+      {
+        "name": "Sportv BR (Portugués)",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
+      },
+      {
+        "name": "Telefe 720p (Opcion 1) (Solo Argentina)",
+        "iframe": "https://sudamericaplay2.com/canal_41/telefe_soloargetntina_ios.php"
+      },
+      {
+        "name": "Telefe 720p (Opcion 2)",
+        "iframe": "https://stream-xhd.com/live1.php?stream=telefe"
+      },
+      {
+        "name": "Telefe (Opcion 3) (EXTENSION PC)",
+        "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
+      },
+      {
+        "name": "Telefe (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/telefe81.html"
+      },
+      {
+        "name": "Telemundo 1080p",
+        "iframe": "https://junkieembeds.pages.dev/embed/telemundo-usa"
+      },
+      {
+        "name": "Telemundo (HD)",
+        "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+      },
+      {
+        "name": "Telemundo (Recomendado)",
+        "iframe": "https://stream-xhd.com/channel2/?id=telemundo"
+      },
+      {
+        "name": "Telemundo (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/74telemundo.html"
+      },
+      {
+        "name": "Trece PY",
+        "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+      },
+      {
+        "name": "TSN1 Canada",
+        "iframe": "https://junkieembeds.pages.dev/embed/tsn1-ca"
+      },
+      {
+        "name": "TSN 1 (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/tsn1.html"
+      },
+      {
+        "name": "TUDN MX (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/tudnmx.html"
+      },
+      {
+        "name": "TV Publica",
+        "iframe": "https://stream-xhd.com/live1.php?stream=tvpublica"
+      },
+      {
+        "name": "TyC Sports (EXTENSION PC)",
+        "iframe": "https://bestleague.top/tok.html?get=VHlDU3BvcnQ"
+      },
+      {
+        "name": "TyC Sports (HD)",
+        "iframe": "https://streamtpday1.xyz/global1.php?stream=tycsports"
+      },
+      {
+        "name": "TyC Sports (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/541tyc.html"
+      },
+      {
+        "name": "Unicanal PY",
+        "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+      },
+      {
+        "name": "VIX+ Mundial (DRM)",
+        "iframe": "https://sudamericaplay2.com/canal_8112/vix123.html"
+      },
+      {
+        "name": "Vix + Mundial",
+        "iframe": "https://stream-xhd.com/live1.php?stream=vix1"
+      },
+      {
+        "name": "VTV Plus",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=vtvplus"
+      },
+      {
+        "name": "Win Sports",
+        "iframe": "https://la18hd.com/vivo/canales.php?stream=winsports"
+      }
+    ],
+    "show": true,
+    "featured": true
+  },
     {
       "name": "Champions League",
       "logo": "https://th.bing.com/th/id/OIP.3R_r3xVNkhdUgSkMYNDw5QHaHa?w=159&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
