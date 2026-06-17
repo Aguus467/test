@@ -915,24 +915,44 @@
       "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQobfaacUjer2-BFVEeXqHja3T9pBn4QaCvzw&s",
       "options": [
         {
-          "name": "DSports 1080p",
+          "name": "DSports 1080p (Opcion 1)",
           "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
         },
         {
-          "name": "DSports (EXTENSION PC)",
+          "name": "DSports 1080p (Opcion 2)",
+          "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+        },
+        {
+          "name": "DSports (Opcion 3) (EXTENSION PC)",
           "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19VWQ=="
         },
         {
-          "name": "Disney+ 720p",
-          "iframe": "https://stream-xhd.com/live1.php?stream=disney9"
+          "name": "Telefe 720p (Opcion 1) (Solo Argentina)",
+          "iframe": "https://sudamericaplay2.com/canal_41/telefe_soloargetntina_ios.php"
         },
         {
-          "name": "Telefe 720p",
+          "name": "Telefe 720p (Opcion 2)",
           "iframe": "https://stream-xhd.com/live1.php?stream=telefe"
         },
         {
-          "name": "TyC Sports 720p",
+          "name": "Telefe (Opcion 3) (EXTENSION PC)",
+          "iframe": "https://bestleague.top/tok.html?get=VGVsZWZlSEQ="
+        },
+        {
+          "name": "TyC Sports (Opcion 1) (EXTENSION PC)",
+          "iframe": "https://bestleague.top/tok.html?get=VHlDU3BvcnQ"
+        },
+        {
+          "name": "TyC Sports (Opcion 2)",
           "iframe": "https://streamtpday1.xyz/global1.php?stream=tycsports"
+        },
+        {
+          "name": "DSports+1080p (Opcion 1)",
+          "iframe": "https://sudamericaplay2.com/canal_8112/1dzportsplus.html"
+        },
+        {
+          "name": "DSports+1080p (Opcion 2) (EXTENSION PC)",
+          "iframe": "https://bestleague.top/tok.html?get=RHNwb3J0c19QbHVzX1VZ"
         },
         {
           "name": "Telemundo 1080p",
