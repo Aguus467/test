@@ -2,7 +2,7 @@
 "events": [
   {
     "id": 1844,
-    "evento": "Copa del Mundo: EE. UU. vs Australia",
+    "evento": "Copa del Mundo: Estados Unidos vs Australia",
     "fecha": "2026-06-19 16:00:00",
     "competencia": "Copa del Mundo 2026",
     "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
@@ -13,28 +13,40 @@
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
-          }
-        ]
-      },
-      {
-        "name": "DSports",
-        "options": [
-          {
-            "name": "Opción 1 (HD)",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
           },
           {
             "name": "Opción 2",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+            "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
           }
         ]
       },
       {
-        "name": "TV La 1 ES",
+        "name": "La 1 ES",
         "options": [
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/tvla1es.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/channel3/?id=la1es"
+          }
+        ]
+      },
+      {
+        "name": "Fox One USA",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay2.com/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://stream-xhd.com/channel3/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
           }
         ]
       },
@@ -57,20 +69,32 @@
         ]
       },
       {
-        "name": "Fox ONE US FHD",
-        "options": [
-          {
-            "name": "Opción 1 (Inglés - DRM)",
-            "iframe": "https://sudamericaplay2.com/canal_8112/1foxone.html"
-          }
-        ]
-      },
-      {
         "name": "Caze TV",
         "options": [
           {
             "name": "Opción 1 (Portugués - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1121cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtpday1.xyz/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
           }
         ]
       },
@@ -84,6 +108,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
       },
@@ -102,6 +130,10 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
           }
         ]
       },
@@ -111,6 +143,42 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=universo"
+          }
+        ]
+      },
+      {
+        "name": "Vix + Mundial",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Chilevision",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=chilevision"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
           }
         ]
       }
@@ -129,6 +197,10 @@
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
           }
         ]
       },
@@ -147,6 +219,10 @@
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/rcn51.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/channel3/?id=rcn"
           }
         ]
       },
@@ -160,11 +236,19 @@
         ]
       },
       {
-        "name": "Fox ONE US FHD",
+        "name": "Fox One USA",
         "options": [
           {
             "name": "Opción 1 (Inglés - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://stream-xhd.com/channel3/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
           }
         ]
       },
@@ -174,11 +258,15 @@
           {
             "name": "Opción 1 (Portugués - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1121cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
           }
         ]
       },
       {
-        "name": "Dsports",
+        "name": "DSports",
         "options": [
           {
             "name": "Opción 1 (HD)",
@@ -187,6 +275,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
           }
         ]
       },
@@ -213,6 +305,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
       },
@@ -231,6 +327,10 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
           }
         ]
       },
@@ -240,6 +340,10 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=telefe"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telefe"
           }
         ]
       },
@@ -249,6 +353,28 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=caracol"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=evento6"
+          }
+        ]
+      },
+      {
+        "name": "Vix + Mundial",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Chilevision",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=chilevision"
           }
         ]
       }
@@ -267,6 +393,10 @@
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
           }
         ]
       },
@@ -280,11 +410,19 @@
         ]
       },
       {
-        "name": "Fox ONE US FHD",
+        "name": "Fox One USA",
         "options": [
           {
             "name": "Opción 1 (Inglés - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://stream-xhd.com/channel3/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
           }
         ]
       },
@@ -294,6 +432,10 @@
           {
             "name": "Opción 1 (Portugués - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1121cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
           }
         ]
       },
@@ -307,11 +449,19 @@
           {
             "name": "Opción 2 (Portugués)",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
+          },
+          {
+            "name": "Opción 3 (Portugués)",
+            "iframe": "https://stream-xhd.com/channel3/?id=sportv"
+          },
+          {
+            "name": "Opción 4 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=sporttvbr1"
           }
         ]
       },
       {
-        "name": "Dsports",
+        "name": "DSports",
         "options": [
           {
             "name": "Opción 1 (HD)",
@@ -320,6 +470,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
           }
         ]
       },
@@ -333,6 +487,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
       },
@@ -351,6 +509,37 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      },
+      {
+        "name": "Vix + Mundial",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Azteca 7",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=azteca7"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
           }
         ]
       }
@@ -369,6 +558,10 @@
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
           }
         ]
       },
@@ -387,6 +580,10 @@
           {
             "name": "Opción 1 (DRM)",
             "iframe": "https://sudamericaplay2.com/canal_41/1america.php"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=americatv"
           }
         ]
       },
@@ -400,11 +597,28 @@
         ]
       },
       {
-        "name": "Fox ONE US FHD",
+        "name": "Fox One USA",
         "options": [
           {
             "name": "Opción 1 (Inglés - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1foxone.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox Sports 1 USA",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés)",
+            "iframe": "https://stream-xhd.com/channel3/?id=fs1usa"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=fs1usa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports1_usa"
           }
         ]
       },
@@ -414,6 +628,10 @@
           {
             "name": "Opción 1 (Portugués - DRM)",
             "iframe": "https://sudamericaplay2.com/canal_8112/1121cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
           }
         ]
       },
@@ -427,11 +645,19 @@
           {
             "name": "Opción 2 (Portugués)",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=sportv"
+          },
+          {
+            "name": "Opción 3 (Portugués)",
+            "iframe": "https://stream-xhd.com/channel3/?id=sportv"
+          },
+          {
+            "name": "Opción 4 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=sporttvbr1"
           }
         ]
       },
       {
-        "name": "Dsports",
+        "name": "DSports",
         "options": [
           {
             "name": "Opción 1 (HD)",
@@ -440,6 +666,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
           }
         ]
       },
@@ -453,6 +683,10 @@
           {
             "name": "Opción 2",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
       },
@@ -462,6 +696,10 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=disney3"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=disney1"
           }
         ]
       },
@@ -475,11 +713,38 @@
         ]
       },
       {
-        "name": "Fox Sports 1 USA",
+        "name": "Vix + Mundial",
         "options": [
           {
-            "name": "Opción 1 (Inglés)",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=foxsports1_usa"
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
           }
         ]
       }
