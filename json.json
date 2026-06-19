@@ -32,11 +32,7 @@
             "iframe": "https://junkieembeds.pages.dev/embed/fox4k-usa"
           },
           {
-            "name": "Opción 3 (xyzstreams.shop)",
-            "iframe": "https://xyzstreams.shop/wc-1-embed.html"
-          },
-          {
-            "name": "Opción 4 (4K xyzstreams.shop)",
+            "name": "Opción 3 (4K HEVC)",
             "iframe": "https://xyzstreams.shop/wc-5-embed.html"
           }
         ]
@@ -53,19 +49,15 @@
             "iframe": "https://junkieembeds.pages.dev/embed/telemundo-4k"
           },
           {
-            "name": "Opción 3 (xyzstreams.shop)",
-            "iframe": "https://xyzstreams.shop/wc-6-embed.html"
-          },
-          {
-            "name": "Opción 4 (HD)",
+            "name": "Opción 3 (HD)",
             "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
           },
           {
-            "name": "Opción 5",
+            "name": "Opción 4",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
           },
           {
-            "name": "Opción 6",
+            "name": "Opción 5",
             "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
@@ -146,10 +138,6 @@
           {
             "name": "Opción 1",
             "iframe": "https://junkieembeds.pages.dev/embed/bbcone-uk"
-          },
-          {
-            "name": "Opción 2 (xyzstreams.shop)",
-            "iframe": "https://xyzstreams.shop/wc-4-embed.html"
           }
         ]
       },
@@ -159,23 +147,15 @@
           {
             "name": "Opción 1 (4K HEVC)",
             "iframe": "https://junkieembeds.pages.dev/embed/tsn-4k"
-          },
-          {
-            "name": "Opción 2 (4K xyzstreams.shop)",
-            "iframe": "https://xyzstreams.shop/wc-8-embed.html"
           }
         ]
       },
       {
-        "name": "Bein Sports Arabia",
+        "name": "beIN Sports Arabia",
         "options": [
           {
             "name": "Opción 1 (4K HEVC)",
             "iframe": "https://xyzstreams.shop/wc-10-embed.html"
-          },
-          {
-            "name": "Opción 2 (xyzstreams.shop)",
-            "iframe": "https://xyzstreams.shop/wc-11-embed"
           }
         ]
       },
@@ -216,7 +196,7 @@
         ]
       },
       {
-        "name": "Fusball TV1 No Commentary",
+        "name": "Fusball TV1 Sin Comentarios",
         "options": [
           {
             "name": "Opción 1 (4K HEVC)",
@@ -904,7 +884,7 @@
   },
   {
     "id": 782,
-    "evento": "Darts: Slovak Darts Open - Evening Session",
+    "evento": "Darts: Slovak Darts Open - Sesión Vespertina",
     "fecha": "2026-06-19 15:00:00",
     "competencia": "Darts",
     "logoUrl": "https://images.gc.pdcservices.co.uk/fit-in/600x600/3c317c20-bc10-11f0-a7ca-afbb18ece5a9.jpg",
@@ -937,7 +917,7 @@
         ]
       },
       {
-        "name": "PPV English",
+        "name": "PPV Inglés",
         "options": [
           {
             "name": "Opción 1",
