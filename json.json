@@ -3,7 +3,7 @@
   {
     "id": 1844,
     "evento": "Copa del Mundo: Estados Unidos vs Australia",
-    "fecha": "2026-06-19 16:00:00",
+    "fecha": "2026-06-19 17:00:00",
     "competencia": "Copa del Mundo 2026",
     "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
     "canales": [
@@ -17,6 +17,56 @@
           {
             "name": "Opción 2",
             "iframe": "https://stream-xhd.com/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Fox",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/fox-usa"
+          },
+          {
+            "name": "Opción 2 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/fox4k-usa"
+          },
+          {
+            "name": "Opción 3 (xyzstreams.shop)",
+            "iframe": "https://xyzstreams.shop/wc-1-embed.html"
+          },
+          {
+            "name": "Opción 4 (4K xyzstreams.shop)",
+            "iframe": "https://xyzstreams.shop/wc-5-embed.html"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/telemundo-usa"
+          },
+          {
+            "name": "Opción 2 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/telemundo-4k"
+          },
+          {
+            "name": "Opción 3 (xyzstreams.shop)",
+            "iframe": "https://xyzstreams.shop/wc-6-embed.html"
+          },
+          {
+            "name": "Opción 4 (HD)",
+            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 5",
+            "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
+          },
+          {
+            "name": "Opción 6",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
       },
@@ -82,6 +132,108 @@
         ]
       },
       {
+        "name": "BBC iPlayer",
+        "options": [
+          {
+            "name": "Opción 1 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/bbc-4k"
+          }
+        ]
+      },
+      {
+        "name": "BBC One UK",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/bbcone-uk"
+          },
+          {
+            "name": "Opción 2 (xyzstreams.shop)",
+            "iframe": "https://xyzstreams.shop/wc-4-embed.html"
+          }
+        ]
+      },
+      {
+        "name": "TSN",
+        "options": [
+          {
+            "name": "Opción 1 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/tsn-4k"
+          },
+          {
+            "name": "Opción 2 (4K xyzstreams.shop)",
+            "iframe": "https://xyzstreams.shop/wc-8-embed.html"
+          }
+        ]
+      },
+      {
+        "name": "Bein Sports Arabia",
+        "options": [
+          {
+            "name": "Opción 1 (4K HEVC)",
+            "iframe": "https://xyzstreams.shop/wc-10-embed.html"
+          },
+          {
+            "name": "Opción 2 (xyzstreams.shop)",
+            "iframe": "https://xyzstreams.shop/wc-11-embed"
+          }
+        ]
+      },
+      {
+        "name": "beIN Sports MAX Arabia",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/beinsportsmax-sa"
+          }
+        ]
+      },
+      {
+        "name": "beIN Sports MAX 3 Arabia",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/beinsportsmax3-sa"
+          }
+        ]
+      },
+      {
+        "name": "Fusball TV1",
+        "options": [
+          {
+            "name": "Opción 1 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/fusballtv1uhd-de"
+          }
+        ]
+      },
+      {
+        "name": "Fusball TV2",
+        "options": [
+          {
+            "name": "Opción 1 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/fusballtv2uhd-de"
+          }
+        ]
+      },
+      {
+        "name": "Fusball TV1 No Commentary",
+        "options": [
+          {
+            "name": "Opción 1 (4K HEVC)",
+            "iframe": "https://junkieembeds.pages.dev/embed/fusballtvuhd-de"
+          }
+        ]
+      },
+      {
+        "name": "DAZN Mundial",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/daznlaliga-es"
+          }
+        ]
+      },
+      {
         "name": "DSports",
         "options": [
           {
@@ -95,23 +247,6 @@
           {
             "name": "Opción 3",
             "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
-          }
-        ]
-      },
-      {
-        "name": "Telemundo",
-        "options": [
-          {
-            "name": "Opción 1 (HD)",
-            "iframe": "https://streamtpday1.xyz/global2.php?stream=telemundousa"
-          },
-          {
-            "name": "Opción 2",
-            "iframe": "https://la18hd.com/vivo/canales.php?stream=telemundo"
-          },
-          {
-            "name": "Opción 3",
-            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
           }
         ]
       },
@@ -762,6 +897,51 @@
           {
             "name": "Opción 1",
             "iframe": "https://la18hd.com/vivo/canales.php?stream=disney1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 782,
+    "evento": "Darts: Slovak Darts Open - Evening Session",
+    "fecha": "2026-06-19 15:00:00",
+    "competencia": "Darts",
+    "logoUrl": "https://images.gc.pdcservices.co.uk/fit-in/600x600/3c317c20-bc10-11f0-a7ca-afbb18ece5a9.jpg",
+    "canales": [
+      {
+        "name": "PDC.TV",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/pdc-1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 783,
+    "evento": "KSW 119: Kaczmarczyk vs Brichta",
+    "fecha": "2026-06-20 15:00:00",
+    "competencia": "MMA",
+    "logoUrl": "https://i.ibb.co/yFTMvhx4/1778952280-ksw119-hd.webp",
+    "canales": [
+      {
+        "name": "PPV Polska",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/ksw-119-pl"
+          }
+        ]
+      },
+      {
+        "name": "PPV English",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://junkieembeds.pages.dev/embed/ksw-119-en"
           }
         ]
       }
