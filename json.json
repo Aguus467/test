@@ -854,6 +854,10 @@
         {
           "name": "Telemundo 1080p",
           "iframe": "https://junkieembeds.pages.dev/embed/telemundo-usa"
+        },
+        {
+          "name": "Disney+ (HD sin anuncios)",
+          "iframe": "https://angulismotv.pages.dev/mpdk/disney"
         }
       ],
       "show": true,
