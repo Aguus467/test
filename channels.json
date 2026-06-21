@@ -1249,8 +1249,8 @@
         },
         {
           "name": "Reproductor 3",
-          "iframe": "https://rm8zcvk3.fubohd.com/dsports/mono.m3u8?token=36da971dc89827000d4c74cb248302c5efddcfb8-32-1777436439-1777418439",
-          "streamType": "hls",
+          "iframe": "https://la18hd.com/vivo/canales.php?stream=dsports",
+          "streamType": "iframe",
           "headers": null,
           "drmKeyId": null,
           "drmKey": null
