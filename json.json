@@ -1,5 +1,2429 @@
 {
-  "events": [],
+"events": [
+  {
+    "id": 7,
+    "evento": "Copa del Mundo: Inglaterra vs RD del Congo | *Dieciseisavos de final",
+    "fecha": "2026-06-30 13:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Caracol TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/caracoltv41.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "CTV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/ctv.html"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "evento": "Copa del Mundo: Costa de Marfil vs Noruega | *Dieciseisavos de final",
+    "fecha": "2026-06-30 14:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "Das Erste",
+        "options": [
+          {
+            "name": "Opción 1 (Alemán - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/das_de.html"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "Sportv BR",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=sporttvbr1"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "evento": "Copa del Mundo: Australia vs Egipto | *Dieciseisavos de final",
+    "fecha": "2026-06-30 15:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "ZDF DE",
+        "options": [
+          {
+            "name": "Opción 1 (Alemán - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/zdfde.html"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "evento": "Copa del Mundo: España vs Austria | *Dieciseisavos de final",
+    "fecha": "2026-06-30 16:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "TV LA 1 ES",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tvla1es.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=la1es"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=la1es"
+          }
+        ]
+      },
+      {
+        "name": "Canal 5 MX",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/21canalfive.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal5mx"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=canal5mx"
+          }
+        ]
+      },
+      {
+        "name": "Caracol TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/caracoltv41.php"
+          }
+        ]
+      },
+      {
+        "name": "RPC HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/rpc.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      },
+      {
+        "name": "Canal 4 SV",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal4sv"
+          }
+        ]
+      },
+      {
+        "name": "ITV 1 UK",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamhdx.xyz/channel/?id=itv1uk"
+          }
+        ]
+      },
+      {
+        "name": "Chilevision",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=chilevision"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "evento": "Copa del Mundo: Francia vs Suecia | *Dieciseisavos de final",
+    "fecha": "2026-06-30 18:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "TV LA 1 ES",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tvla1es.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=la1es"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=la1es"
+          }
+        ]
+      },
+      {
+        "name": "Caracol TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/caracoltv41.php"
+          }
+        ]
+      },
+      {
+        "name": "América TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/1america.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      },
+      {
+        "name": "Canal 4 SV",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal4sv"
+          }
+        ]
+      },
+      {
+        "name": "ITV 1 UK",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamhdx.xyz/channel/?id=itv1uk"
+          }
+        ]
+      },
+      {
+        "name": "Chilevision",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=chilevision"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "evento": "Copa del Mundo: Bélgica vs Senegal | *Dieciseisavos de final",
+    "fecha": "2026-06-30 17:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "América TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/1america.php"
+          }
+        ]
+      },
+      {
+        "name": "CTV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/ctv.html"
+          }
+        ]
+      },
+      {
+        "name": "RPC HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/rpc.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "evento": "Copa del Mundo: Argentina vs Islas de Cabo Verde | *Dieciseisavos de final",
+    "fecha": "2026-06-30 19:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Caracol TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/caracoltv41.php"
+          }
+        ]
+      },
+      {
+        "name": "Canal 5 MX",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/21canalfive.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal5mx"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=canal5mx"
+          }
+        ]
+      },
+      {
+        "name": "TeleAmazonas",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/teleamazonas.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "evento": "Copa del Mundo: EE. UU. vs Bosnia-Herzegovina | *Dieciseisavos de final",
+    "fecha": "2026-06-30 21:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Canal 5 MX",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/21canalfive.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal5mx"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=canal5mx"
+          }
+        ]
+      },
+      {
+        "name": "RPC HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/rpc.php"
+          }
+        ]
+      },
+      {
+        "name": "CTV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/ctv.html"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "evento": "Copa del Mundo: México vs Ecuador | *Dieciseisavos de final",
+    "fecha": "2026-06-30 22:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Canal 5 MX",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/21canalfive.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal5mx"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=canal5mx"
+          }
+        ]
+      },
+      {
+        "name": "TeleAmazonas",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/teleamazonas.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "RPC HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/rpc.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "Sportv BR",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=sporttvbr1"
+          }
+        ]
+      },
+      {
+        "name": "TUDN MX",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tudnmx"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      },
+      {
+        "name": "ITV 1 UK",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamhdx.xyz/channel/?id=itv1uk"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "evento": "Copa del Mundo: Portugal vs Croacia | *Dieciseisavos de final",
+    "fecha": "2026-06-30 20:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Caracol TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/caracoltv41.php"
+          }
+        ]
+      },
+      {
+        "name": "América TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/1america.php"
+          }
+        ]
+      },
+      {
+        "name": "RPC HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/rpc.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "evento": "Copa del Mundo: Colombia vs Ghana | *Dieciseisavos de final",
+    "fecha": "2026-06-30 22:30:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Caracol TV",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/caracoltv41.php"
+          }
+        ]
+      },
+      {
+        "name": "Canal 5 MX",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/21canalfive.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=canal5mx"
+          },
+          {
+            "name": "Opción 3",
+            "iframe": "https://stream-xhd.com/live1.php?stream=canal5mx"
+          }
+        ]
+      },
+      {
+        "name": "TeleAmazonas",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/teleamazonas.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "ZDF DE",
+        "options": [
+          {
+            "name": "Opción 1 (Alemán - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/zdfde.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "TyC Sports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=tycsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=tycsports"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "evento": "Copa del Mundo: Suiza vs Argelia | *Dieciseisavos de final",
+    "fecha": "2026-07-01 00:00:00",
+    "competencia": "Copa del Mundo 2026",
+    "logoUrl": "https://tvlibre-online.com/agenda/mund.png",
+    "canales": [
+      {
+        "name": "Dsports HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/cza_dsports.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "Dsports FHD | Solo LATAM",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/dsports4541.html"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://streamhdx.xyz/channel2/?id=dsports1"
+          }
+        ]
+      },
+      {
+        "name": "RPC HD",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/rpc.php"
+          }
+        ]
+      },
+      {
+        "name": "Trece",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/trecepy.php"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_41/unicanal.php"
+          }
+        ]
+      },
+      {
+        "name": "Caze TV",
+        "options": [
+          {
+            "name": "Opción 1 (Portugués - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/34cazetv.html"
+          },
+          {
+            "name": "Opción 2 (Portugués)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=cazetv"
+          }
+        ]
+      },
+      {
+        "name": "TSN 1",
+        "options": [
+          {
+            "name": "Opción 1 (DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/tsn1.html"
+          }
+        ]
+      },
+      {
+        "name": "ZDF DE",
+        "options": [
+          {
+            "name": "Opción 1 (Alemán - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/zdfde.html"
+          }
+        ]
+      },
+      {
+        "name": "Fox One ONE",
+        "options": [
+          {
+            "name": "Opción 1 (Inglés - DRM)",
+            "iframe": "https://sudamericaplay.sbs/canal_8112/1foxone.html"
+          },
+          {
+            "name": "Opción 2 (Inglés)",
+            "iframe": "https://streamhdx.xyz/channel/?id=foxoneusa"
+          },
+          {
+            "name": "Opción 3 (Inglés)",
+            "iframe": "https://stream-xhd.com/live1.php?stream=foxoneusa"
+          }
+        ]
+      },
+      {
+        "name": "DSports",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=dsports"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=dsports"
+          }
+        ]
+      },
+      {
+        "name": "VIX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=vix1"
+          }
+        ]
+      },
+      {
+        "name": "Telemundo",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://streamtp.sbs/global2.php?stream=telemundousa"
+          },
+          {
+            "name": "Opción 2",
+            "iframe": "https://stream-xhd.com/live1.php?stream=telemundo"
+          }
+        ]
+      },
+      {
+        "name": "Gen PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=genpy"
+          }
+        ]
+      },
+      {
+        "name": "Trece PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=trecepy"
+          }
+        ]
+      },
+      {
+        "name": "Unicanal PY",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=unicanalpy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "evento": "Wimbledon: Majchrzak (POL) vs Tabilo (CHI)",
+    "fecha": "2026-06-30 07:00:00",
+    "competencia": "Wimbledon",
+    "logoUrl": "https://wsstc.com/wp-content/uploads/2022/05/wsstc-wimbledon-logo.png",
+    "canales": [
+      {
+        "name": "ESPN 2",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=espn2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "evento": "Wimbledon: Boulter (GBR) vs Grant (ITA)",
+    "fecha": "2026-06-30 07:00:00",
+    "competencia": "Wimbledon",
+    "logoUrl": "https://wsstc.com/wp-content/uploads/2022/05/wsstc-wimbledon-logo.png",
+    "canales": [
+      {
+        "name": "ESPN 3",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=espn3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "evento": "MLB: Detroit Tigers vs New York Yankees",
+    "fecha": "2026-06-30 20:05:00",
+    "competencia": "MLB",
+    "canales": [
+      {
+        "name": "MLB",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=mlb1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "evento": "MLB: New York Mets vs Toronto Blue Jays",
+    "fecha": "2026-06-30 20:07:00",
+    "competencia": "MLB",
+    "canales": [
+      {
+        "name": "MLB",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=mlb2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "evento": "MLB: Washington Nationals vs Boston Red Sox",
+    "fecha": "2026-06-30 20:10:00",
+    "competencia": "MLB",
+    "canales": [
+      {
+        "name": "MLB",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=mlb3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "evento": "MLB: St. Louis Cardinals vs Atlanta Braves",
+    "fecha": "2026-06-30 20:15:00",
+    "competencia": "MLB",
+    "canales": [
+      {
+        "name": "MLB",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=mlb4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "evento": "MLB: Chicago Cubs vs San Diego Padres",
+    "fecha": "2026-06-30 21:00:00",
+    "competencia": "MLB",
+    "canales": [
+      {
+        "name": "ESPN 2",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=espn2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "evento": "MLB: Los Angeles Dodgers vs Athletics",
+    "fecha": "2026-06-30 22:40:00",
+    "competencia": "MLB",
+    "canales": [
+      {
+        "name": "MLB",
+        "options": [
+          {
+            "name": "Opción 1",
+            "iframe": "https://stream-xhd.com/live1.php?stream=mlb5"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "evento": "Primera División Chile: Cobresal vs La Serena",
+    "fecha": "2026-06-30 19:00:00",
+    "competencia": "Primera División Chile",
+    "canales": [
+      {
+        "name": "MAX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=max1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "evento": "Primera División Chile: Deportes Limache vs Coquimbo Unido",
+    "fecha": "2026-06-30 19:00:00",
+    "competencia": "Primera División Chile",
+    "canales": [
+      {
+        "name": "MAX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=max2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "evento": "Primera División Chile: Univ. Concepción vs Ñublense",
+    "fecha": "2026-06-30 19:00:00",
+    "competencia": "Primera División Chile",
+    "canales": [
+      {
+        "name": "MAX",
+        "options": [
+          {
+            "name": "Opción 1 (HD)",
+            "iframe": "https://streamtp.sbs/global2.php?stream=max3"
+          }
+        ]
+      }
+    ]
+  }
+],
   "channels": [
     {
       "name": "Mundial 2026",
